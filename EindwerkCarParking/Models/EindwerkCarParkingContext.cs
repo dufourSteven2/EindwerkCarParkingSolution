@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 
@@ -17,6 +18,7 @@ namespace EindwerkCarParking.Models
     
         public EindwerkCarParkingContext() : base("name=EindwerkCarParkingContext")
         {
+            Database.Log = s => Debug.WriteLine(s);
         }
 
         public System.Data.Entity.DbSet<EindwerkCarParkingLib.Parking> Parkings { get; set; }
