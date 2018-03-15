@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EindwerkCarParking", "EindwerkCarParking\EindwerkCarParking.csproj", "{3F609096-508E-43BF-9A32-B33D51F477E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EindwerkCarParkingLib", "EindwerkCarParkingLib\EindwerkCarParkingLib.csproj", "{FA27E01F-FFE9-4406-984F-45C1CB6CE280}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3F609096-508E-43BF-9A32-B33D51F477E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F609096-508E-43BF-9A32-B33D51F477E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F609096-508E-43BF-9A32-B33D51F477E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA27E01F-FFE9-4406-984F-45C1CB6CE280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA27E01F-FFE9-4406-984F-45C1CB6CE280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA27E01F-FFE9-4406-984F-45C1CB6CE280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA27E01F-FFE9-4406-984F-45C1CB6CE280}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
