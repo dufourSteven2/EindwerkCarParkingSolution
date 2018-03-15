@@ -11,6 +11,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using EindwerkCarParking.Models;
 using EindwerkCarParkingLib;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 
 namespace EindwerkCarParking.Controllers
 {
@@ -19,16 +21,18 @@ namespace EindwerkCarParking.Controllers
         private EindwerkCarParkingContext db = new EindwerkCarParkingContext();
 
         // GET: api/Parkings
-        public IQueryable<Parking> GetParkings()
+        public IQueryable<ParkingsDTO> GetParkings()
         {
-            return db.Parkings;
+            var parkings = db.Parkings.ProjectTo<ParkingsDTO>();
+            return parkings;
         }
 
         // GET: api/Parkings/5
-        [ResponseType(typeof(Parking))]
+        [ResponseType(typeof(ParkingsDetailDTO))]
         public async Task<IHttpActionResult> GetParking(int id)
         {
-            Parking parking = await db.Parkings.FindAsync(id);
+            //Parking parking = await db.Parkings.FindAsync(id);
+            var parking = await db.Parkings.ProjectTo<ParkingsDetailDTO>().SingleOrDefaultAsync(p => p.Id == id);
             if (parking == null)
             {
                 return NotFound();
@@ -39,37 +43,20 @@ namespace EindwerkCarParking.Controllers
 
         // PUT: api/Parkings/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutParking(int id, Parking parking)
+        public async Task<IHttpActionResult> PutParking(int id, ParkingsDetailDTO parkingsDetailDTO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != parking.Id)
-            {
-                return BadRequest();
-            }
 
+            Parking parking = Mapper.Map<Parking>(parkingsDetailDTO);
+            db.Set<Parking>().Attach(parking); //hier de update
             db.Entry(parking).State = EntityState.Modified;
+            await db.SaveChangesAsync();
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ParkingExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(parkingsDetailDTO);
         }
 
         // POST: api/Parkings

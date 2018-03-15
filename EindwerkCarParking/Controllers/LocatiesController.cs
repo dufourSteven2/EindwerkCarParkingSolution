@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using EindwerkCarParking.Models;
 using EindwerkCarParkingLib;
+using AutoMapper.QueryableExtensions;
 
 namespace EindwerkCarParking.Controllers
 {
@@ -19,9 +20,10 @@ namespace EindwerkCarParking.Controllers
         private EindwerkCarParkingContext db = new EindwerkCarParkingContext();
 
         // GET: api/Locaties
-        public IQueryable<Locatie> GetLocaties()
+        public IQueryable<LocatieDTO> GetLocaties()
         {
-            return db.Locaties;
+            //return db.Locaties;
+            return db.Locaties.ProjectTo<LocatieDTO>();
         }
 
         // GET: api/Locaties/5
