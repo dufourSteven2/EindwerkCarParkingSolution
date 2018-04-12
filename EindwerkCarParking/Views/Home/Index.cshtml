@@ -1,24 +1,134 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+﻿@using EindwerkCarParking.Models
+@model List<ParkingsDTO>
+
+
+
+<div class="jumbotron">Parkings</div>
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        @foreach (ParkingsDTO p in Model)
+        {
+            <p>
+                <b><a href="#" data-id="@p.Id" class="parkingNaam">@p.ParkingNaam</a></b> <i>@p.GemeenteGemeenteNaam</i>
+
+            </p>
+            <hr />
+        }
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
+        <p>
+            <input id="btnAdd" type="button" value="Add parking" class="btn btn-primary" />
+            <input id="btnUpdate" type="button" value="Update parking" class="btn btn-warning" />
+            <input id="btnDelete" type="button" value="Delete parking" class="btn btn-danger" />
+        </p>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+
+</div>
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myModalLabel">ParkingDetail</h4>
+            </div>
+            <div class="modal-body">
+                Hier komen de detailgegevevens van een parking.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
+        </div>
     </div>
 </div>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var url = 'http://' + window.location.host + '/api/parkings/';
+
+            var infoModal = $('#myModal');
+            $('.parkingNaam').on('click', function () {
+                $.ajax({
+                    type: "GET",
+                    url: url + $(this).data('id'),
+                    dataType: 'json',
+                    success: function (data) {
+                        showParking('Parking Details', data);
+                    }
+                });
+            });
+
+            showParking = function (header, parking) {
+                var htmlData = '<h4>' + parking.ParkingNaam + '</h4><hr>';
+                htmlData += '<p>Gemeente :' + parking.GemeenteGemeenteNaam + '</p>';
+                htmlData += '<br>Straat :' + parking.LocatieStraat ;
+                infoModal.find('.modal-header').html(header);
+                infoModal.find('.modal-body').html(htmlData);
+                infoModal.modal('show');
+            }
+
+
+
+            var newParking = {
+                ParkingNaam: 'Langestraat',
+                //Totaal: 1500,
+                //Bezet: 100,
+                GemeenteGemeenteNaam: 'Brugge',
+                //EigenaarId: 2,
+                //EigenaarNaam: 'Kabouter plop',
+                //SoortId: 2,
+                //SoortNaam: 'kwebbel',
+                //LocatieId: 2,
+                Straat: 'Kortestraat',
+
+                // We moeten de authorname opvullen om deze straks te kunnen tonen -->
+                // controllermethod heeft enkel Id van Author nodig voor Insert
+                // maar doet bij ons geen nieuwe query naar entity
+
+            }
+
+            $('#btnAdd').on('click', function () {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: 'json',
+                    data: newParking,
+                    success: function (data) {
+                        newParking = data;
+                        showParking('Added Parking:', data);
+                    }
+                });
+            });
+
+            $('#btnUpdate').on('click', function () {
+                newParking.ParkingNaam = 'Langestraat';
+                $.ajax({
+                    type: "PUT",
+                    url: url + newParking.Id,
+                    dataType: 'json',
+                    data: newParking,
+                    success: function (data) {
+                        showParking('Updated Parking:', data);
+                    }
+                });
+            });
+
+            $('#btnDelete').on('click', function () {
+                $.ajax({
+                    type: "DELETE",
+                    url: url + newParking.Id,
+                    dataType: 'json',
+                    data: newParking,
+                    success: function (data) {
+                        showParking('DELETED Parking:', data);
+                    }
+                });
+            });
+        });
+    </script>
+}
