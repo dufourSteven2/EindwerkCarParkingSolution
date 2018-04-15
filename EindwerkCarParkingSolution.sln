@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EindwerkCarParking", "Eindw
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EindwerkCarParkingLib", "EindwerkCarParkingLib\EindwerkCarParkingLib.csproj", "{FA27E01F-FFE9-4406-984F-45C1CB6CE280}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarParkingFrontEnd", "CarParkingFrontEnd\CarParkingFrontEnd.csproj", "{E2ED0131-9F99-4FAB-A51C-9576B7FCC60A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{FA27E01F-FFE9-4406-984F-45C1CB6CE280}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA27E01F-FFE9-4406-984F-45C1CB6CE280}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA27E01F-FFE9-4406-984F-45C1CB6CE280}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2ED0131-9F99-4FAB-A51C-9576B7FCC60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2ED0131-9F99-4FAB-A51C-9576B7FCC60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2ED0131-9F99-4FAB-A51C-9576B7FCC60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2ED0131-9F99-4FAB-A51C-9576B7FCC60A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
