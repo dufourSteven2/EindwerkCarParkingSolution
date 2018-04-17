@@ -1,6 +1,4 @@
-
 {
-  "outDir": "./app/out-tsc",
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -12,5 +10,8 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
     "outDir": "./app/out-tsc"
-  }
+  },
+  "include": [
+    "**/*"
+  ]
 }
