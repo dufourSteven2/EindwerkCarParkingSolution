@@ -1,0 +1,249 @@
+﻿@using EindwerkCarParking.Models
+@model List<ParkingsDTO>
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Nadrukkelijk compatibel voor mobiele apparaten -->
+
+    <title>Welkom bij Parking-Checker</title>
+    <link href="~/localecode/css/Gemeenschappelijkestijl.css" rel="stylesheet">
+
+    <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"> <!-- Locale bootstrap layout bron: http://getbootstrap.com/getting-started/ PS: Boostrap is via customize aangepast (overzichtelijker dan in de .min file te speuren...) -->
+    <link rel="shortcut icon" href="~/Afbeeldingen/Parking-Checker.jpg">  <!-- icoon. Link om zonder photoshop icoontjes te ontwerpen: http://www.convertico.com/-->
+
+
+    <link rel="stylesheet" type="text/css" href="~/plugins/jquery.cookiebar/jquery.cookiebar.css" />  <!-- css cookiebar disclaimer onderdeel-->
+
+
+</head>
+<body class="bodyeigenschappen">
+    <!-- semiparallaxbody in css niet nodig dankzij de parallax - plugin -->
+    <header>
+        <a id="tagboven"></a>
+        <div class="page-header header ">
+            <br>
+            <img src="~/Afbeeldingen/Parking-Checker.jpg" alt="Logo">
+        </div>
+    </header>
+
+
+    <nav class="navbar navbar-default navbar-fixed-top visibleonhover">
+
+        <div class="container-fluid">
+            <!-- Brand and toggle samen voor de smartphones -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <label> <a class="navbar-brand" href="#">Parking-Checker</a></label>
+            </div>
+
+            <!-- uitklapper -->
+            <div class="collapse navbar-collapse continuenavbar" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right ">
+                    <li><a href="IndexMijnTest.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="Productpagina.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Steden<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            @foreach (ParkingsDTO b in Model)
+                            {
+                                <p>
+                                    <b><a href="#" data-id="@b.Id" class="bookTitle">@b.GemeenteGemeenteNaam</a></b>
+                                </p>
+
+                            }
+
+                        </ul>
+                    </li>
+                    <li><a href="Index.html">Contact</a></li>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+
+    </nav>
+
+
+    <article>
+
+        <div class="parallaxbody ">
+
+            <div class="container-fluid ">
+                <!--http://getbootstrap.com/css/-->
+                <br>
+
+                <div class="row ">
+                    <div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="linkernavigatie">
+                            <!--   http://www.tutorialspoint.com/bootstrap/bootstrap_list_group.htm -->
+                            <ul class="list-group">
+                                <li class="list-group-item"><a href=#tagboven> Boven</a></li>
+                                <li class="list-group-item"><a href=#tagmid>Midden</a></li>
+                                <li class="list-group-item"><a href=#tagonder>Onder</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-1"> <br></div> <!-- Om afstand te hebben op de zwevende linkernav-->
+
+                    <div class="col-md-8 rondehoekindex">
+                        <a id="tagmid"></a><p>
+                            <br><b>Parking-Checker</b> Is een fictieve site voor ons eindwerk voor onze studies die we in<i>Howest Brugge</i> gevolgd hebben. Het eindwerk in opdracht van William. <br> Onze parking-checker zou de gebruiker moeten informeren waar er nog parkeerplaatsen vrij zijn. <br> <br>
+                            Weergave met  kleuverandering groen = vrij, oranje = bijna volzet, rood volzet. <br>Indien u eigenaar bent van een parkeer-site en u wilt deze graag in onze app aanwezig zien aarzel niet om ons te contacteren.
+                            <br> Deze staat nog in zijn kinderschoenen en willen we nog verder uitbreiden zodat de gebruiker via ingave adres naar de dichtst bijzijnde parking geleid word.<br>  <br> Dit allemaal voor ons schoolproject <br> <br> Stuur gerust uw bevindingen van deze site naar ons zodat wij als student-hobbyist deze kunnen verbeteren.
+
+                            <br><br><br><br>	<br><br>	<img id="imgpos" src="~/Afbeeldingen/Parking-Checker.jpg" alt="Parking-Checker">
+                            <br>
+                        </p>
+                        <br> <br>
+                    </div>
+                    <div class="col-md-1"><br>  </div>
+
+                </div>
+            </div>
+            <br>
+        </div>
+        <section id="disclaimer">
+            <!--http://www.w3.org/wiki/HTML_structural_elements#.3Csection.3-->
+        </section>
+        <br><br><br>
+    </article>
+
+
+
+    <footer>
+        <div class="navbar navbar-default  navbar-static-bottom ">
+            <div class="container">
+                <p class="navbar-text">  &copy;2018 - Howest Brugge (Cursisten Benny en Steven) </p>  <a id="tagonder"></a>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- <script src="javascript/jquery-1.11.2.js"></script>  jquery file -->
+    <script src="localecode/javascript/localejs.js"></script> <!-- Locale bewerkingen uitvoeren (eigen javascript file) -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- Nodig voor de bootstrap's javascript plugins -->
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script> <!-- Locale verwijzing naar bootstrap 3.3.2 -->
+    <!-- js code voor slick carousel (eenvoudiger dan owl carousel, maar even efficiënt) -->
+
+    <script src="/plugins/parallax.js/parallax.js"></script> <!-- Goed uitgewerkt parallax effect -->
+
+    <script type="text/javascript" src="plugins/jquery.cookiebar/jquery.cookiebar.js"></script> <!-- js cookiebar disclaimer onderdeel-->
+
+
+
+    <script type="text/javascript">
+ @*<!-- Parallax.js uitwerking  http://pixelcog.github.io/parallax.js/ -->*@
+$('.parallaxbody').parallax({imageSrc: '/Afbeeldingen/achtergrond.jpg'});
+
+    </script>
+
+    <script type="text/javascript">
+ @*<!-- De jquery.cookiebar.css file is een eenvoudig bewerkbaar bestand -->*@
+$(document).ready(function(){
+  $.cookieBar({
+ 	message: 'Parking-Checker is een fictieve site als eindproject voor onze HBO5 Opleiding Howest Brugge. De site is in beheer van de cursisten Benny en Steven. Alle acties en communicatie via de site Parking-Checker zijn fictief en niet rechtsgeldig. Overeenkomsten met ... of geregistreerde merknamen zijn niet intentioneel en hebben enkel educatieve doeleinden. Aanvullend: door "Akkoord" aan te klikken, krijgen we toestemming om cookies op uw computer te bewaren.',
+acceptButton: true,
+acceptText: 'Akkoord',
+  autoEnable: true,
+acceptOnContinue: false,
+ forceShow: true,
+ element: 'section',
+append: true,
+fixed: false,
+bottom: false
+}
+
+
+  );
+});		</script>
+<!-- Hieronder bootstrap uitwerken voor modal view -->
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" style="left:0;">
+            <!--Hier style left manueel ingevoegd de modal beter te positioneren-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel">ParkingDetail</h4>
+                </div>
+                <div class="modal-body">
+                    Hier komen de detailgegevevens van een ploeg.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
+                    @*<button type="button" class="btn btn-primary">Save changes</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section scripts
+{
+        <script>
+            $(document).ready(function () {
+                var url = 'http://' + window.location.host + '/api/parkings/';
+
+                var infoModal = $('#myModal');
+                $('.parkingNaam').on('click', function () {
+                    $.ajax({
+                        type: "GET",
+                        url: url + $(this).data('id'),
+                        dataType: 'json',
+                        success: function (data) {
+                            showPloeg('Parking Details', data);
+                        }
+                    });
+                });
+
+                showParking = function (header, parking) {
+                    var htmlData = '<h4>' + parking.ParkingNaam + '</h4><hr>';
+                    htmlData += '<p>Gemeente :' + parking.GemeenteGemeenteNaam + '</p>';
+                    htmlData += '<br>Straat :' + parking.LocatieStraat;
+                    infoModal.find('.modal-header').html(header);
+                    infoModal.find('.modal-body').html(htmlData);
+                    infoModal.modal('show');
+                }
+
+
+
+                var newParking = {
+                    ParkingNaam: 'Langestraat',
+                    //Totaal: 1500,
+                    //Bezet: 100,
+                    GemeenteGemeenteNaam: 'Brugge',
+                    //EigenaarId: 2,
+                    //EigenaarNaam: 'Kabouter plop',
+                    //SoortId: 2,
+                    //SoortNaam: 'kwebbel',
+                    //LocatieId: 2,
+                    Straat: 'Kortestraat',
+
+                    // We moeten de authorname opvullen om deze straks te kunnen tonen -->
+                    // controllermethod heeft enkel Id van Author nodig voor Insert
+                    // maar doet bij ons geen nieuwe query naar entity
+
+                }
+
+
+
+
+
+
+            });
+        </script>
+    }
+</body>
+</html>
+

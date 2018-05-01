@@ -32,5 +32,25 @@ namespace EindwerkCarParking.Controllers
             }
 
         }
+        public ActionResult IndexMijnTest()
+        {
+            //ViewBag.Title = "Home Page";
+
+            //return View();
+
+            string uri = "http://" + Request.Url.Host + ':' + Request.Url.Port + "/api/parkings";
+            using (HttpClient httpClient = new HttpClient())
+            {
+                Task<String> response = httpClient.GetStringAsync(uri);
+                return View(
+                             Task.Factory.StartNew
+                             (
+                               () => JsonConvert.DeserializeObject<List<ParkingsDTO>>(response.Result)
+                             )
+                             .Result
+                           );
+            }
+
+        }
     }
 }
