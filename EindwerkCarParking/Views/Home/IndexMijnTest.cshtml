@@ -1,5 +1,6 @@
 ﻿@using EindwerkCarParking.Models
 @model List<ParkingsDTO>
+
 <!DOCTYPE html>
 <html lang="nl-BE">
 <head>
@@ -9,13 +10,9 @@
 
     <title>Welkom bij Parking-Checker</title>
     <link href="~/localecode/css/Gemeenschappelijkestijl.css" rel="stylesheet">
-
     <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"> <!-- Locale bootstrap layout bron: http://getbootstrap.com/getting-started/ PS: Boostrap is via customize aangepast (overzichtelijker dan in de .min file te speuren...) -->
     <link rel="shortcut icon" href="~/Afbeeldingen/Parking-Checker.jpg">  <!-- icoon. Link om zonder photoshop icoontjes te ontwerpen: http://www.convertico.com/-->
-
-
     <link rel="stylesheet" type="text/css" href="~/plugins/jquery.cookiebar/jquery.cookiebar.css" />  <!-- css cookiebar disclaimer onderdeel-->
-
 
 </head>
 <body class="bodyeigenschappen">
@@ -50,10 +47,11 @@
                     <li class="dropdown">
                         <a href="Productpagina.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Steden<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            @foreach (ParkingsDTO b in Model)
+                            @foreach (ParkingsDTO p in Model)
                             {
                                 <p>
-                                    <b><a href="#" data-id="@b.Id" class="bookTitle">@b.GemeenteGemeenteNaam</a></b>
+                                    <b><a href="#" data-id="@p.Id" class="parkingNaam">@p.ParkingNaam</a></b> <i>@p.GemeenteGemeenteNaam</i>
+
                                 </p>
 
                             }
@@ -154,32 +152,31 @@ $('.parallaxbody').parallax({imageSrc: '/Afbeeldingen/achtergrond.jpg'});
 $(document).ready(function(){
   $.cookieBar({
  	message: 'Parking-Checker is een fictieve site als eindproject voor onze HBO5 Opleiding Howest Brugge. De site is in beheer van de cursisten Benny en Steven. Alle acties en communicatie via de site Parking-Checker zijn fictief en niet rechtsgeldig. Overeenkomsten met ... of geregistreerde merknamen zijn niet intentioneel en hebben enkel educatieve doeleinden. Aanvullend: door "Akkoord" aan te klikken, krijgen we toestemming om cookies op uw computer te bewaren.',
-acceptButton: true,
-acceptText: 'Akkoord',
-  autoEnable: true,
-acceptOnContinue: false,
- forceShow: true,
- element: 'section',
-append: true,
-fixed: false,
-bottom: false
+    acceptButton: true,
+    acceptText: 'Akkoord',
+    autoEnable: true,
+    acceptOnContinue: false,
+    forceShow: true,
+    element: 'section',
+    append: true,
+    fixed: false,
+    bottom: false
 }
 
 
   );
 });		</script>
-<!-- Hieronder bootstrap uitwerken voor modal view -->
+    <!-- Hieronder bootstrap uitwerken voor modal view -->
     <!-- Bootstrap Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document" style="left:0;">
-            <!--Hier style left manueel ingevoegd de modal beter te positioneren-->
+        <div class="modal-dialog" role="document" style="left:0;"><!--om modal links weer te geven-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="modal-title" id="myModalLabel">ParkingDetail</h4>
                 </div>
                 <div class="modal-body">
-                    Hier komen de detailgegevevens van een ploeg.
+                    Hier komen de detailgegevevens van een parking.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
@@ -188,6 +185,7 @@ bottom: false
             </div>
         </div>
     </div>
+
 
     @section scripts
 {
@@ -202,7 +200,7 @@ bottom: false
                         url: url + $(this).data('id'),
                         dataType: 'json',
                         success: function (data) {
-                            showPloeg('Parking Details', data);
+                            showParking('Parking Details', data);
                         }
                     });
                 });
@@ -236,11 +234,43 @@ bottom: false
 
                 }
 
+                $('#btnAdd').on('click', function () {
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        dataType: 'json',
+                        data: newParking,
+                        success: function (data) {
+                            newParking = data;
+                            showParking('Added Parking:', data);
+                        }
+                    });
+                });
 
+                $('#btnUpdate').on('click', function () {
+                    newParking.ParkingNaam = 'Langestraat';
+                    $.ajax({
+                        type: "PUT",
+                        url: url + newParking.Id,
+                        dataType: 'json',
+                        data: newParking,
+                        success: function (data) {
+                            showParking('Updated Parking:', data);
+                        }
+                    });
+                });
 
-
-
-
+                $('#btnDelete').on('click', function () {
+                    $.ajax({
+                        type: "DELETE",
+                        url: url + newParking.Id,
+                        dataType: 'json',
+                        data: newParking,
+                        success: function (data) {
+                            showParking('DELETED Parking:', data);
+                        }
+                    });
+                });
             });
         </script>
     }
