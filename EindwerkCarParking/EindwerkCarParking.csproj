@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201803151734497_Initial.Designer.cs">
       <DependentUpon>201803151734497_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805081703408_totalen.cs" />
+    <Compile Include="Migrations\201805081703408_totalen.Designer.cs">
+      <DependentUpon>201805081703408_totalen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO.cs" />
     <Compile Include="Models\EindwerkCarParkingContext.cs" />
@@ -307,6 +311,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803151734497_Initial.resx">
       <DependentUpon>201803151734497_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805081703408_totalen.resx">
+      <DependentUpon>201805081703408_totalen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
