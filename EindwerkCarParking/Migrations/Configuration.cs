@@ -27,6 +27,7 @@ namespace EindwerkCarParking.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.
 
             context.Lands.AddOrUpdate(x => x.Id,
              new Land() { Id = 1, LandNaam = "Belgie" },
@@ -75,6 +76,14 @@ namespace EindwerkCarParking.Migrations
                     Straat = "'t Zand",
                     LandId = 1,
                     GemeenteId = 1
+                },
+
+                new Locatie()
+                {
+                    Id = 4,
+                    Straat = "t'zuid",
+                    LandId = 1,
+                    GemeenteId = 2
                 }
 
                 );
@@ -111,7 +120,17 @@ namespace EindwerkCarParking.Migrations
                     Totaal = 1434,
                     Bezet = 0,
                     ParkingNaam = "'t Zand"
-                }
+                },
+                             new Parking()
+                             {
+                                 Id = 3,
+                                 EigenaarId = 3,
+                                 SoortId = 2,
+                                 LocatieId = 3,
+                                 Totaal = 1434,
+                                 Bezet = 0,
+                                 ParkingNaam = "'t Zand"
+                             }
 
                 );
 
