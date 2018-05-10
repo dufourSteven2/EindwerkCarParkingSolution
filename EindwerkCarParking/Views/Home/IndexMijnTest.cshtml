@@ -133,12 +133,22 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!-- Nodig voor de bootstrap's javascript plugins -->
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script> <!-- Locale verwijzing naar bootstrap 3.3.2 -->
-    <!-- js code voor slick carousel (eenvoudiger dan owl carousel, maar even efficiënt) -->
+    <!-- js code voor slick carousel (eenvoudiger dan owl carousel, maar even efficiënt => dit eventueel voor later maar nog niet willen gebruiken) -->
 
-    <script src="/plugins/parallax.js/parallax.js"></script> <!-- Goed uitgewerkt parallax effect -->
+    <script src="plugins/parallax.js/parallax.js"></script> <!-- Goed uitgewerkt parallax effect -->
 
     <script type="text/javascript" src="plugins/jquery.cookiebar/jquery.cookiebar.js"></script> <!-- js cookiebar disclaimer onderdeel-->
 
+
+    <!--Hieronder toevoeging test google maps-->
+    <!-- AIzaSyCeiTZY7jXETj0MpKuUbKwN_CqeUzv0v-M -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeiTZY7jXETj0MpKuUbKwN_CqeUzv0v-M&libraries=places&callback=initAutocomplete"
+            async defer></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <!--Hierboven toevoeging test google maps -->
 
 
     <script type="text/javascript">
@@ -166,10 +176,13 @@ $(document).ready(function(){
 
   );
 });		</script>
+
+
     <!-- Hieronder bootstrap uitwerken voor modal view -->
     <!-- Bootstrap Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document" style="left:0;"><!--om modal links weer te geven-->
+        <div class="modal-dialog" role="document" style="left:0;">
+            <!--om modal links weer te geven-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -177,6 +190,9 @@ $(document).ready(function(){
                 </div>
                 <div class="modal-body">
                     Hier komen de detailgegevevens van een parking.
+                </div>
+                <div class="modal-content" id="dvMap" style="height: 350px; width: 350px; margin: auto">
+                    Hier voorlopig style google maps weergave tot alles uitgewerkt is
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
@@ -189,6 +205,8 @@ $(document).ready(function(){
 
     @section scripts
 {
+
+
         <script>
             $(document).ready(function () {
                 var url = 'http://' + window.location.host + '/api/parkings/';
@@ -209,6 +227,78 @@ $(document).ready(function(){
                     var htmlData = '<h4>' + parking.ParkingNaam + '</h4><hr>';
                     htmlData += '<p>Gemeente :' + parking.GemeenteGemeenteNaam + '</p>';
                     htmlData += '<br>Straat :' + parking.LocatieStraat;
+                    //var street = parking.LocatieStraat;
+                    //var city = parking.GemeenteGemeenteNaam;
+                    //try {
+                    //    StringBuilder queryaddres = new StringBuilder();
+                    //    queryaddres.Append("http://map.google.com/maps?q=");
+                    //}
+                    //if (street != string.Empty) {
+                    //    queryadres.Append(street + "," + "+");
+                    //}
+                    //Navigate(queryaddres.ToString());
+                    
+                    //catch (Exception ex) {
+                    //MessageBox.Show(ex.Message.ToString(), "error");
+                    //};
+
+                    ////////////////////////////////////////////// https://stackoverflow.com/questions/15925980/using-address-instead-of-longitude-and-latitude-with-google-maps-api
+                    ////////////// "{StreetNumber} {Street}, {Suburb}, Western Australia"; 'San Diego, CA'
+                    var geocoder;
+                    var map;
+                    var address = htmlData; //hier manuele address vervangen door htmlData
+                    //function initialize() {
+                        geocoder = new google.maps.Geocoder();
+                        var latlng = new google.maps.LatLng(-34.397, 150.644);
+                        var myOptions = {
+                            zoom: 8,
+                            center: latlng,
+                            mapTypeControl: true,
+                            mapTypeControlOptions: { style: google.maps.MapTypeControlStyle.DROPDOWN_MENU },
+                            navigationControl: true,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+                        map = new google.maps.Map($("#dvMap")[0], myOptions);
+                        if (geocoder) {
+                            geocoder.geocode({ 'address': address }, function (results, status) {
+                                if (status == google.maps.GeocoderStatus.OK) {
+                                    if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                                        map.setCenter(results[0].geometry.location);
+
+                                        var infowindow = new google.maps.InfoWindow(
+                                            {
+                                                content: '<b>' + address + '</b>',
+                                                size: new google.maps.Size(150, 50)
+                                            });
+
+                                        var marker = new google.maps.Marker({
+                                            position: results[0].geometry.location,
+                                            map: map,
+                                            title: address
+                                        });
+                                        google.maps.event.addListener(marker, 'click', function () {
+                                            infowindow.open(map, marker);
+                                        });
+
+                                    } else {
+                                        alert("No results found");
+                                    }
+                                } else {
+                                    alert("Geocode was not successful for the following reason: " + status);
+                                }
+                            });
+                        }
+                    //}
+
+                    //////////////////////////////////////////////
+            
+
+                    //var mapOptions = {
+                    //    center: new google.maps.LatLng(19.0606917, 72.83624970000005),
+                    //    zoom: 18,
+                    //    mapTypeId: google.maps.MapTypeId.ROADMAP
+                    //}
+                    //var map = new google.maps.Map($("#dvMap")[0], mapOptions);
                     infoModal.find('.modal-header').html(header);
                     infoModal.find('.modal-body').html(htmlData);
                     infoModal.modal('show');
