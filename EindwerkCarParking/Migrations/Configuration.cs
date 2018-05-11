@@ -27,7 +27,7 @@ namespace EindwerkCarParking.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            context.
+            
 
             context.Lands.AddOrUpdate(x => x.Id,
              new Land() { Id = 1, LandNaam = "Belgie" },
