@@ -219,6 +219,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Afbeeldingen\achtergrond.jpg" />
+    <Content Include="Afbeeldingen\ico\Parkingblauw.ico" />
+    <Content Include="Afbeeldingen\ico\Parkingblauw.png" />
+    <Content Include="Afbeeldingen\ico\Parkingorange.ico" />
+    <Content Include="Afbeeldingen\ico\Parkingrood.ico" />
     <Content Include="Afbeeldingen\Parking-Checker.jpg" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />

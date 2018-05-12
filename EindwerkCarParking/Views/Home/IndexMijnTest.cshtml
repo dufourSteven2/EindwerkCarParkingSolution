@@ -286,7 +286,9 @@ $(document).ready(function(){
                             mapTypeControlOptions: { style: google.maps.MapTypeControlStyle.DROPDOWN_MENU },
                             navigationControl: true,
                             mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
+                    };
+
+
                         map = new google.maps.Map($("#dvMap")[0], myOptions);
                         if (geocoder) {
                             geocoder.geocode({ 'address': address }, function (results, status) {
@@ -299,11 +301,13 @@ $(document).ready(function(){
                                                 content: '<b>' + address + '</b>',
                                                 size: new google.maps.Size(150, 50)
                                             });
-
+                                        //var image = '/Afbeeldingen/ico/Parkingblauw.ico';
                                         var marker = new google.maps.Marker({
-                                            position: results[0].geometry.location,
+                                            position: results[0].geometry.location,                                           
                                             map: map,
-                                            title: address
+                                            //icon: image,
+                                            animation: google.maps.Animation.BOUNCE
+                                            
                                         });
                                         google.maps.event.addListener(marker, 'click', function () {
                                             infowindow.open(map, marker);
@@ -315,6 +319,8 @@ $(document).ready(function(){
                                 } else {
                                     alert("Geocode was not successful for the following reason: " + status);
                                 }
+                                
+
                             });
                         }
                     //}
@@ -353,43 +359,43 @@ $(document).ready(function(){
 
                 }
 
-                $('#btnAdd').on('click', function () {
-                    $.ajax({
-                        type: "POST",
-                        url: url,
-                        dataType: 'json',
-                        data: newParking,
-                        success: function (data) {
-                            newParking = data;
-                            showParking('Added Parking:', data);
-                        }
-                    });
-                });
+                //$('#btnAdd').on('click', function () {
+                //    $.ajax({
+                //        type: "POST",
+                //        url: url,
+                //        dataType: 'json',
+                //        data: newParking,
+                //        success: function (data) {
+                //            newParking = data;
+                //            showParking('Added Parking:', data);
+                //        }
+                //    });
+                //});
 
-                $('#btnUpdate').on('click', function () {
-                    newParking.ParkingNaam = 'Langestraat';
-                    $.ajax({
-                        type: "PUT",
-                        url: url + newParking.Id,
-                        dataType: 'json',
-                        data: newParking,
-                        success: function (data) {
-                            showParking('Updated Parking:', data);
-                        }
-                    });
-                });
+                //$('#btnUpdate').on('click', function () {
+                //    newParking.ParkingNaam = 'Langestraat';
+                //    $.ajax({
+                //        type: "PUT",
+                //        url: url + newParking.Id,
+                //        dataType: 'json',
+                //        data: newParking,
+                //        success: function (data) {
+                //            showParking('Updated Parking:', data);
+                //        }
+                //    });
+                //});
 
-                $('#btnDelete').on('click', function () {
-                    $.ajax({
-                        type: "DELETE",
-                        url: url + newParking.Id,
-                        dataType: 'json',
-                        data: newParking,
-                        success: function (data) {
-                            showParking('DELETED Parking:', data);
-                        }
-                    });
-                });
+                //$('#btnDelete').on('click', function () {
+                //    $.ajax({
+                //        type: "DELETE",
+                //        url: url + newParking.Id,
+                //        dataType: 'json',
+                //        data: newParking,
+                //        success: function (data) {
+                //            showParking('DELETED Parking:', data);
+                //        }
+                //    });
+                //});
             });
         </script>
     }
