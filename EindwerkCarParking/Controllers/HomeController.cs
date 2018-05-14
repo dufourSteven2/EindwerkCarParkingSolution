@@ -32,6 +32,19 @@ namespace EindwerkCarParking.Controllers
             }
 
         }
+
+      
+        public ActionResult Contact()
+        {
+            ViewBag.Title = "Contact Us";
+            return View();
+        }
+        [HttpPost()]
+        public ActionResult Contact(object model)
+        {
+            return View();
+        }
+
         public ActionResult IndexMijnTest()
         {
             //ViewBag.Title = "Home Page";

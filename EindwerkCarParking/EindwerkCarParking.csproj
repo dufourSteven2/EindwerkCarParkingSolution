@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201805081703408_totalen.Designer.cs">
       <DependentUpon>201805081703408_totalen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805140044149_locatie.cs" />
+    <Compile Include="Migrations\201805140044149_locatie.Designer.cs">
+      <DependentUpon>201805140044149_locatie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO.cs" />
     <Compile Include="Models\EindwerkCarParkingContext.cs" />
@@ -285,6 +289,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\IndexMijnTest.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805081703408_totalen.resx">
       <DependentUpon>201805081703408_totalen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805140044149_locatie.resx">
+      <DependentUpon>201805140044149_locatie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

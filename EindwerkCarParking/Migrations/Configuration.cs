@@ -62,6 +62,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 1,
                     Straat = "Predikherenrei",
+                    Nr = "4A",
                     LandId = 1,
                     GemeenteId = 1
                 },
@@ -70,6 +71,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 2,
                     Straat = "Spoorwegstraat",
+                    Nr ="14",
                     LandId = 1,
                     GemeenteId = 1
                 },
@@ -77,7 +79,8 @@ namespace EindwerkCarParking.Migrations
                 new Locatie()
                 {
                     Id = 3,
-                    Straat = "'t Zand",
+                    Straat = "Hoefijzerlaan",
+                    Nr = "17",
                     LandId = 1,
                     GemeenteId = 1
                 },
@@ -86,6 +89,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 4,
                     Straat = "Franklin Rooseveltlaan",
+                    Nr = "3/A",
                     LandId = 1,
                     GemeenteId = 2
                 },
@@ -102,6 +106,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 6,
                     Straat = "Sint-Pietersplein",
+                    Nr = "65",
                     LandId = 1,
                     GemeenteId = 2
                 },
@@ -109,7 +114,7 @@ namespace EindwerkCarParking.Migrations
                 new Locatie()
                 {
                     Id = 7,
-                    Straat = "Mijplein",
+                    Straat = "Mijnplein",
                     LandId = 1,
                     GemeenteId = 3
                 },
@@ -126,6 +131,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 9,
                     Straat = "Ernest van Dijcklaai",
+                    Nr = "3",
                     LandId = 1,
                     GemeenteId = 4
                 },
@@ -134,6 +140,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 10,
                     Straat = "Oudevaartplaats",
+                    Nr = "2",
                     LandId = 1,
                     GemeenteId = 4
                 },
@@ -142,6 +149,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 11,
                     Straat = "Oosterdoksstraat",
+                    Nr= "150",
                     LandId = 2,
                     GemeenteId = 6
                 },
@@ -150,6 +158,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 12,
                     Straat = "Emmasingel",
+                    Nr = "29",
                     LandId = 2,
                     GemeenteId = 7
                 }
