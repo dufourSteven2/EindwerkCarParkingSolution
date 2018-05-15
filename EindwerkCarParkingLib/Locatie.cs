@@ -13,6 +13,7 @@ namespace EindwerkCarParkingLib
         [Required]
 
         public string Straat { get; set; }
+        public string Nr { get; set; }
 
         //Foreign Key
         public int LandId { get; set; }
