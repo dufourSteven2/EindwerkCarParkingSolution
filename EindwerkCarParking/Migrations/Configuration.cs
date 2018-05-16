@@ -1,10 +1,10 @@
 namespace EindwerkCarParking.Migrations
 {
-    using EindwerkCarParkingLib;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using EindwerkCarParkingLib;
 
     internal sealed class Configuration : DbMigrationsConfiguration<EindwerkCarParking.Models.EindwerkCarParkingContext>
     {
@@ -19,10 +19,12 @@ namespace EindwerkCarParking.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            
             context.Totaals.AddOrUpdate(x => x.Id,
-             new Totaal() { Id = 1, MaxParkings = 100, BezetteParkings = 50 }
+                new Totaal() { Id = 1, MaxParkings = 100, BezetteParkings = 50 }
 
-             );
+                );
+
 
             context.Lands.AddOrUpdate(x => x.Id,
              new Land() { Id = 1, LandNaam = "Belgie" },
@@ -52,6 +54,8 @@ namespace EindwerkCarParking.Migrations
                 new Soort() { Id = 3, SoortNaam = "Met een beperking", TotaalId = 1 },
                 new Soort() { Id = 4, SoortNaam = "Abonnee", TotaalId = 1 }
                 );
+
+            
 
             context.Locaties.AddOrUpdate(x => x.Id,
                 new Locatie()
@@ -297,4 +301,3 @@ namespace EindwerkCarParking.Migrations
 
     }
 }
-

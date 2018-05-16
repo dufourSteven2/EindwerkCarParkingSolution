@@ -201,9 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805161729578_Initial.cs" />
-    <Compile Include="Migrations\201805161729578_Initial.Designer.cs">
-      <DependentUpon>201805161729578_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201805161752405_Initial.cs" />
+    <Compile Include="Migrations\201805161752405_Initial.Designer.cs">
+      <DependentUpon>201805161752405_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO.cs" />
@@ -279,7 +279,9 @@
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -299,8 +301,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805161729578_Initial.resx">
-      <DependentUpon>201805161729578_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805161752405_Initial.resx">
+      <DependentUpon>201805161752405_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
