@@ -18,20 +18,16 @@ namespace EindwerkCarParking.Migrations
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
-            
+            //  to avoid creating duplicate seed data.
+            context.Totaals.AddOrUpdate(x => x.Id,
+             new Totaal() { Id = 1, MaxParkings = 100, BezetteParkings = 50 }
+
+             );
 
             context.Lands.AddOrUpdate(x => x.Id,
              new Land() { Id = 1, LandNaam = "Belgie" },
-             new Land() { Id = 2, LandNaam = "Nederland" }
+             new Land() { Id = 2, LandNaam = "Nederland" },
+             new Land() { Id = 3, LandNaam = "Frankrijk" }
              );
 
             context.Gemeentes.AddOrUpdate(x => x.Id,
@@ -51,10 +47,10 @@ namespace EindwerkCarParking.Migrations
                 );
 
             context.Soorts.AddOrUpdate(x => x.Id,
-                new Soort() { Id = 1, SoortNaam = "Elektrisch" },
-                new Soort() { Id = 2, SoortNaam = "Standaard" },
-                new Soort() { Id = 3, SoortNaam = "Met een beperking" },
-                new Soort() { Id = 4, SoortNaam = "Abonnee" }
+                new Soort() { Id = 1, SoortNaam = "Elektrisch" , TotaalId = 1},
+                new Soort() { Id = 2, SoortNaam = "Standaard", TotaalId = 1 },
+                new Soort() { Id = 3, SoortNaam = "Met een beperking", TotaalId = 1 },
+                new Soort() { Id = 4, SoortNaam = "Abonnee", TotaalId = 1 }
                 );
 
             context.Locaties.AddOrUpdate(x => x.Id,
@@ -71,7 +67,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 2,
                     Straat = "Spoorwegstraat",
-                    Nr ="14",
+                    Nr = "14",
                     LandId = 1,
                     GemeenteId = 1
                 },
@@ -149,7 +145,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 11,
                     Straat = "Oosterdoksstraat",
-                    Nr= "150",
+                    Nr = "150",
                     LandId = 2,
                     GemeenteId = 6
                 },
@@ -200,26 +196,26 @@ namespace EindwerkCarParking.Migrations
                 },
                 new Parking()
                 {
-                Id = 4,
-                EigenaarId = 3,
-                SoortId = 2,
-                LocatieId = 4,
-                Totaal = 2151,
-                Bezet = 0,
-                ParkingNaam = "Interparking Gent Zuid"
+                    Id = 4,
+                    EigenaarId = 3,
+                    SoortId = 2,
+                    LocatieId = 4,
+                    Totaal = 2151,
+                    Bezet = 0,
+                    ParkingNaam = "Interparking Gent Zuid"
                 },
 
                 new Parking()
                 {
-                Id = 5,
-                EigenaarId = 3,
-                SoortId = 2,
-                LocatieId = 5,
-                Totaal = 1434,
-                Bezet = 0,
-                ParkingNaam = "Parking Kouter"
+                    Id = 5,
+                    EigenaarId = 3,
+                    SoortId = 2,
+                    LocatieId = 5,
+                    Totaal = 1434,
+                    Bezet = 0,
+                    ParkingNaam = "Parking Kouter"
                 },
-           
+
                 new Parking()
                 {
                     Id = 6,
@@ -229,7 +225,7 @@ namespace EindwerkCarParking.Migrations
                     Totaal = 1434,
                     Bezet = 0,
                     ParkingNaam = "Indigo Parking Mijnplein"
-                 },
+                },
 
                 new Parking()
                 {
@@ -273,7 +269,7 @@ namespace EindwerkCarParking.Migrations
                     Totaal = 1434,
                     Bezet = 0,
                     ParkingNaam = "Parking Grote Markt"
-                },        
+                },
                 new Parking()
                 {
                     Id = 11,
@@ -298,5 +294,7 @@ namespace EindwerkCarParking.Migrations
                 );
 
         }
+
     }
 }
+

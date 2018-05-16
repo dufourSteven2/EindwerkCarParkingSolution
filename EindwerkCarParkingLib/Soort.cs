@@ -19,6 +19,7 @@ namespace EindwerkCarParkingLib
         
         // Navigation property
         public virtual Totaal Totaal { get; set; }
+
         public virtual ICollection<Parking> Parkings { get; set; }
     }
 }
