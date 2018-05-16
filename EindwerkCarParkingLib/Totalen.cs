@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EindwerkCarParkingLib
 {
-    class Totalen
+    public class Totalen
     {
         public int TotaalParkingKey { get; set; }
       [Required]
@@ -15,7 +15,7 @@ namespace EindwerkCarParkingLib
         public int Bezet { get; set; }
 
         //foreign key
-        public int ParkingID { get; set; }
+        public int ParkingId { get; set; }
 
         //navigation property
         public virtual Parking Parking { get; set; }

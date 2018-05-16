@@ -32,5 +32,7 @@ namespace EindwerkCarParking.Models
         public System.Data.Entity.DbSet<EindwerkCarParkingLib.Gemeente> Gemeentes { get; set; }
 
         public System.Data.Entity.DbSet<EindwerkCarParkingLib.Land> Lands { get; set; }
+
+        public System.Data.Entity.DbSet<EindwerkCarParkingLib.Totaal> Totaals { get; set; }
     }
 }
