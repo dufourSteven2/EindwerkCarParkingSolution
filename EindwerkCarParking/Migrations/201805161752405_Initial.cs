@@ -43,6 +43,7 @@ namespace EindwerkCarParking.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Straat = c.String(nullable: false),
+                        Nr = c.String(),
                         LandId = c.Int(nullable: false),
                         GemeenteId = c.Int(nullable: false),
                     })
@@ -76,6 +77,19 @@ namespace EindwerkCarParking.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         SoortNaam = c.String(nullable: false),
+                        TotaalId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Totaals", t => t.TotaalId, cascadeDelete: true)
+                .Index(t => t.TotaalId);
+            
+            CreateTable(
+                "dbo.Totaals",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        MaxParkings = c.Int(nullable: false),
+                        BezetteParkings = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -83,16 +97,19 @@ namespace EindwerkCarParking.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.Soorts", "TotaalId", "dbo.Totaals");
             DropForeignKey("dbo.Parkings", "SoortId", "dbo.Soorts");
             DropForeignKey("dbo.Parkings", "LocatieId", "dbo.Locaties");
             DropForeignKey("dbo.Locaties", "LandId", "dbo.Lands");
             DropForeignKey("dbo.Locaties", "GemeenteId", "dbo.Gemeentes");
             DropForeignKey("dbo.Parkings", "EigenaarId", "dbo.Eigenaars");
+            DropIndex("dbo.Soorts", new[] { "TotaalId" });
             DropIndex("dbo.Locaties", new[] { "GemeenteId" });
             DropIndex("dbo.Locaties", new[] { "LandId" });
             DropIndex("dbo.Parkings", new[] { "LocatieId" });
             DropIndex("dbo.Parkings", new[] { "SoortId" });
             DropIndex("dbo.Parkings", new[] { "EigenaarId" });
+            DropTable("dbo.Totaals");
             DropTable("dbo.Soorts");
             DropTable("dbo.Lands");
             DropTable("dbo.Gemeentes");

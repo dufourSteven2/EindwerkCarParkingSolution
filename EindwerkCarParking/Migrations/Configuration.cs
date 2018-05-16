@@ -1,10 +1,10 @@
 namespace EindwerkCarParking.Migrations
 {
-    using EindwerkCarParkingLib;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using EindwerkCarParkingLib;
 
     internal sealed class Configuration : DbMigrationsConfiguration<EindwerkCarParking.Models.EindwerkCarParkingContext>
     {
@@ -27,7 +27,10 @@ namespace EindwerkCarParking.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            
+            context.Totaals.AddOrUpdate(x => x.Id,
+                new Totaal() { Id = 1, MaxParkings = 100, BezetteParkings= 50 }
+                );
+
 
             context.Lands.AddOrUpdate(x => x.Id,
              new Land() { Id = 1, LandNaam = "Belgie" },
@@ -51,11 +54,13 @@ namespace EindwerkCarParking.Migrations
                 );
 
             context.Soorts.AddOrUpdate(x => x.Id,
-                new Soort() { Id = 1, SoortNaam = "Elektrisch" },
-                new Soort() { Id = 2, SoortNaam = "Standaard" },
-                new Soort() { Id = 3, SoortNaam = "Met een beperking" },
-                new Soort() { Id = 4, SoortNaam = "Abonnee" }
+                new Soort() { Id = 1, SoortNaam = "Elektrisch" , TotaalId = 1},
+                new Soort() { Id = 2, SoortNaam = "Standaard", TotaalId = 1 },
+                new Soort() { Id = 3, SoortNaam = "Met een beperking", TotaalId = 1 },
+                new Soort() { Id = 4, SoortNaam = "Abonnee", TotaalId = 1 }
                 );
+
+            
 
             context.Locaties.AddOrUpdate(x => x.Id,
                 new Locatie()
@@ -71,7 +76,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 2,
                     Straat = "Spoorwegstraat",
-                    Nr ="14",
+                    Nr = "14",
                     LandId = 1,
                     GemeenteId = 1
                 },
@@ -149,7 +154,7 @@ namespace EindwerkCarParking.Migrations
                 {
                     Id = 11,
                     Straat = "Oosterdoksstraat",
-                    Nr= "150",
+                    Nr = "150",
                     LandId = 2,
                     GemeenteId = 6
                 },
@@ -200,26 +205,26 @@ namespace EindwerkCarParking.Migrations
                 },
                 new Parking()
                 {
-                Id = 4,
-                EigenaarId = 3,
-                SoortId = 2,
-                LocatieId = 4,
-                Totaal = 2151,
-                Bezet = 0,
-                ParkingNaam = "Interparking Gent Zuid"
+                    Id = 4,
+                    EigenaarId = 3,
+                    SoortId = 2,
+                    LocatieId = 4,
+                    Totaal = 2151,
+                    Bezet = 0,
+                    ParkingNaam = "Interparking Gent Zuid"
                 },
 
                 new Parking()
                 {
-                Id = 5,
-                EigenaarId = 3,
-                SoortId = 2,
-                LocatieId = 5,
-                Totaal = 1434,
-                Bezet = 0,
-                ParkingNaam = "Parking Kouter"
+                    Id = 5,
+                    EigenaarId = 3,
+                    SoortId = 2,
+                    LocatieId = 5,
+                    Totaal = 1434,
+                    Bezet = 0,
+                    ParkingNaam = "Parking Kouter"
                 },
-           
+
                 new Parking()
                 {
                     Id = 6,
@@ -229,7 +234,7 @@ namespace EindwerkCarParking.Migrations
                     Totaal = 1434,
                     Bezet = 0,
                     ParkingNaam = "Indigo Parking Mijnplein"
-                 },
+                },
 
                 new Parking()
                 {
@@ -273,7 +278,7 @@ namespace EindwerkCarParking.Migrations
                     Totaal = 1434,
                     Bezet = 0,
                     ParkingNaam = "Parking Grote Markt"
-                },        
+                },
                 new Parking()
                 {
                     Id = 11,
@@ -298,5 +303,6 @@ namespace EindwerkCarParking.Migrations
                 );
 
         }
+
     }
 }
