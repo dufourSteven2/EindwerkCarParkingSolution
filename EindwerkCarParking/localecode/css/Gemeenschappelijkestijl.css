@@ -1,0 +1,450 @@
+ body {
+    /* ps: .bodyeigenschappen kon ook hetzelfde verwezelijken
+	De slick carousel veroorzaakt een teveel width, waardoor er een horizontale scrollbar is. Deze methode verhindert dat http://stackoverflow.com/questions/6111823/disable-horizontal-scrollbar-due-to-a-div-with-positionabsolute-which-is-outsid */
+    max-width: 100%;
+    position: relative;
+    overflow-x: hidden;
+   /* overflow-y: hidden; */
+   	font-family: 'Roboto Condensed', sans-serif;
+}
+
+.continuenavbar{ 
+    height: auto !important; /* Om deze zichtbaar te houden: https://github.com/twbs/bootstrap/issues/7160 */
+    overflow: visible !important;
+}
+
+.bodyeigenschappen p {
+    font-size: 120%; 
+	color: #182983;
+
+}
+ 
+.bodyeigenschappen h3 {	
+    color: #182983;
+    text-decoration: none;
+
+}
+
+.bodyeigenschappen label {
+	color: #182983;
+    text-decoration: none;
+    padding-left: 5%; /* aanpassing om net onder afbeelding te staan */
+ 
+}
+ .header img {     
+    display: block;
+    margin-left: auto;
+    margin-right: auto; /* Deze drie onderdelen garanderen dat de figuur in het midden staat */
+	
+	height: auto; /* Door de auto gaat de hoogte gelijkmatig mee met de breedte */
+	width: 22%;
+	
+	min-width: 150px; /* Verhindert dat de image té klein wordt = minimum grootte*/
+}
+
+  #parking-checkerhead  { 
+      width:14%; 
+      height: auto;  
+      margin:auto;   }
+  
+   .linkernavigatie ul{ 
+       position: fixed;  
+       Opacity:0.4;	
+       color: #182983;   
+       text-decoration: none;
+       border: 1px solid cornflowerblue;  
+       font-size:10px; 
+       height:10px;  
+       margin-left:-2%;
+       z-index:99; /* Zorgt voor Topmost */
+
+   }
+
+   .linkernavigatie a:link {
+    color: #182983;
+	 text-decoration: none;
+}
+   .linkernavigatie a:visited {
+    color: #182983;
+	 text-decoration: none;
+}
+
+   .linkernavigatie a:hover {
+    color: black;
+	 Opacity:0.8;
+  text-decoration: none;
+}
+   .linkernavigatie ul:hover {
+ 	 Opacity:0.8;
+ }
+    .linkernavigatie a:active {
+    color: #182983;
+	 text-decoration: none;
+}
+ 
+#imgpos {
+    float: right; 
+    height:20%; 
+    width:auto;  }
+
+  /* ///////////////////////////////////// INDEX  Spionshop///////////////////////////////////////*/
+ 
+.autoplayindex{background: #fafafa;  }
+.autoplayindex a{background: #fafafa;   height:160px;  }
+
+#koopjes { background:#fafafa;  border: 3px solid #97c00e; padding-top: 1%;  margin-bottom:2%; margin-left: 5%; margin-right: 5%; }
+#koopjes a{    border: 1px solid #97c00e;  display: block;    text-align: center;} /*http://www.w3.org/Style/Examples/007/center*/
+#koopjes img {display: block;
+    margin-left: auto;
+    margin-right: auto}
+
+@media (max-width: 767px) { /* Max is dat als een schermformaat groter is, dat de geïncapsuleerde eigenschappen dan pas starten */
+  .autoplayindex img {
+    width: 40%;
+	 height: auto;
+  }
+  .autoplayindex a{    max-height: 120px;
+font-size:9px; }
+
+#koopjes {    border: 2px solid #97c00e;   
+}
+#imgpos {float: right; width:30px; height:auto;  }
+
+}
+
+@media (max-width: 400px) { /* Max is dat als een schermformaat groter is, dat de geïncapsuleerde eigenschappen dan pas starten */
+  .autoplayindex img {
+    width: 50%;
+	 height: auto;
+ 
+  }
+  .autoplayindex a{ 
+font-size:6px;     font-weight: lighter;  height:80px; /* height hier zorgt voor mooie kaders (anders helemaal uitgerokken) */
+}
+ 
+}
+@media (min-width: 768px) {
+   .autoplayindex img{ 
+width: 25%; height: auto;  }
+
+}
+    .autoplayindex a {
+    color: #182983;
+	 text-decoration: none;
+}
+ 
+  .autoplayindex a:hover {
+       color: #97c00e;
+   text-decoration: none;
+ /* verhinderen van underline */
+}
+   
+ 
+
+.rondehoekindex {
+    background: #fafafa; 
+    border: 3px solid cornflowerblue; 
+    -moz-border-radius: 25px 10px / 10px 25px; /* Poging Speciale hoeken bron: http://www.css3.info/preview/rounded-border/ */
+     border-radius: 25px 10px / 10px 25px; 
+     color: cornflowerblue;
+
+ }
+
+ 
+/* //////////////////////// Contact spionshop///////////////////////////////*/
+#googleMap {            /*  bron: http://www.w3schools.com/css/css_align.asp   &     http://stackoverflow.com/questions/10816647/wrapping-text-around-a-div-in-the-middle-of-the-text-using-css*/
+ margin-left: 15%;   
+  margin-right: 3%;   
+
+ width:250px;height:175px;
+ float: left; 
+  }
+@media screen and (max-width: 640px) { /* Beeld aanpassen voor smartphones cursus */
+    #googleMap {
+    display: none;
+    }
+ .linkernavigatie ul{ 
+     position: fixed; 	
+     color: #182983;   
+     text-decoration: none;
+     border: 1px solid #97c00e;  
+
+     margin-top: -40%;
+     z-index:99; /* Hoogste  */
+
+}
+}
+
+ .contactinfo {
+         background: #fafafa; 
+         border: 3px solid #97c00e;  
+         margin-bottom:3%; 
+         margin-left: 5%; 
+         margin-right: 5%; 
+         height: 215px; 
+         padding:1%;
+
+ }
+ 
+.contactinfo p {font-size: 12px;}
+
+.contactinfo a {color: #97c00e; }
+
+.Boxgrootte input[type="text"]{   margin: 0.5%; 
+   border-top:		2px solid #97c00e;
+	border-left:		2px solid #97c00e;
+	border-right:		2px solid #97c00e;
+	border-bottom:		2px solid #97c00e;
+ 	background-color:	#fafafa; 
+ 	color:			#182983; 
+}
+
+
+.Boxgrootte input[type="email"]{   margin: 0.5%; 
+   border-top:		2px solid #97c00e;
+	border-left:		2px solid #97c00e;
+	border-right:		2px solid #97c00e;
+	border-bottom:		2px solid #97c00e;
+ 	background-color:	#fafafa; 
+ 	color:			#182983; 
+}
+
+.Boxgrootte textarea{   margin: 0.5%; 
+   border-top:		2px solid #97c00e;
+	border-left:		2px solid #97c00e;
+	border-right:		2px solid #97c00e;
+	border-bottom:		2px solid #97c00e;
+ 	background-color:	#fafafa; 
+ 	color:			#182983; 
+}
+
+.Boxgrootte select{   margin: 0.5%; 
+   border-top:		2px solid #97c00e;
+	border-left:		2px solid #97c00e;
+	border-right:		2px solid #97c00e;
+	border-bottom:		2px solid #97c00e;
+ 	background-color:	#fafafa; 
+ 	color:			#182983; 
+}
+
+@media screen and (min-width: 360px) {
+.Boxgrootte input {
+    text-align: center;      
+    left: 50%;
+    top:-0.5%; width:45%;
+	height:auto;
+    margin-top: -125px;  
+    margin-left: -115px;  
+    position: absolute;
+}
+
+.Boxgrootte textarea {
+    text-align: center;  
+    left: 50%;
+ 
+top:-0.5%;  width:45%;
+	height:auto;
+    margin-top: -125px; 
+    margin-left: -115px;  
+    position: absolute;}
+.Boxgrootte select {
+    text-align: center;  
+    left: 50%; 
+    top:-0.5%;  width:45%;
+	height:auto;
+    margin-top: -125px; /* Bron: http://stackoverflow.com/questions/15089556/css-center-a-text-box */
+    margin-left: -115px;  
+    position: absolute;}
+}
+.tekstkleurbuttons /* Ook mogelijk om een image te gebruiken of te werken met de bootstrap buttons. Bron: http://blog.formstack.com/2010/customize-form-buttons-with-css/ */
+{
+	border-top:		2px solid #97c00e;
+	border-left:		2px solid #97c00e;
+	border-right:		2px solid #97c00e;
+	border-bottom:		2px solid #97c00e;
+	padding:		10px 20px !important;
+	font-size:		12px !important;
+	background-color:	#fafafa; 
+ 	color:			#182983; 
+	width: 120px; 
+}
+
+/*
+#notokknop {	margin-left: 18%;
+}
+#okknop {	margin-left: 24%; margin-bottom: 1%; }*/
+.tekstkleurbuttons:hover
+{
+ 
+	font-weight:		bold;
+    -webkit-transform:scale(1.05); /* Safari and Chrome */
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform:scale(1.05); /* IE 9 */
+    -o-transform:scale(1.05); /* Opera */
+     transform:scale(1.05);
+    
+}
+
+
+
+/* //////////////////////// SpionshopProductpagina ///////////////////////////////*/
+
+ .prodinfo {background: #fafafa; border: 3px solid #97c00e; margin-bottom:3%;margin-left: 5%; margin-right: 5%;     
+
+ }
+  
+.prodinfo form{ text-align:center; }
+.prodinfo input[type="text"]{   margin: 0.5%; /* plaats tussen elkaar (marge)*/
+   /*padding: 0.5%;Plaats in de witruimte binnen het geheel (grootte kotjes)*/
+   
+   border-top:		2px solid #97c00e;
+	border-left:		2px solid #97c00e;
+	border-right:		2px solid #97c00e;
+	border-bottom:		2px solid #97c00e;
+ 	background-color:	#fafafa; 
+ 	color:			#182983;  
+}
+
+.prodinfo input[type="email"]{   margin: 0.5%;	border-top:		2px solid #97c00e;
+	border-left:		2px solid #97c00e;
+	border-right:		2px solid #97c00e;
+	border-bottom:		2px solid #97c00e;
+ 	background-color:	#fafafa; 
+ 	color:			#182983; 
+ }
+ 
+ 
+
+.prodinfo  input[type="submit"] 
+{
+	border-top:		2px solid #97c00e;
+	border-left:		2px solid #97c00e;
+	border-right:		2px solid #97c00e;
+	border-bottom:		2px solid #97c00e;
+	padding:		10px 20px !important;
+	font-size:		12px !important;
+	background-color:	#fafafa; 
+ 	color:			#182983; 
+}
+
+.prodinfo  input[type="submit"]:hover
+{
+ 
+	font-weight:bold;
+    -webkit-transform:scale(1.05); /* Safari and Chrome */
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform:scale(1.05); /* IE 9 */
+    -o-transform:scale(1.05); /* Opera */
+     transform:scale(1.05);
+}
+ 
+.rondehoekindex img  { height: 80px; width: auto; max-height: 80px /* wanneer rij uitgeroken wordt, gaat image size mee */}
+
+@media screen and (max-width: 500px) { /* Beeld aanpassen voor smartphones */
+    .rondehoekindex img {
+        height: 40px;
+        width: auto;
+        max-height: 40px;
+    }
+}
+
+ /* /////////////////////////////////////////// image dropdown werkt nog niet dropdown blijft hier openstaan //////////////////////////////////////// */
+/*.dropdownLogo {
+    position: relative;
+    display: inline-block;
+}
+.dropdownLogo-image {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdownLogo-image-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+    .dropdownLogo a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdownLogo a:hover {
+            background-color: #ddd
+        }
+
+
+.dropdownLogo-content:hover .dropdownLogo-image-content {
+    display: block;
+}*/
+
+/*//////////////////////////////////////////////////*/
+
+/*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    margin: 0;
+    background-color: #808080;
+}
+
+#menu {
+    position: fixed;
+    width: 100%;
+    height: 140px;
+    background-color: #555555;
+}
+
+#logo {
+    height: 140px;
+}
+
+    #logo img {
+        width: 160px;
+    }
+
+ul {
+    height: inherit;
+    width: 160px; /* menu zou de breedte van de logo moeten hebben */
+/*
+}
+
+    ul:hover {
+        width: auto;  /*als je hover over , neemt hij 100% van pagina in */
+/*
+    }
+
+    ul li {
+        float: left;
+        list-style: none;
+    }
+
+    ul:hover .menuoptions {
+        display: block;
+    }
+
+.menuoptions {
+    border: 1px solid white;
+    border-radius: 50px;
+    padding: 14px;
+    letter-spacing: 2px;
+    list-style-type: none;
+    color: #FFFFFF;
+    margin-top: 30px;
+    margin-left: 45px;
+    font-size: 125%;
+    font-weight: bold;
+    display: none;
+}
+
+    .menuoptions:hover {
+        color: #00b9f1;
+        background-color: #FFFFFF;
+    }*/

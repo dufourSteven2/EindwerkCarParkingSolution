@@ -13,7 +13,12 @@ namespace EindwerkCarParkingLib
         [Required]
 
         public string SoortNaam { get; set; }
-
+        
+        // Foreign Key
+        public int TotaalId { get; set; }
+        
+        // Navigation property
+        public virtual Totaal Totaal { get; set; }
         public virtual ICollection<Parking> Parkings { get; set; }
     }
 }

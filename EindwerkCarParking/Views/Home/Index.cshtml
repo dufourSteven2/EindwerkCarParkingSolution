@@ -3,30 +3,63 @@
 
 
 
-<div class="jumbotron">Parkings</div>
-<div class="row">
-    <div class="col-md-4">
-        @foreach (ParkingsDTO p in Model)
-        {
-            <p>
-                <b><a href="#" data-id="@p.Id" class="parkingNaam">@p.ParkingNaam</a></b> <i>@p.GemeenteGemeenteNaam</i>
 
-            </p>
-            <hr />
-        }
-    </div>
-    <div class="col-md-4">
-        <p>
-            <input id="btnAdd" type="button" value="Add parking" class="btn btn-primary" />
-            <input id="btnUpdate" type="button" value="Update parking" class="btn btn-warning" />
-            <input id="btnDelete" type="button" value="Delete parking" class="btn btn-danger" />
-        </p>
-    </div>
 
+<div class="col-md-8 rondehoekindex">
+    <a id="tagmid"></a><p>
+        <br><b>Parking-Checker</b> Is een fictieve site voor ons eindwerk voor onze studies die we in<i>Howest Brugge</i> gevolgd hebben. Het eindwerk in opdracht van William. <br> Onze parking-checker zou de gebruiker moeten informeren waar er nog parkeerplaatsen vrij zijn. <br> <br>
+        Weergave met  kleuverandering groen = vrij, oranje = bijna volzet, rood volzet. <br>Indien u eigenaar bent van een parkeer-site en u wilt deze graag in onze app aanwezig zien aarzel niet om ons te contacteren.
+        <br> Deze staat nog in zijn kinderschoenen en willen we nog verder uitbreiden zodat de gebruiker via ingave adres naar de dichtst bijzijnde parking geleid word.<br>  <br> Dit allemaal voor ons schoolproject <br> <br> Stuur gerust uw bevindingen van deze site naar ons zodat wij als student-hobbyist deze kunnen verbeteren.
+
+        <br><br><br><br>	<br><br>	<img id="imgpos" src="~/Afbeeldingen/Parking-Checker.jpg" alt="Parking-Checker">
+        <br>
+    </p>
+    <br> <br>
 </div>
+<div class="col-md-1"><br>  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="jumbotron">Parkings</div>
+    <div class="row">
+        <div class="col-md-4">
+            @foreach (ParkingsDTO p in Model)
+            {
+                <p>
+                    <b><a href="#" data-id="@p.Id" class="parkingNaam">@p.ParkingNaam</a></b> <i>@p.GemeenteGemeenteNaam</i>
+
+                </p>
+                <hr />
+            }
+        </div>
+        <div class="col-md-4">
+            <p>
+                <input id="btnAdd" type="button" value="Add parking" class="btn btn-primary" />
+                <input id="btnUpdate" type="button" value="Update parking" class="btn btn-warning" />
+                <input id="btnDelete" type="button" value="Delete parking" class="btn btn-danger" />
+            </p>
+        </div>
+
+    </div>*@
+
+
+
+
+
+
+
 
 <!-- Bootstrap Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+@*<@*div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -39,13 +72,13 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
                 @*<button type="button" class="btn btn-primary">Save changes</button>*@
-            </div>
+            @*</div>
         </div>
     </div>
-</div>
+</div>*@
 
 
-@section scripts
+@*@section scripts
 {
     <script>
         $(document).ready(function () {
@@ -66,7 +99,7 @@
             showParking = function (header, parking) {
                 var htmlData = '<h4>' + parking.ParkingNaam + '</h4><hr>';
                 htmlData += '<p>Gemeente :' + parking.GemeenteGemeenteNaam + '</p>';
-                htmlData += '<br>Straat :' + parking.LocatieStraat ;
+                htmlData += '<br>Straat :' + parking.LocatieStraat;
                 infoModal.find('.modal-header').html(header);
                 infoModal.find('.modal-body').html(htmlData);
                 infoModal.modal('show');
@@ -131,4 +164,4 @@
             });
         });
     </script>
-}
+}*@
