@@ -1,75 +1,29 @@
 ﻿@using EindwerkCarParking.Models
 @model List<ParkingsDTO>
-    @RenderBody()
+@RenderBody()
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <title>Welkom bij Parking-Checker</title>
-    <link href="~/localecode/css/Gemeenschappelijkestijl.css" rel="stylesheet">
-    <link href="~/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"> <!-- Locale bootstrap layout bron: http://getbootstrap.com/getting-started/ PS: Boostrap is via customize aangepast (overzichtelijker dan in de .min file te speuren...) -->
-    <link rel="shortcut icon" href="~/Afbeeldingen/Parking-Checker.jpg">  <!-- icoon. Link om zonder photoshop icoontjes te ontwerpen: http://www.convertico.com/-->
-    <link rel="stylesheet" type="text/css" href="~/plugins/jquery.cookiebar/jquery.cookiebar.css" />  <!-- css cookiebar disclaimer onderdeel-->
+    <link href="~/localecode/css/Gemeenschappelijkestijl.css" rel="stylesheet" />
 </head>
-<body class="bodyeigenschappen">
+<body>
+    <header class="collapse navbar-fixed-top">
+        <menu>
+            <ul>
+                <li> <a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
 
-    <nav class="navbar navbar-default navbar-fixed-top  visibleonhover">
+            </ul>
+        </menu>
+    </header>
+    <section>
+        <h2>@ViewBag.Title</h2>
 
-        <div class="container-fluid">
-            <!-- Brand and toggle samen voor de smartphones -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <label> <a class="navbar-brand" href="#">Parking-Checker</a></label>
-            </div>
-
-            <!-- uitklapper -->
-            <div class="collapse navbar-collapse continuenavbar" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-left ">
-                    <li><a href="IndexMijnTest.html">Home</a></li>
-                    <li class="dropdown">
-                        <a href="Productpagina.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Steden<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            @*@foreach (ParkingsDTO p in Model)
-                            {
-                                <p>
-                                    <b><a href="#" data-id="@p.Id" class="parkingNaam">@p.GemeenteGemeenteNaam</a></b>
-
-                                </p>
-
-                            }*@
-
-                        </ul>
-                    </li>
-                    <li><a href="Index.html">Contact</a></li>
-
-                </ul>
-
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+    </section>
+    <footer>Copyright 2017 Steven Duffoor & Benny Vanderschaeghe</footer>
 
 
-
-    </nav>
-
-
-    <div class="container body-content">
-
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>  @*loading JQuery*@
+    <link href="~/localecode/css/site.css" rel="stylesheet" />
 </body>
 </html>

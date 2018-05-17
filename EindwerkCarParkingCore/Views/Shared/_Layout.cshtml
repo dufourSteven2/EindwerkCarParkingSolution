@@ -1,0 +1,32 @@
+﻿@using EindwerkCarParking.Models
+@model List<ParkingsDTO>
+@RenderBody()
+@addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="collapse navbar-fixed-top">
+        <menu>
+            <ul>
+                <li> <a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li><a asp-controller="Home" asp-action="SearchParking">Parking zoeken</a></li>
+
+            </ul>
+        </menu>
+    </header>
+    <section>
+        <h2>@ViewBag.Title</h2>
+
+    </section>
+    <footer>Copyright 2017 Steven Duffoor & Benny Vanderschaeghe</footer>
+
+
+    <script src="~/bower_components/jquery/dist/jquery.min.js"></script>
+    @RenderSection("scripts", false)
+
+</body>
+</html>

@@ -14,22 +14,22 @@ namespace EindwerkCarParking.Controllers
     {
         public ActionResult Index()
         {
-            //ViewBag.Title = "Home Page";
+            ViewBag.Title = "Home Page";
 
-            //return View();
+            return View();
 
-            string uri = "http://" + Request.Url.Host + ':' + Request.Url.Port + "/api/parkings";
-            using (HttpClient httpClient = new HttpClient())
-            {
-                Task<String> response = httpClient.GetStringAsync(uri);
-                return View(
-                             Task.Factory.StartNew
-                             (
-                               () => JsonConvert.DeserializeObject<List<ParkingsDTO>>(response.Result)
-                             )
-                             .Result
-                           );
-            }
+            //string uri = "http://" + Request.Url.Host + ':' + Request.Url.Port + "/api/parkings";
+            //using (HttpClient httpClient = new HttpClient())
+            //{
+            //    Task<String> response = httpClient.GetStringAsync(uri);
+            //    return View(
+            //                 Task.Factory.StartNew
+            //                 (
+            //                   () => JsonConvert.DeserializeObject<List<ParkingsDTO>>(response.Result)
+            //                 )
+            //                 .Result
+            //               );
+            //}
 
         }
 
@@ -66,25 +66,25 @@ namespace EindwerkCarParking.Controllers
 
         }
         //////////////////////// hieronder testview om met totalen te werken etc
-        public ActionResult OefenenMetTotaal()
-        {
-            //ViewBag.Title = "Home Page";
+        //public ActionResult OefenenMetTotaal()
+        //{
+        //    //ViewBag.Title = "Home Page";
 
-            //return View();
+        //    //return View();
 
-            string uri = "http://" + Request.Url.Host + ':' + Request.Url.Port + "/api/parkings";
-            using (HttpClient httpClient = new HttpClient())
-            {
-                Task<String> response = httpClient.GetStringAsync(uri);
-                return View(
-                             Task.Factory.StartNew
-                             (
-                               () => JsonConvert.DeserializeObject<List<ParkingsDTO>>(response.Result)
-                             )
-                             .Result
-                           );
-            }
+        //    string uri = "http://" + Request.Url.Host + ':' + Request.Url.Port + "/api/parkings";
+        //    using (HttpClient httpClient = new HttpClient())
+        //    {
+        //        Task<String> response = httpClient.GetStringAsync(uri);
+        //        return View(
+        //                     Task.Factory.StartNew
+        //                     (
+        //                       () => JsonConvert.DeserializeObject<List<ParkingsDTO>>(response.Result)
+        //                     )
+        //                     .Result
+        //                   );
+        //    }
 
-        }
+        //}
     }
 }
