@@ -9,6 +9,9 @@ label {
     font-weight: bold;
     display: block;
 }
+.header{
+    background-color:#61B7CF;
+}
 
 input[type=text], input[type=password], textarea {
     width: 150px;
