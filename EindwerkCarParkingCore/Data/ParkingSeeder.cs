@@ -23,42 +23,42 @@ namespace EindwerkCarParkingCore.Data
 
             if (!_context.Parkings.Any())
             {
-                var Lands = new Land[]
+                //var Lands = new Land[]
+                //{
+                //    new Land() {Id=1,LandNaam = "Belgie" },
+                //    new Land() {Id= 2,LandNaam = "Nederland" }
+                //};
+
+                //foreach(Land l in Lands)
+                //{
+                //            _context.Lands.Add(l);
+                //}
+
+                var Totalen = new Totaal[]
                 {
-                    new Land() {Id=1,LandNaam = "Belgie" },
-                    new Land() {Id= 2,LandNaam = "Nederland" }
+                          new Totaal() {Id= 1,MaxParkings = 100, BezetteParkings= 50}
                 };
 
-                foreach(Land l in Lands)
+                foreach (Totaal t in Totalen)
                 {
-                            _context.Lands.Add(l);
+                    _context.Totaals.Add(t);
                 }
 
-                //      var Totalen = new Totaal[]
-                //      {
-                //          new Totaal() {MaxParkings = 100, BezetteParkings= 50}
-                //      };
+                var plaatsen = new Gemeente[]
+                {
+                            new Gemeente() { Id=1 ,GemeenteNaam = "Brugge" },
+                            new Gemeente() {Id=2 ,GemeenteNaam = "Gent" },
+                            new Gemeente() { Id=3 ,GemeenteNaam = "Oostende" },
+                            new Gemeente() { Id=4,GemeenteNaam = "Antwerpen" },
+                            new Gemeente() { Id= 5, GemeenteNaam = "Brussel" },
+                            new Gemeente() { Id= 6, GemeenteNaam = "Amsterdam" },
+                            new Gemeente() { Id= 7, GemeenteNaam = "Eindhoven" }
+                };
 
-                //      foreach (Totaal t in Totalen)
-                //      {
-                //          _context.Totaals.Add(t);
-                //      }
-
-                //      var plaatsen = new Gemeente[]
-                //      {
-                //            new Gemeente() {  GemeenteNaam = "Brugge" },
-                //            new Gemeente() { GemeenteNaam = "Gent" },
-                //            new Gemeente() {  GemeenteNaam = "Oostende" },
-                //            new Gemeente() { GemeenteNaam = "Antwerpen" },
-                //            new Gemeente() {  GemeenteNaam = "Brussel" },
-                //            new Gemeente() {  GemeenteNaam = "Amsterdam" },
-                //            new Gemeente() {  GemeenteNaam = "Eindhoven" }
-                //      };
-
-                //      foreach (Gemeente g in plaatsen)
-                //      {
-                //          _context.Gemeentes.Add(g);
-                //      }
+                foreach (Gemeente g in plaatsen)
+                {
+                    _context.Gemeentes.Add(g);
+                }
 
                 //      var Eigenaars = new Eigenaar[]
                 //      {
