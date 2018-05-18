@@ -19,7 +19,7 @@ namespace EindwerkCarParkingCore.Data
                 .AddJsonFile("appsettings.json")
                 .Build();
             var builder = new DbContextOptionsBuilder<EindwerkCarParkingContext>();
-            var connectionString = "server=(localdb)\\MSSQLLocalDB; Database=CarParkingDb; Integrated Security=true;; MultipleActiveResultSets=true";
+            var connectionString = "server=(localdb)\\MSSQLLocalDB; Database=CarParkingDatabase; Integrated Security=true;; MultipleActiveResultSets=true";
             builder.UseSqlServer(connectionString);
             return new EindwerkCarParkingContext(builder.Options);
         }
