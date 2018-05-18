@@ -180,6 +180,7 @@ namespace EindwerkCarParkingCore.Data
                 {
                             new Parking()
                       {
+                                Id=1,
                           EigenaarId = 1,
                           SoortId = 2,
                           LocatieId = 1,
@@ -189,7 +190,7 @@ namespace EindwerkCarParkingCore.Data
                       },
 
                       new Parking()
-                      {
+                      {  Id=2,
                           EigenaarId = 2,
                           SoortId = 2,
                           LocatieId = 2,
@@ -199,7 +200,7 @@ namespace EindwerkCarParkingCore.Data
                       },
 
                       new Parking()
-                      {
+                      {  Id=3,
                           EigenaarId = 3,
                           SoortId = 2,
                           LocatieId = 3,
@@ -208,7 +209,7 @@ namespace EindwerkCarParkingCore.Data
                           ParkingNaam = "'t Zand"
                       },
                       new Parking()
-                      {
+                      {  Id=4,
                           EigenaarId = 3,
                           SoortId = 2,
                           LocatieId = 4,
@@ -219,6 +220,7 @@ namespace EindwerkCarParkingCore.Data
 
                       new Parking()
                       {
+                            Id=5,
                           EigenaarId = 3,
                           SoortId = 2,
                           LocatieId = 5,
@@ -228,7 +230,7 @@ namespace EindwerkCarParkingCore.Data
                       },
 
                       new Parking()
-                      {
+                      {  Id=6,
                           EigenaarId = 3,
                           SoortId = 2,
                           LocatieId = 7,
@@ -238,7 +240,7 @@ namespace EindwerkCarParkingCore.Data
                       },
 
                       new Parking()
-                      {
+                      {  Id=7,
                           EigenaarId = 3,
                           SoortId = 2,
                           LocatieId = 8,
@@ -248,7 +250,7 @@ namespace EindwerkCarParkingCore.Data
                       },
 
                       new Parking()
-                      {
+                      {  Id=8,
                           EigenaarId = 1,
                           SoortId = 2,
                           LocatieId = 6,
@@ -258,7 +260,7 @@ namespace EindwerkCarParkingCore.Data
                       },
 
                       new Parking()
-                      {
+                      {  Id=9,
                           EigenaarId = 3,
                           SoortId = 2,
                           LocatieId = 10,
@@ -268,7 +270,7 @@ namespace EindwerkCarParkingCore.Data
                       },
 
                       new Parking()
-                      {
+                      {  Id=10,
                           EigenaarId = 3,
                           SoortId = 2,
                           LocatieId = 9,
@@ -277,7 +279,7 @@ namespace EindwerkCarParkingCore.Data
                           ParkingNaam = "Parking Grote Markt"
                       },
                       new Parking()
-                      {
+                      {  Id=11,
                           EigenaarId = 2,
                           SoortId = 2,
                           LocatieId = 11,
@@ -286,7 +288,7 @@ namespace EindwerkCarParkingCore.Data
                           ParkingNaam = "Parking Centrum Oosterdok"
                       },
                       new Parking()
-                      {
+                      {  Id=12,
                           EigenaarId = 2,
                           SoortId = 2,
                           LocatieId = 12,
