@@ -1,5 +1,5 @@
 ﻿{
   "ConnectionStrings": {
-    "EindwerkCarParkingString": "server=(localdb)\\MSSQLLocalDB; Database=CarParkingDb; Integrated Security=true; MultipleActiveResultSets=true;"
+    "CarParkingString": "server=(localdb)\\MSSQLLocalDB; Database=CarParkingDb; Integrated Security=true;; MultipleActiveResultSets=true"
   }
 }

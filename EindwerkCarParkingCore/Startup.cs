@@ -27,7 +27,7 @@ namespace EindwerkCarParkingCore
         {
             services.AddDbContext<EindwerkCarParkingContext>(cfg=>
             {
-                cfg.UseSqlServer(Configuration.GetConnectionString("EindwerkCarParkingString"));
+                cfg.UseSqlServer(Configuration.GetConnectionString("CarParkingString"));
             });
             services.AddTransient<lMailService, NullMailService>();
             //support for real mail  servie

@@ -11,9 +11,10 @@ using System;
 namespace EindwerkCarParkingCore.Migrations
 {
     [DbContext(typeof(EindwerkCarParkingContext))]
-    partial class EindwerkCarParkingContextModelSnapshot : ModelSnapshot
+    [Migration("20180518162058_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
