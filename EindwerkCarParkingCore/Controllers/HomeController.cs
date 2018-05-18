@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EindwerkCarParkingCore.Models;
 using EindwerkCarParkingCore.ViewModels;
+using EindwerkCarParkingCore.Services;
 
 namespace EindwerkCarParkingCore.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly lMailService _mailservice;
+        public HomeController(lMailService mailservice)
+        {
+            _mailservice = mailservice;
+        }
         public IActionResult Index()
         {
             return View();
@@ -30,16 +36,16 @@ namespace EindwerkCarParkingCore.Controllers
             return View();
         }
 
-        [HttpPost("Contact")]
+        [HttpPost("contact")]
         public IActionResult Contact(ContactViewModel model)
         {
             if (ModelState.IsValid)
             {
-               //send email
-            }
-            else
-            {
-                //show errors
+
+                _mailservice.SendMessage("MailSettings:ToAddress", model.Subject, model.Message);
+                ViewBag.UserMessage = "Message Sent";
+                ModelState.Clear();
+
             }
             return View();
         }

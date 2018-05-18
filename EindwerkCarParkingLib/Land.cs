@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EindwerkCarParkingLib
 {
-    public class Land
+    class Land
     {
         public int Id { get; set; }
         [Required]

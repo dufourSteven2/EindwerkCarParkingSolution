@@ -873,12 +873,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EindwerkCarParkingLib\EindwerkCarParkingLib.csproj">
-      <Project>{fa27e01f-ffe9-4406-984f-45c1cb6ce280}</Project>
-      <Name>EindwerkCarParkingLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201805161752405_Initial.resx">
       <DependentUpon>201805161752405_Initial.cs</DependentUpon>
     </EmbeddedResource>
