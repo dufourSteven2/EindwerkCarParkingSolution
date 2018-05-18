@@ -23,6 +23,6 @@ namespace EindwerkCarParkingLib
         //Navigation Property
         public virtual Eigenaar Eigenaar { get; set; }
         public virtual Soort Soort { get; set; }
-        public virtual Locatie Locatie { get; set; }
+      public virtual Locatie Locatie { get; set; }
     }
 }

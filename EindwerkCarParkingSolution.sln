@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EindwerkCarParking", "EindwerkCarParking\EindwerkCarParking.csproj", "{3F609096-508E-43BF-9A32-B33D51F477E5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EindwerkCarParkingCore", "EindwerkCarParkingCore\EindwerkCarParkingCore.csproj", "{CB0D97F0-FDC8-4CE4-9518-D76E05D3FA82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EindwerkCarParkingLib", "EindwerkCarParkingLib\EindwerkCarParkingLib.csproj", "{801D83CD-839E-4468-8BE7-22282AB0A988}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3F609096-508E-43BF-9A32-B33D51F477E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F609096-508E-43BF-9A32-B33D51F477E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F609096-508E-43BF-9A32-B33D51F477E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F609096-508E-43BF-9A32-B33D51F477E5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CB0D97F0-FDC8-4CE4-9518-D76E05D3FA82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CB0D97F0-FDC8-4CE4-9518-D76E05D3FA82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB0D97F0-FDC8-4CE4-9518-D76E05D3FA82}.Release|Any CPU.ActiveCfg = Release|Any CPU

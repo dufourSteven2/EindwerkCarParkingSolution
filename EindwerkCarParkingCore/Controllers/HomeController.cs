@@ -7,15 +7,18 @@ using Microsoft.AspNetCore.Mvc;
 using EindwerkCarParkingCore.Models;
 using EindwerkCarParkingCore.ViewModels;
 using EindwerkCarParkingCore.Services;
+using EindwerkCarParkingCore.Data;
 
 namespace EindwerkCarParkingCore.Controllers
 {
     public class HomeController : Controller
     {
         private readonly lMailService _mailservice;
-        public HomeController(lMailService mailservice)
+        private readonly EindwerkCarParkingContext _context;
+        public HomeController(lMailService mailservice, EindwerkCarParkingContext context)
         {
             _mailservice = mailservice;
+            _context = context;
         }
         public IActionResult Index()
         {
@@ -58,6 +61,12 @@ namespace EindwerkCarParkingCore.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Parkings()
+        {
+            var results = _context.Parkings.OrderBy(p => p.Locatie).ToList();
+            return View(results);
         }
     }
 }

@@ -19,7 +19,17 @@ namespace EindwerkCarParkingCore
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration(SetupConfiguration)
                 .UseStartup<Startup>()
                 .Build();
+
+        private static void SetupConfiguration(WebHostBuilderContext ctx, IConfigurationBuilder builder)
+        {
+            //verwijder standaard opties:
+            builder.Sources.Clear();
+
+            builder.AddJsonFile("config.json", false, true).AddEnvironmentVariables(); //laatste value true zorgt ervoor dat bij wijzigingen config.json file de server niet moet herstarten
+
+        }
     }
 }

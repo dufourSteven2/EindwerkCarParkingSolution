@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EindwerkCarParkingLib
 {
-    class Land
+  public  class Land
     {
         public int Id { get; set; }
         [Required]
