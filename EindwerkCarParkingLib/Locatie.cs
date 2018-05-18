@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EindwerkCarParkingLib
 {
  public  class Locatie
     {
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         [Required]
 
@@ -14,12 +16,12 @@ namespace EindwerkCarParkingLib
         public string Nr { get; set; }
 
         //Foreign Key
-        public int LandId { get; set; }
+
         public int GemeenteId { get; set; }
 
 
         //Navigation Property
-        public virtual Land Land { get; set; }
+
         public virtual Gemeente Gemeente { get; set; }
 
 

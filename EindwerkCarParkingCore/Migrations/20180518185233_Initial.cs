@@ -13,8 +13,7 @@ namespace EindwerkCarParkingCore.Migrations
                 name: "Eigenaars",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     EigenaarNaam = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: true)
                 },
@@ -24,24 +23,10 @@ namespace EindwerkCarParkingCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Gemeentes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    GemeenteNaam = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Gemeentes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Lands",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     LandNaam = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -53,8 +38,7 @@ namespace EindwerkCarParkingCore.Migrations
                 name: "Totaals",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     BezetteParkings = table.Column<int>(nullable: false),
                     MaxParkings = table.Column<int>(nullable: false)
                 },
@@ -64,13 +48,50 @@ namespace EindwerkCarParkingCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Gemeentes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false),
+                    GemeenteNaam = table.Column<string>(nullable: false),
+                    LandId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Gemeentes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Gemeentes_Lands_LandId",
+                        column: x => x.LandId,
+                        principalTable: "Lands",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Soorts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false),
+                    SoortNaam = table.Column<string>(nullable: false),
+                    TotaalId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Soorts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Soorts_Totaals_TotaalId",
+                        column: x => x.TotaalId,
+                        principalTable: "Totaals",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Locaties",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<int>(nullable: false),
                     GemeenteId = table.Column<int>(nullable: false),
-                    LandId = table.Column<int>(nullable: false),
+                    LandId = table.Column<int>(nullable: true),
                     Nr = table.Column<string>(nullable: true),
                     Straat = table.Column<string>(nullable: false)
                 },
@@ -88,27 +109,7 @@ namespace EindwerkCarParkingCore.Migrations
                         column: x => x.LandId,
                         principalTable: "Lands",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Soorts",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    SoortNaam = table.Column<string>(nullable: false),
-                    TotaalId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Soorts", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Soorts_Totaals_TotaalId",
-                        column: x => x.TotaalId,
-                        principalTable: "Totaals",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -146,6 +147,11 @@ namespace EindwerkCarParkingCore.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Gemeentes_LandId",
+                table: "Gemeentes",
+                column: "LandId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Locaties_GemeenteId",
@@ -196,10 +202,10 @@ namespace EindwerkCarParkingCore.Migrations
                 name: "Gemeentes");
 
             migrationBuilder.DropTable(
-                name: "Lands");
+                name: "Totaals");
 
             migrationBuilder.DropTable(
-                name: "Totaals");
+                name: "Lands");
         }
     }
 }

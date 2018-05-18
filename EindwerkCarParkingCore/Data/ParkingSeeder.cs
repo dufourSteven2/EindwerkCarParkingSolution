@@ -18,301 +18,289 @@ namespace EindwerkCarParkingCore.Data
         public  void Seed()
         {
             _context.Database.EnsureCreated(); //test als database zeker bestaat
-            
 
-            if (!_context.Parkings.Any())
+
+            //if (!_context.Parkings.Any())
+            //{
+            //    var Lands = new Land[]
+            //    {
+            //        new Land() {Id= 1, LandNaam = "Belgie" },
+            //        new Land() {Id= 2, LandNaam = "Nederland" }
+            //    };
+
+            //    foreach(Land l in Lands)
+            //    {
+            //        _context.Lands.Add(l);
+            //    }
+
+            var Totalen = new Totaal[]
             {
-                var Lands = new Land[]
-                {
-                    new Land() {LandNaam = "Belgie" },
-                    new Land() {LandNaam = "Nederland" }
-                };
+                    new Totaal() {Id=1,MaxParkings = 100, BezetteParkings= 50}
+            };
 
-                foreach(Land l in Lands)
-                {
-                    _context.Lands.Add(l);
-                }
+            foreach (Totaal t in Totalen)
+            {
+                _context.Totaals.Add(t);
+            }
 
-          //      var Totalen = new Totaal[]
-          //      {
-          //          new Totaal() {MaxParkings = 100, BezetteParkings= 50}
-          //      };
+            var plaatsen = new Gemeente[]
+            {
+                      new Gemeente() {Id= 1,  GemeenteNaam = "Brugge" ,LandId=1},
+                      new Gemeente() {Id= 2, GemeenteNaam = "Gent", LandId=1 },
+                      new Gemeente() {Id= 3,  GemeenteNaam = "Oostende" ,LandId =1},
+                      new Gemeente() {Id= 4, GemeenteNaam = "Antwerpen" ,LandId =1 },
+                      new Gemeente() {Id= 5,  GemeenteNaam = "Brussel" ,LandId =1},
+                      new Gemeente() {Id= 6,  GemeenteNaam = "Amsterdam" ,LandId =2 },
+                      new Gemeente() {Id= 7,  GemeenteNaam = "Eindhoven" ,LandId =2}
+            };
 
-          //      foreach (Totaal t in Totalen)
-          //      {
-          //          _context.Totaals.Add(t);
-          //      }
+            foreach (Gemeente g in plaatsen)
+            {
+                _context.Gemeentes.Add(g);
+            }
 
-          //      var plaatsen = new Gemeente[]
-          //      {
-          //            new Gemeente() {  GemeenteNaam = "Brugge" },
-          //            new Gemeente() { GemeenteNaam = "Gent" },
-          //            new Gemeente() {  GemeenteNaam = "Oostende" },
-          //            new Gemeente() { GemeenteNaam = "Antwerpen" },
-          //            new Gemeente() {  GemeenteNaam = "Brussel" },
-          //            new Gemeente() {  GemeenteNaam = "Amsterdam" },
-          //            new Gemeente() {  GemeenteNaam = "Eindhoven" }
-          //      };
+            var Eigenaars = new Eigenaar[]
+            {
+                      new Eigenaar() {Id=1,  Email = "nonkelchameau@gmail.com", EigenaarNaam = "Alfapark" },
+                      new Eigenaar() {Id=2,  Email = "nonkelchameau@gmail.com", EigenaarNaam = "B-Parking" },
+                      new Eigenaar() {Id=3,  Email = "nonkelchameau@gmail.com", EigenaarNaam = "InterParking" }
+            };
 
-          //      foreach (Gemeente g in plaatsen)
-          //      {
-          //          _context.Gemeentes.Add(g);
-          //      }
+            foreach (Eigenaar e in Eigenaars)
+            {
+                _context.Eigenaars.Add(e);
+            }
 
-          //      var Eigenaars = new Eigenaar[]
-          //      {
-          //            new Eigenaar() {  Email = "nonkelchameau@gmail.com", EigenaarNaam = "Alfapark" },
-          //            new Eigenaar() {  Email = "nonkelchameau@gmail.com", EigenaarNaam = "B-Parking" },
-          //            new Eigenaar() {  Email = "nonkelchameau@gmail.com", EigenaarNaam = "InterParking" }
-          //      };
+            var Soorten = new Soort[]
+            {
 
-          //      foreach (Eigenaar e in Eigenaars)
-          //      {
-          //          _context.Eigenaars.Add(e);
-          //      }
+                      new Soort() {Id=1, SoortNaam = "Elektrisch" , TotaalId = 1},
+                      new Soort() {Id=2, SoortNaam = "Standaard", TotaalId = 1 },
+                      new Soort() {Id=3, SoortNaam = "Met een beperking", TotaalId = 1 },
+                      new Soort() {Id=4, SoortNaam = "Abonnee", TotaalId = 1 }
+            };
 
-          //      var Soorten = new Soort[]
-          //      {
+            foreach (Soort s in Soorten)
+            {
 
-          //            new Soort() { SoortNaam = "Elektrisch" , TotaalId = 1},
-          //            new Soort() { SoortNaam = "Standaard", TotaalId = 1 },
-          //            new Soort() { SoortNaam = "Met een beperking", TotaalId = 1 },
-          //            new Soort() { SoortNaam = "Abonnee", TotaalId = 1 }
-          //      };
+                _context.Soorts.Add(s);
+            }
 
-          //      foreach (Soort s in Soorten)
-          //      {
+            var Locaties = new Locatie[]
+            {
+                           new Locatie()
+                      {
+                               Id=1,
+                          Straat = "Predikherenrei",
+                          Nr = "4A",
+                          GemeenteId = 1
+                      },
 
-          //          _context.Soorts.Add(s);
-          //      }
+                      new Locatie()
+                      {Id=2,
+                          Straat = "Spoorwegstraat",
+                          Nr = "14",
+                          GemeenteId = 1
+                      },
 
-          //      var Locaties = new Locatie[]
-          //      {
-          //                 new Locatie()
-          //            {
-          //                Straat = "Predikherenrei",
-          //                Nr = "4A",
-          //                LandId = 1,
-          //                GemeenteId = 1
-          //            },
+                      new Locatie()
+                      {Id=3,
+                          Straat = "Hoefijzerlaan",
+                          Nr = "17",
+                          GemeenteId = 1
+                      },
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Spoorwegstraat",
-          //                Nr = "14",
-          //                LandId = 1,
-          //                GemeenteId = 1
-          //            },
+                      new Locatie()
+                      {Id=4,
+                          Straat = "Franklin Rooseveltlaan",
+                          Nr = "3/A",
+                          GemeenteId = 2
+                      },
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Hoefijzerlaan",
-          //                Nr = "17",
-          //                LandId = 1,
-          //                GemeenteId = 1
-          //            },
+                      new Locatie()
+                      {Id=5,
+                          Straat = "Kouter",
+                          GemeenteId = 2
+                      },
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Franklin Rooseveltlaan",
-          //                Nr = "3/A",
-          //                LandId = 1,
-          //                GemeenteId = 2
-          //            },
+                      new Locatie()
+                      {Id=6,
+                          Straat = "Sint-Pietersplein",
+                          Nr = "65",
+                          GemeenteId = 2
+                      },
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Kouter",
-          //                LandId = 1,
-          //                GemeenteId = 2
-          //            },
+                      new Locatie()
+                      {Id=7,
+                          Straat = "Mijnplein",
+                          GemeenteId = 3
+                      },
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Sint-Pietersplein",
-          //                Nr = "65",
-          //                LandId = 1,
-          //                GemeenteId = 2
-          //            },
+                      new Locatie()
+                      {Id=8,
+                          Straat = "Van Iseghemlaan",
+                          GemeenteId = 3
+                      },
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Mijnplein",
-          //                LandId = 1,
-          //                GemeenteId = 3
-          //            },
+                      new Locatie()
+                      {Id=9,
+                          Straat = "Ernest van Dijcklaai",
+                          Nr = "3",
+                          GemeenteId = 4
+                      },
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Van Iseghemlaan",
-          //                LandId = 1,
-          //                GemeenteId = 3
-          //            },
+                      new Locatie()
+                      {Id=10,
+                          Straat = "Oudevaartplaats",
+                          Nr = "2",
+                          GemeenteId = 4
+                      },
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Ernest van Dijcklaai",
-          //                Nr = "3",
-          //                LandId = 1,
-          //                GemeenteId = 4
-          //            },
+                      new Locatie()
+                      {Id=11,
+                          Straat = "Oosterdoksstraat",
+                          Nr = "150",
+                          GemeenteId = 6
+                      },
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Oudevaartplaats",
-          //                Nr = "2",
-          //                LandId = 1,
-          //                GemeenteId = 4
-          //            },
+                      new Locatie()
+                      {Id=12,
+                          Straat = "Emmasingel",
+                          Nr = "29",
+                          GemeenteId = 7
+                      }
+            };
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Oosterdoksstraat",
-          //                Nr = "150",
-          //                LandId = 2,
-          //                GemeenteId = 6
-          //            },
+            foreach (Locatie l in Locaties)
+            {
+                _context.Locaties.Add(l);
+            }
 
-          //            new Locatie()
-          //            {
-          //                Straat = "Emmasingel",
-          //                Nr = "29",
-          //                LandId = 2,
-          //                GemeenteId = 7
-          //            }
-          //      };
+            var parkingen = new Parking[]
+            {
+                            new Parking()
+                      {
+                          EigenaarId = 1,
+                          SoortId = 2,
+                          LocatieId = 1,
+                          Totaal = 5,
+                          Bezet = 0,
+                          ParkingNaam = "Langestraat"
+                      },
 
-          //      foreach (Locatie l in Locaties)
-          //      {
-          //          _context.Locaties.Add(l);
-          //      }
+                      new Parking()
+                      {
+                          EigenaarId = 2,
+                          SoortId = 2,
+                          LocatieId = 2,
+                          Totaal = 1500,
+                          Bezet = 0,
+                          ParkingNaam = "Station"
+                      },
 
-          //      var parkingen = new Parking[]
-          //      {
-          //                  new Parking()
-          //            {
-          //                EigenaarId = 1,
-          //                SoortId = 2,
-          //                LocatieId = 1,
-          //                Totaal = 5,
-          //                Bezet = 0,
-          //                ParkingNaam = "Langestraat"
-          //            },
+                      new Parking()
+                      {
+                          EigenaarId = 3,
+                          SoortId = 2,
+                          LocatieId = 3,
+                          Totaal = 1434,
+                          Bezet = 0,
+                          ParkingNaam = "'t Zand"
+                      },
+                      new Parking()
+                      {
+                          EigenaarId = 3,
+                          SoortId = 2,
+                          LocatieId = 4,
+                          Totaal = 2151,
+                          Bezet = 0,
+                          ParkingNaam = "Interparking Gent Zuid"
+                      },
 
-          //            new Parking()
-          //            {
-          //                EigenaarId = 2,
-          //                SoortId = 2,
-          //                LocatieId = 2,
-          //                Totaal = 1500,
-          //                Bezet = 0,
-          //                ParkingNaam = "Station"
-          //            },
+                      new Parking()
+                      {
+                          EigenaarId = 3,
+                          SoortId = 2,
+                          LocatieId = 5,
+                          Totaal = 1434,
+                          Bezet = 0,
+                          ParkingNaam = "Parking Kouter"
+                      },
 
-          //            new Parking()
-          //            {
-          //                EigenaarId = 3,
-          //                SoortId = 2,
-          //                LocatieId = 3,
-          //                Totaal = 1434,
-          //                Bezet = 0,
-          //                ParkingNaam = "'t Zand"
-          //            },
-          //            new Parking()
-          //            {
-          //                EigenaarId = 3,
-          //                SoortId = 2,
-          //                LocatieId = 4,
-          //                Totaal = 2151,
-          //                Bezet = 0,
-          //                ParkingNaam = "Interparking Gent Zuid"
-          //            },
+                      new Parking()
+                      {
+                          EigenaarId = 3,
+                          SoortId = 2,
+                          LocatieId = 7,
+                          Totaal = 1434,
+                          Bezet = 0,
+                          ParkingNaam = "Indigo Parking Mijnplein"
+                      },
 
-          //            new Parking()
-          //            {
-          //                EigenaarId = 3,
-          //                SoortId = 2,
-          //                LocatieId = 5,
-          //                Totaal = 1434,
-          //                Bezet = 0,
-          //                ParkingNaam = "Parking Kouter"
-          //            },
+                      new Parking()
+                      {
+                          EigenaarId = 3,
+                          SoortId = 2,
+                          LocatieId = 8,
+                          Totaal = 1434,
+                          Bezet = 0,
+                          ParkingNaam = "Indigo Park - Parking Cursaal 2"
+                      },
 
-          //            new Parking()
-          //            {
-          //                EigenaarId = 3,
-          //                SoortId = 2,
-          //                LocatieId = 7,
-          //                Totaal = 1434,
-          //                Bezet = 0,
-          //                ParkingNaam = "Indigo Parking Mijnplein"
-          //            },
+                      new Parking()
+                      {
+                          EigenaarId = 1,
+                          SoortId = 2,
+                          LocatieId = 6,
+                          Totaal = 1434,
+                          Bezet = 0,
+                          ParkingNaam = "Parking Sint-Pietersplein"
+                      },
 
-          //            new Parking()
-          //            {
-          //                EigenaarId = 3,
-          //                SoortId = 2,
-          //                LocatieId = 8,
-          //                Totaal = 1434,
-          //                Bezet = 0,
-          //                ParkingNaam = "Indigo Park - Parking Cursaal 2"
-          //            },
+                      new Parking()
+                      {
+                          EigenaarId = 3,
+                          SoortId = 2,
+                          LocatieId = 10,
+                          Totaal = 1434,
+                          Bezet = 0,
+                          ParkingNaam = "Parking Arenberg"
+                      },
 
-          //            new Parking()
-          //            {
-          //                EigenaarId = 1,
-          //                SoortId = 2,
-          //                LocatieId = 6,
-          //                Totaal = 1434,
-          //                Bezet = 0,
-          //                ParkingNaam = "Parking Sint-Pietersplein"
-          //            },
+                      new Parking()
+                      {
+                          EigenaarId = 3,
+                          SoortId = 2,
+                          LocatieId = 9,
+                          Totaal = 1434,
+                          Bezet = 0,
+                          ParkingNaam = "Parking Grote Markt"
+                      },
+                      new Parking()
+                      {
+                          EigenaarId = 2,
+                          SoortId = 2,
+                          LocatieId = 11,
+                          Totaal = 1434,
+                          Bezet = 0,
+                          ParkingNaam = "Parking Centrum Oosterdok"
+                      },
+                      new Parking()
+                      {
+                          EigenaarId = 2,
+                          SoortId = 2,
+                          LocatieId = 12,
+                          Totaal = 1434,
+                          Bezet = 0,
+                          ParkingNaam = "Q-Park Centrum de Admirant"
+                      }
+      };
+            foreach (Parking p in parkingen)
+            {
+                _context.Parkings.Add(p);
+            }
 
-          //            new Parking()
-          //            {
-          //                EigenaarId = 3,
-          //                SoortId = 2,
-          //                LocatieId = 10,
-          //                Totaal = 1434,
-          //                Bezet = 0,
-          //                ParkingNaam = "Parking Arenberg"
-          //            },
-
-          //            new Parking()
-          //            {
-          //                EigenaarId = 3,
-          //                SoortId = 2,
-          //                LocatieId = 9,
-          //                Totaal = 1434,
-          //                Bezet = 0,
-          //                ParkingNaam = "Parking Grote Markt"
-          //            },
-          //            new Parking()
-          //            {
-          //                EigenaarId = 2,
-          //                SoortId = 2,
-          //                LocatieId = 11,
-          //                Totaal = 1434,
-          //                Bezet = 0,
-          //                ParkingNaam = "Parking Centrum Oosterdok"
-          //            },
-          //            new Parking()
-          //            {
-          //                EigenaarId = 2,
-          //                SoortId = 2,
-          //                LocatieId = 12,
-          //                Totaal = 1434,
-          //                Bezet = 0,
-          //                ParkingNaam = "Q-Park Centrum de Admirant"
-          //            }
-          //};
-          //      foreach (Parking p in parkingen)
-          //      {
-          //          _context.Parkings.Add(p);
-          //      }
-
-                _context.SaveChanges();
+            _context.SaveChanges();
             }
         }
     }
-}
