@@ -1,5 +1,5 @@
 ﻿{
   "ConnectionStrings": {
-    "EindwerkCarParkingString": "server=LAPTOP-VANDERSC\\SQLEXPRESS; Database=CarParkingDb; Trusted_Connection=True"
+    "EindwerkCarParkingString": "server=WERKSTATION-BEN\\SQLEXPRESS; Database=CarParkingDatabase; Integrated Security=true; MultipleActiveResultSets=true;"
   }
 }
