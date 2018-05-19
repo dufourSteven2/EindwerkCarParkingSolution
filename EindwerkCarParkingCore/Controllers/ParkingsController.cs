@@ -19,10 +19,12 @@ namespace EindwerkCarParkingCore.Controllers
     public class ParkingsController : ApiController
     {
         private readonly EindwerkCarParkingContext _context;
+        private readonly IMapper _mapper;
 
-        public ParkingsController(EindwerkCarParkingContext context)
+        public ParkingsController(EindwerkCarParkingContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Parkings
@@ -54,7 +56,6 @@ namespace EindwerkCarParkingCore.Controllers
             {
                 return BadRequest(ModelState);
             }
-
 
             Parking parking = Mapper.Map<Parking>(parkingsDetailDTO);
             _context.Set<Parking>().Attach(parking); //hier de update

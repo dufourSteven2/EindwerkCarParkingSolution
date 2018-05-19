@@ -1,15 +1,16 @@
 ﻿using AutoMapper;
+using EindwerkCarParkingCore.Models;
 using EindwerkCarParkingLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EindwerkCarParkingCore.Models
+namespace EindwerkCarParkingCore.Automapper
 {
-    public class MappingProfile : Profile
+    public class AutomapperProfile : Profile
     {
-        public MappingProfile() //http://www.projectcodify.com/using-automapper-in-aspnet-core bron code
+        public AutomapperProfile()
         {
             CreateMap<Parking, ParkingsDTO>()
                 .ForMember(dto => dto.GemeenteGemeenteNaam, conf => conf.MapFrom(gem => gem.Locatie.Gemeente.GemeenteNaam));
@@ -21,6 +22,7 @@ namespace EindwerkCarParkingCore.Models
             CreateMap<Land, LandDTO>();
             CreateMap<Soort, SoortDTO>();
             CreateMap<Eigenaar, EigenaarDTO>();
+
         }
     }
 }
