@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
 
 namespace EindwerkCarParkingCore
 {
@@ -25,6 +26,9 @@ namespace EindwerkCarParkingCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddAutoMapper(); //automapper
+            //services.AddMvc();
+
             services.AddDbContext<EindwerkCarParkingContext>(cfg=>
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("EindwerkCarParkingString"));

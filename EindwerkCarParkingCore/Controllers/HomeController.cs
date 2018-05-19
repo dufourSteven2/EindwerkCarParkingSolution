@@ -8,6 +8,7 @@ using EindwerkCarParkingCore.Models;
 using EindwerkCarParkingCore.ViewModels;
 using EindwerkCarParkingCore.Services;
 using EindwerkCarParkingCore.Data;
+using AutoMapper;
 
 namespace EindwerkCarParkingCore.Controllers
 {
@@ -57,6 +58,18 @@ namespace EindwerkCarParkingCore.Controllers
         {
             return View();
         }
+        // Test Mapper met actionresultdtotester
+        //private readonly IMapper _mapper;
+        
+        //public HomeController(IMapper mapper)
+        //{
+        //    _mapper = mapper;
+        //}
+        public IActionResult DtoTester()
+        {
+            //var test = _mapper.Map<ParkingsDTO>(test);
+            return View();
+        } 
 
         public IActionResult Error()
         {
