@@ -35,7 +35,7 @@ namespace EindwerkCarParkingCore.Data
 
                 var Totalen = new Totaal[]
             {
-                    new Totaal() {MaxParkings = 100, BezetteParkings= 50}
+                    new Totaal()  {Id=1,MaxParkings = 100, BezetteParkings= 50}
             };
 
                 foreach (Totaal t in Totalen)
@@ -74,10 +74,10 @@ namespace EindwerkCarParkingCore.Data
                 var Soorten = new Soort[]
                 {
 
-                      new Soort() { SoortNaam = "Elektrisch" , TotaalId = 1},
-                      new Soort() { SoortNaam = "Standaard", TotaalId = 1 },
-                      new Soort() { SoortNaam = "Met een beperking", TotaalId = 1 },
-                      new Soort() { SoortNaam = "Abonnee", TotaalId = 1 }
+                      new Soort() {Id=1, SoortNaam = "Elektrisch" , TotaalId = 1},
+                      new Soort() {Id=2, SoortNaam = "Standaard", TotaalId = 1 },
+                      new Soort() {Id=3, SoortNaam = "Met een beperking", TotaalId = 1 },
+                      new Soort() {Id=4, SoortNaam = "Abonnee", TotaalId = 1 }
                 };
 
                 foreach (Soort s in Soorten)
@@ -90,85 +90,85 @@ namespace EindwerkCarParkingCore.Data
                 {
                            new Locatie()
                       {
-                            
+                       Id=1,     
                           Straat = "Predikherenrei",
                           Nr = "4A",
                           GemeenteId = 1
                       },
 
                       new Locatie()
-                      {
+                      {Id=2,
                           Straat = "Spoorwegstraat",
                           Nr = "14",
                           GemeenteId = 1
                       },
 
                       new Locatie()
-                      {
+                      {Id=3,
                           Straat = "Hoefijzerlaan",
                           Nr = "17",
                           GemeenteId = 1
                       },
 
                       new Locatie()
-                      {
+                      {Id=4,
                           Straat = "Franklin Rooseveltlaan",
                           Nr = "3/A",
                           GemeenteId = 2
                       },
 
                       new Locatie()
-                      {
+                      {Id=5,
                           Straat = "Kouter",
                           GemeenteId = 2
                       },
 
                       new Locatie()
-                      {
+                      {Id=6,
                           Straat = "Sint-Pietersplein",
                           Nr = "65",
                           GemeenteId = 2
                       },
 
-                      //new Locatie()
-                      //{Id=7,
-                      //    Straat = "Mijnplein",
-                      //    GemeenteId = 3
-                      //},
+                      new Locatie()
+                      {Id=7,
+                          Straat = "Mijnplein",
+                          GemeenteId = 3
+                      },
 
-                      //new Locatie()
-                      //{Id=8,
-                      //    Straat = "Van Iseghemlaan",
-                      //    GemeenteId = 3
-                      //},
+                      new Locatie()
+                      {Id=8,
+                          Straat = "Van Iseghemlaan",
+                          GemeenteId = 3
+                      },
 
-                      //new Locatie()
-                      //{Id=9,
-                      //    Straat = "Ernest van Dijcklaai",
-                      //    Nr = "3",
-                      //    GemeenteId = 4
-                      //},
+                      new Locatie()
+                      {Id=9,
+                          Straat = "Ernest van Dijcklaai",
+                          Nr = "3",
+                          GemeenteId = 4
+                      },
 
-                      //new Locatie()
-                      //{Id=10,
-                      //    Straat = "Oudevaartplaats",
-                      //    Nr = "2",
-                      //    GemeenteId = 4
-                      //},
+                      new Locatie()
+                      {Id=10,
+                          Straat = "Oudevaartplaats",
+                          Nr = "2",
+                          GemeenteId = 4
+                      },
 
-                      //new Locatie()
-                      //{Id=11,
-                      //    Straat = "Oosterdoksstraat",
-                      //    Nr = "150",
-                      //    GemeenteId = 6
-                      //},
+                      new Locatie()
+                      {Id=11,
+                          Straat = "Oosterdoksstraat",
+                          Nr = "150",
+                          GemeenteId = 6
+                      },
 
-                      //new Locatie()
-                      //{Id=12,
-                      //    Straat = "Emmasingel",
-                      //    Nr = "29",
-                      //    GemeenteId = 7
-                      //}
+                      new Locatie()
+                      {Id=12,
+                          Straat = "Emmasingel",
+                          Nr = "29",
+                          GemeenteId = 7
+                      }
                 };
 
                 foreach (Locatie l in Locaties)
