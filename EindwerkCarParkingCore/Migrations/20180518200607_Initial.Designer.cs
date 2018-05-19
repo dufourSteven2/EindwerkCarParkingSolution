@@ -11,9 +11,10 @@ using System;
 namespace EindwerkCarParkingCore.Migrations
 {
     [DbContext(typeof(EindwerkCarParkingContext))]
-    partial class EindwerkCarParkingContextModelSnapshot : ModelSnapshot
+    [Migration("20180518200607_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -134,7 +135,8 @@ namespace EindwerkCarParkingCore.Migrations
 
             modelBuilder.Entity("EindwerkCarParkingLib.Totaal", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("BezetteParkings");
 

@@ -11,8 +11,8 @@ using System;
 namespace EindwerkCarParkingCore.Migrations
 {
     [DbContext(typeof(EindwerkCarParkingContext))]
-    [Migration("20180518185233_Initial")]
-    partial class Initial
+    [Migration("20180518201635_Initial2")]
+    partial class Initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,8 @@ namespace EindwerkCarParkingCore.Migrations
 
             modelBuilder.Entity("EindwerkCarParkingLib.Eigenaar", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("EigenaarNaam")
                         .IsRequired();
@@ -65,7 +66,8 @@ namespace EindwerkCarParkingCore.Migrations
 
             modelBuilder.Entity("EindwerkCarParkingLib.Locatie", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("GemeenteId");
 
@@ -116,7 +118,8 @@ namespace EindwerkCarParkingCore.Migrations
 
             modelBuilder.Entity("EindwerkCarParkingLib.Soort", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("SoortNaam")
                         .IsRequired();

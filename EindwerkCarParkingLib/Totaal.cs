@@ -8,7 +8,7 @@ namespace EindwerkCarParkingLib
 {
    public class Totaal
     {
-       
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         [Required]
 

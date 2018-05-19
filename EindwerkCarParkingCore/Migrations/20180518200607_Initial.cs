@@ -13,7 +13,8 @@ namespace EindwerkCarParkingCore.Migrations
                 name: "Eigenaars",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EigenaarNaam = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: true)
                 },
@@ -38,7 +39,8 @@ namespace EindwerkCarParkingCore.Migrations
                 name: "Totaals",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     BezetteParkings = table.Column<int>(nullable: false),
                     MaxParkings = table.Column<int>(nullable: false)
                 },
@@ -70,7 +72,8 @@ namespace EindwerkCarParkingCore.Migrations
                 name: "Soorts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     SoortNaam = table.Column<string>(nullable: false),
                     TotaalId = table.Column<int>(nullable: false)
                 },
@@ -89,7 +92,8 @@ namespace EindwerkCarParkingCore.Migrations
                 name: "Locaties",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     GemeenteId = table.Column<int>(nullable: false),
                     LandId = table.Column<int>(nullable: true),
                     Nr = table.Column<string>(nullable: true),
