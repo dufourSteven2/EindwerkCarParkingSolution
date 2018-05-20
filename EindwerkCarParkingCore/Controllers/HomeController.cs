@@ -9,6 +9,8 @@ using EindwerkCarParkingCore.ViewModels;
 using EindwerkCarParkingCore.Services;
 using EindwerkCarParkingCore.Data;
 using AutoMapper;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace EindwerkCarParkingCore.Controllers
 {
@@ -16,10 +18,13 @@ namespace EindwerkCarParkingCore.Controllers
     {
         private readonly lMailService _mailservice;
         private readonly EindwerkCarParkingContext _context;
-        public HomeController(lMailService mailservice, EindwerkCarParkingContext context)
+        private readonly IMapper _mapper;
+        public HomeController(lMailService mailservice, EindwerkCarParkingContext context, IMapper mapper)
         {
             _mailservice = mailservice;
             _context = context;
+            /////
+            _mapper = mapper;
         }
         public IActionResult Index()
         {
@@ -58,17 +63,14 @@ namespace EindwerkCarParkingCore.Controllers
         {
             return View();
         }
-        // Test Mapper met actionresultdtotester
-        //private readonly IMapper _mapper;
-        
-        //public HomeController(IMapper mapper)
-        //{
-        //    _mapper = mapper;
-        //}
+        // Test Mapper met actionresultdtotester bron https://www.youtube.com/watch?v=5WP36DIwdlI       
         public IActionResult DtoTester()
         {
-            //var test = _mapper.Map<ParkingsDTO>(test);
-            return View();
+            var item = _context.Parkings;
+            var mappedItem = _mapper.Map<List<ParkingsDTO>>(item);
+
+            return View(mappedItem);
+            
         } 
 
         public IActionResult Error()
@@ -78,6 +80,7 @@ namespace EindwerkCarParkingCore.Controllers
 
         public IActionResult Parkings()
         {
+            //var item = _context.Parkings;
             var results = _context.Parkings.OrderBy(p => p.Locatie).ToList();
             return View(results);
         }

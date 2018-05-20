@@ -39,12 +39,12 @@ namespace EindwerkCarParkingCore
             services.AddTransient<ParkingSeeder>();
 
             //hierna volgt code voor automapper
-            var config = new AutoMapper.MapperConfiguration(cfg =>
+            var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new AutomapperProfile());
             });
             var mapper = config.CreateMapper();
-            services.AddSingleton(mapper);
+            services.AddSingleton(mapper);//einde automapper toevoeging
 
             services.AddMvc();
 
