@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Controllers\LandsController.cs~RF57f18d9.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="bower_components\bootstrap\.bower.json" />
     <Content Include="bower_components\bootstrap\bower.json" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.css" />
