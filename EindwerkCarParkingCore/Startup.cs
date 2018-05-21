@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
+using EindwerkCarParkingCore.Automapper;
 
 namespace EindwerkCarParkingCore
 {
@@ -36,6 +37,15 @@ namespace EindwerkCarParkingCore
             services.AddTransient<lMailService, NullMailService>();
             //support for real mail  servie
             services.AddTransient<ParkingSeeder>();
+
+            //hierna volgt code voor automapper
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new AutomapperProfile());
+            });
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);//einde automapper toevoeging
+
             services.AddMvc();
 
         }

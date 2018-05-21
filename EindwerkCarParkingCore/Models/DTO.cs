@@ -51,9 +51,10 @@ namespace EindwerkCarParkingCore.Models
         public string SoortNaam { get; set; }
     }
 
-    public class TotalenDTO
+    public class ToataalDTO
     {
-        public int Totaal { get; set; }
-        public int Bezet { get; set; }
+        public int Id { get; set; }
+        public int MaxParkings { get; set; }
+        public int BezetteParkings { get; set; }
     }
 }
