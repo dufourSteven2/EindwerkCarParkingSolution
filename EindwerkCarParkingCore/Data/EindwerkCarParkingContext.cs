@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EindwerkCarParkingLib;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using EindwerkCarParkingCore.Data.Entities;
 
 namespace EindwerkCarParkingCore.Data
 {
-    public class EindwerkCarParkingContext : DbContext
+    public class EindwerkCarParkingContext : IdentityDbContext<ParkingUser>
     {
         public EindwerkCarParkingContext(DbContextOptions<EindwerkCarParkingContext> options):base(options)
         {

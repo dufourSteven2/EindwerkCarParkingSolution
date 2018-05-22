@@ -24,7 +24,17 @@
                     <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-controller="Home" asp-action="SearchParking">Parking zoeken</a></li>
                     <li><a asp-controller="Home" asp-action="DtoTester">Test</a></li>
+                    <li><a asp-controller="Home" asp-action="AddParking">Voeg parking Toe</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
 
+                    }
+                    else
+                    {
+                        <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+
+                    }
                 </ul>
             </div>
 

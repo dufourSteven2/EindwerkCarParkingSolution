@@ -2,49 +2,68 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EindwerkCarParkingCore.Data.Entities;
 using EindwerkCarParkingLib;
+using Microsoft.AspNetCore.Identity;
 
 namespace EindwerkCarParkingCore.Data
 {
     public class ParkingSeeder
     {
         private EindwerkCarParkingContext _context;
+        private UserManager<ParkingUser> _userManager;
 
-        public ParkingSeeder(EindwerkCarParkingContext context)
+        public ParkingSeeder(EindwerkCarParkingContext context, UserManager<ParkingUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
+
         }
 
-        public void Seed()
+        public async Task Seed()
         {
             _context.Database.EnsureCreated(); //test als database zeker bestaat
-
-
-            if (!_context.Parkings.Any())
+            var user = await _userManager.FindByEmailAsync("benny.vanderschaeghe@gmail.com");
+            if (user == null)
             {
-                var Lands = new Land[]
+                user = new ParkingUser()
                 {
+                    Voornaam = "Benny",
+                    Naam = "Vanderschaeghe",
+                    Email = "benny.vanderschaeghe@gmail.com",
+                    UserName = "benny.vanderschaeghe@gmail.com"
+                };
+                var resultaat = await _userManager.CreateAsync(user, "@IVObrugge123");
+                if(resultaat == IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("Failed to create default user");
+                }
+
+                if (!_context.Parkings.Any())
+                {
+                    var Lands = new Land[]
+                    {
                     new Land() {Id= 1, LandNaam = "Belgie" },
                     new Land() {Id= 2, LandNaam = "Nederland" }
+                    };
+
+                    foreach (Land l in Lands)
+                    {
+                        _context.Lands.Add(l);
+                    }
+
+                    var Totalen = new Totaal[]
+                {
+                    new Totaal()  {Id=1,MaxParkings = 100, BezetteParkings= 50}
                 };
 
-                foreach (Land l in Lands)
-                {
-                    _context.Lands.Add(l);
-                }
+                    foreach (Totaal t in Totalen)
+                    {
+                        _context.Totaals.Add(t);
+                    }
 
-                var Totalen = new Totaal[]
-            {
-                    new Totaal()  {Id=1,MaxParkings = 100, BezetteParkings= 50}
-            };
-
-                foreach (Totaal t in Totalen)
-                {
-                    _context.Totaals.Add(t);
-                }
-
-                var plaatsen = new Gemeente[]
-                {
+                    var plaatsen = new Gemeente[]
+                    {
                       new Gemeente() {Id= 1,  GemeenteNaam = "Brugge" ,LandId=1},
                       new Gemeente() {Id= 2, GemeenteNaam = "Gent", LandId=1 },
                       new Gemeente() {Id= 3,  GemeenteNaam = "Oostende" ,LandId =1},
@@ -52,45 +71,45 @@ namespace EindwerkCarParkingCore.Data
                       new Gemeente() {Id= 5,  GemeenteNaam = "Brussel" ,LandId =1},
                       new Gemeente() {Id= 6,  GemeenteNaam = "Amsterdam" ,LandId =2 },
                       new Gemeente() {Id= 7,  GemeenteNaam = "Eindhoven" ,LandId =2}
-                };
+                    };
 
-                foreach (Gemeente g in plaatsen)
-                {
-                    _context.Gemeentes.Add(g);
-                }
+                    foreach (Gemeente g in plaatsen)
+                    {
+                        _context.Gemeentes.Add(g);
+                    }
 
-                var Eigenaars = new Eigenaar[]
-                {
+                    var Eigenaars = new Eigenaar[]
+                    {
                       new Eigenaar() {Id=1,  Email = "nonkelchameau@gmail.com", EigenaarNaam = "Alfapark" },
                       new Eigenaar() {Id=2,  Email = "nonkelchameau@gmail.com", EigenaarNaam = "B-Parking" },
                       new Eigenaar() {Id=3, Email = "nonkelchameau@gmail.com", EigenaarNaam = "InterParking" }
-                };
+                    };
 
-                foreach (Eigenaar e in Eigenaars)
-                {
-                    _context.Eigenaars.Add(e);
-                }
+                    foreach (Eigenaar e in Eigenaars)
+                    {
+                        _context.Eigenaars.Add(e);
+                    }
 
-                var Soorten = new Soort[]
-                {
+                    var Soorten = new Soort[]
+                    {
 
                       new Soort() {Id=1, SoortNaam = "Elektrisch" , TotaalId = 1},
                       new Soort() {Id=2, SoortNaam = "Standaard", TotaalId = 1 },
                       new Soort() {Id=3, SoortNaam = "Met een beperking", TotaalId = 1 },
                       new Soort() {Id=4, SoortNaam = "Abonnee", TotaalId = 1 }
-                };
+                    };
 
-                foreach (Soort s in Soorten)
-                {
+                    foreach (Soort s in Soorten)
+                    {
 
-                    _context.Soorts.Add(s);
-                }
+                        _context.Soorts.Add(s);
+                    }
 
-                var Locaties = new Locatie[]
-                {
+                    var Locaties = new Locatie[]
+                    {
                            new Locatie()
                       {
-                       Id=1,     
+                       Id=1,
                           Straat = "Predikherenrei",
                           Nr = "4A",
                           GemeenteId = 1
@@ -169,15 +188,15 @@ namespace EindwerkCarParkingCore.Data
                           Nr = "29",
                           GemeenteId = 7
                       }
-                };
+                    };
 
-                foreach (Locatie l in Locaties)
-                {
-                    _context.Locaties.Add(l);
-                }
+                    foreach (Locatie l in Locaties)
+                    {
+                        _context.Locaties.Add(l);
+                    }
 
-                var parkingen = new Parking[]
-                {
+                    var parkingen = new Parking[]
+                    {
                             new Parking()
                       {
                                 Id=1,
@@ -296,13 +315,14 @@ namespace EindwerkCarParkingCore.Data
                           Bezet = 0,
                           ParkingNaam = "Q-Park Centrum de Admirant"
                       }
-          };
-                foreach (Parking p in parkingen)
-                {
-                    _context.Parkings.Add(p);
-                }
+              };
+                    foreach (Parking p in parkingen)
+                    {
+                        _context.Parkings.Add(p);
+                    }
 
-                _context.SaveChanges();
+                    _context.SaveChanges();
+                }
             }
         }
     }

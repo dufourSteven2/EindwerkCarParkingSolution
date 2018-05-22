@@ -11,6 +11,7 @@ using EindwerkCarParkingCore.Data;
 using AutoMapper;
 using System.Net.Http;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EindwerkCarParkingCore.Controllers
 {
@@ -56,6 +57,12 @@ namespace EindwerkCarParkingCore.Controllers
                 ModelState.Clear();
 
             }
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult AddParking()
+        {
             return View();
         }
 
