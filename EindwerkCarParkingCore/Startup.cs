@@ -40,24 +40,26 @@ namespace EindwerkCarParkingCore
                 {
                     cfg.User.RequireUniqueEmail = true;
                 }).AddEntityFrameworkStores<EindwerkCarParkingContext>();
-               
+
+            services.AddAuthentication()  //support van 2 soorten authentificatie
+    .AddCookie()   //coockie authentication
+    .AddJwtBearer(cfg =>
+    {
+        cfg.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidIssuer = Configuration["Tokens:Issuer"],
+            ValidAudience = Configuration["Tokens:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+        };
+
+    });   //tokens authentication
 
             services.AddDbContext<EindwerkCarParkingContext>(cfg=>
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("EindwerkCarParkingString"));
             });
 
-            services.AddAuthentication()  //support van 2 soorten authentificatie
-                .AddCookie()   //coockie authentication
-                .AddJwtBearer(cfg=>
-                    cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-                    {
-                        ValidIssuer = Configuration["Tokens:Issuer"],
-                        ValidAudience = Configuration["Tokens:Audience"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
 
-                    }
-                );    //tokens authentication
             services.AddTransient<lMailService, NullMailService>();
 
             //support for real mail  servie
