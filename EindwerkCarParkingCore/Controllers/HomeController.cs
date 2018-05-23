@@ -18,9 +18,9 @@ namespace EindwerkCarParkingCore.Controllers
     public class HomeController : Controller
     {
         private readonly lMailService _mailservice;
-        private readonly EindwerkCarParkingContext _context;
+        private readonly IParkingRepository _context;
         private readonly IMapper _mapper;
-        public HomeController(lMailService mailservice, EindwerkCarParkingContext context, IMapper mapper)
+        public HomeController(lMailService mailservice, IParkingRepository context, IMapper mapper)
         {
             _mailservice = mailservice;
             _context = context;
@@ -32,12 +32,7 @@ namespace EindwerkCarParkingCore.Controllers
             return View();
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
 
-            return View();
-        }
         [HttpGet("Contact")]
         public IActionResult Contact()
         {
@@ -73,7 +68,7 @@ namespace EindwerkCarParkingCore.Controllers
         // Test Mapper met actionresultdtotester bron https://www.youtube.com/watch?v=5WP36DIwdlI       
         public IActionResult DtoTester()
         {
-            var item = _context.Parkings;
+            var item = _context.GetAllParkings();
             var mappedItem = _mapper.Map<List<ParkingsDTO>>(item);
 
             return View(mappedItem);
@@ -88,7 +83,7 @@ namespace EindwerkCarParkingCore.Controllers
         public IActionResult Parkings()
         {
             //var item = _context.Parkings;
-            var results = _context.Parkings.OrderBy(p => p.Locatie).ToList();
+            var results = _context.GetAllParkings();
             return View(results);
         }
     }

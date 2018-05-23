@@ -1,1 +1,15 @@
-﻿@*@model IEnumerable<Parkings>*@
+﻿@using EindwerkCarParkingLib
+@model IEnumerable<Parking>
+<h1>Parkings</h1>
+    @foreach (var p in Model)
+    {
+        <div class="col-md-3">
+            <div class=" well well-lg">
+                <h4>Parking: </h4>
+                <ul>
+                    <li>Naam: @p.ParkingNaam</li>
+                    <li>locatie: @p.Locatie</li>
+                </ul>
+            </div>
+        </div>
+    }

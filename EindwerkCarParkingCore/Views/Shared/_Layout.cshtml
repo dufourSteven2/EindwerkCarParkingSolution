@@ -1,4 +1,4 @@
-﻿
+﻿@using EindwerkCarParkingLib
 @using EindwerkCarParkingCore.Controllers
 
 
@@ -15,14 +15,19 @@
     <div class="navbar navbar-inverse header">
         <header class="container">
             <div class="navbar-header">
-                <div class="navbar-brand"><i class="glyphicon glyphicon-apple"></i>Parkeerbeheer</div>
+                <div class="navbar-brand">
+                    <i class="glyphicon glyphicon-apple"></i>
+                     <a asp-controller="Home" asp-action="Index">
+                        Parkeerbeheer 
+                     </a>
+                </div>
                 <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">&#9776;</button>  @*teken om bij aanpassen device/Schermgroote een hamburgerteken te krijgen*@
             </div>
             <div id="menu" class="collapse navbar-collapse">  @*om menu uit te laten klappen moet men dit in div steken met naam voor data-target*@
                 <ul class="nav navbar-nav">
                     <li> <a asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-controller="Home" asp-action="SearchParking">Parking zoeken</a></li>
+                    <li><a asp-controller="Home" asp-action="parkings">Parking zoeken</a></li>
                     <li><a asp-controller="Home" asp-action="DtoTester">Test</a></li>
                     <li><a asp-controller="Home" asp-action="AddParking">Voeg parking Toe</a></li>
                     @if (User.Identity.IsAuthenticated)
