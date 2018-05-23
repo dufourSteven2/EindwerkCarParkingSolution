@@ -15,6 +15,8 @@ using EindwerkCarParkingCore.Automapper;
 using EindwerkCarParkingCore.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace EindwerkCarParkingCore
 {
@@ -47,7 +49,15 @@ namespace EindwerkCarParkingCore
 
             services.AddAuthentication()  //support van 2 soorten authentificatie
                 .AddCookie()   //coockie authentication
-                .AddJwtBearer();    //tokens authentication
+                .AddJwtBearer(cfg=>
+                    cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                    {
+                        ValidIssuer = Configuration["Tokens:Issuer"],
+                        ValidAudience = Configuration["Tokens:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+
+                    }
+                );    //tokens authentication
             services.AddTransient<lMailService, NullMailService>();
 
             //support for real mail  servie

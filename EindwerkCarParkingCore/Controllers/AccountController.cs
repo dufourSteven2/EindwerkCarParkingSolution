@@ -69,6 +69,8 @@ namespace EindwerkCarParkingCore.Controllers
            return RedirectToAction("Index", "Home");
         }
 
+
+        //beveiliging van de api via een token
         [HttpPost]
         public async Task<IActionResult> CreateToken([FromBody] LoginViewModel model)
         {
@@ -88,6 +90,22 @@ namespace EindwerkCarParkingCore.Controllers
                             new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
                         };
                         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Tokens:Key"]));
+                        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                        var token = new JwtSecurityToken(
+                            config["Tokens: Issuer"],
+
+                            config["Tokens:Audience"],
+                            claims, 
+                            expires: DateTime.UtcNow.AddMinutes(30),
+                            signingCredentials: creds
+                            );
+                        var results = new
+                        {
+                            token = new JwtSecurityTokenHandler().WriteToken(token),
+                            experiation = token.ValidTo
+                        };
+                        return Created("", results);
                     }
                 }
             }
