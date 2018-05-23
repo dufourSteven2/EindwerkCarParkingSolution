@@ -34,7 +34,7 @@ namespace EindwerkCarParkingCore.Data
                     UserName = "benny.vanderschaeghe@gmail.com"
                 };
                 var resultaat = await _userManager.CreateAsync(user, "@IVObrugge123");
-                if(resultaat == IdentityResult.Success)
+                if (resultaat == IdentityResult.Success)
                 {
                     throw new InvalidOperationException("Failed to create default user");
                 }

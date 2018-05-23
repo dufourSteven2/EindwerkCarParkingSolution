@@ -15,6 +15,8 @@ using EindwerkCarParkingCore.Automapper;
 using EindwerkCarParkingCore.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace EindwerkCarParkingCore
 {
@@ -38,18 +40,30 @@ namespace EindwerkCarParkingCore
                 {
                     cfg.User.RequireUniqueEmail = true;
                 }).AddEntityFrameworkStores<EindwerkCarParkingContext>();
-            
-            //services.AddAutoMapper(); //automapper
-            //services.AddMvc();
+               
 
             services.AddDbContext<EindwerkCarParkingContext>(cfg=>
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("EindwerkCarParkingString"));
             });
+
+            services.AddAuthentication()  //support van 2 soorten authentificatie
+                .AddCookie()   //coockie authentication
+                .AddJwtBearer(cfg=>
+                    cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                    {
+                        ValidIssuer = Configuration["Tokens:Issuer"],
+                        ValidAudience = Configuration["Tokens:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+
+                    }
+                );    //tokens authentication
             services.AddTransient<lMailService, NullMailService>();
+
             //support for real mail  servie
             services.AddTransient<ParkingSeeder>();
 
+            services.AddScoped<IParkingRepository, ParkingRepository>(); //door in scope dit te plaatsen wordt deze aangesproken wanneer het gevraagd word
             //hierna volgt code voor automapper
             var config = new MapperConfiguration(cfg =>
             {
@@ -57,6 +71,8 @@ namespace EindwerkCarParkingCore
             });
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);//einde automapper toevoeging
+
+
 
             services.AddMvc(opt =>
             {
