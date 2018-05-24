@@ -39,6 +39,8 @@ namespace EindwerkCarParkingCore
                 cfg =>
                 {
                     cfg.User.RequireUniqueEmail = true;
+                    cfg.SignIn.RequireConfirmedEmail = false;  //emailbevestiging vereisen
+                   
                 }).AddEntityFrameworkStores<EindwerkCarParkingContext>();
 
             services.AddAuthentication()  //support van 2 soorten authentificatie
@@ -64,6 +66,7 @@ namespace EindwerkCarParkingCore
 
             //support for real mail  servie
             services.AddTransient<ParkingSeeder>();
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddScoped<IParkingRepository, ParkingRepository>(); //door in scope dit te plaatsen wordt deze aangesproken wanneer het gevraagd word
             //hierna volgt code voor automapper

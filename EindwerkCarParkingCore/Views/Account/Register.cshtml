@@ -1,6 +1,6 @@
-﻿@model LoginViewModel
+﻿@model RegisterViewModel
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Register";
 }
 
 @section scripts
@@ -18,21 +18,25 @@
                 <span asp-validation-for="Username" class="text-warning"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Password">Wachtwoord</label>
                 <input asp-for="Password" type="password" class="form-control" />
                 <span asp-validation-for="Password" class="text-warning"></span>
             </div>
             <div class="form-group">
-                <input asp-for="RememberMe" type="checkbox" class="form-inline" />
-                <label asp-for="RememberMe">Onthoud mij?</label>
-                <span asp-validation-for="RememberMe"></span>
+                <label asp-for="ConfirmPassword">Bevestig Wachtwoord</label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-warning"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Registreer" class="btn btn-success" />
+                <input type="submit" value="Register" class="btn btn-success" />
             </div>
         </form>
-        <div><a asp-controller="Account" asp-action="Register">Registreer</a></div>
-        <div><a asp-controller="Account" asp-action="ForgotPassword">Paswoord vergeten</a></div>
+
     </div>
 
 </div>
