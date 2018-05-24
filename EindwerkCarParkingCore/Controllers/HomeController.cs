@@ -84,6 +84,7 @@ namespace EindwerkCarParkingCore.Controllers
         {
             //var item = _context.Parkings;
             var results = _context.GetAllParkings();
+            //foreach (Parking p in parkings)
             return View(results);
         }
     }

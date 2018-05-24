@@ -86,7 +86,7 @@ namespace EindwerkCarParkingCore
                     opt.Filters.Add(new RequireHttpsAttribute());  //Https op website wanneer die in productie gaat
                 }
 
-            });
+            }).AddJsonOptions(opt=> opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             
 
         }

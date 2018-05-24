@@ -26,15 +26,22 @@ namespace EindwerkCarParkingCore.Controllers
             this.logger = logger;
             this.mapper = mapper;
         }
+        // /////////
+        //[HttpGet]
+        //public IEnumerable<Parking> Get()
+        //{
+        //    return repository.GetAllParkings();
+        //}
+        // /////////
 
         [HttpGet]
-        public IActionResult  Get()
+        public IActionResult Get()
         {
             try
             {
                 return Ok(repository.GetAllParkings());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.LogError($"Failed to get Parkingen: {ex}");
                 return BadRequest("Failed to get Parkingen");
@@ -42,7 +49,7 @@ namespace EindwerkCarParkingCore.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult Get (int id)
+        public IActionResult Get(int id)
         {
             try
             {
@@ -64,14 +71,15 @@ namespace EindwerkCarParkingCore.Controllers
             try
             {
                 repository.AddEntity(model);
-                if (repository.SaveAll()) {
+                if (repository.SaveAll())
+                {
                     return Created($"api/parkings/{model.Id}", model);
                 }
 
-               
+
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.LogError($"Failed to save a new Parking {ex}");
             }

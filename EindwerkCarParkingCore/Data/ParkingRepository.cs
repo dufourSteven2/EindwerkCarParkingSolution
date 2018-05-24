@@ -29,7 +29,11 @@ namespace EindwerkCarParkingCore.Data
             try
             {
                 _logger.LogInformation("GetAllParkings was called");
-                return _ctx.Parkings.ToList();
+                //return _ctx.Parkings.ToList();
+                return _ctx.Parkings
+                    .Include(l => l.Locatie)                   
+                    .ThenInclude(i => i.Gemeente)
+                    .ToList();
 
             }
             catch (Exception ex)
