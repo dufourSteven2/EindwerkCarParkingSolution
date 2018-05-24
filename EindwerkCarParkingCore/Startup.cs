@@ -39,29 +39,34 @@ namespace EindwerkCarParkingCore
                 cfg =>
                 {
                     cfg.User.RequireUniqueEmail = true;
+                    cfg.SignIn.RequireConfirmedEmail = false;  //emailbevestiging vereisen
+                   
                 }).AddEntityFrameworkStores<EindwerkCarParkingContext>();
-               
+
+            services.AddAuthentication()  //support van 2 soorten authentificatie
+    .AddCookie()   //coockie authentication
+    .AddJwtBearer(cfg =>
+    {
+        cfg.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidIssuer = Configuration["Tokens:Issuer"],
+            ValidAudience = Configuration["Tokens:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+        };
+
+    });   //tokens authentication
 
             services.AddDbContext<EindwerkCarParkingContext>(cfg=>
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("EindwerkCarParkingString"));
             });
 
-            services.AddAuthentication()  //support van 2 soorten authentificatie
-                .AddCookie()   //coockie authentication
-                .AddJwtBearer(cfg=>
-                    cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-                    {
-                        ValidIssuer = Configuration["Tokens:Issuer"],
-                        ValidAudience = Configuration["Tokens:Audience"],
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
 
-                    }
-                );    //tokens authentication
             services.AddTransient<lMailService, NullMailService>();
 
             //support for real mail  servie
             services.AddTransient<ParkingSeeder>();
+            services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddScoped<IParkingRepository, ParkingRepository>(); //door in scope dit te plaatsen wordt deze aangesproken wanneer het gevraagd word
             //hierna volgt code voor automapper
