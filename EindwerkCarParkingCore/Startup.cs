@@ -39,9 +39,9 @@ namespace EindwerkCarParkingCore
                 cfg =>
                 {
                     cfg.User.RequireUniqueEmail = true;
-                    cfg.SignIn.RequireConfirmedEmail = false;  //emailbevestiging vereisen
-                   
-                }).AddEntityFrameworkStores<EindwerkCarParkingContext>();
+                    cfg.SignIn.RequireConfirmedEmail = true;  //emailbevestiging vereisen
+
+                }).AddEntityFrameworkStores<EindwerkCarParkingContext>().AddDefaultTokenProviders();
 
             services.AddAuthentication()  //support van 2 soorten authentificatie
     .AddCookie()   //coockie authentication
