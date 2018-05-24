@@ -26,13 +26,6 @@ namespace EindwerkCarParkingCore.Controllers
             this.logger = logger;
             this.mapper = mapper;
         }
-        // /////////
-        //[HttpGet]
-        //public IEnumerable<Parking> Get()
-        //{
-        //    return repository.GetAllParkings();
-        //}
-        // /////////
 
         [HttpGet]
         public IActionResult Get()
