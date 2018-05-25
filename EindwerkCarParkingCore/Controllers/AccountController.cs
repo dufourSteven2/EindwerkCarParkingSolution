@@ -55,6 +55,13 @@ namespace EindwerkCarParkingCore.Controllers
             {
                 var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password,
                     model.RememberMe, false);
+
+                // controle of de user het emailadres al bevestigd heeft, zoniet dit melden en een nieuwe mail sturen 
+                var user = await _userManager.FindByEmailAsync(model.Username); bool isEmailconfirmed = await _userManager.IsEmailConfirmedAsync(user); if (!isEmailconfirmed)
+                {
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(user, "Confirm your account-Resend"); ViewBag.Message = "You must have a confirmed email to log on."; return View("Error");
+                }
+
                 if (result.Succeeded)
                 {
                     if (Request.Query.Keys.Contains("ReturnUrl"))
@@ -102,10 +109,12 @@ namespace EindwerkCarParkingCore.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code,
-                   Request.Scheme);
-                    await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                    //  var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //  var callbackUrl = Url.EmailConfirmationLink(user.Id, code,
+                    // Request.Scheme);
+                    //   await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(user, "Confirm your account");
                     // onderstaande lijn in comment
                     // niet automatisch inloggen na registreren
                     // we vereisen emailconfirmatie
@@ -254,7 +263,16 @@ namespace EindwerkCarParkingCore.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
-
+        private async Task<string> SendEmailConfirmationTokenAsync(ParkingUser user, string subject)
+        {
+            string code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account",
+            new { userId = user.Id, code = code }, protocol: Request.Scheme);
+            await _emailSender.SendEmailAsync(user.Email, subject,
+            "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>"
+            );
+            return callbackUrl;
+        }
         #endregion
     }
 }
