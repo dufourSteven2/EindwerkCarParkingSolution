@@ -1,4 +1,5 @@
-﻿namespace EindwerkCarParkingCore.Services
+﻿
+namespace EindwerkCarParkingCore.Services
 {
     public interface lMailService
     {
