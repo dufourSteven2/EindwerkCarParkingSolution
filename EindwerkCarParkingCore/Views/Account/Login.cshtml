@@ -30,9 +30,16 @@
             <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-success" />
             </div>
+            <div class="form-group">
+                <p>
+                    <a asp-action="ForgotPassword">Forgot your password?</a>
+                </p>
+                <p>
+                    <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+                </p>
+            </div>
         </form>
-        <div><a asp-controller="Account" asp-action="Register">Registreer</a></div>
-        <div><a asp-controller="Account" asp-action="ForgotPassword">Paswoord vergeten</a></div>
+
     </div>
 
 </div>

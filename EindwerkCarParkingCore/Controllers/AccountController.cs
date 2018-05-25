@@ -18,7 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace EindwerkCarParkingCore.Controllers
 {
-    [Authorize]
+   // [Authorize]
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
@@ -38,7 +38,7 @@ namespace EindwerkCarParkingCore.Controllers
             _logger = logger;
         }
         [HttpGet]
-        [AllowAnonymous]
+     //   [AllowAnonymous]
         public IActionResult Login()
         {
             if(this.User.Identity.IsAuthenticated)
@@ -49,7 +49,7 @@ namespace EindwerkCarParkingCore.Controllers
         }
 
         [HttpPost]
-        public async Task <IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace EindwerkCarParkingCore.Controllers
                     }
                     else { }
                     RedirectToAction("Home", "Index");
-                } 
+                }
             }
             ModelState.TryAddModelError("", "Failed to login");
             return View();
