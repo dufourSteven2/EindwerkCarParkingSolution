@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EindwerkCarParkingCore.Models
 {
-   public class ParkingsDTO
+    public class ParkingsDTO
     {
         public int Id { get; set; }
         public string ParkingNaam { get; set; }
@@ -18,6 +18,7 @@ namespace EindwerkCarParkingCore.Models
         public int Id { get; set; }
         public string ParkingNaam { get; set; }
         public string LocatieStraat { get; set; }
+        public string LocatieNr { get; set; }
         public string GemeenteGemeenteNaam { get; set; }
         public string LandLandNaam { get; set; }
     }

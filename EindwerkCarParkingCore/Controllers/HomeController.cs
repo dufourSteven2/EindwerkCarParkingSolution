@@ -68,10 +68,13 @@ namespace EindwerkCarParkingCore.Controllers
         // Test Mapper met actionresultdtotester bron https://www.youtube.com/watch?v=5WP36DIwdlI       
         public IActionResult DtoTester()
         {
+
+
             var item = _context.GetAllParkings();
-            var mappedItem = _mapper.Map<List<ParkingsDTO>>(item);
+            var mappedItem = _mapper.Map<IEnumerable<ParkingsDTO>>(item);
 
             return View(mappedItem);
+           
             
         } 
 

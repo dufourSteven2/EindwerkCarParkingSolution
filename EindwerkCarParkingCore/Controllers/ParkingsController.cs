@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EindwerkCarParkingCore.Data;
+using EindwerkCarParkingCore.Models;
 using EindwerkCarParkingLib;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -13,17 +14,18 @@ using System.Threading.Tasks;
 namespace EindwerkCarParkingCore.Controllers
 {
     [Route("api/[Controller]")]
-   // [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
     public class ParkingsController : Controller
     {
         private readonly IParkingRepository repository;
         private readonly ILogger<ParkingsController> logger;
+
         private readonly IMapper mapper;
 
         public ParkingsController(IParkingRepository repository, ILogger<ParkingsController>logger, IMapper mapper)
         {
             this.repository = repository;
             this.logger = logger;
+
             this.mapper = mapper;
         }
 
@@ -32,12 +34,12 @@ namespace EindwerkCarParkingCore.Controllers
         {
             try
             {
-                return Ok(repository.GetAllParkings());
+                return Ok(mapper.Map<IEnumerable<Parking>, IEnumerable<ParkingsDTO>>(repository.GetAllParkings()));
             }
             catch (Exception ex)
             {
-                logger.LogError($"Failed to get Parkingen: {ex}");
-                return BadRequest("Failed to get Parkingen");
+                logger.LogError($"Failed to get Parkings: {ex}");
+                return BadRequest("Failed to get Parkings");
             }
         }
 
@@ -47,38 +49,124 @@ namespace EindwerkCarParkingCore.Controllers
             try
             {
                 var parking = repository.GetParkingById(id);
-                if (parking != null) return Ok(parking);
+                if (parking != null) return Ok(mapper.Map<Parking, ParkingsDTO>(parking));
                 else return NotFound();
             }
             catch (Exception ex)
             {
-                logger.LogError($"Failed to get Parkingen: {ex}");
-                return BadRequest("Failed to get Parkingen");
+                logger.LogError($"Failed to get Parkings: {ex}");
+                return BadRequest("Failed to get Parkings");
             }
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Parking model)
+        public IActionResult Post([FromBody]ParkingsDTO model)
         {
-            //add to db
             try
             {
-                repository.AddEntity(model);
-                if (repository.SaveAll())
+                if (ModelState.IsValid)
                 {
-                    return Created($"api/parkings/{model.Id}", model);
+                    var newParking = mapper.Map<ParkingsDTO, Parking>(model);
+
+                    if (newParking.Id == 1)
+                    {
+                        newParking.Id = 1;
+                        newParking.Locatie.Straat = " " ;
+                        newParking.ParkingNaam = "";
+                    }
+
+                    repository.AddEntity(model);
+                    if (repository.SaveAll())
+                    {
+
+
+                        return Created($"api/parkings/{newParking.Id}", mapper.Map<Parking, ParkingsDTO>(newParking));
+                    }
                 }
-
-
-
+                else
+                {
+                    return BadRequest(ModelState);
+                }
             }
             catch (Exception ex)
             {
-                logger.LogError($"Failed to save a new Parking {ex}");
-            }
-            return BadRequest("Failed to save new order");
+                logger.LogError($"Failed to get Parkings: {ex}");
 
+            }
+            return BadRequest("Failed to save new parking");
         }
+
+
     }
+
+    // [Route("api/[Controller]")]
+    //// [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
+    // public class ParkingsController : Controller
+    // {
+    //     private readonly IParkingRepository repository;
+    //     private readonly ILogger<ParkingsController> logger;
+    //     private readonly IMapper mapper;
+
+    //     public ParkingsController(IParkingRepository repository, ILogger<ParkingsController>logger, IMapper mapper)
+    //     {
+    //         this.repository = repository;
+    //         this.logger = logger;
+    //         this.mapper = mapper;
+    //     }
+
+    //     [HttpGet]
+    //     public IActionResult Get()
+    //     {
+    //         try
+    //         {
+    //             //return Ok(mapper.Map<IEnumerable<Parking>, IEnumerable<ParkingsDetailDTO>>(repository.GetAllParkings()));
+    //             return Ok(repository.GetAllParkings());
+    //         }
+    //         catch (Exception ex)
+    //         {
+    //             logger.LogError($"Failed to get Parkingen: {ex}");
+    //             return BadRequest("Failed to get Parkingen");
+    //         }
+    //     }
+
+    //     [HttpGet("{id:int}")]
+    //     public IActionResult Get(int id)
+    //     {
+    //         try
+    //         {
+    //             var parking = repository.GetParkingById(id);
+    //             if (parking != null) return Ok(mapper.Map<Parking, ParkingsDetailDTO>(parking));
+    //             else return NotFound();
+    //         }
+    //         catch (Exception ex)
+    //         {
+    //             logger.LogError($"Failed to get Parkingen: {ex}");
+    //             return BadRequest("Failed to get Parkingen");
+    //         }
+    //     }
+
+    //     [HttpPost]
+    //     public IActionResult Post([FromBody]Parking model)
+    //     {
+    //         //add to db
+    //         try
+    //         {
+    //             repository.AddEntity(model);
+    //             if (repository.SaveAll())
+    //             {
+    //                 return Created($"api/parkings/{model.Id}", model);
+    //             }
+
+
+
+    //         }
+    //         catch (Exception ex)
+    //         {
+    //             logger.LogError($"Failed to save a new Parking {ex}");
+    //         }
+    //         return BadRequest("Failed to save new order");
+
+    //     }
+    // }
 
 }

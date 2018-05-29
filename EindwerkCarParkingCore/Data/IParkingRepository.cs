@@ -10,8 +10,12 @@ namespace EindwerkCarParkingCore.Data
         IEnumerable<Parking> GetParkingByPlace(string gemeente);
         Parking  GetParkingById(int id);
 
+        IEnumerable<Locatie> GetAllLocaties();
+        Locatie GetLocatieById(int id);
+
         //methods 
-       void AddEntity(object model);
+        void AddEntity(object model);
         bool SaveAll();
+        
     }
 }

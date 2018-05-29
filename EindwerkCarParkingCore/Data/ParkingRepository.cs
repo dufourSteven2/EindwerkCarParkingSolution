@@ -24,6 +24,14 @@ namespace EindwerkCarParkingCore.Data
             _ctx.Add(model);
         }
 
+        public IEnumerable<Locatie> GetAllLocaties()
+        {
+            return _ctx.Locaties
+                .Include(g => g.Gemeente)
+                .Include(g => g.Gemeente.Land)
+                .ToList();
+        }
+
         public IEnumerable<Parking> GetAllParkings()
         {
             try
@@ -34,6 +42,7 @@ namespace EindwerkCarParkingCore.Data
                     .Include(l => l.Locatie)
                     .Include(l => l.Eigenaar)
                     .Include(l => l.Soort)
+                    .Include(l => l.Locatie.Gemeente)
                     .Include(l => l.Locatie.Gemeente.Land)
                     //.ThenInclude(i => i.Gemeente)
                     .ToList();
@@ -47,13 +56,23 @@ namespace EindwerkCarParkingCore.Data
 
         }
 
+        public Locatie GetLocatieById(int id)
+        {
+            return _ctx.Locaties
+                .Include(g => g.Gemeente)
+                .Where(g => g.Id == id)
+                .FirstOrDefault();
+        }
+
         public Parking GetParkingById(int id)
         {
             try
             {
-                _logger.LogInformation("GetAllProducts was called");
-                return _ctx.Parkings.Include(p => p.Locatie)
-                    .Where(p => p.Id == id).FirstOrDefault();
+                _logger.LogInformation("GetAllParkings was called");
+                return _ctx.Parkings
+                    .Include(p => p.Locatie)
+                    .Where(p => p.Id == id)
+                    .FirstOrDefault();
 
             }
             catch (Exception ex)

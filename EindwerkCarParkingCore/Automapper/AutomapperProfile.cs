@@ -12,17 +12,17 @@ namespace EindwerkCarParkingCore.Automapper
     {
         public AutomapperProfile()
         {
-            CreateMap<Parking, ParkingsDTO>()
-                .ForMember(dto => dto.GemeenteGemeenteNaam, conf => conf.MapFrom(gem => gem.Locatie.Gemeente.GemeenteNaam));
-            CreateMap<Parking, ParkingsDetailDTO>()
-            .ForMember(dto => dto.GemeenteGemeenteNaam, conf => conf.MapFrom(gem => gem.Locatie.Gemeente.GemeenteNaam))
-            .ForMember(dto => dto.LocatieStraat, conf => conf.MapFrom(lo => lo.Locatie.Straat));
-            CreateMap<Locatie, LocatieDTO>();
-            CreateMap<Gemeente, GemeenteDTO>();
-            CreateMap<Land, LandDTO>();
-            CreateMap<Soort, SoortDTO>();
-            CreateMap<Eigenaar, EigenaarDTO>();
-            CreateMap<Totaal, ToataalDTO>();
+            //CreateMap<Parking, ParkingsDTO>()
+            //    .ForMember(dto => dto.GemeenteGemeenteNaam, conf => conf.MapFrom(gem => gem.Locatie.Gemeente.GemeenteNaam));
+            //CreateMap<Parking, ParkingsDetailDTO>()
+            //.ForMember(dto => dto.GemeenteGemeenteNaam, conf => conf.MapFrom(gem => gem.Locatie.Gemeente.GemeenteNaam))
+            //.ForMember(dto => dto.LocatieStraat, conf => conf.MapFrom(lo => lo.Locatie.Straat));
+            //CreateMap<Locatie, LocatieDTO>();
+            //CreateMap<Gemeente, GemeenteDTO>();
+            //CreateMap<Land, LandDTO>();
+            //CreateMap<Soort, SoortDTO>();
+            //CreateMap<Eigenaar, EigenaarDTO>();
+            //CreateMap<Totaal, ToataalDTO>();
 
         }
     }

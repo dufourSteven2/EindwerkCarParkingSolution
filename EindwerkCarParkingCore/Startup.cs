@@ -61,8 +61,7 @@ namespace EindwerkCarParkingCore
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("EindwerkCarParkingString"));
             });
-
-
+            //services.AddAutoMapper(); //toevoegen automapper
             services.AddTransient<lMailService, NullMailService>();
 
             //support for real mail  servie
@@ -70,6 +69,8 @@ namespace EindwerkCarParkingCore
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddScoped<IParkingRepository, ParkingRepository>(); //door in scope dit te plaatsen wordt deze aangesproken wanneer het gevraagd word
+
+
             //hierna volgt code voor automapper
             var config = new MapperConfiguration(cfg =>
             {
@@ -87,7 +88,7 @@ namespace EindwerkCarParkingCore
                     opt.Filters.Add(new RequireHttpsAttribute());  //Https op website wanneer die in productie gaat
                 }
 
-            }).AddJsonOptions(opt=> opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            }).AddJsonOptions(opt=> opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);//setting nodig anders blijft deze hier hangen en geen weergave voor bv gemeente
             
 
         }
