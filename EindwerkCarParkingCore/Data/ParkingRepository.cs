@@ -47,6 +47,14 @@ namespace EindwerkCarParkingCore.Data
 
         }
 
+        public IEnumerable<Parking> GetLast5AddedParkings()
+        {
+            _logger.LogInformation("get 5 last added Parkings");
+
+            return _ctx.Parkings.Include( p => p.Locatie.Gemeente)
+                .OrderByDescending(p => p.Id).Take(5);
+        }
+
         public Parking GetParkingById(int id)
         {
             try

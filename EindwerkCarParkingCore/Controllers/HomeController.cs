@@ -29,7 +29,9 @@ namespace EindwerkCarParkingCore.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var item = _context.GetLast5AddedParkings();
+           var mappedItem = _mapper.Map<IEnumerable<ParkingsDetailDTO>>(item);
+            return View(mappedItem);
         }
 
 
