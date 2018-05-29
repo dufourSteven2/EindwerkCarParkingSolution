@@ -2,6 +2,7 @@
 @model IEnumerable<ParkingsDetailDTO>
 @{ 
     string landnaam = null;
+    string gemeentenaam = null;
 }
 
 <!DOCTYPE html>
@@ -11,12 +12,8 @@
  
             <!-- dropdown-uitklapper -->
             <div class="collapse navbar-collapse altijdoproepbarenavbar" id="bs-example-navbar-collapse-1">
-
-                <ul class="nav navbar-nav navbar-right ">
-
-
-
-                    <li class="dropdown">
+   <ul>
+        <li class="dropdown">
         <a href="Productpagina.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Steden<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
 
@@ -39,16 +36,30 @@
 
                         if (p.LandLandNaam != landnaam)
                         {
-                            <li>@p.LandLandNaam</li>
+                            <li><h6>@p.LandLandNaam</h6></li>
 
                         }
+
+                        if (p.GemeenteGemeenteNaam != gemeentenaam)
+                        {
+                            if (p.LandLandNaam == landnaam)
+                            {
+                           <li>@p.GemeenteGemeenteNaam</li>
+                            }
+                            else
+                            {
+                                
+
+                            }
+                        }
                         landnaam = p.LandLandNaam;
+                        gemeentenaam = p.GemeenteGemeenteNaam;
 
                     }
 
                 </ul>
                 </li>
-            
+       </ul>     
         </div><!-- /.container-fluid -->
 
 
