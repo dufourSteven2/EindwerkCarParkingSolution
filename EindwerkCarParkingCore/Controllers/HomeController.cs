@@ -64,13 +64,15 @@ namespace EindwerkCarParkingCore.Controllers
 
         public IActionResult SearchParking()
         {
-            return View();
+            var item = _context.GetAllParkings();
+            var mappedItem = _mapper.Map<IEnumerable<ParkingsDTO>>(item);
+            return View(mappedItem);
         }
         // Test Mapper met actionresultdtotester bron https://www.youtube.com/watch?v=5WP36DIwdlI       
         public IActionResult DtoTester()
         {
             var item = _context.GetAllParkings();
-            var mappedItem = _mapper.Map<List<ParkingsDTO>>(item);
+            var mappedItem = _mapper.Map<IEnumerable<ParkingsDTO>>(item);
 
             return View(mappedItem);
             
@@ -83,10 +85,10 @@ namespace EindwerkCarParkingCore.Controllers
 
         public IActionResult Parkings()
         {
-            //var item = _context.Parkings;
-            var results = _context.GetAllParkings();
-            //foreach (Parking p in parkings)
-            return View(results);
+            var item = _context.GetAllParkings();
+            var mappedItem = _mapper.Map<IEnumerable<ParkingsDetailDTO>>(item);
+            return View(mappedItem);
+
         }
     }
 }
