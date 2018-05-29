@@ -1,0 +1,60 @@
+﻿@model EindwerkCarParkingLib.Parking
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Parking</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkingNaam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParkingNaam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Totaal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Totaal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bezet)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bezet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PublicatieToelating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PublicatieToelating)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkingUsersId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParkingUsersId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Locatie)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Locatie.Straat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Soort)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Soort.SoortNaam)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -15,14 +15,15 @@ namespace EindwerkCarParkingLib
         public string ParkingNaam { get; set; }
         public int Totaal { get; set; }
         public int Bezet { get; set; }
+        public bool PublicatieToelating { get; set; }  //wanneer deze bool op true staat, kan de parking getoond worden op de website
 
         //Foreign Key
-        public int EigenaarId { get; set; }
+        public int ParkingUsersId { get; set; }
         public int SoortId { get; set; }
         public int LocatieId { get; set; }
 
         //Navigation Property
-        public virtual Eigenaar Eigenaar { get; set; }
+        public virtual ParkingUsers Eigenaar { get; set; }
         public virtual Soort Soort { get; set; }
       public virtual Locatie Locatie { get; set; }
     }

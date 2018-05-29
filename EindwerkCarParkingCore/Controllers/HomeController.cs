@@ -55,6 +55,7 @@ namespace EindwerkCarParkingCore.Controllers
             return View();
         }
 
+        //toevoegen parking voor gerigistreerde accounts
         [Authorize]
         public IActionResult AddParking()
         {

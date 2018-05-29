@@ -22,7 +22,7 @@ namespace EindwerkCarParkingCore.Models
         public string LandLandNaam { get; set; }
     }
 
-    public class EigenaarDTO
+    public class ParkingUsersDTO
     {
         public int Id { get; set; }
         public string EigenaarNaam { get; set; }

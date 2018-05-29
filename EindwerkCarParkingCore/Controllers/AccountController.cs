@@ -1,34 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
-using EindwerkCarParkingCore.Data.Entities;
 using EindwerkCarParkingCore.extensions;
 using EindwerkCarParkingCore.Services;
 using EindwerkCarParkingCore.ViewModels;
+using EindwerkCarParkingLib;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 
 namespace EindwerkCarParkingCore.Controllers
 {
-   // [Authorize]
+    // [Authorize]
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
         private readonly ILogger<AccountController> _logger;
-        private readonly SignInManager<ParkingUser> _signInManager;
-        private readonly UserManager<ParkingUser> _userManager;
+        private readonly SignInManager<ParkingUsers> _signInManager;
+        private readonly UserManager<ParkingUsers> _userManager;
         private readonly IEmailSender _emailSender;
 
-        public AccountController( SignInManager<ParkingUser> signInManager, 
-            UserManager<ParkingUser> UserManager ,
+        public AccountController( SignInManager<ParkingUsers> signInManager, 
+            UserManager<ParkingUsers> UserManager ,
             IEmailSender emailSender,
             ILogger<AccountController> logger)
         {
@@ -57,7 +51,8 @@ namespace EindwerkCarParkingCore.Controllers
                     model.RememberMe, false);
 
                 // controle of de user het emailadres al bevestigd heeft, zoniet dit melden en een nieuwe mail sturen 
-                var user = await _userManager.FindByEmailAsync(model.Username); bool isEmailconfirmed = await _userManager.IsEmailConfirmedAsync(user); if (!isEmailconfirmed)
+                var user = await _userManager.FindByEmailAsync(model.Username); bool isEmailconfirmed = await _userManager.IsEmailConfirmedAsync(user);
+                if (!isEmailconfirmed)
                 {
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user, "Confirm your account-Resend"); ViewBag.Message = "You must have a confirmed email to log on."; return View("Error");
                 }
@@ -71,9 +66,14 @@ namespace EindwerkCarParkingCore.Controllers
                     else { }
                     RedirectToAction("Home", "Index");
                 }
+                else
+                {
+                     ModelState.TryAddModelError("", "Failed to login");
+                }
+
             }
-            ModelState.TryAddModelError("", "Failed to login");
-            return View();
+
+            return RedirectToAction("Index", "MyAccount");
         }
 
         [HttpGet]
@@ -100,7 +100,7 @@ namespace EindwerkCarParkingCore.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new ParkingUser
+                var user = new ParkingUsers
                 {
                     UserName = model.Email,
                     Email = model.Email
@@ -263,7 +263,7 @@ namespace EindwerkCarParkingCore.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
-        private async Task<string> SendEmailConfirmationTokenAsync(ParkingUser user, string subject)
+        private async Task<string> SendEmailConfirmationTokenAsync(ParkingUsers user, string subject)
         {
             string code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var callbackUrl = Url.Action("ConfirmEmail", "Account",

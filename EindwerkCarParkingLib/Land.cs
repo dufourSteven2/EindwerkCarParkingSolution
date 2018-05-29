@@ -14,6 +14,6 @@ namespace EindwerkCarParkingLib
 
         public string LandNaam { get; set; }
 
-        public virtual ICollection<Gemeente> gemeente { get; set; }
+        public virtual ICollection<Gemeente> Gemeente { get; set; }
     }
 }

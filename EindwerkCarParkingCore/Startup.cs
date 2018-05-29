@@ -12,11 +12,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
 using EindwerkCarParkingCore.Automapper;
-using EindwerkCarParkingCore.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using EindwerkCarParkingLib;
 
 namespace EindwerkCarParkingCore
 {
@@ -36,7 +36,7 @@ namespace EindwerkCarParkingCore
         public void ConfigureServices(IServiceCollection services)
         {
             //add identity serverice
-            services.AddIdentity<ParkingUser, IdentityRole>(
+            services.AddIdentity<ParkingUsers, IdentityRole>(
                 cfg =>
                 {
                     cfg.User.RequireUniqueEmail = true;
@@ -120,7 +120,7 @@ namespace EindwerkCarParkingCore
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var seeder = scope.ServiceProvider.GetService<ParkingSeeder>();
-                    seeder.Seed().Wait();
+                    seeder.Seed();
                 }
             }
         }
