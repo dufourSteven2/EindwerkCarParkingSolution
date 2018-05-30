@@ -17,6 +17,6 @@ namespace EindwerkCarParkingLib
 
         //Navigation property
 
-        public virtual ICollection<Soort> Soorts { get; set; }
+       // public virtual ICollection<Soort> Soorts { get; set; }
     }
 }

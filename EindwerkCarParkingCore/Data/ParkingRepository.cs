@@ -1,4 +1,5 @@
-﻿using EindwerkCarParkingLib;
+﻿using EindwerkCarParkingCore.Models;
+using EindwerkCarParkingLib;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -33,9 +34,9 @@ namespace EindwerkCarParkingCore.Data
                 return _ctx.Parkings
                     .Include(l => l.Locatie)
                     .Include(l => l.Eigenaar)
-                    .Include(l => l.Soort)
+                 //   .Include(l => l.Soort)
                     .Include(l => l.Locatie.Gemeente.Land)
-                    //.ThenInclude(i => i.Gemeente)
+                    .ThenInclude(i => i.Gemeente)
                     .ToList();
 
             }
@@ -45,6 +46,20 @@ namespace EindwerkCarParkingCore.Data
                 return null;
             }
 
+        }
+
+        public IEnumerable<LandDTO> getLanden()
+        {
+            _logger.LogInformation("get all landen");
+            IEnumerable<LandDTO> landen = _ctx.Lands.AsNoTracking()
+                .OrderBy(l => l.LandNaam).Select(
+                l => new LandDTO
+                {
+                    Id = l.Id,
+                    LandNaam = l.LandNaam.ToString()
+                }).ToList();
+
+            return landen;
         }
 
         public IEnumerable<Parking> GetLast5AddedParkings()
@@ -59,8 +74,9 @@ namespace EindwerkCarParkingCore.Data
         {
             try
             {
-                _logger.LogInformation("GetAllProducts was called");
-                return _ctx.Parkings.Include(p => p.Locatie)
+                _logger.LogInformation("Get ALL Parkings was called");
+                return _ctx.Parkings.Include(p => p.Locatie).Include(p => p.Locatie.Gemeente)
+                    .Include(p => p.Locatie.Gemeente.Land)
                     .Where(p => p.Id == id).FirstOrDefault();
 
             }

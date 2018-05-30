@@ -23,7 +23,7 @@ namespace EindwerkCarParkingCore.Automapper
             CreateMap<Locatie, LocatieDTO>();
             CreateMap<Gemeente, GemeenteDTO>();
             CreateMap<Land, LandDTO>();
-            CreateMap<Soort, SoortDTO>();
+           // CreateMap<Soort, SoortDTO>();
             CreateMap<ParkingUsers, ParkingUsersDTO>();
             CreateMap<Totaal, ToataalDTO>();
 

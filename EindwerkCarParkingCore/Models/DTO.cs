@@ -48,11 +48,11 @@ namespace EindwerkCarParkingCore.Models
         public int Id { get; set; }
         public string LandNaam { get; set; }
     }
-    public class SoortDTO
-    {
-        public int Id { get; set; }
-        public string SoortNaam { get; set; }
-    }
+    //public class SoortDTO
+    //{
+    //    public int Id { get; set; }
+    //    public string SoortNaam { get; set; }
+    //}
 
     public class ToataalDTO
     {

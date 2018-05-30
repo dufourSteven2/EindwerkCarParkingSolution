@@ -22,7 +22,7 @@ namespace EindwerkCarParkingCore.Controllers
         // GET: MyAccount
         public async Task<IActionResult> Index()
         {
-            var eindwerkCarParkingContext = _context.Parkings.Include(p => p.Locatie).Include(p => p.Soort);
+            var eindwerkCarParkingContext = _context.Parkings.Include(p => p.Locatie);
             return View(await eindwerkCarParkingContext.ToListAsync());
         }
 
@@ -36,7 +36,7 @@ namespace EindwerkCarParkingCore.Controllers
 
             var parking = await _context.Parkings
                 .Include(p => p.Locatie)
-                .Include(p => p.Soort)
+              //  .Include(p => p.Soort)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (parking == null)
             {
@@ -50,7 +50,7 @@ namespace EindwerkCarParkingCore.Controllers
         public IActionResult Create()
         {
             ViewData["LocatieId"] = new SelectList(_context.Locaties, "Id", "Straat");
-            ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam");
+           // ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam");
             return View();
         }
 
@@ -68,7 +68,7 @@ namespace EindwerkCarParkingCore.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["LocatieId"] = new SelectList(_context.Locaties, "Id", "Straat", parking.LocatieId);
-            ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam", parking.SoortId);
+         //   ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam", parking.SoortId);
             return View(parking);
         }
 
@@ -86,7 +86,7 @@ namespace EindwerkCarParkingCore.Controllers
                 return NotFound();
             }
             ViewData["LocatieId"] = new SelectList(_context.Locaties, "Id", "Straat", parking.LocatieId);
-            ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam", parking.SoortId);
+         //   ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam", parking.SoortId);
             return View(parking);
         }
 
@@ -123,7 +123,7 @@ namespace EindwerkCarParkingCore.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["LocatieId"] = new SelectList(_context.Locaties, "Id", "Straat", parking.LocatieId);
-            ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam", parking.SoortId);
+         //   ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam", parking.SoortId);
             return View(parking);
         }
 
@@ -137,7 +137,7 @@ namespace EindwerkCarParkingCore.Controllers
 
             var parking = await _context.Parkings
                 .Include(p => p.Locatie)
-                .Include(p => p.Soort)
+            //    .Include(p => p.Soort)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (parking == null)
             {

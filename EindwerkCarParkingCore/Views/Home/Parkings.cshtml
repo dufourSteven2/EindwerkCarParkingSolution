@@ -1,67 +1,30 @@
 ﻿@using EindwerkCarParkingCore.Models
 @model IEnumerable<ParkingsDetailDTO>
+
 @{ 
-    string landnaam = null;
-    string gemeentenaam = null;
+
 }
 
 <!DOCTYPE html>
 <html lang="nl-BE">
 <body>
 
- 
-            <!-- dropdown-uitklapper -->
-            <div class="collapse navbar-collapse altijdoproepbarenavbar" id="bs-example-navbar-collapse-1">
-   <ul>
-        <li class="dropdown">
-        <a href="Productpagina.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Steden<span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
 
-            @*foreach (ParkingsDetailDTO b in Model.Select(l => l.LandLandNaam).Distinct())
-            {
-                                                                            <li>
-                    <b><a href="#">@b.LandLandNaam</a></b> @*<i>@b.GemeenteGemeenteNaam</i>
-                    @*</li>*@
-
-
-                    @* } *@
-
-
-                    @*</ul>*@
-
-                    @*</li>*@
-                    
-                    @foreach (ParkingsDetailDTO p in Model)
+    <div class="dropdown dropdown dropright">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Landen
+            </button>
+            <div class="dropdown-menu">
+                <ul>
+                    @foreach (var land in ViewBag.ListofLanden)
                     {
-
-                        if (p.LandLandNaam != landnaam)
-                        {
-                            <li><h6>@p.LandLandNaam</h6></li>
-
-                        }
-
-                        if (p.GemeenteGemeenteNaam != gemeentenaam)
-                        {
-                            if (p.LandLandNaam == landnaam)
-                            {
-                           <li>@p.GemeenteGemeenteNaam</li>
-                            }
-                            else
-                            {
-                                
-
-                            }
-                        }
-                        landnaam = p.LandLandNaam;
-                        gemeentenaam = p.GemeenteGemeenteNaam;
+                        <li>@land.LandNaam</li>
 
                     }
-
                 </ul>
-                </li>
-       </ul>     
-        </div><!-- /.container-fluid -->
 
+            </div>
+        </div>
 
 
 
@@ -100,51 +63,6 @@
 
     </script>
 
-    <script type="text/javascript">
- @*<!-- De jquery.cookiebar.css file is een eenvoudig bewerkbaar bestand -->*@
-$(document).ready(function(){
-  $.cookieBar({
- 	message: 'Parking-Checker is een fictieve site als eindproject voor onze HBO5 Opleiding Howest Brugge. De site is in beheer van de cursisten Benny en Steven. Alle acties en communicatie via de site Parking-Checker zijn fictief en niet rechtsgeldig. Overeenkomsten met ... of geregistreerde merknamen zijn niet intentioneel en hebben enkel educatieve doeleinden. Aanvullend: door "Akkoord" aan te klikken, krijgen we toestemming om cookies op uw computer te bewaren.',
-    acceptButton: true,
-    acceptText: 'Akkoord',
-    autoEnable: true,
-    acceptOnContinue: false,
-    forceShow: true,
-    element: 'section',
-    append: true,
-    fixed: false,
-    bottom: false
-}
-
-
-  );
-});		</script>
-
-
-    <!-- Hieronder bootstrap uitwerken voor modal view -->
-    <!-- Bootstrap Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document" style="left:0;">
-            <!--om modal links weer te geven-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="myModalLabel">ParkingDetail</h4>
-                </div>
-                <div class="modal-body">
-                    Hier komen de detailgegevevens van een parking.
-                </div>
-                <div class="modal-content" id="dvMap" style="height: 350px; width: 350px; margin: auto">
-                    Hier voorlopig style google maps weergave tot alles uitgewerkt is
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Sluiten</button>
-                    @*<button type="button" class="btn btn-primary">Save changes</button>*@
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     @section scripts
         {
@@ -165,6 +83,24 @@ $(document).ready(function(){
                         }
                     });
                 });
+
+                populateLisbox = function () {
+
+
+                };
+
+                function GetData() {
+                    $.ajax({
+                        type: "POST",
+                        url: "CS.aspx/GetJsonData",
+                        data: '{}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: OnSuccess,
+                        failure: function (response) {
+                            alert(response.d);
+                        }
+                    });
 
                 showParking = function (header, parking) {
                     var htmlData = '<h4>' + parking.ParkingNaam + '</h4><hr>';
@@ -237,9 +173,7 @@ $(document).ready(function(){
 
                         });
                     }
-                    //}
 
-                    //////////////////////////////////////////////
 
 
                     //var mapOptions = {
@@ -253,64 +187,9 @@ $(document).ready(function(){
                     infoModal.modal('show');
                 }
 
-
-
-                var newParking = {
-                    ParkingNaam: 'Langestraat',
-                    //Totaal: 1500,
-                    //Bezet: 100,
-                    GemeenteGemeenteNaam: 'Brugge',
-                    //EigenaarId: 2,
-                    //EigenaarNaam: 'Kabouter plop',
-                    //SoortId: 2,
-                    //SoortNaam: 'kwebbel',
-                    //LocatieId: 2,
-                    Straat: 'Kortestraat',
-
-                    // We moeten de authorname opvullen om deze straks te kunnen tonen -->
-                    // controllermethod heeft enkel Id van Author nodig voor Insert
-                    // maar doet bij ons geen nieuwe query naar entity
-
-                }
-
-                //$('#btnAdd').on('click', function () {
-                //    $.ajax({
-                //        type: "POST",
-                //        url: url,
-                //        dataType: 'json',
-                //        data: newParking,
-                //        success: function (data) {
-                //            newParking = data;
-                //            showParking('Added Parking:', data);
-                //        }
-                //    });
-                //});
-
-                //$('#btnUpdate').on('click', function () {
-                //    newParking.ParkingNaam = 'Langestraat';
-                //    $.ajax({
-                //        type: "PUT",
-                //        url: url + newParking.Id,
-                //        dataType: 'json',
-                //        data: newParking,
-                //        success: function (data) {
-                //            showParking('Updated Parking:', data);
-                //        }
-                //    });
-                //});
-
-                //$('#btnDelete').on('click', function () {
-                //    $.ajax({
-                //        type: "DELETE",
-                //        url: url + newParking.Id,
-                //        dataType: 'json',
-                //        data: newParking,
-                //        success: function (data) {
-                //            showParking('DELETED Parking:', data);
-                //        }
-                //    });
-                //});
-            });
+      
+              
+            
         </script>
     }
 

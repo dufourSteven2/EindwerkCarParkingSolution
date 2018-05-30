@@ -151,20 +151,20 @@ namespace EindwerkCarParkingCore.Data
                     _context.Gemeentes.Add(g);
                 }
 
-                var Soorten = new Soort[]
-                {
+                //var Soorten = new Soort[]
+                //{
 
-                      new Soort() {Id=1, SoortNaam = "Elektrisch" , TotaalId = 1},
-                      new Soort() {Id=2, SoortNaam = "Standaard", TotaalId = 1 },
-                      new Soort() {Id=3, SoortNaam = "Met een beperking", TotaalId = 1 },
-                      new Soort() {Id=4, SoortNaam = "Abonnee", TotaalId = 1 }
-                };
+                //      new Soort() {Id=1, SoortNaam = "Elektrisch" , TotaalId = 1},
+                //      new Soort() {Id=2, SoortNaam = "Standaard", TotaalId = 1 },
+                //      new Soort() {Id=3, SoortNaam = "Met een beperking", TotaalId = 1 },
+                //      new Soort() {Id=4, SoortNaam = "Abonnee", TotaalId = 1 }
+                //};
 
-                foreach (Soort s in Soorten)
-                {
+                //foreach (Soort s in Soorten)
+                //{
 
-                    _context.Soorts.Add(s);
-                }
+                //    _context.Soorts.Add(s);
+                //}
 
                 var Locaties = new Locatie[]
                 {

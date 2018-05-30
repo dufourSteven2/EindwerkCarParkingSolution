@@ -24,7 +24,6 @@ namespace EindwerkCarParkingCore.Controllers
         {
             _mailservice = mailservice;
             _context = context;
-            /////
             _mapper = mapper;
         }
         public IActionResult Index()
@@ -87,8 +86,12 @@ namespace EindwerkCarParkingCore.Controllers
 
         public IActionResult Parkings()
         {
+            IEnumerable<LandDTO>landenlijst = new List<LandDTO>();
+            landenlijst = _context.getLanden();
+
             var item = _context.GetAllParkings();
             var mappedItem = _mapper.Map<IEnumerable<ParkingsDetailDTO>>(item);
+            ViewBag.ListofLanden = landenlijst;
             return View(mappedItem);
 
         }
