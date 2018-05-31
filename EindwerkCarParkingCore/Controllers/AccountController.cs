@@ -64,7 +64,7 @@ namespace EindwerkCarParkingCore.Controllers
                         return Redirect(Request.Query["ReturnUrl"].First());
                     }
                     else { }
-                    RedirectToAction("Home", "Index");
+                    RedirectToAction("Overzicht", "MyAccount");
                 }
                 else
                 {
@@ -73,7 +73,7 @@ namespace EindwerkCarParkingCore.Controllers
 
             }
 
-            return RedirectToAction("Index", "MyAccount");
+            return RedirectToAction("Overzicht", "MyAccount");
         }
 
         [HttpGet]
