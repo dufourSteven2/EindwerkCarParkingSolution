@@ -4,11 +4,11 @@
     // "EindwerkCarParkingString": "server=(localdb)\\MSSQLLocalDB; Database=CarParkingDatabase; Integrated Security=true; MultipleActiveResultSets=true;"
 
     //sql server laptop benny
-   "EindwerkCarParkingString": "server=LAPTOP-VANDERSC\\SQLEXPRESS; Database=CarParkingDatabase; Integrated Security=true; MultipleActiveResultSets=true;"
+   //"EindwerkCarParkingString": "server=LAPTOP-VANDERSC\\SQLEXPRESS; Database=CarParkingDatabase; Integrated Security=true; MultipleActiveResultSets=true;"
 
 
     //sql server werkstation benny
-//"EindwerkCarParkingString": "server=WERKSTATION-BEN\\SQLEXPRESS; Database=CarParkingDatabase; Integrated Security=true; MultipleActiveResultSets=true;"
+ "EindwerkCarParkingString": "server=WERKSTATION-BEN\\SQLEXPRESS; Database=CarParkingDatabase; Integrated Security=true; MultipleActiveResultSets=true;"
 
   },
   //Logging van foutmelding
