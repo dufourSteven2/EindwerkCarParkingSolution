@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EindwerkCarParkingLib;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using EindwerkCarParkingCore.Models;
 
 namespace EindwerkCarParkingCore.Data
 {
@@ -22,5 +23,6 @@ namespace EindwerkCarParkingCore.Data
         public DbSet<Gemeente> Gemeentes { get; set; }
         public DbSet<Land> Lands { get; set; }
         public DbSet<Totaal> Totaals { get; set; }
+        public DbSet<EindwerkCarParkingCore.Models.ParkingsDetailDTO> ParkingsDetailDTO { get; set; }
     }
 }

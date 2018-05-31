@@ -37,7 +37,7 @@ namespace EindwerkCarParkingCore.Controllers
         {
             if(this.User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Overzicht", "MyAccount");
             }
             return View();
         }
@@ -102,6 +102,7 @@ namespace EindwerkCarParkingCore.Controllers
             {
                 var user = new ParkingUsers
                 {
+                    EigenaarNaam = model.EigenaarNaam,
                     UserName = model.Email,
                     Email = model.Email
                 };

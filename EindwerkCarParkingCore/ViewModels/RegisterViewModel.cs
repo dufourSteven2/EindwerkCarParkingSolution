@@ -8,6 +8,9 @@ namespace EindwerkCarParkingCore.ViewModels
 {
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "EigenaarNaam")]
+        public string EigenaarNaam { get; set; }
 
         [Required]
         [Display(Name = "UserName")]

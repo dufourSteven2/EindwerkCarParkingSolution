@@ -261,7 +261,7 @@ namespace EindwerkCarParkingCore.Data
                             new Parking()
                       {
                                 Id=1,
-                          ParkingUsersId = 2,
+                          ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 1,
                           Totaal = 5,
@@ -272,19 +272,20 @@ namespace EindwerkCarParkingCore.Data
 
                       new Parking()
                       {  Id=2,
-                         ParkingUsersId = 2,
+                         ParkingUsersName = "nonkelchameau3@gmail.com",
                           SoortId = 2,
                           LocatieId = 2,
                           Totaal = 1500,
                           Bezet = 0,
                           ParkingNaam = "Station",
-                          PublicatieToelating = true
+                          PublicatieToelating = true,
+                         
 
                       },
 
                       new Parking()
                       {  Id=3,
-                          ParkingUsersId = 2,
+                          ParkingUsersName = "nonkelchameau4@gmail.com",
                           SoortId = 2,
                           LocatieId = 3,
                           Totaal = 1434,
@@ -294,7 +295,7 @@ namespace EindwerkCarParkingCore.Data
                       },
                       new Parking()
                       {  Id=4,
-                          ParkingUsersId = 2,
+                          ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 4,
                           Totaal = 2151,
@@ -306,7 +307,7 @@ namespace EindwerkCarParkingCore.Data
                       new Parking()
                       {
                             Id=5,
-                         ParkingUsersId = 2,
+                         ParkingUsersName = "nonkelchameau4@gmail.com",
                           SoortId = 2,
                           LocatieId = 5,
                           Totaal = 1434,
@@ -317,7 +318,7 @@ namespace EindwerkCarParkingCore.Data
 
                       new Parking()
                       {  Id=6,
-                          ParkingUsersId = 2,
+                          ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 7,
                           Totaal = 1434,
@@ -328,7 +329,7 @@ namespace EindwerkCarParkingCore.Data
 
                       new Parking()
                       {  Id=7,
-                         ParkingUsersId = 2,
+                         ParkingUsersName = "nonkelchameau3@gmail.com",
                           SoortId = 2,
                           LocatieId = 8,
                           Totaal = 1434,
@@ -339,7 +340,7 @@ namespace EindwerkCarParkingCore.Data
 
                       new Parking()
                       {  Id=8,
-                         ParkingUsersId = 2,
+                         ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 6,
                           Totaal = 1434,
@@ -350,7 +351,7 @@ namespace EindwerkCarParkingCore.Data
 
                       new Parking()
                       {  Id=9,
-                          ParkingUsersId = 2,
+                          ParkingUsersName = "nonkelchameau3@gmail.com",
                           SoortId = 2,
                           LocatieId = 10,
                           Totaal = 1434,
@@ -361,7 +362,7 @@ namespace EindwerkCarParkingCore.Data
 
                       new Parking()
                       {  Id=10,
-                          ParkingUsersId = 2,
+                          ParkingUsersName = "nonkelchameau4@gmail.com",
                           SoortId = 2,
                           LocatieId = 9,
                           Totaal = 1434,
@@ -371,7 +372,7 @@ namespace EindwerkCarParkingCore.Data
                       },
                       new Parking()
                       {  Id=11,
-                          ParkingUsersId = 2,
+                          ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 11,
                           Totaal = 1434,
@@ -381,7 +382,7 @@ namespace EindwerkCarParkingCore.Data
                       },
                       new Parking()
                       {  Id=12,
-                          ParkingUsersId = 2,
+                          ParkingUsersName = "nonkelchameau3@gmail.com",
                           SoortId = 2,
                           LocatieId = 12,
                           Totaal = 1434,

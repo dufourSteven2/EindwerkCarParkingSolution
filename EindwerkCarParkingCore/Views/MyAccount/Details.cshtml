@@ -1,5 +1,5 @@
-﻿@model EindwerkCarParkingLib.Parking
-
+﻿@model ParkingsDetailDTO
+@using EindwerkCarParkingCore.Models
 @{
     ViewData["Title"] = "Details";
 }
@@ -7,54 +7,42 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Parking</h4>
+    <h4>ParkingsDetailDTO</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.ParkingNaam)
         </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ParkingNaam)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Totaal)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Totaal)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Bezet)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Bezet)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PublicatieToelating)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PublicatieToelating)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkingUsersId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ParkingUsersId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Locatie)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Locatie.Straat)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Soort)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Soort.SoortNaam)
-        </dd>
+        @*<dd>
+                @Html.DisplayFor(model => model.GemeenteGemeenteNaam)
+            </dd>*@
+        @*<dt>
+                @Html.DisplayNameFor(model => model.LocatieStraat)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LocatieStraat)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LocatieNummer)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LocatieNummer)
+            </dd>*@
+        @*<dt>
+                @Html.DisplayNameFor(model => model.GemeenteGemeenteNaam)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.GemeenteGemeenteNaam)
+            </dd>*@
+        @*<dt>
+                @Html.DisplayNameFor(model => model.LandLandNaam)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LandLandNaam)
+            </dd>*@
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+@*<div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>*@

@@ -19,7 +19,7 @@ namespace EindwerkCarParkingCore.Automapper
             .ForMember(dto => dto.LocatieStraat, conf => conf.MapFrom(lo => lo.Locatie.Straat))
             .ForMember(dto => dto.LocatieNummer, conf => conf.MapFrom(locNr => locNr.Locatie.Nr))
             .ForMember(dto => dto.LandLandNaam, conf => conf.MapFrom(lan => lan.Locatie.Gemeente.Land.LandNaam))
-            .ForMember(dto => dto.BedrijfsNaam, conf => conf.MapFrom(beNa => beNa.Eigenaar.EigenaarNaam));
+            .ForMember(dto => dto.ParkingUsersEigenaarNaam, conf => conf.MapFrom(beNa => beNa.Eigenaar.EigenaarNaam));
             CreateMap<Locatie, LocatieDTO>();
             CreateMap<Gemeente, GemeenteDTO>();
             CreateMap<Land, LandDTO>();

@@ -1,4 +1,4 @@
-﻿@model EindwerkCarParkingLib.Parking
+﻿@model EindwerkCarParkingCore.Models.ParkingsDetailDTO
 
 @{
     ViewData["Title"] = "Create";
@@ -6,51 +6,41 @@
 
 <h2>Create</h2>
 
-<h4>Parking</h4>
+<h4>ParkingsDetailDTO</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="ParkingNaam" class="control-label"></label>
                 <input asp-for="ParkingNaam" class="form-control" />
                 <span asp-validation-for="ParkingNaam" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Totaal" class="control-label"></label>
-                <input asp-for="Totaal" class="form-control" />
-                <span asp-validation-for="Totaal" class="text-danger"></span>
+                <label asp-for="LocatieStraat" class="control-label"></label>
+                <input asp-for="LocatieStraat" class="form-control" />
+                <span asp-validation-for="LocatieStraat" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Bezet" class="control-label"></label>
-                <input asp-for="Bezet" class="form-control" />
-                <span asp-validation-for="Bezet" class="text-danger"></span>
+                <label asp-for="LocatieNummer" class="control-label"></label>
+                <input asp-for="LocatieNummer" class="form-control" />
+                <span asp-validation-for="LocatieNummer" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="PublicatieToelating" /> @Html.DisplayNameFor(model => model.PublicatieToelating)
-                    </label>
-                </div>
+                <label asp-for="GemeenteGemeenteNaam" class="control-label"></label>
+                <input asp-for="GemeenteGemeenteNaam" class="form-control" />
+                <span asp-validation-for="GemeenteGemeenteNaam" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ParkingUsersId" class="control-label"></label>
-                <input asp-for="ParkingUsersId" class="form-control" />
-                <span asp-validation-for="ParkingUsersId" class="text-danger"></span>
+                <label asp-for="LandLandNaam" class="control-label"></label>
+                <input asp-for="LandLandNaam" class="form-control" />
+                <span asp-validation-for="LandLandNaam" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SoortId" class="control-label"></label>
-                <select asp-for="SoortId" class ="form-control" asp-items="ViewBag.SoortId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="LocatieId" class="control-label"></label>
-                <select asp-for="LocatieId" class ="form-control" asp-items="ViewBag.LocatieId"></select>
+                <label asp-for="BedrijfsNaam" class="control-label"></label>
+                <input asp-for="BedrijfsNaam" class="form-control" />
+                <span asp-validation-for="BedrijfsNaam" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

@@ -60,15 +60,13 @@ namespace EindwerkCarParkingCore.Controllers
         [Authorize]
         public IActionResult AddParking()
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Overzicht", "MyAccount");
+            }
             return View();
         }
 
-        public IActionResult SearchParking()
-        {
-            var item = _context.GetAllParkings();
-            var mappedItem = _mapper.Map<IEnumerable<ParkingsDTO>>(item);
-            return View(mappedItem);
-        }
         // Test Mapper met actionresultdtotester bron https://www.youtube.com/watch?v=5WP36DIwdlI       
         public IActionResult DtoTester()
         {
@@ -94,6 +92,29 @@ namespace EindwerkCarParkingCore.Controllers
             ViewBag.ListofLanden = landenlijst;
             return View(mappedItem);
 
+        }
+
+        public JsonResult GetCountries() {
+            var landen = new List<LandDTO>();
+            foreach (LandDTO l in landen)
+            {
+                landen.Add(l);
+            }
+            return Json(landen);
+        }
+
+        [HttpPost]
+        public JsonResult GetSteden(string country)
+        {
+            var gemeenten = new List<GemeenteDTO>();
+            if (!string.IsNullOrWhiteSpace(country))
+            {
+                foreach(GemeenteDTO g in gemeenten)
+                {
+                    gemeenten.Add(g);
+                }
+            }
+            return Json(gemeenten);
         }
     }
 }

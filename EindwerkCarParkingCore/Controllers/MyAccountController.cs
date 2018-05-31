@@ -6,161 +6,148 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EindwerkCarParkingCore.Data;
-using EindwerkCarParkingLib;
+using EindwerkCarParkingCore.Models;
+using AutoMapper;
+using EindwerkCarParkingCore.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EindwerkCarParkingCore.Controllers
 {
+    [Authorize]
     public class MyAccountController : Controller
     {
-        private readonly EindwerkCarParkingContext _context;
+        private readonly IParkingRepository _context;
+        private readonly IMapper _mapper;
 
-        public MyAccountController(EindwerkCarParkingContext context)
+        public MyAccountController(IParkingRepository context, IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
         }
 
         // GET: MyAccount
-        public async Task<IActionResult> Index()
+        public IActionResult Overzicht()
         {
-            var eindwerkCarParkingContext = _context.Parkings.Include(p => p.Locatie);
-            return View(await eindwerkCarParkingContext.ToListAsync());
+            var user = User.Identity.Name;
+            var item = _context.GetAllParkingsByUser(user);
+            var mappedItem = _mapper.Map<IEnumerable<ParkingsDetailDTO>>(item);
+            return View(mappedItem);
         }
 
         // GET: MyAccount/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var parking = await _context.Parkings
-                .Include(p => p.Locatie)
-              //  .Include(p => p.Soort)
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (parking == null)
-            {
-                return NotFound();
-            }
-
-            return View(parking);
+          var parkings = _context.GetParkingById(id);
+            var mappedItem = _mapper.Map<ParkingsDetailDTO>(parkings);
+          return View(mappedItem);
         }
 
-        // GET: MyAccount/Create
-        public IActionResult Create()
-        {
-            ViewData["LocatieId"] = new SelectList(_context.Locaties, "Id", "Straat");
-           // ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam");
-            return View();
-        }
+        //// GET: MyAccount/Create
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST: MyAccount/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ParkingNaam,Totaal,Bezet,PublicatieToelating,ParkingUsersId,SoortId,LocatieId")] Parking parking)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(parking);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["LocatieId"] = new SelectList(_context.Locaties, "Id", "Straat", parking.LocatieId);
-         //   ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam", parking.SoortId);
-            return View(parking);
-        }
+        //// POST: MyAccount/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("Id,ParkingNaam,LocatieStraat,LocatieNummer,GemeenteGemeenteNaam,LandLandNaam,BedrijfsNaam")] ParkingsDetailDTO parkingsDetailDTO)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(parkingsDetailDTO);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Overzicht));
+        //    }
+        //    return View(parkingsDetailDTO);
+        //}
 
-        // GET: MyAccount/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //    // GET: MyAccount/Edit/5
+        //    public async Task<IActionResult> Edit(int? id)
+        //    {
+        //        if (id == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-            var parking = await _context.Parkings.SingleOrDefaultAsync(m => m.Id == id);
-            if (parking == null)
-            {
-                return NotFound();
-            }
-            ViewData["LocatieId"] = new SelectList(_context.Locaties, "Id", "Straat", parking.LocatieId);
-         //   ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam", parking.SoortId);
-            return View(parking);
-        }
+        //        var parkingsDetailDTO = await _context.ParkingsDetailDTO.SingleOrDefaultAsync(m => m.Id == id);
+        //        if (parkingsDetailDTO == null)
+        //        {
+        //            return NotFound();
+        //        }
+        //        return View(parkingsDetailDTO);
+        //    }
 
-        // POST: MyAccount/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ParkingNaam,Totaal,Bezet,PublicatieToelating,ParkingUsersId,SoortId,LocatieId")] Parking parking)
-        {
-            if (id != parking.Id)
-            {
-                return NotFound();
-            }
+        //    // POST: MyAccount/Edit/5
+        //    // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //    [HttpPost]
+        //    [ValidateAntiForgeryToken]
+        //    public async Task<IActionResult> Edit(int id, [Bind("Id,ParkingNaam,LocatieStraat,LocatieNummer,GemeenteGemeenteNaam,LandLandNaam,BedrijfsNaam")] ParkingsDetailDTO parkingsDetailDTO)
+        //    {
+        //        if (id != parkingsDetailDTO.Id)
+        //        {
+        //            return NotFound();
+        //        }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(parking);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ParkingExists(parking.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["LocatieId"] = new SelectList(_context.Locaties, "Id", "Straat", parking.LocatieId);
-         //   ViewData["SoortId"] = new SelectList(_context.Soorts, "Id", "SoortNaam", parking.SoortId);
-            return View(parking);
-        }
+        //        if (ModelState.IsValid)
+        //        {
+        //            try
+        //            {
+        //                _context.Update(parkingsDetailDTO);
+        //                await _context.SaveChangesAsync();
+        //            }
+        //            catch (DbUpdateConcurrencyException)
+        //            {
+        //                if (!ParkingsDetailDTOExists(parkingsDetailDTO.Id))
+        //                {
+        //                    return NotFound();
+        //                }
+        //                else
+        //                {
+        //                    throw;
+        //                }
+        //            }
+        //            return RedirectToAction(nameof(Overzicht));
+        //        }
+        //        return View(parkingsDetailDTO);
+        //    }
 
-        // GET: MyAccount/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //    // GET: MyAccount/Delete/5
+        //    public async Task<IActionResult> Delete(int? id)
+        //    {
+        //        if (id == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-            var parking = await _context.Parkings
-                .Include(p => p.Locatie)
-            //    .Include(p => p.Soort)
-                .SingleOrDefaultAsync(m => m.Id == id);
-            if (parking == null)
-            {
-                return NotFound();
-            }
+        //        var parkingsDetailDTO = await _context.ParkingsDetailDTO
+        //            .SingleOrDefaultAsync(m => m.Id == id);
+        //        if (parkingsDetailDTO == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-            return View(parking);
-        }
+        //        return View(parkingsDetailDTO);
+        //    }
 
-        // POST: MyAccount/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var parking = await _context.Parkings.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Parkings.Remove(parking);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        //    // POST: MyAccount/Delete/5
+        //    [HttpPost, ActionName("Delete")]
+        //    [ValidateAntiForgeryToken]
+        //    public async Task<IActionResult> DeleteConfirmed(int id)
+        //    {
+        //        var parkingsDetailDTO = await _context.ParkingsDetailDTO.SingleOrDefaultAsync(m => m.Id == id);
+        //        _context.ParkingsDetailDTO.Remove(parkingsDetailDTO);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Overzicht));
+        //    }
 
-        private bool ParkingExists(int id)
-        {
-            return _context.Parkings.Any(e => e.Id == id);
-        }
+        //    private bool ParkingsDetailDTOExists(int id)
+        //    {
+        //        return _context.ParkingsDetailDTO.Any(e => e.Id == id);
+        //    }
+        //}
     }
 }

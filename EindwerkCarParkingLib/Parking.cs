@@ -18,7 +18,7 @@ namespace EindwerkCarParkingLib
         public bool PublicatieToelating { get; set; }  //wanneer deze bool op true staat, kan de parking getoond worden op de website
 
         //Foreign Key
-        public int ParkingUsersId { get; set; }
+        public string ParkingUsersName { get; set; }
         public int SoortId { get; set; }
         public int LocatieId { get; set; }
 

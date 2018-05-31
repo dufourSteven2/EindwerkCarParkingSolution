@@ -1,4 +1,4 @@
-﻿@model EindwerkCarParkingLib.Parking
+﻿@model EindwerkCarParkingCore.Models.ParkingsDetailDTO
 
 @{
     ViewData["Title"] = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Parking</h4>
+    <h4>ParkingsDetailDTO</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -18,40 +18,34 @@
             @Html.DisplayFor(model => model.ParkingNaam)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Totaal)
+            @Html.DisplayNameFor(model => model.LocatieStraat)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Totaal)
+            @Html.DisplayFor(model => model.LocatieStraat)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Bezet)
+            @Html.DisplayNameFor(model => model.LocatieNummer)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Bezet)
+            @Html.DisplayFor(model => model.LocatieNummer)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PublicatieToelating)
+            @Html.DisplayNameFor(model => model.GemeenteGemeenteNaam)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PublicatieToelating)
+            @Html.DisplayFor(model => model.GemeenteGemeenteNaam)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ParkingUsersId)
+            @Html.DisplayNameFor(model => model.LandLandNaam)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ParkingUsersId)
+            @Html.DisplayFor(model => model.LandLandNaam)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Locatie)
+            @Html.DisplayNameFor(model => model.BedrijfsNaam)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Locatie.Straat)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Soort)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Soort.SoortNaam)
+            @Html.DisplayFor(model => model.BedrijfsNaam)
         </dd>
     </dl>
     

@@ -33,10 +33,57 @@ namespace EindwerkCarParkingCore.Data
                 //return _ctx.Parkings.ToList();
                 return _ctx.Parkings
                     .Include(l => l.Locatie)
-                    .Include(l => l.Eigenaar)
+                    .Include(l => l.Eigenaar    )
                  //   .Include(l => l.Soort)
                     .Include(l => l.Locatie.Gemeente.Land)
                     .ThenInclude(i => i.Gemeente)
+                    .ToList();
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get all parkings: {ex}");
+                return null;
+            }
+
+        }
+
+        public IEnumerable<Parking> GetAllParkingsByUser(string username)
+        {
+            try
+            {
+                _logger.LogInformation("GetAllParkings was called");
+                //return _ctx.Parkings.ToList();
+                return _ctx.Parkings
+                    .Where(p => p.ParkingUsersName == username)
+                    .Include(l => l.Locatie)
+                    .Include(l => l.Eigenaar)
+                    //   .Include(l => l.Soort)
+                    .Include(l => l.Locatie.Gemeente.Land)
+                    .ThenInclude(i => i.Gemeente)
+                    .ToList();
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get all parkings: {ex}");
+                return null;
+            }
+        }
+
+        public IEnumerable<Parking> GetAllRegistredParkings()
+        {
+            try
+            {
+                _logger.LogInformation("GetAllParkings was called");
+                //return _ctx.Parkings.ToList();
+                return _ctx.Parkings
+                    .Include(l => l.Locatie)
+                    .Include(l => l.Eigenaar)
+                    //   .Include(l => l.Soort)
+                    .Include(l => l.Locatie.Gemeente.Land)
+                    .ThenInclude(i => i.Gemeente)
+                    .Where(p => p.PublicatieToelating ==true)
                     .ToList();
 
             }
@@ -74,11 +121,7 @@ namespace EindwerkCarParkingCore.Data
         {
             try
             {
-                _logger.LogInformation("Get ALL Parkings was called");
-                return _ctx.Parkings.Include(p => p.Locatie).Include(p => p.Locatie.Gemeente)
-                    .Include(p => p.Locatie.Gemeente.Land)
-                    .Where(p => p.Id == id).FirstOrDefault();
-
+                return _ctx.Parkings.Where(p => p.Id == id).Include(l => l.Locatie).FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -86,6 +129,7 @@ namespace EindwerkCarParkingCore.Data
                 return null;
             }
         }
+
 
         public IEnumerable<Parking>GetParkingByPlace(string gemeente)
         {
@@ -106,5 +150,7 @@ namespace EindwerkCarParkingCore.Data
         {
             return _ctx.SaveChanges() > 0;
         }
+
+
     }
 }
