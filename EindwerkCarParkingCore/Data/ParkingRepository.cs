@@ -103,7 +103,7 @@ namespace EindwerkCarParkingCore.Data
                 l => new LandDTO
                 {
                     Id = l.Id,
-                    LandNaam = l.LandNaam.ToString()
+                    LandNaam = l.LandNaam
                 }).ToList();
 
             return landen;
@@ -148,6 +148,28 @@ namespace EindwerkCarParkingCore.Data
                 return null;
             }
 
+        }
+
+        public IEnumerable<TotaalDTO> GetTotalen()
+        {
+            try
+            {
+                IEnumerable<TotaalDTO> totalen = _ctx.Totaals.Include(s => s.Soorts).Select(
+                    l => new TotaalDTO
+                    {
+                        Id = l.Id,
+                        BezetteParkings = l.BezetteParkings,
+                        MaxParkings = l.MaxParkings,
+                        SoortId = l.SoortId
+                    }
+                    ).ToList();
+                return totalen;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get all Totalen: {ex}");
+                return null;
+            }
         }
 
         public bool SaveAll()

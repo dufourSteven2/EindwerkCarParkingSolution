@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using EindwerkCarParkingLib;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EindwerkCarParkingCore
 {
@@ -30,17 +31,24 @@ namespace EindwerkCarParkingCore
             _env = env;
         }
 
-        
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
+
             //add identity serverice
             services.AddIdentity<ParkingUsers, IdentityRole>(
                 cfg =>
                 {
                     cfg.User.RequireUniqueEmail = true;
                     cfg.SignIn.RequireConfirmedEmail = true;  //emailbevestiging vereisen
+                    cfg.Password.RequireNonAlphanumeric = false;
+                    cfg.Password.RequiredLength = 4;
+                    cfg.Password.RequireUppercase = false;
+
 
                 }).AddEntityFrameworkStores<EindwerkCarParkingContext>().AddDefaultTokenProviders();
 
@@ -57,7 +65,7 @@ namespace EindwerkCarParkingCore
 
     });   //tokens authentication
 
-            services.AddDbContext<EindwerkCarParkingContext>(cfg=>
+            services.AddDbContext<EindwerkCarParkingContext>(cfg =>
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("EindwerkCarParkingString"));
             });
@@ -87,13 +95,16 @@ namespace EindwerkCarParkingCore
                     opt.Filters.Add(new RequireHttpsAttribute());  //Https op website wanneer die in productie gaat
                 }
 
-            }).AddJsonOptions(opt=> opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-            
+            }).AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 
         }
 
+
+
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider services)
         {
             if (env.IsDevelopment())
             {
@@ -123,6 +134,29 @@ namespace EindwerkCarParkingCore
                     seeder.Seed();
                 }
             }
+            CreateUserRoles(services).Wait();
         }
+
+        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        {
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<ParkingUsers>>();
+
+            IdentityResult roleResult;
+            //Adding Admin Role
+            var roleCheck = await RoleManager.RoleExistsAsync("Admin");
+            if (!roleCheck)
+            {
+                //create the roles and seed them to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+            //Assign Admin role to the main User here we have given our newly registered 
+            //login id for Admin management
+            ParkingUsers user1 = await UserManager.FindByEmailAsync("vanderschaeghe.benny@hotmail.com");
+            var User1 = new ParkingUsers();
+            await UserManager.AddToRoleAsync(user1, "Admin");
+        }
+
     }
 }
+

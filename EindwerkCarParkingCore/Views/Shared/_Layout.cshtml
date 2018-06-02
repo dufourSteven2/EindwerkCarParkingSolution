@@ -28,8 +28,20 @@
                     <li> <a asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-controller="Home" asp-action="parkings">Parking zoeken</a></li>
-                    <li><a asp-controller="Home" asp-action="DtoTester">Test</a></li>
                     <li><a asp-controller="Home" asp-action="AddParking">Voeg parking Toe</a></li>
+                    <li><a asp-controller="Home" asp-action="Totalen">Totalen</a></li>
+
+                    
+                    <li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a asp-area="" asp-controller="Admin" asp-action="Overzicht">Admin Page</a>
+                            }
+                        }
+                    </li>
+
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>

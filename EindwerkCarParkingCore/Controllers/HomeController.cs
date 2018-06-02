@@ -94,6 +94,13 @@ namespace EindwerkCarParkingCore.Controllers
 
         }
 
+        public IActionResult Totalen()
+        {
+            IEnumerable<TotaalDTO> totalen = new List<TotaalDTO>();
+            totalen = _context.GetTotalen();
+            return View(totalen);
+        }
+
         public JsonResult GetCountries() {
             var landen = new List<LandDTO>();
             foreach (LandDTO l in landen)

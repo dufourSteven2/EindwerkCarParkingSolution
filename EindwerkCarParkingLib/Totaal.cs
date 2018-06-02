@@ -15,8 +15,10 @@ namespace EindwerkCarParkingLib
         public int MaxParkings { get; set; }
         public int BezetteParkings { get; set; }
 
-        //Navigation property
+        public int SoortId { get; set; }
 
-       // public virtual ICollection<Soort> Soorts { get; set; }
+        //Navigation property;
+
+        public virtual ICollection<Soort> Soorts { get; set; }
     }
 }
