@@ -52,16 +52,17 @@ namespace EindwerkCarParkingCore.Models
         public int Id { get; set; }
         public string LandNaam { get; set; }
     }
-    //public class SoortDTO
-    //{
-    //    public int Id { get; set; }
-    //    public string SoortNaam { get; set; }
-    //}
+    public class SoortDTO
+    {
+        public int Id { get; set; }
+        public string SoortNaam { get; set; }
+            }
 
-    public class ToataalDTO
+    public class TotaalDTO
     {
         public int Id { get; set; }
         public int MaxParkings { get; set; }
         public int BezetteParkings { get; set; }
+        public int SoortId { get; set; }
     }
 }

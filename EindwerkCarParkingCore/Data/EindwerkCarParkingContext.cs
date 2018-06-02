@@ -19,7 +19,7 @@ namespace EindwerkCarParkingCore.Data
         public DbSet<Parking> Parkings { get; set; }
         public DbSet<ParkingUsers> Eigenaars { get; set; }
         public DbSet<Locatie> Locaties { get; set; }
-       // public DbSet<Soort> Soorts { get; set; }
+        public DbSet<Soort> Soorts { get; set; }
         public DbSet<Gemeente> Gemeentes { get; set; }
         public DbSet<Land> Lands { get; set; }
         public DbSet<Totaal> Totaals { get; set; }

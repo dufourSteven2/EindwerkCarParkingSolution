@@ -127,7 +127,13 @@ namespace EindwerkCarParkingCore.Data
 
                 var Totalen = new Totaal[]
             {
-                    new Totaal()  {Id=1,MaxParkings = 100, BezetteParkings= 50}
+                    new Totaal()  {Id=1,MaxParkings = 100, BezetteParkings= 50, SoortId=2},
+                     new Totaal()  {Id=2,MaxParkings = 200, BezetteParkings= 190, SoortId=3},
+                      new Totaal()  {Id=3,MaxParkings = 120, BezetteParkings= 10, SoortId=1},
+                       new Totaal()  {Id=4,MaxParkings = 8000, BezetteParkings= 6500, SoortId=4},
+                        new Totaal()  {Id=5,MaxParkings = 100, BezetteParkings= 75, SoortId=2},
+                         new Totaal()  {Id=6,MaxParkings = 10, BezetteParkings= 5, SoortId=1},
+                          new Totaal()  {Id=7,MaxParkings = 5, BezetteParkings= 2, SoortId=2}
             };
 
                 foreach (Totaal t in Totalen)
@@ -151,20 +157,20 @@ namespace EindwerkCarParkingCore.Data
                     _context.Gemeentes.Add(g);
                 }
 
-                //var Soorten = new Soort[]
-                //{
+                var Soorten = new Soort[]
+                {
 
-                //      new Soort() {Id=1, SoortNaam = "Elektrisch" , TotaalId = 1},
-                //      new Soort() {Id=2, SoortNaam = "Standaard", TotaalId = 1 },
-                //      new Soort() {Id=3, SoortNaam = "Met een beperking", TotaalId = 1 },
-                //      new Soort() {Id=4, SoortNaam = "Abonnee", TotaalId = 1 }
-                //};
+                      new Soort() {Id=1, SoortNaam = "Elektrisch" , TotaalId = 1},
+                      new Soort() {Id=2, SoortNaam = "Standaard", TotaalId = 1 },
+                      new Soort() {Id=3, SoortNaam = "Met een beperking", TotaalId = 1 },
+                      new Soort() {Id=4, SoortNaam = "Abonnee", TotaalId = 1 }
+                };
 
-                //foreach (Soort s in Soorten)
-                //{
+                foreach (Soort s in Soorten)
+                {
 
-                //    _context.Soorts.Add(s);
-                //}
+                    _context.Soorts.Add(s);
+                }
 
                 var Locaties = new Locatie[]
                 {
@@ -264,7 +270,6 @@ namespace EindwerkCarParkingCore.Data
                           ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 1,
-                          Totaal = 5,
                           Bezet = 0,
                           ParkingNaam = "Langestraat",
                           PublicatieToelating = true
@@ -275,7 +280,6 @@ namespace EindwerkCarParkingCore.Data
                          ParkingUsersName = "nonkelchameau3@gmail.com",
                           SoortId = 2,
                           LocatieId = 2,
-                          Totaal = 1500,
                           Bezet = 0,
                           ParkingNaam = "Station",
                           PublicatieToelating = true,
@@ -288,7 +292,6 @@ namespace EindwerkCarParkingCore.Data
                           ParkingUsersName = "nonkelchameau4@gmail.com",
                           SoortId = 2,
                           LocatieId = 3,
-                          Totaal = 1434,
                           Bezet = 0,
                           ParkingNaam = "'t Zand",
                              PublicatieToelating = true
@@ -298,7 +301,6 @@ namespace EindwerkCarParkingCore.Data
                           ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 4,
-                          Totaal = 2151,
                           Bezet = 0,
                           ParkingNaam = "Interparking Gent Zuid",
                              PublicatieToelating = false

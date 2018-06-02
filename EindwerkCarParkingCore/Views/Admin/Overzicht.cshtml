@@ -1,0 +1,132 @@
+﻿@model IEnumerable<ParkingsDetailDTO>
+@using EindwerkCarParkingCore.Models
+
+@{
+    ViewData["Title"] = "Overzicht";
+}
+
+<h2>Mijn Account</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<div>
+    <h3>Gerigstreerde parkings:</h3>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParkingNaam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LocatieStraat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LocatieNummer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GemeenteGemeenteNaam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LandLandNaam)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.PublicatieToelating == true)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParkingNaam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LocatieStraat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LocatieNummer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GemeenteGemeenteNaam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LandLandNaam)
+                        </td>
+
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <h3>Niet Gerigstreerde parkings:</h3>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ParkingNaam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LocatieStraat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LocatieNummer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GemeenteGemeenteNaam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LandLandNaam)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.PublicatieToelating != true)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParkingNaam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LocatieStraat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LocatieNummer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GemeenteGemeenteNaam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LandLandNaam)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

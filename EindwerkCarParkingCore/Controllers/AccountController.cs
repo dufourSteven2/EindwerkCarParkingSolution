@@ -37,6 +37,7 @@ namespace EindwerkCarParkingCore.Controllers
         {
             if(this.User.Identity.IsAuthenticated)
             {
+
                 return RedirectToAction("Overzicht", "MyAccount");
             }
             return View();
@@ -62,6 +63,11 @@ namespace EindwerkCarParkingCore.Controllers
                     if (Request.Query.Keys.Contains("ReturnUrl"))
                     {
                         return Redirect(Request.Query["ReturnUrl"].First());
+                    }
+
+                    if (this.User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("Overzicht", "AdminController");
                     }
                     else { }
                     RedirectToAction("Overzicht", "MyAccount");
