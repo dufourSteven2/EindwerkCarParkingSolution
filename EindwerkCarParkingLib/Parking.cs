@@ -16,7 +16,19 @@ namespace EindwerkCarParkingLib
         public int Totaal { get; set; }
         public int Bezet { get; set; }
         public bool PublicatieToelating { get; set; }  //wanneer deze bool op true staat, kan de parking getoond worden op de website
+        public decimal Percentage
+        {
 
+            get
+            {
+                decimal totaal;
+                decimal bezet;
+                totaal = Totaal;
+                bezet = Bezet;
+                return (bezet / totaal) * 100;
+                
+            }
+        }
         //Foreign Key
         public string ParkingUsersName { get; set; }
         public int SoortId { get; set; }

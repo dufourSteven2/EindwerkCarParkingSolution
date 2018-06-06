@@ -15,7 +15,7 @@ namespace EindwerkCarParkingCore.Data
         IEnumerable<Parking> GetParkingByPlace(string gemeente);
         IEnumerable<Parking> GetAllParkingsByUser(string username);
         Parking  GetParkingById(int id);
-        IEnumerable<TotaalDTO> GetTotalen();
+        //IEnumerable<TotaalDTO> GetTotalen();
         //methods 
         void AddEntity(object model);
         bool SaveAll();
