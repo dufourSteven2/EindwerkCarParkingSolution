@@ -23,6 +23,7 @@ namespace EindwerkCarParkingCore.Models
         public string LocatieStraat { get; set; }
         public string LocatieNummer { get; set; }
         public string GemeenteGemeenteNaam { get; set; }
+        public string SoortSoortNaam { get; set; }
         public decimal Percentage { get; set; }
         public string LandLandNaam { get; set; }
         public string ParkingUsersEigenaarNaam { get; set; }
