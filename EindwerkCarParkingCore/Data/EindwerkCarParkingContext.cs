@@ -23,6 +23,6 @@ namespace EindwerkCarParkingCore.Data
         public DbSet<Gemeente> Gemeentes { get; set; }
         public DbSet<Land> Lands { get; set; }
         //public DbSet<Totaal> Totaals { get; set; }
-        public DbSet<EindwerkCarParkingCore.Models.ParkingsDetailDTO> ParkingsDetailDTO { get; set; }
+        //public DbSet<EindwerkCarParkingCore.Models.ParkingsDetailDTO> ParkingsDetailDTO { get; set; }
     }
 }

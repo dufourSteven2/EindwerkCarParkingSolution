@@ -122,9 +122,10 @@ namespace EindwerkCarParkingCore.Data
             try
             {
                 return _ctx.Parkings.Where(p => p.Id == id)
+                    .Include(l => l.Soort)
                     .Include(l => l.Locatie)
                     .Include(l => l.Locatie.Gemeente)
-                    .Include (p => p.Locatie.Gemeente.Land)
+                    .Include(p => p.Locatie.Gemeente.Land)
                     .FirstOrDefault();
             }
             catch (Exception ex)

@@ -22,6 +22,9 @@
                     @Html.DisplayNameFor(model => model.ParkingNaam)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.SoortSoortNaam)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.LocatieStraat)
                 </th>
                 <th>
@@ -42,29 +45,32 @@
             {
                 if (item.PublicatieToelating == true)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ParkingNaam)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LocatieStraat)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LocatieNummer)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.GemeenteGemeenteNaam)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LandLandNaam)
-                        </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkingNaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoortSoortNaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocatieStraat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocatieNummer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GemeenteGemeenteNaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LandLandNaam)
+                </td>
 
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    </tr>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
                 }
             }
 
@@ -80,6 +86,9 @@
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.ParkingNaam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SoortSoortNaam)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.LocatieStraat)
@@ -102,28 +111,31 @@
             {
                 if (item.PublicatieToelating != true)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ParkingNaam)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LocatieStraat)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LocatieNummer)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.GemeenteGemeenteNaam)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LandLandNaam)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParkingNaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoortSoortNaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocatieStraat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocatieNummer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GemeenteGemeenteNaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LandLandNaam)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
                 }
             }
 
