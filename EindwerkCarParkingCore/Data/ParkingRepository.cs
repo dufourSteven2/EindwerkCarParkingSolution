@@ -34,7 +34,7 @@ namespace EindwerkCarParkingCore.Data
                 return _ctx.Parkings
                     .Include(l => l.Locatie)
                     .Include(l => l.Eigenaar    )
-                 //   .Include(l => l.Soort)
+                    .Include(l => l.Soort)
                     .Include(l => l.Locatie.Gemeente.Land)
                     .ThenInclude(i => i.Gemeente)
                     .ToList();
@@ -58,7 +58,7 @@ namespace EindwerkCarParkingCore.Data
                     .Where(p => p.ParkingUsersName == username)
                     .Include(l => l.Locatie)
                     .Include(l => l.Eigenaar)
-                    //   .Include(l => l.Soort)
+                    .Include(l => l.Soort)
                     .Include(l => l.Locatie.Gemeente.Land)
                     .ThenInclude(i => i.Gemeente)
                     .ToList();
@@ -80,7 +80,7 @@ namespace EindwerkCarParkingCore.Data
                 return _ctx.Parkings
                     .Include(l => l.Locatie)
                     .Include(l => l.Eigenaar)
-                    //   .Include(l => l.Soort)
+                    .Include(l => l.Soort)
                     .Include(l => l.Locatie.Gemeente.Land)
                     .ThenInclude(i => i.Gemeente)
                     .Where(p => p.PublicatieToelating ==true)
@@ -122,9 +122,10 @@ namespace EindwerkCarParkingCore.Data
             try
             {
                 return _ctx.Parkings.Where(p => p.Id == id)
+                    .Include(l => l.Soort)
                     .Include(l => l.Locatie)
                     .Include(l => l.Locatie.Gemeente)
-                    .Include (p => p.Locatie.Gemeente.Land)
+                    .Include(p => p.Locatie.Gemeente.Land)
                     .FirstOrDefault();
             }
             catch (Exception ex)
@@ -150,27 +151,27 @@ namespace EindwerkCarParkingCore.Data
 
         }
 
-        public IEnumerable<TotaalDTO> GetTotalen()
-        {
-            try
-            {
-                IEnumerable<TotaalDTO> totalen = _ctx.Totaals.Include(s => s.Soorts).Select(
-                    l => new TotaalDTO
-                    {
-                        Id = l.Id,
-                        BezetteParkings = l.BezetteParkings,
-                        MaxParkings = l.MaxParkings,
-                        SoortId = l.SoortId
-                    }
-                    ).ToList();
-                return totalen;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Failed to get all Totalen: {ex}");
-                return null;
-            }
-        }
+        //public IEnumerable<TotaalDTO> GetTotalen()
+        //{
+        //    try
+        //    {
+        //        IEnumerable<TotaalDTO> totalen = _ctx.Totaals.Include(s => s.Soorts).Select(
+        //            l => new TotaalDTO
+        //            {
+        //                Id = l.Id,
+        //                BezetteParkings = l.BezetteParkings,
+        //                MaxParkings = l.MaxParkings,
+        //                SoortId = l.SoortId
+        //            }
+        //            ).ToList();
+        //        return totalen;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError($"Failed to get all Totalen: {ex}");
+        //        return null;
+        //    }
+        //}
 
         public bool SaveAll()
         {

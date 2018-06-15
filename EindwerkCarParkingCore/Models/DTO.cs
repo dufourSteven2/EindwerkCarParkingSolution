@@ -23,6 +23,8 @@ namespace EindwerkCarParkingCore.Models
         public string LocatieStraat { get; set; }
         public string LocatieNummer { get; set; }
         public string GemeenteGemeenteNaam { get; set; }
+        public string SoortSoortNaam { get; set; }
+        public decimal Percentage { get; set; }
         public string LandLandNaam { get; set; }
         public string ParkingUsersEigenaarNaam { get; set; }
         public bool PublicatieToelating { get; set; }  //wanneer deze bool op true staat, kan de parking getoond worden op de website
@@ -58,11 +60,11 @@ namespace EindwerkCarParkingCore.Models
         public string SoortNaam { get; set; }
             }
 
-    public class TotaalDTO
-    {
-        public int Id { get; set; }
-        public int MaxParkings { get; set; }
-        public int BezetteParkings { get; set; }
-        public int SoortId { get; set; }
-    }
+    //public class TotaalDTO
+    //{
+    //    public int Id { get; set; }
+    //    public int MaxParkings { get; set; }
+    //    public int BezetteParkings { get; set; }
+    //    public int SoortId { get; set; }
+    //}
 }

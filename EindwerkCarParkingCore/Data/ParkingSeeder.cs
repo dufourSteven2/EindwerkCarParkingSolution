@@ -125,21 +125,7 @@ namespace EindwerkCarParkingCore.Data
                     _context.Lands.Add(l);
                 }
 
-                var Totalen = new Totaal[]
-            {
-                    new Totaal()  {Id=1,MaxParkings = 100, BezetteParkings= 50, SoortId=2},
-                     new Totaal()  {Id=2,MaxParkings = 200, BezetteParkings= 190, SoortId=3},
-                      new Totaal()  {Id=3,MaxParkings = 120, BezetteParkings= 10, SoortId=1},
-                       new Totaal()  {Id=4,MaxParkings = 8000, BezetteParkings= 6500, SoortId=4},
-                        new Totaal()  {Id=5,MaxParkings = 100, BezetteParkings= 75, SoortId=2},
-                         new Totaal()  {Id=6,MaxParkings = 10, BezetteParkings= 5, SoortId=1},
-                          new Totaal()  {Id=7,MaxParkings = 5, BezetteParkings= 2, SoortId=2}
-            };
-
-                foreach (Totaal t in Totalen)
-                {
-                    _context.Totaals.Add(t);
-                }
+             
 
                 var plaatsen = new Gemeente[]
                 {
@@ -160,10 +146,10 @@ namespace EindwerkCarParkingCore.Data
                 var Soorten = new Soort[]
                 {
 
-                      new Soort() {Id=1, SoortNaam = "Elektrisch" , TotaalId = 1},
-                      new Soort() {Id=2, SoortNaam = "Standaard", TotaalId = 1 },
-                      new Soort() {Id=3, SoortNaam = "Met een beperking", TotaalId = 1 },
-                      new Soort() {Id=4, SoortNaam = "Abonnee", TotaalId = 1 }
+                      new Soort() {Id=1, SoortNaam = "Elektrisch"},
+                      new Soort() {Id=2, SoortNaam = "Standaard"},
+                      new Soort() {Id=3, SoortNaam = "Met een beperking"},
+                      new Soort() {Id=4, SoortNaam = "Abonnee"}
                 };
 
                 foreach (Soort s in Soorten)
@@ -264,133 +250,211 @@ namespace EindwerkCarParkingCore.Data
 
                 var parkingen = new Parking[]
                 {
-                            new Parking()
+                      new Parking()
                       {
-                                Id=1,
+                          Id=1,
                           ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 1,
+                          Totaal = 100,
                           Bezet = 0,
+                          ParkingNaam = "Langestraat",
+                          PublicatieToelating = true
+                      },
+                      new Parking()
+                      {
+                          Id=2,
+                          ParkingUsersName = "nonkelchameau2@gmail.com",
+                          SoortId = 1,
+                          LocatieId = 1,
+                          Totaal = 10,
+                          Bezet = 10,
+                          ParkingNaam = "Langestraat",
+                          PublicatieToelating = true
+                      },
+                      new Parking()
+                      {
+                          Id=3,
+                          ParkingUsersName = "nonkelchameau2@gmail.com",
+                          SoortId = 3,
+                          LocatieId = 1,
+                          Totaal = 10,
+                          Bezet = 8,
                           ParkingNaam = "Langestraat",
                           PublicatieToelating = true
                       },
 
                       new Parking()
-                      {  Id=2,
-                         ParkingUsersName = "nonkelchameau3@gmail.com",
-                          SoortId = 2,
+                      {
+                          Id =4,
+                          ParkingUsersName = "nonkelchameau3@gmail.com",
+                          SoortId = 1,
                           LocatieId = 2,
+                          Totaal = 20,
                           Bezet = 0,
                           ParkingNaam = "Station",
                           PublicatieToelating = true,
-                         
+
+                      },
+                      new Parking()
+                      {
+                          Id =5,
+                          ParkingUsersName = "nonkelchameau3@gmail.com",
+                          SoortId = 2,
+                          LocatieId = 2,
+                          Totaal = 100,
+                          Bezet = 0,
+                          ParkingNaam = "Station",
+                          PublicatieToelating = true,
 
                       },
 
                       new Parking()
-                      {  Id=3,
+                      {  Id=6,
                           ParkingUsersName = "nonkelchameau4@gmail.com",
                           SoortId = 2,
                           LocatieId = 3,
-                          Bezet = 0,
+                          Totaal = 100,
+                          Bezet = 100,
                           ParkingNaam = "'t Zand",
-                             PublicatieToelating = true
+                          PublicatieToelating = true
                       },
                       new Parking()
-                      {  Id=4,
+                      {
+                          Id =7,
+                          ParkingUsersName = "nonkelchameau4@gmail.com",
+                          SoortId = 1,
+                          LocatieId = 3,
+                          Totaal = 100,
+                          Bezet = 0,
+                          ParkingNaam = "'t Zand",
+                          PublicatieToelating = true
+                      },
+                      new Parking()
+                      {
+                          Id =8,
                           ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 4,
+                          Totaal = 15,
                           Bezet = 0,
                           ParkingNaam = "Interparking Gent Zuid",
-                             PublicatieToelating = false
+                          PublicatieToelating = false
+                      },
+                      new Parking()
+                      {
+                          Id =9,
+                          ParkingUsersName = "nonkelchameau2@gmail.com",
+                          SoortId = 1,
+                          LocatieId = 4,
+                          Totaal = 15,
+                          Bezet = 13,
+                          ParkingNaam = "Interparking Gent Zuid",
+                          PublicatieToelating = false
                       },
 
                       new Parking()
                       {
-                            Id=5,
-                         ParkingUsersName = "nonkelchameau4@gmail.com",
+                          Id=10,
+                          ParkingUsersName = "nonkelchameau4@gmail.com",
                           SoortId = 2,
                           LocatieId = 5,
                           Totaal = 2,
                           Bezet = 0,
                           ParkingNaam = "Parking Kouter",
-                             PublicatieToelating = true
+                          PublicatieToelating = true
+                      },
+                      new Parking()
+                      {
+                          Id=18,
+                          ParkingUsersName = "nonkelchameau4@gmail.com",
+                          SoortId = 1,
+                          LocatieId = 5,
+                          Totaal = 1434,
+                          Bezet = 0,
+                          ParkingNaam = "Parking Kouter",
+                          PublicatieToelating = true
                       },
 
                       new Parking()
-                      {  Id=6,
+                      {
+                          Id =11,
                           ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 7,
                           Totaal = 1434,
                           Bezet = 0,
                           ParkingNaam = "Indigo Parking Mijnplein",
-                             PublicatieToelating = true
+                          PublicatieToelating = true
                       },
 
                       new Parking()
-                      {  Id=7,
-                         ParkingUsersName = "nonkelchameau3@gmail.com",
+                      {
+                          Id =12,
+                          ParkingUsersName = "nonkelchameau3@gmail.com",
                           SoortId = 2,
                           LocatieId = 8,
                           Totaal = 1434,
                           Bezet = 0,
                           ParkingNaam = "Indigo Park - Parking Cursaal 2",
-                             PublicatieToelating = true
+                          PublicatieToelating = true
                       },
 
                       new Parking()
-                      {  Id=8,
-                         ParkingUsersName = "nonkelchameau2@gmail.com",
+                      {
+                          Id =13,
+                          ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 6,
                           Totaal = 1434,
                           Bezet = 0,
                           ParkingNaam = "Parking Sint-Pietersplein",
-                             PublicatieToelating = true
+                          PublicatieToelating = true
                       },
 
                       new Parking()
-                      {  Id=9,
+                      {   Id=14,
                           ParkingUsersName = "nonkelchameau3@gmail.com",
                           SoortId = 2,
                           LocatieId = 10,
                           Totaal = 1434,
                           Bezet = 0,
                           ParkingNaam = "Parking Arenberg",
-                             PublicatieToelating = true
+                          PublicatieToelating = true
                       },
 
                       new Parking()
-                      {  Id=10,
+                      {
+                          Id =15,
                           ParkingUsersName = "nonkelchameau4@gmail.com",
                           SoortId = 2,
                           LocatieId = 9,
                           Totaal = 1434,
                           Bezet = 0,
                           ParkingNaam = "Parking Grote Markt",
-                             PublicatieToelating = false
+                          PublicatieToelating = false
                       },
                       new Parking()
-                      {  Id=11,
+                      {
+                          Id =16,
                           ParkingUsersName = "nonkelchameau2@gmail.com",
                           SoortId = 2,
                           LocatieId = 11,
                           Totaal = 1434,
                           Bezet = 0,
                           ParkingNaam = "Parking Centrum Oosterdok",
-                             PublicatieToelating = true
+                          PublicatieToelating = true
                       },
                       new Parking()
-                      {  Id=12,
+                      {
+                          Id =17,
                           ParkingUsersName = "nonkelchameau3@gmail.com",
                           SoortId = 2,
                           LocatieId = 12,
                           Totaal = 1434,
                           Bezet = 0,
                           ParkingNaam = "Q-Park Centrum de Admirant",
-                             PublicatieToelating = true
+                          PublicatieToelating = true
                       }
               };
                 foreach (Parking p in parkingen)
