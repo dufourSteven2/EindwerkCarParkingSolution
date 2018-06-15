@@ -26,6 +26,23 @@ namespace EindwerkCarParkingLib
         public virtual ParkingUsers Eigenaar { get; set; }
         public virtual Soort Soort { get; set; }
       public virtual Locatie Locatie { get; set; }
+        public virtual IEnumerable<Totaal> Totalen { get; set; }
 
+        //public int Totaal()
+        //{
+        //    foreach(Totaal t in Totalen)
+        //    {
+        //        Totaal += t.MaxParkings;
+        //                 }
+        //    return Totaal;
+        //}
+        //public int Bezet()
+        //{
+        //    foreach (Totaal t in Totalen)
+        //    {
+        //        Bezet += t.BezetteParkings;
+        //    }
+        //    return Bezet;
+        //}
     }
 }

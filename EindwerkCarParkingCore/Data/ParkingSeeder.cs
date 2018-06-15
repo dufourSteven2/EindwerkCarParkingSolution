@@ -312,7 +312,7 @@ namespace EindwerkCarParkingCore.Data
                          ParkingUsersName = "nonkelchameau4@gmail.com",
                           SoortId = 2,
                           LocatieId = 5,
-                          Totaal = 1434,
+                          Totaal = 2,
                           Bezet = 0,
                           ParkingNaam = "Parking Kouter",
                              PublicatieToelating = true
