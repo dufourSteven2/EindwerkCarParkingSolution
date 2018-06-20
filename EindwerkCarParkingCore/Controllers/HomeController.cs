@@ -42,6 +42,12 @@ namespace EindwerkCarParkingCore.Controllers
             return View();
         }
 
+        [HttpGet("TestAngular")]
+        public IActionResult TestAngular()
+        {
+                return View();
+        }
+
         [HttpPost("contact")]
         public IActionResult Contact(ContactViewModel model)
         {
