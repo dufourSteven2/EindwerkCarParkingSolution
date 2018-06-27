@@ -65,12 +65,9 @@ namespace EindwerkCarParkingCore.Controllers
                         return Redirect(Request.Query["ReturnUrl"].First());
                     }
 
-                    if (this.User.IsInRole("Admin"))
-                    {
-                        return RedirectToAction("Overzicht", "AdminController");
-                    }
-                    else { }
-                    RedirectToAction("Overzicht", "MyAccount");
+
+                    else { RedirectToAction("Overzicht", "MyAccount"); }
+                    
                 }
                 else
                 {
@@ -78,7 +75,11 @@ namespace EindwerkCarParkingCore.Controllers
                 }
 
             }
-
+            if (this.User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Overzicht", "AdminController");
+            }
+            else
             return RedirectToAction("Overzicht", "MyAccount");
         }
 
