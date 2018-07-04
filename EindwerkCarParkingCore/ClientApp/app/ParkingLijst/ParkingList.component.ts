@@ -1,5 +1,6 @@
 ﻿import { Component } from "@angular/core";
 import { templateJitUrl } from "@angular/compiler";
+import { DataService } from "../shared/dataService";
 
 @Component({
     selector: "parking-list",
@@ -8,18 +9,8 @@ import { templateJitUrl } from "@angular/compiler";
     styles: []
 })
 export class ParkingList {
-    public parkings = [
-        {
-            name : "benny",
-            plaats : "brugge"
-        },
-        {
-            name: "Steven",
-            plaats: "brugge"
-        },
-        {
-            name: "William",
-            plaats: "brugge"
-        }
-    ];
+    constructor(private data: DataService) {
+        this.parkings = data.parkings;
+    }
+    public parkings = [    ];
 }
