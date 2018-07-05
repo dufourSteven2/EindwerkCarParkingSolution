@@ -28,7 +28,7 @@ var ParkingList = /** @class */ (function () {
     ParkingList = __decorate([
         core_1.Component({
             selector: "parking-list",
-            //  template: "<div>test parkinglijst</div>",
+            // template: "<div>test parkinglijst</div>",
             templateUrl: "parkingList.component.html",
             styles: []
         }),

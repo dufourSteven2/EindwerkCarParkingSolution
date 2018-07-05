@@ -4,10 +4,11 @@ import { DataService } from "../shared/dataService";
 
 @Component({
     selector: "parking-list",
-  //  template: "<div>test parkinglijst</div>",
-   templateUrl : "parkingList.component.html",
+   // template: "<div>test parkinglijst</div>",
+  templateUrl : "parkingList.component.html",
     styles: []
 })
+
 export class ParkingList implements OnInit {
     constructor(private data: DataService) {
         
