@@ -50,8 +50,16 @@ var ParkingList = /** @class */ (function () {
     function ParkingList(data) {
         this.data = data;
         this.parkings = [];
-        this.parkings = data.parkings;
     }
+    ParkingList.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.loadParkings()
+            .subscribe(function (succes) {
+            if (succes) {
+                _this.parkings = _this.data.parkings;
+            }
+        });
+    };
     ParkingList = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "parking-list",
@@ -74,7 +82,7 @@ var ParkingList = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div> het werkt</div>\r\n\r\n<div *ngFor=\"let p of parkings\">{{p.name}}</div>\r\n\r\n\r\n"
+module.exports = "\r\n<div> het werkt</div>\r\n\r\n<div *ngFor=\"let p of parkings\">{{p.ParkingNaam}}</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -185,23 +193,40 @@ var AppModule = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
 var DataService = /** @class */ (function () {
-    function DataService() {
-        this.parkings = [
-            {
-                name: "benny",
-                plaats: "brugge"
-            },
-            {
-                name: "Steven",
-                plaats: "brugge"
-            },
-            {
-                name: "William",
-                plaats: "brugge"
-            }
-        ];
+    function DataService(http) {
+        this.http = http;
+        this.parkings = [];
     }
+    DataService.prototype.loadParkings = function () {
+        var _this = this;
+        return this.http.get("/api/parkings")
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (data) {
+            _this.parkings = data;
+            return true;
+        }));
+    };
+    DataService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]])
+    ], DataService);
     return DataService;
 }());
 

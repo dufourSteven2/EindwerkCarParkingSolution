@@ -15,8 +15,16 @@ var ParkingList = /** @class */ (function () {
     function ParkingList(data) {
         this.data = data;
         this.parkings = [];
-        this.parkings = data.parkings;
     }
+    ParkingList.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.loadParkings()
+            .subscribe(function (succes) {
+            if (succes) {
+                _this.parkings = _this.data.parkings;
+            }
+        });
+    };
     ParkingList = __decorate([
         core_1.Component({
             selector: "parking-list",
