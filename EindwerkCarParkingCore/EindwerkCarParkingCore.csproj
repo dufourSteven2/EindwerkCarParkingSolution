@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\ParkingLijst\ParkingList.component.ts" />
+    <None Remove="ClientApp\app\shared\dataService.ts" />
     <None Remove="Controllers\LandsController.cs~RF57f18d9.TMP" />
   </ItemGroup>
 
@@ -473,5 +475,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\ParkingLijst\ParkingList.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\dataService.ts" />
   </ItemGroup>
 </Project>
