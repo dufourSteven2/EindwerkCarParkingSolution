@@ -162,7 +162,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Benny\Documenten\Eindwerk\EindwerkCarParkingSolution\EindwerkCarParkingSolution\EindwerkCarParkingCore\ClientApp\main.ts */"./ClientApp/main.ts");
+module.exports = __webpack_require__(/*! I:\HBO5\EINDWERK1\EindwerkCarParkingSolution\EindwerkCarParkingSolution\EindwerkCarParkingCore\ClientApp\main.ts */"./ClientApp/main.ts");
 
 
 /***/ })
