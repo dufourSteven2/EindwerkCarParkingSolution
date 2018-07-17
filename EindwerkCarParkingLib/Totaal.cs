@@ -1,24 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel.DataAnnotations;
+//using System.ComponentModel.DataAnnotations.Schema;
+//using System.Text;
 
-namespace EindwerkCarParkingLib
-{
-   public class Totaal
-    {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
-        [Required]
+//namespace EindwerkCarParkingLib
+//{
+//   public class Totaal
+//    {
+//        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+//        public int Id { get; set; }
+//        [Required]
 
-        public int MaxParkings { get; set; }
-        public int BezetteParkings { get; set; }
+//        public int MaxParkings { get; set; }
+//        public int BezetteParkings { get; set; }
 
-        public int SoortId { get; set; }
+//        public int SoortId { get; set; }
 
-        //Navigation property;
+//        //Navigation property;
 
-        public virtual ICollection<Soort> Soorts { get; set; }
-    }
-}
+//        public virtual ICollection<Soort> Soorts { get; set; }
+//    }
+//}

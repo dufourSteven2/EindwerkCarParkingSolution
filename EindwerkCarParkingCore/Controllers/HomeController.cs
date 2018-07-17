@@ -71,7 +71,7 @@ namespace EindwerkCarParkingCore.Controllers
         public IActionResult DtoTester()
         {
             var item = _context.GetAllParkings();
-            var mappedItem = _mapper.Map<IEnumerable<ParkingsDTO>>(item);
+            var mappedItem = _mapper.Map<IEnumerable<ParkingsDetailDTO>>(item);
 
             return View(mappedItem);
             
@@ -94,12 +94,12 @@ namespace EindwerkCarParkingCore.Controllers
 
         }
 
-        public IActionResult Totalen()
-        {
-            IEnumerable<TotaalDTO> totalen = new List<TotaalDTO>();
-            totalen = _context.GetTotalen();
-            return View(totalen);
-        }
+        //public IActionResult Totalen()
+        //{
+        //    //IEnumerable<TotaalDTO> totalen = new List<TotaalDTO>();
+        //    //totalen = _context.GetTotalen();
+        //    //return View(totalen);
+        //}
 
         public JsonResult GetCountries() {
             var landen = new List<LandDTO>();
