@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'CarParkingList',
-  templateUrl:'./app.component.html'
+    selector: 'the-parkings',
+    templateUrl: './app.component.html',
+    styles: []
 })
 export class AppComponent {
-    Title = 'app';
+    ParkingNaam = 'Amaai wat een mooi doolhof. Deze tekst komt uit: app.component.ts';
 }

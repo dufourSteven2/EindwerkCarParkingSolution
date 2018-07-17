@@ -19,7 +19,7 @@ var DataService = /** @class */ (function () {
     }
     DataService.prototype.loadParkings = function () {
         var _this = this;
-        return this.http.get("/api/parkings")
+        return this.http.get("/api/parkings") // hier de weg naar de apiom parkings op te halen
             .map(function (data) {
             _this.parkings = data;
             return true;
