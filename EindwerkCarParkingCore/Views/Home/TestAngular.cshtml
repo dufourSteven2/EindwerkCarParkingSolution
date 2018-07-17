@@ -1,12 +1,21 @@
-﻿@section Scripts{
+﻿@using EindwerkCarParkingLib
+@using EindwerkCarParkingCore.Models
+@model IEnumerable<Parking>
+
+@section Scripts{
     @*<script src="~/clientapp/dist/runtime.js"></script>*@
     <script src="~/clientapp/dist/main.js"></script>
     <script src="~/clientapp/dist/polyfills.js"></script>
     <script src="~/clientapp/dist/runtime.js"></script>
     <script src="~/clientapp/dist/styles.js"></script>
     <script src="~/clientapp/dist/vendor.js"></script>
+    @*<script src="~/clientapp/dist/main.js"></script>*@
 
     @*de scripts  moeten in volgorde staan*@
 
 }
-<CarParkingList></CarParkingList>
+    <meta charset="utf-8">
+<h1>Parkings</h1>
+<the-parkings></the-parkings>
+<parking-list></parking-list>
+@*<CarParkingList></CarParkingList>*@

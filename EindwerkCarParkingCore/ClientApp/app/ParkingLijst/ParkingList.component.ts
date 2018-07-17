@@ -1,12 +1,12 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { templateJitUrl } from "@angular/compiler";
+import { templateJitUrl } from "@angular/compiler"; //templateJitUrl
 import { DataService } from "../shared/dataService";
 
 @Component({
     selector: "parking-list",
-   // template: "<div>test parkinglijst</div>",
-  templateUrl : "parkingList.component.html",
-    styles: []
+    // template: "<div>test parkinglijst</div>",
+  templateUrl : "../ParkingLijst/parkingList.component.html",
+    styleUrls: [] //styles aangepast naar styleUrls
 })
 
 export class ParkingList implements OnInit {
@@ -24,3 +24,4 @@ export class ParkingList implements OnInit {
             });
     }
 }
+

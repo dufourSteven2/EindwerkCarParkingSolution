@@ -60,12 +60,11 @@ var ParkingList = /** @class */ (function () {
             }
         });
     };
-    ;
     ParkingList = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "parking-list",
-            template: __webpack_require__(/*! ./parkingList.component.html */ "./ClientApp/app/ParkingLijst/parkingList.component.html"),
-            styles: []
+            template: __webpack_require__(/*! ../ParkingLijst/parkingList.component.html */ "./ClientApp/app/ParkingLijst/parkingList.component.html"),
+            styleUrls: [] //styles aangepast naar styleUrls
         }),
         __metadata("design:paramtypes", [_shared_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
     ], ParkingList);
@@ -83,7 +82,7 @@ var ParkingList = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div> het werkt</div>\r\n\r\n\r\n"
+module.exports = "<!--<h2>test</h2>\r\n<div> het werkt <h2>Nog iets erbij</h2>\r\n    <ul>\r\n        <li *ngfor=\"let p of parkings\">{{p.parkings}}</li>\r\n    </ul>\r\n    </div>-->\r\n<div class=\"row\">\r\n    <ul>\r\n        <!--<li ngfor=\"let p of parkings\">{{p.ParkingNaam}}</li>-->\r\n        <li ng-repeat=\"p in parkings\">{{p.ParkingNaam}}</li>\r\n    </ul>\r\n        <!--<h3>test1 uit pakingList.component.html</h3>-->   \r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -94,7 +93,7 @@ module.exports = "\r\n<div> het werkt</div>\r\n\r\n\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n\r\n\r\n<h1>{{Title}}</h1>\r\n\r\n\r\n<parking-list></parking-list>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n<div class=\"row\">\r\n    <div class=\"col-md-9\">\r\n        <h3>{{ParkingNaam}}</h3>\r\n        <parking-list></parking-list>\r\n    </div>\r\n    <div class=\"col-md-3\">\r\n        <div class=\"well well-sm\">\r\n            <h3>Testing uit app.component.html</h3>\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n\r\n\r\n<!--<h1>{{ParkingNaam}}</h1>\r\n\r\n<h3>Parking die uit app.component.html komt</h3>\r\n<parking-list></parking-list>-->"
 
 /***/ }),
 
@@ -118,12 +117,13 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.Title = 'app';
+        this.ParkingNaam = 'Amaai wat een mooi doolhof. Deze tekst komt uit: app.component.ts';
     }
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'CarParkingList',
-            template: __webpack_require__(/*! ./app.component.html */ "./ClientApp/app/app.component.html")
+            selector: 'the-parkings',
+            template: __webpack_require__(/*! ./app.component.html */ "./ClientApp/app/app.component.html"),
+            styles: []
         })
     ], AppComponent);
     return AppComponent;
@@ -145,9 +145,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./ClientApp/app/app.component.ts");
-/* harmony import */ var _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ParkingLijst/ParkingList.component */ "./ClientApp/app/ParkingLijst/ParkingList.component.ts");
-/* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./shared/dataService */ "./ClientApp/app/shared/dataService.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./ClientApp/app/app.component.ts");
+/* harmony import */ var _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ParkingLijst/ParkingList.component */ "./ClientApp/app/ParkingLijst/ParkingList.component.ts");
+/* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shared/dataService */ "./ClientApp/app/shared/dataService.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -156,6 +157,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 
 
+ //////////////
 
 
 
@@ -165,16 +167,17 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
-                _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_3__["ParkingList"]
+                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
+                _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_4__["ParkingList"]
             ],
             imports: [
-                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"]
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"] /////////////////////:
             ],
             providers: [
-                _shared_dataService__WEBPACK_IMPORTED_MODULE_4__["DataService"]
+                _shared_dataService__WEBPACK_IMPORTED_MODULE_5__["DataService"]
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -196,6 +199,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -207,6 +211,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
@@ -214,7 +219,7 @@ var DataService = /** @class */ (function () {
     }
     DataService.prototype.loadParkings = function () {
         var _this = this;
-        return this.http.get("/api/parkings")
+        return this.http.get("/api/parkings") // hier de weg naar de apiom parkings op te halen
             .map(function (data) {
             _this.parkings = data;
             return true;

@@ -9,12 +9,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.Title = 'app';
+        this.ParkingNaam = 'Amaai wat een mooi doolhof. Deze tekst komt uit: app.component.ts';
     }
     AppComponent = __decorate([
         core_1.Component({
-            selector: 'CarParkingList',
-            templateUrl: './app.component.html'
+            selector: 'the-parkings',
+            templateUrl: './app.component.html',
+            styles: []
         })
     ], AppComponent);
     return AppComponent;
