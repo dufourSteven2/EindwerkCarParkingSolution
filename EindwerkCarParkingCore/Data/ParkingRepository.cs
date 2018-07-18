@@ -32,14 +32,15 @@ namespace EindwerkCarParkingCore.Data
                 _logger.LogInformation("GetAllParkings was called");
                 //return _ctx.Parkings.ToList();
                 return _ctx.Parkings
-                    .Include(l => l.Locatie)
-                    .Include(l => l.Eigenaar    )
+                    //.Include(l => l.Locatie)
+                    //.Include(l => l.Eigenaar    )
                     .Include(l => l.Soort)
-                    .Include(l => l.Locatie.Gemeente.Land)
-                    .ThenInclude(i => i.Gemeente)
+                    //.Include(l => l.Locatie.Gemeente.Land)
+                    //.ThenInclude(i => i.Gemeente)
                     .ToList();
 
             }
+
             catch (Exception ex)
             {
                 _logger.LogError($"Failed to get all parkings: {ex}");
