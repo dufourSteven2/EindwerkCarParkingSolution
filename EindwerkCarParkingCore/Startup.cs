@@ -18,6 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using EindwerkCarParkingLib;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.CodeAnalysis;
 
 namespace EindwerkCarParkingCore
 {
@@ -86,6 +87,17 @@ namespace EindwerkCarParkingCore
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper);//einde automapper toevoeging
 
+
+            //services.AddMvc().AddRazorOptions(options =>
+            //{
+            //    var previous = options.CompilationCallback;
+            //    options.CompilationCallback = context =>
+            //    {
+            //        previous?.Invoke(context);
+
+            //        context.Compilation = context.Compilation.AddReferences(MetadataReference.CreateFromFile(typeof(EindwerkCarParkingContext).Assembly.Location));
+            //    };
+            //});
 
 
             services.AddMvc(opt =>
