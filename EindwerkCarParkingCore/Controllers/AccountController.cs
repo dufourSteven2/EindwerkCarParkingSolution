@@ -275,7 +275,9 @@ namespace EindwerkCarParkingCore.Controllers
         {
             string code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var callbackUrl = Url.Action("ConfirmEmail", "Account",
+#pragma warning disable IDE0037 // Use inferred member name
             new { userId = user.Id, code = code }, protocol: Request.Scheme);
+#pragma warning restore IDE0037 // Use inferred member name
             await _emailSender.SendEmailAsync(user.Email, subject,
             "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>"
             );
