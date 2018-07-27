@@ -7,8 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using EindwerkCarParkingCore.Models;
+using EindwerkCarParkingCore.ViewModels;
+using EindwerkCarParkingCore.Services;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text;
 
 namespace EindwerkCarParkingCore.Controllers
 {
@@ -42,6 +46,16 @@ namespace EindwerkCarParkingCore.Controllers
                 return BadRequest("Failed to get Parkingen");
             }
         }
+        [HttpGet("app")]// hierom te testen ("parkingLijst")
+        public IActionResult Shop()
+        {
+            //var item = _repository.GetAllParkings();
+            //var mappedItem = _mapper.Map<IEnumerable<Parking>>(item);
+
+            //return View(mappedItem);
+            return View();
+        }
+
 
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)

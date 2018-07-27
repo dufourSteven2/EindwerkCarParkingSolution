@@ -47,11 +47,6 @@ namespace EindwerkCarParkingCore.Controllers
         {
                 return View();
         }
-        [HttpGet("ParkinLijst")] // deze toegevoegd om parkingljst te maken
-        public IActionResult ParkingLijst()
-        {
-            return View();
-        }
 
         [HttpPost("contact")]
         public IActionResult Contact(ContactViewModel model)
@@ -86,7 +81,12 @@ namespace EindwerkCarParkingCore.Controllers
 
             return View(mappedItem);
             
-        } 
+        }
+        [HttpGet("parkingLijst")] // deze toegevoegd om parkingljst te maken
+        public IActionResult Shop()
+        {
+            return View();
+        }
 
         public IActionResult Error()
         {

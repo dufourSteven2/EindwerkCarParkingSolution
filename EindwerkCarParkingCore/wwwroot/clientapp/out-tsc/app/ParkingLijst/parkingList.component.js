@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+//import { CommonModule } from '@angular/common';
+//import { templateJitUrl } from "@angular/compiler"; //templateJitUrl
 var dataService_1 = require("../shared/dataService");
 var ParkingList = /** @class */ (function () {
     function ParkingList(data) {
@@ -29,7 +31,7 @@ var ParkingList = /** @class */ (function () {
         core_1.Component({
             selector: "parking-list",
             // template: "<div>test parkinglijst</div>",
-            templateUrl: "../ParkingLijst/parkingList.component.html",
+            templateUrl: "parkingList.component.html",
             styleUrls: [] //styles aangepast naar styleUrls
         }),
         __metadata("design:paramtypes", [dataService_1.DataService])
@@ -37,4 +39,4 @@ var ParkingList = /** @class */ (function () {
     return ParkingList;
 }());
 exports.ParkingList = ParkingList;
-//# sourceMappingURL=ParkingList.component.js.map
+//# sourceMappingURL=parkingList.component.js.map

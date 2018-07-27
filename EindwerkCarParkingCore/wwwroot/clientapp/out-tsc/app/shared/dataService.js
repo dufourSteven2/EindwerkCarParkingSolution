@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = require("@angular/common/http");
 var core_1 = require("@angular/core");
+//import { Http } from '@angular/http';
 require("rxjs/add/operator/map");
 var DataService = /** @class */ (function () {
     function DataService(http) {
@@ -19,7 +20,7 @@ var DataService = /** @class */ (function () {
     }
     DataService.prototype.loadParkings = function () {
         var _this = this;
-        return this.http.get("/api/parkings") // hier de weg naar de apiom parkings op te halen
+        return this.http.get("/api/parkings")
             .map(function (data) {
             _this.parkings = data;
             return true;

@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+//import { CommonModule } from '@angular/common';
+//import { HttpModule } from '@angular/http';
 import { HttpClientModule } from "@angular/common/http"; //////////////
 
 import { AppComponent } from './app.component';
-import { ParkingList } from "./ParkingLijst/ParkingList.component";
+import { ParkingList } from "./ParkingLijst/parkingList.component";
 import { DataService } from './shared/dataService';
 
 @NgModule({
@@ -13,6 +15,8 @@ import { DataService } from './shared/dataService';
   ],
   imports: [
       BrowserModule,
+      //CommonModule,
+      //HttpModule,
       HttpClientModule /////////////////////:
   ],
     providers: [

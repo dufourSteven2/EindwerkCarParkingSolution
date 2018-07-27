@@ -8,9 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
+//import { CommonModule } from '@angular/common';
+//import { HttpModule } from '@angular/http';
 var http_1 = require("@angular/common/http"); //////////////
 var app_component_1 = require("./app.component");
-var ParkingList_component_1 = require("./ParkingLijst/ParkingList.component");
+var parkingList_component_1 = require("./ParkingLijst/parkingList.component");
 var dataService_1 = require("./shared/dataService");
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -19,10 +21,12 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                ParkingList_component_1.ParkingList
+                parkingList_component_1.ParkingList
             ],
             imports: [
                 platform_browser_1.BrowserModule,
+                //CommonModule,
+                //HttpModule,
                 http_1.HttpClientModule /////////////////////:
             ],
             providers: [

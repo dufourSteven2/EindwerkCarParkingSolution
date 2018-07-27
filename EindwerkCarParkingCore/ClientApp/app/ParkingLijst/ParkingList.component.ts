@@ -1,15 +1,17 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { templateJitUrl } from "@angular/compiler"; //templateJitUrl
+//import { CommonModule } from '@angular/common';
+//import { templateJitUrl } from "@angular/compiler"; //templateJitUrl
 import { DataService } from "../shared/dataService";
 
 @Component({
     selector: "parking-list",
     // template: "<div>test parkinglijst</div>",
-  templateUrl : "../ParkingLijst/parkingList.component.html",
+  templateUrl : "parkingList.component.html",
     styleUrls: [] //styles aangepast naar styleUrls
 })
 
 export class ParkingList implements OnInit {
+
     constructor(private data: DataService) {
         
     }

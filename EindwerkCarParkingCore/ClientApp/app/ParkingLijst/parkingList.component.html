@@ -1,8 +1,9 @@
-﻿<h2>test</h2>
-<div> het werkt <h2>Nog iets erbij</h2>
+﻿<div class="row">
     <ul>
-        <li ngfor="let p of parkings">{{p.parkingNaam}}</li>
+        <li *ngFor="let p of parkings">{{ p.ParkingNaam }}</li>
+        <!--<parking-list></parking-list>-->
     </ul>
-    </div>
+</div>
 
+    
 

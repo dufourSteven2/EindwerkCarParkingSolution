@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\app\ParkingLijst\ParkingList.component.ts" />
+    <None Remove="ClientApp\app\ParkingLijst\parkingList.component.ts" />
     <None Remove="ClientApp\app\shared\dataService.ts" />
     <None Remove="Controllers\LandsController.cs~RF57f18d9.TMP" />
   </ItemGroup>
@@ -479,7 +479,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\app\ParkingLijst\ParkingList.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\ParkingLijst\parkingList.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\dataService.ts" />
   </ItemGroup>
 </Project>
