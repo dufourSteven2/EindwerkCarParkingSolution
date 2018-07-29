@@ -82,7 +82,7 @@ var ParkingList = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<table>\r\n    <tr *ngFor=\"let p of parkings\">\r\n        <td>Naam Parking: </td>\r\n        <td>{{p.parkingNaam}}</td>\r\n        <td>GemeenteGemeenteNaam: </td>\r\n        <td>{{p.gemeenteGemeenteNaam}}</td>\r\n    </tr>\r\n</table>\r\n\r\n"
+module.exports = "\r\n<table>\r\n    <tr *ngFor=\"let p of parkings\">\r\n        <td>Naam Parking: </td>\r\n        <td>{{p.parkingNaam}}</td>\r\n        <td>GemeenteNaam: </td>\r\n        <td>{{p.gemeenteGemeenteNaam}}</td>\r\n    </tr>\r\n</table>\r\n<div>\r\n    <div *ngFor=\"let p of parkings\">\r\n        <h3>\r\n            {{p.parkingNaam}}\r\n        </h3>\r\n\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 

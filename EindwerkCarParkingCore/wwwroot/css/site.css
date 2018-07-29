@@ -40,7 +40,7 @@ input[type=text], input[type=password], textarea {
    
 }
 
-    menu li {
+    .menu li {
         display: inline;
         list-style-type: none;
         color: black;
