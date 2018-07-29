@@ -82,7 +82,7 @@ var ParkingList = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<h2>test</h2>\r\n<div> het werkt <h2>Nog iets erbij</h2>\r\n    <ul>\r\n        <li *ngfor=\"let p of parkings\">{{p.parkings}}</li>\r\n    </ul>\r\n    </div>-->\r\n<div class=\"row\">\r\n    <ul>\r\n        <!--<li ngfor=\"let p of parkings\">{{p.ParkingNaam}}</li>-->\r\n        <li ng-repeat=\"p in parkings\">{{p.ParkingNaam}}</li>\r\n    </ul>\r\n        <!--<h3>test1 uit pakingList.component.html</h3>-->   \r\n</div>\r\n\r\n"
+module.exports = "<!--<h2>test</h2>\r\n<div> het werkt <h2>Nog iets erbij</h2>\r\n    <ul>\r\n        <li ngFor=\"let p of parkings\">{{p.parkingNaam}}</li>\r\n    </ul>\r\n    </div>-->\r\n<table>\r\n    <tr *ngFor=\"let p of parkings\">\r\n        <td>Naam Parking: </td>\r\n        <td>{{p.parkingNaam}}</td>\r\n    </tr>\r\n</table>\r\n\r\n"
 
 /***/ }),
 
@@ -93,7 +93,7 @@ module.exports = "<!--<h2>test</h2>\r\n<div> het werkt <h2>Nog iets erbij</h2>\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n<div class=\"row\">\r\n    <div class=\"col-md-9\">\r\n        <h3>{{ParkingNaam}}</h3>\r\n        <parking-list></parking-list>\r\n    </div>\r\n    <div class=\"col-md-3\">\r\n        <div class=\"well well-sm\">\r\n            <h3>Testing uit app.component.html</h3>\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n\r\n\r\n<!--<h1>{{ParkingNaam}}</h1>\r\n\r\n<h3>Parking die uit app.component.html komt</h3>\r\n<parking-list></parking-list>-->"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n\r\n\r\n\r\n<h3>Parking die uit app.component.html komt</h3>\r\n<parking-list></parking-list>"
 
 /***/ }),
 
@@ -296,7 +296,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Benny\Documenten\Eindwerk\EindwerkCarParkingSolution\EindwerkCarParkingSolution\EindwerkCarParkingCore\ClientApp\main.ts */"./ClientApp/main.ts");
+module.exports = __webpack_require__(/*! D:\Benny\Documenten\Eindwerk\EindwerkCarParkingSolution\EindwerkCarParkingCore\ClientApp\main.ts */"./ClientApp/main.ts");
 
 
 /***/ })
