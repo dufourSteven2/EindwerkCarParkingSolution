@@ -1,8 +1,18 @@
-﻿<h2>test</h2>
-<div> het werkt <h2>Nog iets erbij</h2>
-    <ul>
-        <li ngfor="let p of parkings">{{p.parkingNaam}}</li>
-    </ul>
-    </div>
+﻿
+<table>
+    <tr *ngFor="let p of parkings">
+        <td>Naam Parking: </td>
+        <td>{{p.parkingNaam}}</td>
+        <td>GemeenteNaam: </td>
+        <td>{{p.gemeenteGemeenteNaam}}</td>
+    </tr>
+</table>
+<div>
+    <div *ngFor="let p of parkings">
+        <h3>
+            {{p.parkingNaam}}
+        </h3>
 
+    </div>
+</div>
 

@@ -1,5 +1,4 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { templateJitUrl } from "@angular/compiler"; //templateJitUrl
 import { DataService } from "../shared/dataService";
 
 @Component({

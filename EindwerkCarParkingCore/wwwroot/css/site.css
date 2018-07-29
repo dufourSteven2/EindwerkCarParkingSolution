@@ -35,13 +35,15 @@ input[type=text], input[type=password], textarea {
    
 }
 
-menu {
-    font-size: 12px;
+#menu {
+    font-size: 16px;
+   
 }
 
-    menu li {
+    .menu li {
         display: inline;
         list-style-type: none;
+        color: black;
     }
 
         menu li::after {

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EindwerkCarParkingCore.Data;
+using EindwerkCarParkingCore.Models;
 using EindwerkCarParkingLib;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -34,7 +35,7 @@ namespace EindwerkCarParkingCore.Controllers
             {
               //  var username = User.Identity.Name;
                // var results = _repository.GetAllParkingsByUser();
-                return Ok(_repository.GetAllParkings());
+                return Ok(_mapper.Map<IEnumerable<Parking>,IEnumerable<ParkingsDTO>> (_repository.GetAllParkings()));
             }
             catch (Exception ex)
             {
@@ -49,7 +50,7 @@ namespace EindwerkCarParkingCore.Controllers
             try
             {
                 var parking = _repository.GetParkingById(id);
-                if (parking != null) return Ok(parking);
+                if (parking != null) return Ok(_mapper.Map<Parking, ParkingsDetailDTO>(parking));
                 else return NotFound();
             }
             catch (Exception ex)
