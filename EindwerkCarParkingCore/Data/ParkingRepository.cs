@@ -35,7 +35,7 @@ namespace EindwerkCarParkingCore.Data
                     //.Include(l => l.Locatie)
                     //.Include(l => l.Eigenaar    )
                     .Include(l => l.Soort)
-                    //.Include(l => l.Locatie.Gemeente.Land)
+                    .Include(l => l.Locatie.Gemeente.Land)
                     //.ThenInclude(i => i.Gemeente)
                     .ToList();
 

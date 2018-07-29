@@ -35,8 +35,9 @@ input[type=text], input[type=password], textarea {
    
 }
 
-menu {
-     color: black;
+#menu {
+    font-size: 16px;
+   
 }
 
     menu li {

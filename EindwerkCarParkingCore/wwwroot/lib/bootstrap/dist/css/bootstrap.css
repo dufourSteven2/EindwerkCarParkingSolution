@@ -3979,6 +3979,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li {
   position: relative;
   display: block;
+  color: black;
 }
 .nav > li > a {
   position: relative;
@@ -4322,11 +4323,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-nav {
   margin: 7.5px -15px;
+  color: black;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+  color: black
 }
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
@@ -4355,6 +4358,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav {
     float: left;
     margin: 0;
+    color:black;
   }
   .navbar-nav > li {
     float: left;
