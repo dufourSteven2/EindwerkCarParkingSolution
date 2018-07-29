@@ -7,9 +7,9 @@
 <html>
 <head>
 
-
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="navbar navbar-inverse header">
@@ -24,7 +24,7 @@
                 <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">&#9776;</button>  @*teken om bij aanpassen device/Schermgroote een hamburgerteken te krijgen*@
             </div>
             <div id="menu" class="collapse navbar-collapse">  @*om menu uit te laten klappen moet men dit in div steken met naam voor data-target*@
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="menu">
                     <li> <a asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-controller="Home" asp-action="parkings">Parking zoeken</a></li>
