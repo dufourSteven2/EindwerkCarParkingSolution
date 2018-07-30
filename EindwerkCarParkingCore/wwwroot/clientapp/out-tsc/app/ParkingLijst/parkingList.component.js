@@ -29,7 +29,7 @@ var ParkingList = /** @class */ (function () {
         core_1.Component({
             selector: "parking-list",
             // template: "<div>test parkinglijst</div>",
-            templateUrl: "../ParkingLijst/parkingList.component.html",
+            templateUrl: 'parkingList.component.html',
             styleUrls: [] //styles aangepast naar styleUrls
         }),
         __metadata("design:paramtypes", [dataService_1.DataService])

@@ -4,7 +4,7 @@ import { DataService } from "../shared/dataService";
 @Component({
     selector: "parking-list",
     // template: "<div>test parkinglijst</div>",
-  templateUrl : "../ParkingLijst/parkingList.component.html",
+  templateUrl : 'parkingList.component.html',
     styleUrls: [] //styles aangepast naar styleUrls
 })
 
