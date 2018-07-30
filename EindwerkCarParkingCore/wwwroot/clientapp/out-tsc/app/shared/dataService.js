@@ -15,7 +15,7 @@ require("rxjs/add/operator/map");
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
-        this.parkings = [];
+        this.parkings = [] /*signing*/;
     }
     DataService.prototype.loadParkings = function () {
         var _this = this;

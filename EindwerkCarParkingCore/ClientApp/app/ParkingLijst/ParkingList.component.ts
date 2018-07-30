@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { DataService } from "../shared/dataService";
-
+import { Parking } from "../shared/Parking";
 @Component({
     selector: "parking-list",
     // template: "<div>test parkinglijst</div>",
@@ -12,7 +12,7 @@ export class ParkingList implements OnInit {
     constructor(private data: DataService) {
         
     }
-    public parkings = [];
+    public parkings : Parking[] =[];
 
     ngOnInit(): void {
         this.data.loadParkings()
