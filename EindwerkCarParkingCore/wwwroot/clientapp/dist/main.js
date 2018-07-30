@@ -82,7 +82,7 @@ var ParkingList = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<table>\r\n    <tr *ngFor=\"let p of parkings\">\r\n        <td>Naam Parking: </td>\r\n        <td>{{p.parkingNaam}}</td>\r\n        <td>GemeenteNaam: </td>\r\n        <td>{{p.gemeenteGemeenteNaam}}</td>\r\n    </tr>\r\n</table>\r\n<div>\r\n    <div *ngFor=\"let p of parkings\">\r\n        <h3>\r\n            {{p.parkingNaam}}\r\n        </h3>\r\n\r\n    </div>\r\n</div>\r\n\r\n"
+module.exports = "\r\n<div>\r\n    <div *ngFor=\"let p of parkings\">\r\n        <h3>\r\n            {{p.parkingNaam}}\r\n        </h3>\r\n        <h2>\r\n            {{p.soortSoortNaam}}\r\n        </h2>\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -93,7 +93,7 @@ module.exports = "\r\n<table>\r\n    <tr *ngFor=\"let p of parkings\">\r\n      
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n\r\n\r\n\r\n<h3>Parking die uit app.component.html komt</h3>\r\n<parking-list></parking-list>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n\r\n\r\n\r\n<parking-list></parking-list>"
 
 /***/ }),
 

@@ -13,7 +13,12 @@ namespace EindwerkCarParkingCore.Automapper
         public AutomapperProfile()
         {
             CreateMap<Parking, ParkingsDTO>()
-                .ForMember(dto => dto.GemeenteGemeenteNaam, conf => conf.MapFrom(gem => gem.Locatie.Gemeente.GemeenteNaam));
+                .ForMember(dto => dto.LandLandNaam, conf => conf.MapFrom(Land => Land.Locatie.Gemeente.Land.LandNaam))
+                .ForMember(dto => dto.GemeenteGemeenteNaam, conf => conf.MapFrom(gem => gem.Locatie.Gemeente.GemeenteNaam))
+                .ForMember(dto => dto.LocatieStraat, conf => conf.MapFrom(straat => straat.Locatie.Straat))
+                .ForMember(dto => dto.LocatieNummer, conf => conf.MapFrom(LocNr => LocNr.Locatie.Nr))
+                .ForMember(dto => dto.SoortSoortNaam, conf => conf.MapFrom(SoortN => SoortN.Soort.SoortNaam))
+                .ForMember(dto => dto.Percentage, conf => conf.MapFrom(perc => perc.Percentage));
             CreateMap<Parking, ParkingsDetailDTO>()
             .ForMember(dto => dto.GemeenteGemeenteNaam, conf => conf.MapFrom(gem => gem.Locatie.Gemeente.GemeenteNaam))
             .ForMember(dto => dto.LocatieStraat, conf => conf.MapFrom(lo => lo.Locatie.Straat))

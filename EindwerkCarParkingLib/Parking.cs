@@ -13,8 +13,8 @@ namespace EindwerkCarParkingLib
         [Required]
 
         public string ParkingNaam { get; set; }
-        public int Totaal { get; set; }
-        public int Bezet { get; set; }
+        public decimal Totaal { get; set; }
+        public decimal Bezet { get; set; }
         public bool PublicatieToelating { get; set; }  //wanneer deze bool op true staat, kan de parking getoond worden op de website
         public decimal Percentage
         {
