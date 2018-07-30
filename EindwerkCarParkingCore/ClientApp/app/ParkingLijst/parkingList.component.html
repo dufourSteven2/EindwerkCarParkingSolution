@@ -1,18 +1,12 @@
 ﻿
-<table>
-    <tr *ngFor="let p of parkings">
-        <td>Naam Parking: </td>
-        <td>{{p.parkingNaam}}</td>
-        <td>GemeenteNaam: </td>
-        <td>{{p.gemeenteGemeenteNaam}}</td>
-    </tr>
-</table>
 <div>
     <div *ngFor="let p of parkings">
         <h3>
             {{p.parkingNaam}}
         </h3>
-
+        <h2>
+            {{p.soortSoortNaam}}
+        </h2>
     </div>
 </div>
 

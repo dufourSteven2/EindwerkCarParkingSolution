@@ -10,8 +10,13 @@ namespace EindwerkCarParkingCore.Models
     {
         public int Id { get; set; }
         public string ParkingNaam { get; set; }
+        public string LandLandNaam { get; set; }
         public string GemeenteGemeenteNaam { get; set; }
-        public bool PublicatieToelating { get; set; }  //wanneer deze bool op true staat, kan de parking getoond worden op de website
+        public string LocatieStraat { get; set; }
+        public string LocatieNummer { get; set; }
+        //public bool PublicatieToelating { get; set; }  //wanneer deze bool op true staat, kan de parking getoond worden op de website
+        public string SoortSoortNaam { get; set; }
+        public decimal Percentage { get; set; }
 
 
     }

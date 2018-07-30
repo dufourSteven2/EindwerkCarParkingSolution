@@ -35,7 +35,7 @@ namespace EindwerkCarParkingCore.Controllers
             {
               //  var username = User.Identity.Name;
                // var results = _repository.GetAllParkingsByUser();
-                return Ok(_mapper.Map<IEnumerable<Parking>,IEnumerable<ParkingsDTO>> (_repository.GetAllParkings()));
+                return Ok(_mapper.Map<IEnumerable<Parking>,IEnumerable<ParkingsDTO>> (_repository.GetAllRegistredParkings()));
             }
             catch (Exception ex)
             {
