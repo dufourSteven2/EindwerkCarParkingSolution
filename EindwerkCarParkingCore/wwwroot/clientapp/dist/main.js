@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./ClientApp/$$_lazy_route_resource lazy recursive
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".MainDiv {\r\n    background-color: #eaf9f8;\r\n}\r\n.parkingsdiv {\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    border: solid;\r\n    border-color: #d7edf3;\r\n    background-color: #d7f3f2;\r\n    border-radius: 8px;\r\n    margin-bottom: 3px;\r\n    margin-top: 3px;\r\n}"
+module.exports = "\r\n.parkingsdiv {\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    border: solid;\r\n    border-color: #d7edf3;\r\n    background-color: #eaf9f8;\r\n    border-radius: 8px;\r\n    margin-bottom: 3px;\r\n    margin-top: 3px;\r\n}\r\n\r\n.titleParking {\r\n    background-color: #d7f3f2;\r\n}"
 
 /***/ }),
 
@@ -93,7 +93,7 @@ var ParkingList = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"panel-group MainDiv\">\r\n    <h1>Parkings: </h1>\r\n    <div  *ngFor=\"let p of parkings\" class=\" panel-primary parkingsdiv \">\r\n        <h3>\r\n            {{p.parkingNaam}}\r\n        </h3>\r\n        <h2>\r\n            {{p.soortSoortNaam}}\r\n        </h2>\r\n    </div>\r\n</div>\r\n\r\n"
+module.exports = "\r\n<div class=\"panel-group\">\r\n    <h1>Parkings: </h1>\r\n    <div  *ngFor=\"let p of parkings\" class=\" panel-primary parkingsdiv \">\r\n        \r\n        <div class=\"titleParking\">\r\n            <h3>\r\n                {{p.parkingNaam}}\r\n            </h3>\r\n        </div>\r\n        <h2>\r\n            {{p.soortSoortNaam}}\r\n        </h2>\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
