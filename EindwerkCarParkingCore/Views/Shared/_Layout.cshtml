@@ -14,8 +14,8 @@
 </head>
 <body>
     <div class="navbar navbar-inverse header">
-        <header class="container">
-            <div class="navbar-header">
+        <header class="container header">
+            <div class="navbar-header ">
                 <div class="navbar-brand">
                     <i class="glyphicon glyphicon-apple"></i>
                      <a asp-controller="Home" asp-action="Index">
@@ -26,32 +26,32 @@
             </div>
             <div id="menu" class="collapse navbar-collapse">  @*om menu uit te laten klappen moet men dit in div steken met naam voor data-target*@
                 <ul class="nav navbar-nav" id="menu">
-                    <li> <a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-controller="Home" asp-action="Parkings">Parking zoeken</a></li>
-                    <li><a asp-controller="Home" asp-action="AddParking">Voeg parking Toe</a></li>
-                    <li><a asp-controller="Home" asp-action="DTOTester">Totalen</a></li>
-                    <li><a asp-controller="Home" asp-action="TestAngular">Angular</a></li>
+                    <li class="ahrefactionhelper"> <a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="ahrefactionhelper"><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="ahrefactionhelper"><a asp-controller="Home" asp-action="parkings">Parking zoeken</a></li>
+                    <li class="ahrefactionhelper"><a asp-controller="Home" asp-action="AddParking">Voeg parking Toe</a></li>
+                    <li class="ahrefactionhelper"><a asp-controller="Home" asp-action="DTOTester">Totalen</a></li>
+                    <li class="ahrefactionhelper"><a asp-controller="Home" asp-action="TestAngular">Angular</a></li>
 
 
-                    <li>
+                    <li class="ahrefactionhelper">
                         @if (User.Identity.IsAuthenticated)
                         {
                             @if (User.IsInRole("Admin"))
                             {
-                                <a asp-area="" asp-controller="Admin" asp-action="Overzicht">Admin Page</a>
+                                <a  asp-area="" asp-controller="Admin" asp-action="Overzicht">Admin Page</a>
                             }
                         }
                     </li>
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li><a asp-controller="Account" asp-action="Logout">Logout</a></li>
+                        <li class="ahrefactionhelper"><a asp-controller="Account" asp-action="Logout">Logout</a></li>
 
                     }
                     else
                     {
-                        <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                        <li class="ahrefactionhelper"><a asp-controller="Account" asp-action="Login">Login</a></li>
 
                     }
                 </ul>

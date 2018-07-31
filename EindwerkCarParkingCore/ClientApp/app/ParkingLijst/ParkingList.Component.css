@@ -1,0 +1,15 @@
+﻿
+.parkingsdiv {
+    margin-left: 10px;
+    margin-right: 10px;
+    border: solid;
+    border-color: #d7edf3;
+    background-color: #eaf9f8;
+    border-radius: 8px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.titleParking {
+    background-color: #d7f3f2;
+}

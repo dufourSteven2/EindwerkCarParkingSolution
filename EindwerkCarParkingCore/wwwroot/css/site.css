@@ -3,14 +3,16 @@ body {
     font-family: sans-serif;
     font-size: 14px;
     margin: 0;
+    background-color: #ebf6f9;
 }
 
 label {
     font-weight: bold;
     display: block;
 }
-.header{
-    background-color:#61B7CF;
+.header {
+    background-color: #61B7CF;
+    font-size: 45px;
 }
 
 input[type=text], input[type=password], textarea {
@@ -34,16 +36,26 @@ input[type=text], input[type=password], textarea {
     border: 1px solid #222;
    
 }
+.ahrefactionhelper{
+    font-size: 25px;
+
+    
+}
+.divparkings{
+    margin: 5px;
+
+}
+
+
 
 #menu {
     font-size: 16px;
-   
 }
 
     .menu li {
         display: inline;
         list-style-type: none;
-        color: black;
+   
     }
 
         menu li::after {

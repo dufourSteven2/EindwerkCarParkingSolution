@@ -18,7 +18,8 @@ namespace EindwerkCarParkingCore.Automapper
                 .ForMember(dto => dto.LocatieStraat, conf => conf.MapFrom(straat => straat.Locatie.Straat))
                 .ForMember(dto => dto.LocatieNummer, conf => conf.MapFrom(LocNr => LocNr.Locatie.Nr))
                 .ForMember(dto => dto.SoortSoortNaam, conf => conf.MapFrom(SoortN => SoortN.Soort.SoortNaam))
-                .ForMember(dto => dto.Percentage, conf => conf.MapFrom(perc => perc.Percentage));
+                .ForMember(dto => dto.Totaal, conf => conf.MapFrom(totaal => totaal.Totaal))
+                .ForMember(dto => dto.Bezet, conf => conf.MapFrom(Bez => Bez.Bezet));
             CreateMap<Parking, ParkingsDetailDTO>()
             .ForMember(dto => dto.GemeenteGemeenteNaam, conf => conf.MapFrom(gem => gem.Locatie.Gemeente.GemeenteNaam))
             .ForMember(dto => dto.LocatieStraat, conf => conf.MapFrom(lo => lo.Locatie.Straat))
