@@ -63,7 +63,7 @@ var ParkingList = /** @class */ (function () {
     ParkingList = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "parking-list",
-            template: __webpack_require__(/*! ../ParkingLijst/parkingList.component.html */ "./ClientApp/app/ParkingLijst/parkingList.component.html"),
+            template: __webpack_require__(/*! ./parkingList.component.html */ "./ClientApp/app/ParkingLijst/parkingList.component.html"),
             styleUrls: [] //styles aangepast naar styleUrls
         }),
         __metadata("design:paramtypes", [_shared_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
@@ -296,7 +296,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Benny\Documenten\Eindwerk\EindwerkCarParkingSolution\EindwerkCarParkingCore\ClientApp\main.ts */"./ClientApp/main.ts");
+module.exports = __webpack_require__(/*! I:\HBO5\EINDWERK1\EindwerkCarParkingSolution\EindwerkCarParkingSolution\EindwerkCarParkingCore\ClientApp\main.ts */"./ClientApp/main.ts");
 
 
 /***/ })
