@@ -4,8 +4,8 @@ import { Parking } from "../shared/Parking";
 @Component({
     selector: "parking-list",
     // template: "<div>test parkinglijst</div>",
-  templateUrl : "../ParkingLijst/parkingList.component.html",
-    styleUrls: [] //styles aangepast naar styleUrls
+  templateUrl : "parkingList.component.html",
+    styleUrls: ["ParkingList.Component.css"] //styles aangepast naar styleUrls
 })
 
 export class ParkingList implements OnInit {

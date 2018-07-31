@@ -1,6 +1,7 @@
 ﻿
-<div>
-    <div  *ngFor="let p of parkings">
+<div class="panel-group MainDiv">
+    <h1>Parkings: </h1>
+    <div  *ngFor="let p of parkings" class=" panel-primary parkingsdiv ">
         <h3>
             {{p.parkingNaam}}
         </h3>

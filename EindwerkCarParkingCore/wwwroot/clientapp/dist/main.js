@@ -23,6 +23,17 @@ webpackEmptyAsyncContext.id = "./ClientApp/$$_lazy_route_resource lazy recursive
 
 /***/ }),
 
+/***/ "./ClientApp/app/ParkingLijst/ParkingList.Component.css":
+/*!**************************************************************!*\
+  !*** ./ClientApp/app/ParkingLijst/ParkingList.Component.css ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".MainDiv {\r\n    background-color: #eaf9f8;\r\n}\r\n.parkingsdiv {\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    border: solid;\r\n    border-color: #d7edf3;\r\n    background-color: #d7f3f2;\r\n    border-radius: 8px;\r\n    margin-bottom: 3px;\r\n    margin-top: 3px;\r\n}"
+
+/***/ }),
+
 /***/ "./ClientApp/app/ParkingLijst/ParkingList.component.ts":
 /*!*************************************************************!*\
   !*** ./ClientApp/app/ParkingLijst/ParkingList.component.ts ***!
@@ -63,8 +74,8 @@ var ParkingList = /** @class */ (function () {
     ParkingList = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "parking-list",
-            template: __webpack_require__(/*! ../ParkingLijst/parkingList.component.html */ "./ClientApp/app/ParkingLijst/parkingList.component.html"),
-            styleUrls: [] //styles aangepast naar styleUrls
+            template: __webpack_require__(/*! ./parkingList.component.html */ "./ClientApp/app/ParkingLijst/parkingList.component.html"),
+            styles: [__webpack_require__(/*! ./ParkingList.Component.css */ "./ClientApp/app/ParkingLijst/ParkingList.Component.css")]
         }),
         __metadata("design:paramtypes", [_shared_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
     ], ParkingList);
@@ -82,7 +93,7 @@ var ParkingList = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div>\r\n    <div *ngFor=\"let p of parkings\">\r\n        <h3>\r\n            {{p.parkingNaam}}\r\n        </h3>\r\n        <h2>\r\n            {{p.soortSoortNaam}}\r\n        </h2>\r\n    </div>\r\n</div>\r\n\r\n"
+module.exports = "\r\n<div class=\"panel-group MainDiv\">\r\n    <h1>Parkings: </h1>\r\n    <div  *ngFor=\"let p of parkings\" class=\" panel-primary parkingsdiv \">\r\n        <h3>\r\n            {{p.parkingNaam}}\r\n        </h3>\r\n        <h2>\r\n            {{p.soortSoortNaam}}\r\n        </h2>\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -93,7 +104,7 @@ module.exports = "\r\n<div>\r\n    <div *ngFor=\"let p of parkings\">\r\n       
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n\r\n\r\n\r\n<parking-list></parking-list>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n\r\n<div class=\"col-md-2\">\r\n    <h1>Parkings filteren:</h1>\r\n</div>\r\n\r\n<div class=\"col-md-8\">\r\n<parking-list></parking-list>\r\n</div>"
 
 /***/ }),
 
@@ -215,7 +226,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
-        this.parkings = [];
+        this.parkings = [] /*signing*/;
     }
     DataService.prototype.loadParkings = function () {
         var _this = this;

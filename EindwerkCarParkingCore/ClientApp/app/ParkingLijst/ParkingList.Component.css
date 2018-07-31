@@ -1,0 +1,13 @@
+﻿.MainDiv {
+    background-color: #eaf9f8;
+}
+.parkingsdiv {
+    margin-left: 10px;
+    margin-right: 10px;
+    border: solid;
+    border-color: #d7edf3;
+    background-color: #d7f3f2;
+    border-radius: 8px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
