@@ -15,11 +15,12 @@ namespace EindwerkCarParkingCore.Controllers
 {
     [Route("api/[Controller]")]
    // [Authorize(AuthenticationSchemes =JwtBearerDefaults.AuthenticationScheme)]
-    public class ParkingsController : Controller
+    public class ParkingsController : Controller  //: controller aangepast naar ApiController
     {
         private readonly IParkingRepository _repository;
         private readonly ILogger<ParkingsController> _logger;
         private readonly IMapper _mapper;
+
 
         public ParkingsController(IParkingRepository repository, ILogger<ParkingsController>logger, IMapper mapper)
         {
@@ -43,6 +44,7 @@ namespace EindwerkCarParkingCore.Controllers
                 return BadRequest("Failed to get Parkingen");
             }
         }
+
 
         [HttpGet("{id:int}")]
         public IActionResult Get(int id)

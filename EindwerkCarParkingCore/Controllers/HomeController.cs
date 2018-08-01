@@ -32,7 +32,11 @@ namespace EindwerkCarParkingCore.Controllers
            var mappedItem = _mapper.Map<IEnumerable<ParkingsDetailDTO>>(item);
             return View(mappedItem);
         }
-
+        //Hieronder poging VUE.js
+        public ActionResult IndexVue()
+        {
+            return View();
+        }
 
         [HttpGet("Contact")]
         public IActionResult Contact()

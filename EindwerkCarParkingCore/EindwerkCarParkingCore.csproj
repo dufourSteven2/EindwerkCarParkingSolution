@@ -484,4 +484,8 @@
     <TypeScriptCompile Include="ClientApp\app\shared\dataService.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\Parking.ts" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
 </Project>
