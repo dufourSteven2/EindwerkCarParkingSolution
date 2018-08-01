@@ -1,5 +1,5 @@
 ﻿
-<div class="panel-group MainDiv">
+<div class="panel-group">
     <h1>Parkings: </h1>
     <div  *ngFor="let p of parkings" class=" panel-primary parkingsdiv ">
         <div class="parkingNaam">
@@ -26,6 +26,14 @@
                 Soort Parking:                 
             </h2>
             <h4>{{p.soortSoortNaam}}</h4>
+        </div>
+        <div class="aantal">
+            <div class="bezet">
+                bezet: {{p.bezet}}
+            </div>
+            <div class="aantal">
+                Totaal aantal voertuigen: {{p.totaal}}
+            </div>
         </div>
     </div>
 </div>
