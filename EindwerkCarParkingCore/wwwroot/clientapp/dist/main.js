@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./ClientApp/$$_lazy_route_resource lazy recursive
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".MainDiv {\r\n    background-color: #eaf9f8;\r\n}\r\n.parkingsdiv {\r\n    margin-left: 10px;\r\n    margin-right: 10px;\r\n    border: solid;\r\n    border-color: #d7edf3;\r\n    background-color: #d7f3f2;\r\n    border-radius: 8px;\r\n    margin-bottom: 3px;\r\n    margin-top: 3px;\r\n}"
+module.exports = ".MainDiv {\r\n    background-color: #eaf9f8;\r\n}\r\n.parkingsdiv {\r\n    border: solid;\r\n    border-color: #d7edf3;\r\n    background-color: #d7f3f2;\r\n    border-radius: 8px;\r\n    margin: 3px 10px 3px 10px\r\n}\r\n.parkingNaam{\r\n    padding: 0;\r\n    text-align: center;\r\n    font-size: 24px;\r\n    margin-top: 2px;\r\n}\r\n.locatie{\r\n    display: inline-block;\r\n    padding : 1px;\r\n}\r\n.soort {\r\n    display: inline-block;\r\n    margin-left: 8px;\r\n    padding: 1px;\r\n    vertical-align:top;\r\n}"
 
 /***/ }),
 
@@ -93,7 +93,7 @@ var ParkingList = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"panel-group MainDiv\">\r\n    <h1>Parkings: </h1>\r\n    <div  *ngFor=\"let p of parkings\" class=\" panel-primary parkingsdiv \">\r\n        <h3>\r\n            {{p.parkingNaam}}\r\n        </h3>\r\n        <h2>\r\n            {{p.soortSoortNaam}}\r\n        </h2>\r\n    </div>\r\n</div>\r\n\r\n"
+module.exports = "\r\n<div class=\"panel-group MainDiv\">\r\n    <h1>Parkings: </h1>\r\n    <div  *ngFor=\"let p of parkings\" class=\" panel-primary parkingsdiv \">\r\n        <div class=\"parkingNaam\">\r\n            {{p.parkingNaam}}\r\n        </div>\r\n        <div class=\"locatie\">\r\n            <h3>Locatie: </h3>\r\n\r\n            <div>\r\n                Landnaam:{{p.landLandNaam}}\r\n            </div>\r\n            <div>\r\n               Gemeente: {{p.gemeenteGemeenteNaam}}\r\n            </div>\r\n            <div>\r\n               Straat: {{p.locatieStraat}}\r\n            </div>\r\n            <div>\r\n                Huis Nummer: {{p.locatieNummer}}\r\n            </div>\r\n        </div>\r\n        <div class=\"soort\">\r\n            <h2>\r\n                Soort Parking:                 \r\n            </h2>\r\n            <h4>{{p.soortSoortNaam}}</h4>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 

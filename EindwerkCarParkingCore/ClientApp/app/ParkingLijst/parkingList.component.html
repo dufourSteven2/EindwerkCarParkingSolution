@@ -2,12 +2,31 @@
 <div class="panel-group MainDiv">
     <h1>Parkings: </h1>
     <div  *ngFor="let p of parkings" class=" panel-primary parkingsdiv ">
-        <h3>
+        <div class="parkingNaam">
             {{p.parkingNaam}}
-        </h3>
-        <h2>
-            {{p.soortSoortNaam}}
-        </h2>
+        </div>
+        <div class="locatie">
+            <h3>Locatie: </h3>
+
+            <div>
+                Landnaam:{{p.landLandNaam}}
+            </div>
+            <div>
+               Gemeente: {{p.gemeenteGemeenteNaam}}
+            </div>
+            <div>
+               Straat: {{p.locatieStraat}}
+            </div>
+            <div>
+                Huis Nummer: {{p.locatieNummer}}
+            </div>
+        </div>
+        <div class="soort">
+            <h2>
+                Soort Parking:                 
+            </h2>
+            <h4>{{p.soortSoortNaam}}</h4>
+        </div>
     </div>
 </div>
 
