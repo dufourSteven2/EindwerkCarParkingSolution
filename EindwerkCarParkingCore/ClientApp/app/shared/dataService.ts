@@ -2,6 +2,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
+import { IParking } from "./IParking";
 import { Parking } from "./Parking";
 
 @Injectable()
@@ -9,7 +10,7 @@ export class DataService {
 
     constructor(private http: HttpClient) { }
 
-    public parkings : Parking[]/* type safety typing*/ = [] /*signing*/;
+    public parkings : IParking[]/* type safety typing*/ = [] /*signing*/;
 
     loadParkings():Observable<boolean> {
         return this.http.get("/api/parkings") // hier de weg naar de apiom parkings op te halen

@@ -1,16 +1,20 @@
-﻿
+﻿import { IParking } from "./IParking";
+import * as _ from "lodash";
 
-    export interface Parking {
-        id: number;
-        parkingNaam: string;
-        landLandNaam: string;
-        gemeenteGemeenteNaam: string;
-        locatieStraat: string;
-        locatieNummer: string;
-        soortSoortNaam: string;
-        totaal: number;
-        bezet: number;
+export class Parking implements IParking {
+    constructor(
+        public id: number,
+        public parkingNaam: string,
+        public landLandNaam: string,
+        public gemeenteGemeenteNaam: string,
+        public locatieStraat: string,
+        public locatieNummer: string,
+        public soortSoortNaam: string,
+        public totaal: number,
+        public bezet: number) { }
+
+    get calculateProcentBezetParking(): number {
+        return _.sum(this.totaal - this.bezet);
     }
 
-
-
+}

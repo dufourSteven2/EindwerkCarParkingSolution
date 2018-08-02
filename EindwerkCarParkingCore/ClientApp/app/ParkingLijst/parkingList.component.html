@@ -1,40 +1,52 @@
-﻿
-<div class="panel-group">
-    <h1>Parkings: </h1>
-    <div  *ngFor="let p of parkings" class=" panel-primary parkingsdiv ">
-        <div class="parkingNaam">
-            {{p.parkingNaam}}
-        </div>
-        <div class="locatie">
-            <h3>Locatie: </h3>
-
-            <div>
-                Landnaam:{{p.landLandNaam}}
+﻿<div class="parking">
+    <div class="parking.header">
+        {{PageTitle}}
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-md-2">Zoeken: </div>
+            <div class="col-md-4">
+                <input type="text" [(ngModel)]="listFilter" />
             </div>
-            <div>
-               Gemeente: {{p.gemeenteGemeenteNaam}}
-            </div>
-            <div>
-               Straat: {{p.locatieStraat}}
-            </div>
-            <div>
-                Huis Nummer: {{p.locatieNummer}}
+        </div>   
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Filterd door: {{listFilter}}</h4>
             </div>
         </div>
-        <div class="soort">
-            <h2>
-                Soort Parking:                 
-            </h2>
-            <h4>{{p.soortSoortNaam}}</h4>
-        </div>
-        <div class="aantal">
-            <div class="bezet">
-                bezet: {{p.bezet}}
-            </div>
-            <div class="aantal">
-                Totaal aantal voertuigen: {{p.totaal}}
-            </div>
+        <div class="table-responsive">
+            <table class="table" *ngIf='parkings && parkings.length > 0'>
+                <thead>
+                    <tr>
+                        <th>Parkingnaam: </th>
+                        <th> Land: </th>
+                        <th> Gemeente: </th>
+                        <th>Straat: </th>
+                        <th>Nummer: </th>
+                        <th>Soort: </th>
+                        <th>Bezet: </th>
+                        <th> Aantal: </th>
+                        <th>Vrije plaatsen: </th>
+                        <th>Percentage bezet:</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tableparkinginfo" *ngFor="let p of filteredParkings">
+                        <td>{{p.parkingNaam}} </td>
+                        <td>{{p.landLandNaam}}</td>
+                        <td>{{p.gemeenteGemeenteNaam}}</td>
+                        <td>{{p.locatieStraat}}</td>
+                        <td>{{p.locatieNummer}}</td>
+                        <td>{{p.soortSoortNaam}}</td>
+                        <td ng-model="bezet">{{p.bezet}}</td>
+                        <td ng-model="Totaal">{{p.totaal}}</td>
+                        <td>{{ p.totaal - p.bezet }}</td>
+                        <td>{{(p.bezet / p.totaal)*100}} %</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-

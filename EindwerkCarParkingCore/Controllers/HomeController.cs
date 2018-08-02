@@ -52,7 +52,7 @@ namespace EindwerkCarParkingCore.Controllers
                 return View();
         }
         [HttpGet("ParkinLijst")] // deze toegevoegd om parkingljst te maken
-        public IActionResult ParkingLijst()
+        public IActionResult Parkings()
         {
             return View();
         }
@@ -97,24 +97,7 @@ namespace EindwerkCarParkingCore.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Parkings()
-        {
-            IEnumerable<LandDTO>landenlijst = new List<LandDTO>();
-            landenlijst = _context.getLanden();
-
-            var item = _context.GetAllParkings();
-            var mappedItem = _mapper.Map<IEnumerable<ParkingsDetailDTO>>(item);
-            ViewBag.ListofLanden = landenlijst;
-            return View(mappedItem);
-
-        }
-
-        //public IActionResult Totalen()
-        //{
-        //    IEnumerable<TotaalDTO> totalen = new List<TotaalDTO>();
-        //    totalen = _context.GetTotalen();
-        //    return View(totalen);
-        //}
+  
 
         public JsonResult GetCountries() {
             var landen = new List<LandDTO>();

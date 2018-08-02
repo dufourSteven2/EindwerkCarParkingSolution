@@ -14,7 +14,9 @@ var dataService_1 = require("../shared/dataService");
 var ParkingList = /** @class */ (function () {
     function ParkingList(data) {
         this.data = data;
+        this.PageTitle = 'Lijst Parkings';
         this.parkings = [];
+        this.filteredParkings = this.parkings;
     }
     ParkingList.prototype.ngOnInit = function () {
         var _this = this;
@@ -22,13 +24,34 @@ var ParkingList = /** @class */ (function () {
             .subscribe(function (succes) {
             if (succes) {
                 _this.parkings = _this.data.parkings;
+                _this.filteredParkings = _this.parkings;
             }
+        });
+    };
+    Object.defineProperty(ParkingList.prototype, "listFilter", {
+        get: function () {
+            return this._ListFilter;
+        },
+        set: function (value) {
+            this._ListFilter = value;
+            this.filteredParkings = this.listFilter ? this.perFormFilter(this.listFilter) : this.parkings;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ParkingList.prototype.perFormFilter = function (filterBy) {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.parkings.filter(function (parking) {
+            return parking.parkingNaam.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+                parking.landLandNaam.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+                parking.gemeenteGemeenteNaam.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+                parking.locatieStraat.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+                parking.soortSoortNaam.toLocaleLowerCase().indexOf(filterBy) !== -1;
         });
     };
     ParkingList = __decorate([
         core_1.Component({
             selector: "parking-list",
-            // template: "<div>test parkinglijst</div>",
             templateUrl: "parkingList.component.html",
             styleUrls: ["ParkingList.Component.css"] //styles aangepast naar styleUrls
         }),

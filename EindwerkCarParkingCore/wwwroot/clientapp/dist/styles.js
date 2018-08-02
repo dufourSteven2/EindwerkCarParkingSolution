@@ -539,7 +539,7 @@ module.exports = function (css) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! I:\HBO5\EINDWERK1\EindwerkCarParkingSolution\EindwerkCarParkingSolution\EindwerkCarParkingCore\ClientApp\styles.css */"./ClientApp/styles.css");
+module.exports = __webpack_require__(/*! D:\Benny\Documenten\Eindwerk\EindwerkCarParkingSolution\EindwerkCarParkingCore\ClientApp\styles.css */"./ClientApp/styles.css");
 
 
 /***/ })
