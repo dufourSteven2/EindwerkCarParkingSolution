@@ -13,6 +13,9 @@ var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var ParkingList_component_1 = require("./ParkingLijst/ParkingList.component");
 var dataService_1 = require("./shared/dataService");
+var Landen_Component_1 = require("./Landen/Landen.Component");
+var Gemeente_Component_1 = require("./Gemeentes/Gemeente.Component");
+var Soorten_Component_1 = require("./Soorten/Soorten.Component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -20,7 +23,10 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [
                 app_component_1.AppComponent,
-                ParkingList_component_1.ParkingList
+                ParkingList_component_1.ParkingList,
+                Landen_Component_1.Landen,
+                Gemeente_Component_1.Gemeentes,
+                Soorten_Component_1.Soorten
             ],
             imports: [
                 platform_browser_1.BrowserModule,

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
     styles: []
 })
 export class AppComponent {
-    ParkingNaam = 'Amaai wat een mooi doolhof. Deze tekst komt uit: app.component.ts';
+  
 }

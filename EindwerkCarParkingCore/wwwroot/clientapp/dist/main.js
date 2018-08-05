@@ -23,6 +23,132 @@ webpackEmptyAsyncContext.id = "./ClientApp/$$_lazy_route_resource lazy recursive
 
 /***/ }),
 
+/***/ "./ClientApp/app/Gemeentes/Gemeente.Component.ts":
+/*!*******************************************************!*\
+  !*** ./ClientApp/app/Gemeentes/Gemeente.Component.ts ***!
+  \*******************************************************/
+/*! exports provided: Gemeentes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Gemeentes", function() { return Gemeentes; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/dataService */ "./ClientApp/app/shared/dataService.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var Gemeentes = /** @class */ (function () {
+    function Gemeentes(data) {
+        this.data = data;
+        this.PageTitle = 'Lijst steden';
+        this.gemeentes = [];
+    }
+    Gemeentes.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.loadGemeentes()
+            .subscribe(function (succes) {
+            if (succes) {
+                _this.gemeentes = _this.data.gemeentes;
+            }
+        });
+    };
+    Gemeentes = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "Gemeentes",
+            template: __webpack_require__(/*! ./Gemeente.component.html */ "./ClientApp/app/Gemeentes/Gemeente.component.html"),
+        }),
+        __metadata("design:paramtypes", [_shared_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
+    ], Gemeentes);
+    return Gemeentes;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/Gemeentes/Gemeente.component.html":
+/*!*********************************************************!*\
+  !*** ./ClientApp/app/Gemeentes/Gemeente.component.html ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<div>\r\n\t<select>\r\n\t\t<option *ngFor=\"let G of gemeentes\" value=\"{{G.gemeenteNaam}}\">{{G.gemeenteNaam}}</option>\r\n\t</select>\r\n</div>"
+
+/***/ }),
+
+/***/ "./ClientApp/app/Landen/Landen.Component.ts":
+/*!**************************************************!*\
+  !*** ./ClientApp/app/Landen/Landen.Component.ts ***!
+  \**************************************************/
+/*! exports provided: Landen */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Landen", function() { return Landen; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/dataService */ "./ClientApp/app/shared/dataService.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var Landen = /** @class */ (function () {
+    function Landen(data) {
+        this.data = data;
+        this.PageTitle = 'Lijst Parkingen';
+        this.Landen = [];
+    }
+    Landen.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.loadLanden()
+            .subscribe(function (succes) {
+            if (succes) {
+                _this.Landen = _this.data.landen;
+            }
+        });
+    };
+    Landen = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "Landen",
+            template: __webpack_require__(/*! ./Landen.component.html */ "./ClientApp/app/Landen/Landen.component.html"),
+        }),
+        __metadata("design:paramtypes", [_shared_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
+    ], Landen);
+    return Landen;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/Landen/Landen.component.html":
+/*!****************************************************!*\
+  !*** ./ClientApp/app/Landen/Landen.component.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n    <select >\r\n        <option *ngFor=\"let L of Landen\" value=\"{{L.landNaam}}\">{{L.landNaam}}</option>\r\n    </select>\r\n</div>\r\n"
+
+/***/ }),
+
 /***/ "./ClientApp/app/ParkingLijst/ParkingList.Component.css":
 /*!**************************************************************!*\
   !*** ./ClientApp/app/ParkingLijst/ParkingList.Component.css ***!
@@ -121,6 +247,69 @@ module.exports = "<div class=\"parking\">\r\n    <div class=\"parking.header\">\
 
 /***/ }),
 
+/***/ "./ClientApp/app/Soorten/Soorten.Component.ts":
+/*!****************************************************!*\
+  !*** ./ClientApp/app/Soorten/Soorten.Component.ts ***!
+  \****************************************************/
+/*! exports provided: Soorten */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Soorten", function() { return Soorten; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/dataService */ "./ClientApp/app/shared/dataService.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var Soorten = /** @class */ (function () {
+    function Soorten(data) {
+        this.data = data;
+        this.PageTitle = 'Lijst Soorten';
+        this.Soorten = [];
+    }
+    Soorten.prototype.ngOnInit = function () {
+        var _this = this;
+        this.data.loadSoorten()
+            .subscribe(function (succes) {
+            if (succes) {
+                _this.Soorten = _this.data.soorten;
+            }
+        });
+    };
+    Soorten = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "Soorten",
+            template: __webpack_require__(/*! ./Soorten.component.html */ "./ClientApp/app/Soorten/Soorten.component.html"),
+        }),
+        __metadata("design:paramtypes", [_shared_dataService__WEBPACK_IMPORTED_MODULE_1__["DataService"]])
+    ], Soorten);
+    return Soorten;
+}());
+
+
+
+/***/ }),
+
+/***/ "./ClientApp/app/Soorten/Soorten.component.html":
+/*!******************************************************!*\
+  !*** ./ClientApp/app/Soorten/Soorten.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n    <select>\r\n        <option *ngFor=\"let S of Soorten\" value=\"{{S.soortNaam}}\">{{S.soortNaam}}</option>\r\n    </select>\r\n</div>"
+
+/***/ }),
+
 /***/ "./ClientApp/app/app.component.html":
 /*!******************************************!*\
   !*** ./ClientApp/app/app.component.html ***!
@@ -128,7 +317,7 @@ module.exports = "<div class=\"parking\">\r\n    <div class=\"parking.header\">\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n\r\n\r\n\r\n<div class=\"col-md-10\">\r\n<parking-list></parking-list>\r\n</div>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n\r\n<div>\r\n    <Landen></Landen>\r\n    <Gemeentes></Gemeentes>\r\n    <Soorten></Soorten>\r\n</div>\r\n\r\n\r\n<div class=\"col-md-10\" >\r\n<parking-list></parking-list>\r\n</div>"
 
 /***/ }),
 
@@ -152,7 +341,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.ParkingNaam = 'Amaai wat een mooi doolhof. Deze tekst komt uit: app.component.ts';
     }
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -185,6 +373,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./ClientApp/app/app.component.ts");
 /* harmony import */ var _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ParkingLijst/ParkingList.component */ "./ClientApp/app/ParkingLijst/ParkingList.component.ts");
 /* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shared/dataService */ "./ClientApp/app/shared/dataService.ts");
+/* harmony import */ var _Landen_Landen_Component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Landen/Landen.Component */ "./ClientApp/app/Landen/Landen.Component.ts");
+/* harmony import */ var _Gemeentes_Gemeente_Component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Gemeentes/Gemeente.Component */ "./ClientApp/app/Gemeentes/Gemeente.Component.ts");
+/* harmony import */ var _Soorten_Soorten_Component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Soorten/Soorten.Component */ "./ClientApp/app/Soorten/Soorten.Component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -198,6 +389,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -205,7 +399,10 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-                _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_5__["ParkingList"]
+                _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_5__["ParkingList"],
+                _Landen_Landen_Component__WEBPACK_IMPORTED_MODULE_7__["Landen"],
+                _Gemeentes_Gemeente_Component__WEBPACK_IMPORTED_MODULE_8__["Gemeentes"],
+                _Soorten_Soorten_Component__WEBPACK_IMPORTED_MODULE_9__["Soorten"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -253,7 +450,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
-        this.parkings = [] /*signing*/;
+        this.parkings = []; /*type safety */
+        this.landen = [];
+        this.gemeentes = [];
+        this.soorten = [];
     }
     DataService.prototype.loadParkings = function () {
         var _this = this;
@@ -263,6 +463,34 @@ var DataService = /** @class */ (function () {
             return true;
         });
     };
+    ;
+    DataService.prototype.loadLanden = function () {
+        var _this = this;
+        return this.http.get("/api/landen") // hier de weg naar de api om Landen op te halen
+            .map(function (data) {
+            _this.landen = data;
+            return true;
+        });
+    };
+    ;
+    DataService.prototype.loadGemeentes = function () {
+        var _this = this;
+        return this.http.get("/api/gemeentes") // hier de weg naar de api om Landen op te halen
+            .map(function (data) {
+            _this.gemeentes = data;
+            return true;
+        });
+    };
+    ;
+    DataService.prototype.loadSoorten = function () {
+        var _this = this;
+        return this.http.get("/api/soorts") // hier de weg naar de api om Landen op te halen
+            .map(function (data) {
+            _this.soorten = data;
+            return true;
+        });
+    };
+    ;
     DataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpClient"]])

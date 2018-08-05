@@ -15,7 +15,10 @@ require("rxjs/add/operator/map");
 var DataService = /** @class */ (function () {
     function DataService(http) {
         this.http = http;
-        this.parkings = [] /*signing*/;
+        this.parkings = []; /*type safety */
+        this.landen = [];
+        this.gemeentes = [];
+        this.soorten = [];
     }
     DataService.prototype.loadParkings = function () {
         var _this = this;
@@ -25,6 +28,34 @@ var DataService = /** @class */ (function () {
             return true;
         });
     };
+    ;
+    DataService.prototype.loadLanden = function () {
+        var _this = this;
+        return this.http.get("/api/landen") // hier de weg naar de api om Landen op te halen
+            .map(function (data) {
+            _this.landen = data;
+            return true;
+        });
+    };
+    ;
+    DataService.prototype.loadGemeentes = function () {
+        var _this = this;
+        return this.http.get("/api/gemeentes") // hier de weg naar de api om Landen op te halen
+            .map(function (data) {
+            _this.gemeentes = data;
+            return true;
+        });
+    };
+    ;
+    DataService.prototype.loadSoorten = function () {
+        var _this = this;
+        return this.http.get("/api/soorts") // hier de weg naar de api om Landen op te halen
+            .map(function (data) {
+            _this.soorten = data;
+            return true;
+        });
+    };
+    ;
     DataService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.HttpClient])

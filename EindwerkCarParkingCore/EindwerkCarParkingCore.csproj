@@ -7,10 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\Gemeentes\Gemeente.Component.ts" />
+    <None Remove="ClientApp\app\Landen\Landen.Component.ts" />
     <None Remove="ClientApp\app\ParkingLijst\ParkingList.component.ts" />
     <None Remove="ClientApp\app\shared\dataService.ts" />
+    <None Remove="ClientApp\app\shared\IGemeente.ts" />
+    <None Remove="ClientApp\app\shared\ILand.ts" />
     <None Remove="ClientApp\app\shared\IParking.ts" />
+    <None Remove="ClientApp\app\shared\ISoort.ts" />
     <None Remove="ClientApp\app\shared\Parking.ts" />
+    <None Remove="ClientApp\app\Soorten\Soorten.Component.ts" />
     <None Remove="Controllers\LandsController.cs~RF57f18d9.TMP" />
   </ItemGroup>
 
@@ -481,10 +487,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\Gemeentes\Gemeente.Component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\Landen\Landen.Component.ts" />
     <TypeScriptCompile Include="ClientApp\app\ParkingLijst\ParkingList.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\dataService.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\IGemeente.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\ILand.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\IParking.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\ISoort.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\Parking.ts" />
+    <TypeScriptCompile Include="ClientApp\app\Soorten\Soorten.Component.ts" />
   </ItemGroup>
 
   <ItemGroup>
