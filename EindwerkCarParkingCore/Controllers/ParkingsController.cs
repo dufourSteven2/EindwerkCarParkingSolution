@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using EindwerkCarParkingCore.Data;
 using EindwerkCarParkingCore.Models;
 using EindwerkCarParkingLib;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,7 @@ namespace EindwerkCarParkingCore.Controllers
         private readonly IParkingRepository _repository;
         private readonly ILogger<ParkingsController> _logger;
         private readonly IMapper _mapper;
-
+        
 
         public ParkingsController(IParkingRepository repository, ILogger<ParkingsController>logger, IMapper mapper)
         {
@@ -29,6 +31,7 @@ namespace EindwerkCarParkingCore.Controllers
             _mapper = mapper;
         }
 
+       
         [HttpGet]
         public IActionResult Get()
         {

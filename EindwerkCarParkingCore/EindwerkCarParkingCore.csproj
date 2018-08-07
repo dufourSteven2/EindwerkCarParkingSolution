@@ -21,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="bower_components\bootstrap-confirmation\.bower.json" />
+    <Content Include="bower_components\bootstrap-confirmation\bower.json" />
+    <Content Include="bower_components\bootstrap-confirmation\package.json" />
     <Content Include="bower_components\bootstrap\.bower.json" />
     <Content Include="bower_components\bootstrap\bower.json" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.css" />
@@ -76,6 +79,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="bower_components\bootstrap-confirmation\bootstrap-confirmation.js" />
+    <None Include="bower_components\bootstrap-confirmation\README.md" />
     <None Include="bower_components\bootstrap\CHANGELOG.md" />
     <None Include="bower_components\bootstrap\dist\css\bootstrap-theme.css.map" />
     <None Include="bower_components\bootstrap\dist\css\bootstrap-theme.min.css.map" />

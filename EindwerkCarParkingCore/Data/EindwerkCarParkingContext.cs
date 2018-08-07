@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EindwerkCarParkingLib;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using EindwerkCarParkingCore.Models;
+using System.Diagnostics;
 
 namespace EindwerkCarParkingCore.Data
 {
@@ -13,7 +14,7 @@ namespace EindwerkCarParkingCore.Data
     {
         public EindwerkCarParkingContext(DbContextOptions<EindwerkCarParkingContext> options):base(options)
         {
-
+            //Database.Log = s => Debug.WriteLine(s);
         }
 
         public DbSet<Parking> Parkings { get; set; }
