@@ -87,6 +87,29 @@ namespace EindwerkCarParkingCore.Controllers
             return BadRequest("Failed to save new order");
 
         }
+        // put bijgeplaatst
+        [HttpPut]
+        public IActionResult Put([FromBody]Parking model)
+        {
+            //add to db
+            try
+            {
+                _repository.AddEntity(model);
+                if (_repository.SaveAll())
+                {
+                    return Created($"api/parkings/{model.Id}", model);
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to save a new Parking {ex}");
+            }
+            return BadRequest("Failed to save new order");
+
+        }
     }
 
 }
