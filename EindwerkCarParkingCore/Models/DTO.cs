@@ -30,6 +30,7 @@ namespace EindwerkCarParkingCore.Models
         public string GemeenteGemeenteNaam { get; set; }
         public string SoortSoortNaam { get; set; }
         public decimal Percentage { get; set; }
+        public decimal Totaal { get; set; } //test voor vue
         public string LandLandNaam { get; set; }
         public string ParkingUsersEigenaarNaam { get; set; }
         public bool PublicatieToelating { get; set; }  //wanneer deze bool op true staat, kan de parking getoond worden op de website
