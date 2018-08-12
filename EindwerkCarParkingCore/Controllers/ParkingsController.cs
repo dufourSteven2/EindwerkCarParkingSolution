@@ -22,7 +22,7 @@ namespace EindwerkCarParkingCore.Controllers
         private readonly IParkingRepository _repository;
         private readonly ILogger<ParkingsController> _logger;
         private readonly IMapper _mapper;
-        
+        //private readonly EindwerkCarParkingContext _db = new EindwerkCarParkingContext();
 
         public ParkingsController(IParkingRepository repository, ILogger<ParkingsController>logger, IMapper mapper)
         {
@@ -65,6 +65,22 @@ namespace EindwerkCarParkingCore.Controllers
             }
         }
 
+        //// DELETE: api/Books/5
+        //[System.Web.Http.Description.ResponseType(typeof(Parking))]
+        //public async Task<System.Web.Http.IHttpActionResult> DeleteParking(int id)
+        //{
+        //    Parking parking = _repository.GetParkingById(id);
+        //    if (parking == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    db.Books.Remove(parking);
+        //    await db.SaveChangesAsync();
+
+        //    return Ok(parking);
+        //}
+
         [HttpPost]
         public IActionResult Post([FromBody]Parking model)
         {
@@ -75,6 +91,7 @@ namespace EindwerkCarParkingCore.Controllers
                 if (_repository.SaveAll())
                 {
                     return Created($"api/parkings/{model.Id}", model);
+                    //return Created($"api/soorts/{model.Id}", model);
                 }
 
 

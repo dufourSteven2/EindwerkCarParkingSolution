@@ -2,6 +2,7 @@
 @using EindwerkCarParkingLib
 @model IEnumerable<Parking>
 
+
 @{
     ViewBag.Title = "Parkings met Vue.Js";
 }
@@ -29,11 +30,33 @@
                 </tr>
                 <tr>
                     <td>Soort:</td>
-                    <td><input v-model="currentParking.soortSoortNaam" class="form-control"></td>
+              
+                    <td>
+                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                            <option v-for="soort in soorts" v-bind:value="soort.id">{{ soort.soortNaam }}</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Land:</td>
+                 
+                    <td>
+                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                            <option v-for="land in landen" v-bind:value="land.id">{{ land.landNaam }}</option>
+                        </select>
+
+                    </td>
                 </tr>
                 <tr>
                     <td>Gemeente:</td>
-                    <td><input v-model="currentParking.gemeenteGemeenteNaam" class="form-control"></td>
+                  
+                    <td>
+                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                            <option v-for="stad in steden" v-bind:value="stad.id">{{ stad.gemeenteNaam }}</option>
+                        </select>
+
+                    </td>
                 </tr>
                 <tr>
                     <td>Straat:</td>
@@ -43,19 +66,16 @@
                     <td>Nr:</td>
                     <td><input v-model="currentParking.locatieNummer" class="form-control"></td>
                 </tr>
-                <tr>
-                    <td>Land:</td>
-                    <td><input v-model="currentParking.landLandNaam" class="form-control"></td>
-                </tr>
+
                 <tr>
                     <td>Totaal:</td>
                     <td><input v-model="currentParking.totaal" class="form-control"></td>
                     @*<td>
-                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
-                            <option v-for="parking in parkings" v-bind:value="parking.id">{{ parking.totaal }}</option>
-                        </select>
-                        <span>Selected: {{ currentParking.id }}</span>
-                    </td>*@
+                <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                    <option v-for="parking in parkings" v-bind:value="parking.id">{{ parking.totaal }}</option>
+                </select>
+                <span>Selected: {{ currentParking.id }}</span>
+            </td>*@
                 </tr>
                 <tr>
                     <td>Bezet:</td>
@@ -76,6 +96,10 @@
                     <td class="soortSoortNaam">{{currentParking.soortSoortNaam}}</td>
                 </tr>
                 <tr>
+                    <td>Land:</td>
+                    <td class="soortSoortNaam">{{currentParking.landLandNaam}}</td>
+                </tr>
+                <tr>
                     <td>Gemeente:</td>
                     <td class="parkingNaam">{{currentParking.gemeenteGemeenteNaam}}</td>
                 </tr>
@@ -87,10 +111,7 @@
                     <td>Nr:</td>
                     <td class="parkingNaam">{{currentParking.locatieNummer}}</td>
                 </tr>
-                <tr>
-                    <td>Land:</td>
-                    <td class="soortSoortNaam">{{currentParking.landLandNaam}}</td>
-                </tr>
+
                 <tr>
                     <td>Totaal:</td>
                     <td class="parkingNaam">{{currentParking.totaal}}</td>
@@ -102,7 +123,7 @@
             </table>
             <button v-on:click="toEditMode(true)" class="btn btn-primary">Edit</button>
             <button v-on:click="toEditMode(false)" class="btn btn-warning">New</button>
-            <button v-on:click="deleteBook()" class="btn btn-danger" data-toggle="confirmation">Delete</button>
+            <button v-on:click="deleteParking()" class="btn btn-danger" data-toggle="confirmation">Delete</button>
         </div>
     </article>
 </article>
@@ -124,16 +145,57 @@
             data: {
                 message: 'Hello World!',
                 parkings: null,
+                soorts: null,
+                landen: null,
+                steden : null,
                 currentParking: null,
                 editMode: false,
                 isEdit: false
+               
             },
             created: function () {
                 var self = this;
                 this.fetchParkings();
+                this.fetchSoorten();
+                this.fetchLanden();
+                this.fetchSteden();
 
             },
             methods: {
+
+                fetchLanden: function () {
+                    self = this;
+                    fetch(`${apiURL}landen`)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            self.landen = res;
+
+                        })
+                        .catch(err => console.error("fout" + err));
+                },
+
+                fetchSteden: function () {
+                    self = this;
+                    fetch(`${apiURL}gemeentes`)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            self.steden = res;
+
+                        })
+                        .catch(err => console.error("fout" + err));
+                },
+
+                fetchSoorten: function () {
+                    self = this;
+                    fetch(`${apiURL}soorts`)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            self.soorts = res;
+
+                        })
+                        .catch(err => console.error("fout" + err));
+                },
+
                 fetchParkings: function () {
                     self = this;
                     fetch(`${apiURL}Parkings`)
@@ -175,7 +237,7 @@
                     if (!isEdit) {
                         self.currentParking = {
                             Id: 0, parkingNaam: '', soortSoortNaam: '', gemeentGemeenteNaam: '', locatieStraat: '',
-                            locatieNr: '', landLandNaam: '', totaal: 0, bezet: ''
+                            locatieNummer: '', landLandNaam: '', totaal: 0, bezet: ''
                         }
                     }
 
@@ -258,7 +320,7 @@
                     xhr.send();
                     // boek verwijderen uit de lijst
                     self.parkings.forEach(function (parking, i) {
-                        if (parking.id == self.currentBook.id) {
+                        if (parking.id == self.currentParking.id) {
                             self.parkings.splice(i, 1);
                             return;
                         }
