@@ -64,29 +64,6 @@ namespace EindwerkCarParkingCore.Controllers
                 return BadRequest("Failed to get Parkingen");
             }
         }
-
-        [HttpPost]
-        public IActionResult Post([FromBody]Parking model)
-        {
-            //add to db
-            try
-            {
-                _repository.AddEntity(model);
-                if (_repository.SaveAll())
-                {
-                    return Created($"api/parkings/{model.Id}", model);
-                }
-
-
-
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Failed to save a new Parking {ex}");
-            }
-            return BadRequest("Failed to save new order");
-
-        }
         // put bijgeplaatst
         [HttpPut]
         public IActionResult Put([FromBody]Parking model)
@@ -99,9 +76,6 @@ namespace EindwerkCarParkingCore.Controllers
                 {
                     return Created($"api/parkings/{model.Id}", model);
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -110,6 +84,39 @@ namespace EindwerkCarParkingCore.Controllers
             return BadRequest("Failed to save new order");
 
         }
+        //Post: api/parkings
+        [HttpPost]
+        public IActionResult Post([FromBody]Parking model)
+        {
+
+            //add to db
+            try
+            {
+                _repository.AddEntity(model);
+                if (_repository.SaveAll())
+                {
+                    return Created($"api/parkings/{model.Id}", model);
+                }
+
+                //var dto = new ParkingsDTO()
+                //{
+                //    Id = parking.Id,
+                //    ParkingNaam = parking.ParkingNaam,
+
+                //    AuthorName = book.Author.Name
+                //};
+
+                //return CreatedAtRoute("DefaultApi", new { id = parking.Id }, dto);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to save a new Parking {ex}");
+            }
+            return BadRequest("Failed to save new order");
+            //return CreatedAtRoute($"api/parkings/{model.Id}", new { Id = parking.id }, dto);
+        }
+        
     }
 
 }

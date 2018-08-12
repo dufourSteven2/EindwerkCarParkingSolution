@@ -49,7 +49,7 @@
                 </tr>
                 <tr>
                     <td>Totaal:</td>
-                    <td><input v-model="currentParking.totaal" class="form-control"></td>
+                    <td><input v-model="currentParking.totaal" v-on:change="changeParking" class="form-control"></td>
                     @*<td>
                         <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
                             <option v-for="parking in parkings" v-bind:value="parking.id">{{ parking.totaal }}</option>
@@ -122,7 +122,7 @@
         new Vue({
             el: '#example',
             data: {
-                message: 'Hello World!',
+                message: 'Overview',
                 parkings: null,
                 currentParking: null,
                 editMode: false,
@@ -168,14 +168,26 @@
                     return 'list-group-item';
 
                 },
+                fetchParkings: function () {
+                    var xhr = new XMLHttpRequest()
+                    var self = this
+                    xhr.open('GET', apiURL + "Parkings")
+                    xhr.onload = function () {
+                        self.parkings = JSON.parse(xhr.responseText)
+                    }
+                    xhr.send()
+                },
+                changeParking: function () {
+                    self = this;
+                },
                 toEditMode: function (isEdit) {
                     self = this;
                     this.editMode = true;
                     this.isEdit = isEdit;
                     if (!isEdit) {
                         self.currentParking = {
-                            Id: 0, parkingNaam: '', soortSoortNaam: '', gemeentGemeenteNaam: '', locatieStraat: '',
-                            locatieNr: '', landLandNaam: '', totaal: 0, bezet: ''
+                            Id: 0, ParkingNaam: '', landLandNaam: '', gemeentGemeenteNaam: '', locatieStraat: '',
+                            locatieNummer: 0, soortSoortNaam: '', Totaal: 0, Bezet: 0
                         }
                     }
 
@@ -225,19 +237,32 @@
                     if (self.isEdit) { xhr.open('PUT', apiURL + "Parkings/" + self.currentParking.id); }
                     else { xhr.open('POST', apiURL + "Parkings"); }
                     var uploadjson = JSON.stringify(self.currentParking);
-                    xhr.setRequestHeader("Content-type", "application/json");
+                    xhr.setRequestHeader("Content-type", "application/json"); //"application/json" of "application/x-www-form-urlencoded"
                     xhr.send(uploadjson);
 
                     // GUI Aanpassen
                     // nieuwe auteursnaam ophalen
-                    //theAuthor = self.authors.filter(author => (author.Id === self.currentBook.AuthorId))[0];
-                    //Vue.set(self.currentBook, 'AuthorName', theAuthor.Name)
+                    theParking = self.parkings.filter(parking => (parking.Id === self.currentParking.id))[0];
+                    Vue.set(self.currentParking, 'parkingNaam', theParking.parkingNaam);
+                    Vue.set(self.currentParking, 'soortSoortNaam', theParking.soortSoortNaam);
+                    Vue.set(self.currentParking, 'gemeenteGemeenteNaam', theParking.gemeentGemeenteNaam);
+                    Vue.set(self.currentParking, 'LocatieStraat', theParking.locatieStraat);
+                    Vue.set(self.currentParking, 'LocatieNr', theParking.locatieNr);
+                    Vue.set(self.currentParking, 'landLandNaam', theParking.landLandNaam);                    
+                    Vue.set(self.currentParking, 'Totaal', theParking.Totaal);
+                    Vue.set(self.currentParking, 'Bezet', theParking.bezet);
 
                     if (self.isEdit) {
                         // boek updaten in lijst
-                        theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
+                        theParking = self.parkings.filter(parking => (parking.Id === self.currentParking.id))[0];
                         Vue.set(theParking, 'parkingNaam', this.currentParking.parkingNaam);
-                        Vue.set(theParking, 'totaal', this.currentParking.totaal);
+                        Vue.set(theParking, 'landLandNaam', theParking.landLandNaam);
+                        Vue.set(theParking, 'soortSoortNaam', theParking.soortSoortNaam);
+                        Vue.set(theParking, 'gemeenteGemeenteNaam', theParking.gemeentGemeenteNaam);
+                        Vue.set(theParking, 'LocatieStraat', theParking.locatieStraat);
+                        Vue.set(theParking, 'LocatieNr', theParking.locatieNr);
+                        Vue.set(theParking, 'Totaal', this.currentParking.Totaal);
+                        Vue.set(theParking, 'Bezet', theParking.bezet);
                         theParking.parkingNaam = this.currentParking.parkingNaam;
                         self.editMode = false;
                     } else {
@@ -258,7 +283,7 @@
                     xhr.send();
                     // boek verwijderen uit de lijst
                     self.parkings.forEach(function (parking, i) {
-                        if (parking.id == self.currentBook.id) {
+                        if (parking.id == self.currentParking.id) {
                             self.parkings.splice(i, 1);
                             return;
                         }
