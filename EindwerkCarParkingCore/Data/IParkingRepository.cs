@@ -19,6 +19,6 @@ namespace EindwerkCarParkingCore.Data
         //methods 
         void AddEntity(object model);
         bool SaveAll();
-       
+        void DeleteParking(int id);
     }
 }

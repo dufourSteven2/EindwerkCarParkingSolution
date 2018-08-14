@@ -25,6 +25,18 @@ namespace EindwerkCarParkingCore.Data
             _ctx.Add(model);
         }
 
+        public void DeleteParking(int id)
+        {
+            var parking = _ctx.Parkings.SingleOrDefault(p => p.Id == id);
+               
+            if (parking == null)
+            {
+                _logger.LogError($"Failed to deteete all parking:");
+            }
+            _ctx.Parkings.Remove(parking);
+           
+        }
+
         public IEnumerable<Parking> GetAllParkings()
         {
             try

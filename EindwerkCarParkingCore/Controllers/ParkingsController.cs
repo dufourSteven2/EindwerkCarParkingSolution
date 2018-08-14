@@ -127,6 +127,20 @@ namespace EindwerkCarParkingCore.Controllers
             return BadRequest("Failed to save new order");
 
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteParking([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _repository.DeleteParking(id);
+            _repository.SaveAll();
+
+
+            return Ok(id);
+        }
     }
 
 }
