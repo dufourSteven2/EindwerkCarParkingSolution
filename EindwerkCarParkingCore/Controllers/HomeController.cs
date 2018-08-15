@@ -46,11 +46,7 @@ namespace EindwerkCarParkingCore.Controllers
             return View();
         }
 
-        [HttpGet("TestAngular")]
-        public IActionResult TestAngular()
-        {
-                return View();
-        }
+
         [HttpGet("ParkinLijst")] // deze toegevoegd om parkingljst te maken
         public IActionResult Parkings()
         {
@@ -83,14 +79,7 @@ namespace EindwerkCarParkingCore.Controllers
         }
 
         // Test Mapper met actionresultdtotester bron https://www.youtube.com/watch?v=5WP36DIwdlI       
-        public IActionResult DtoTester()
-        {
-            var item = _context.GetAllParkings();
-            var mappedItem = _mapper.Map<IEnumerable<ParkingsDetailDTO>>(item);
 
-            return View(mappedItem);
-            
-        } 
 
         public IActionResult Error()
         {

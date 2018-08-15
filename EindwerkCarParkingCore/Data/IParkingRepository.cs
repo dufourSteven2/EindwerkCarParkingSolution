@@ -17,7 +17,7 @@ namespace EindwerkCarParkingCore.Data
         Parking  GetParkingById(int id);
         //IEnumerable<TotaalDTO> GetTotalen();
         //methods 
-        void AddEntity(object model);
+        void AddParking(ParkingsDetailDTO model);
         bool SaveAll();
         void DeleteParking(int id);
     }

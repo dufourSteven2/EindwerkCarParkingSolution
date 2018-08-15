@@ -49,6 +49,9 @@ namespace EindwerkCarParkingCore
                     cfg.Password.RequireNonAlphanumeric = false;
                     cfg.Password.RequiredLength = 4;
                     cfg.Password.RequireUppercase = false;
+                    cfg.Password.RequireDigit = false;
+                    cfg.Password.RequireLowercase = false;
+                 
 
 
                 }).AddEntityFrameworkStores<EindwerkCarParkingContext>().AddDefaultTokenProviders();
