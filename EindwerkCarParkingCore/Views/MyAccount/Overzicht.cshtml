@@ -5,140 +5,475 @@
     ViewData["Title"] = "Overzicht";
 }
 
-<h2>Mijn Account</h2>
+@*<h2>Mijn Account</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
 
 
-<div>
-    <h3>Gerigstreerde parkings:</h3>
-    <table class="table">
+    <div>
+        <h3>Gerigstreerde parkings:</h3>
+        <table class="table">
 
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ParkingNaam)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LocatieStraat)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LocatieNummer)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.GemeenteGemeenteNaam)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LandLandNaam)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SoortSoortNaam)
-                </th>
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ParkingNaam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocatieStraat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocatieNummer)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GemeenteGemeenteNaam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LandLandNaam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SoortSoortNaam)
+                    </th>
 
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            { 
-            if (item.PublicatieToelating == true)
-            {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParkingNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocatieStraat)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocatieNummer)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GemeenteGemeenteNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LandLandNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SoortSoortNaam)
-                </td>
-
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-                }
-            }
-
-        </tbody>
-    </table>
-</div>
-           
-<div>
-    <h3>Niet Gerigstreerde parkings:</h3>
-    <table class="table">
-
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ParkingNaam)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LocatieStraat)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LocatieNummer)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.GemeenteGemeenteNaam)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LandLandNaam)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SoortSoortNaam)
-                </th>
-
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                if (item.PublicatieToelating != true)
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
                 {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParkingNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocatieStraat)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LocatieNummer)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GemeenteGemeenteNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LandLandNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SoortSoortNaam)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
-                }
-            }
+                if (item.PublicatieToelating == true)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ParkingNaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocatieStraat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocatieNummer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GemeenteGemeenteNaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LandLandNaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoortSoortNaam)
+                    </td>
 
-        </tbody>
-    </table>
-</div>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h3>Niet Gerigstreerde parkings:</h3>
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ParkingNaam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocatieStraat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LocatieNummer)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GemeenteGemeenteNaam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LandLandNaam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SoortSoortNaam)
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.PublicatieToelating != true)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ParkingNaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocatieStraat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LocatieNummer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GemeenteGemeenteNaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LandLandNaam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoortSoortNaam)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>*@
+
+
+@using EindwerkCarParkingLib
+@*@model IEnumerable<Parking>*@
+
+
+@{
+    ViewBag.Title = "Parkings met Vue.Js";
+}
+
+<h2>@ViewBag.Title</h2>
+<article id="example" class="row">
+    <header class="col-md-4">
+        <h3>{{ message }}</h3> @*Vue mustache*@
+        <nav>
+            <ul class="list-group">
+                <li v-for="parking in parkings" v-on:click="fetchParkingDetails(parking)" :class="getParkingClass(parking)" style="cursor:pointer">
+                    <span class="parkingNaam">{{parking.parkingNaam}}</span>
+                    <span class="soortSoortNaam">{{parking.soortSoortNaam}}</span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <article v-if="currentParking" class="col-md-8">
+        <h3>Details</h3>
+        <div v-if="editMode" class="form-group">
+            <table>
+                <tr>
+                    <td>Parking:</td>
+                    <td><input v-model="currentParking.parkingNaam" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Soort:</td>
+
+                    <td>
+                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                            <option v-for="soort in soorts" v-bind:value="soort.id">{{ soort.soortNaam }}</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Land:</td>
+
+                    <td>
+                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                            <option v-for="land in landen" v-bind:value="land.id">{{ land.landNaam }}</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gemeente:</td>
+
+                    <td>
+                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                            <option v-for="stad in steden" v-bind:value="stad.id">{{ stad.gemeenteNaam }}</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Straat:</td>
+                    <td><input v-model="currentParking.locatieStraat" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Nr:</td>
+                    <td><input v-model="currentParking.locatieNummer" class="form-control"></td>
+                </tr>
+
+                <tr>
+                    <td>Totaal:</td>
+                    <td><input v-model="currentParking.totaal" class="form-control"></td>
+                    @*<td>
+                            <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                                <option v-for="parking in parkings" v-bind:value="parking.id">{{ parking.totaal }}</option>
+                            </select>
+                            <span>Selected: {{ currentParking.id }}</span>
+                        </td>*@
+                </tr>
+                <tr>
+                    <td>Bezet:</td>
+                    <td><input v-model="currentParking.bezet" class="form-control"></td>
+                </tr>
+            </table>
+            <button v-on:click="save" class="btn btn-primary">Save</button>
+            <button v-on:click="Cancel" class="btn btn-danger">Cancel</button>
+        </div>
+        <div v-else>
+            <table cellpadding="8em">
+                <tr>
+                    <td>Parking:</td>
+                    <td class="parkingNaam">{{currentParking.parkingNaam}}</td>
+                </tr>
+                <tr>
+                    <td>Soort:</td>
+                    <td class="soortSoortNaam">{{currentParking.soortSoortNaam}}</td>
+                </tr>
+                <tr>
+                    <td>Land:</td>
+                    <td class="soortSoortNaam">{{currentParking.landLandNaam}}</td>
+                </tr>
+                <tr>
+                    <td>Gemeente:</td>
+                    <td class="parkingNaam">{{currentParking.gemeenteGemeenteNaam}}</td>
+                </tr>
+                <tr>
+                    <td>Straat:</td>
+                    <td class="soortSoortNaam">{{currentParking.locatieStraat}}</td>
+                </tr>
+                <tr>
+                    <td>Nr:</td>
+                    <td class="parkingNaam">{{currentParking.locatieNummer}}</td>
+                </tr>
+
+                <tr>
+                    <td>Totaal:</td>
+                    <td class="parkingNaam">{{currentParking.totaal}}</td>
+                </tr>
+                <tr>
+                    <td>Bezet:</td>
+                    <td class="parkingNaam">{{currentParking.bezet}}</td>
+                </tr>
+            </table>
+            <button v-on:click="toEditMode(true)" class="btn btn-primary">Edit</button>
+            <button v-on:click="toEditMode(false)" class="btn btn-warning">New</button>
+            <button v-on:click="deleteBook()" class="btn btn-danger" data-toggle="confirmation">Delete</button>
+        </div>
+    </article>
+</article>
+
+
+@section scripts{
+    <script src="~/bower_components/bootstrap-confirmation/bootstrap-confirmation.js"></script>
+    <script src="~/Scripts/vue.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+
+    <script>
+        $(function () {
+            // JQuery
+            //console.log('ready');
+        })
+        var apiURL = '/api/'
+        new Vue({
+            el: '#example',
+            data: {
+                message: 'Hello World!',
+                parkings: null,
+                soorts: null,
+                landen: null,
+                steden : null,
+                currentParking: null,
+                editMode: false,
+                isEdit: false
+
+            },
+            created: function () {
+                var self = this;
+                this.fetchParkings();
+                this.fetchSoorten();
+                this.fetchLanden();
+                this.fetchSteden();
+
+            },
+            methods: {
+
+                fetchLanden: function () {
+                    self = this;
+                    fetch(`${apiURL}landen`)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            self.landen = res;
+
+                        })
+                        .catch(err => console.error("fout" + err));
+                },
+
+                fetchSteden: function () {
+                    self = this;
+                    fetch(`${apiURL}gemeentes`)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            self.steden = res;
+
+                        })
+                        .catch(err => console.error("fout" + err));
+                },
+
+                fetchSoorten: function () {
+                    self = this;
+                    fetch(`${apiURL}soorts`)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            self.soorts = res;
+
+                        })
+                        .catch(err => console.error("fout" + err));
+                },
+
+                fetchParkings: function () {
+                    self = this;
+                    fetch(`${apiURL}Parkings`)
+                        .then(res => res.json())
+                        .then(function (parkings) {
+                            parkings.forEach(function (parking, i) {
+                                parking.isActive = false;
+                            });
+                            self.parkings = parkings;
+                            self.message = 'Overview'
+                            if (self.parkings.length > 0) {
+                                self.fetchParkingDetails(self.parkings[0]);
+                            }
+                        })
+                        .catch(err => console.error('Fout: ' + err));
+                },
+                fetchParkingDetails: function (parking) {
+                    self = this;
+                    fetch(`${apiURL}Parkings/${parking.id}`)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            self.currentParking = res;
+                            self.parkings.forEach(function (parking, i) { parking.isActive = false; })
+                            parking.isActive = true;
+
+                        })
+                    xhr.send()
+
+                },
+                getParkingClass: function (parking) {
+                    if (parking.isActive) return 'list-group-item active';
+                    return 'list-group-item';
+
+                },
+                toEditMode: function (isEdit) {
+                    self = this;
+                    this.editMode = true;
+                    this.isEdit = isEdit;
+                    if (!isEdit) {
+                        self.currentParking = {
+                            Id: 0, parkingNaam: '', soortSoortNaam: '', gemeentGemeenteNaam: '', locatieStraat: '',
+                            locatieNummer: '', landLandNaam: '', totaal: 0, bezet: ''
+                        }
+                    }
+
+                },
+                //save: function () {
+                //    var self = this
+                //    //opslaan-ajax configuratie
+                //    var ajaxHeaders = new Headers();
+                //    ajaxHeaders.append("Content-Type", "application/json");
+                //    var ajaxConfig = {
+                //        method: 'PUT',
+                //        body: JSON.stringify(self.currentParking),
+                //        headers: ajaxHeaders
+                //    }
+                //    // opslaan of edit toevoegen
+                //    if (self.isEdit) {
+                //        var myRequest = new Request(`${apiURL}Parkings/${self.currentParking.id}`, ajaxConfig)
+                //    }
+                //    else {
+                //        ajaxConfig.method = 'POST';
+                //        var myRequest = new Request(`${apiURL}Parkings/`, ajaxConfig)
+                //    }
+                //    fetch(myRequest)
+                //        .then(res => res.json())
+                //        .then(function (res) {
+                //            if (self.isEdit) {
+                //                theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
+                //                theParking.parkingNaam = self.currentParking.parkingNaam;
+                //                theParking.soortSoortNaam = self.currentParking.parkingNaam;
+                //            } else {
+                //                console.log(res);
+                //                self.currentParking.id = res.id;
+                //                self.parkings.push(self.currentParking);
+                //                self.fetchParkingDetails(self.parkings[self.parkings.length - 1]);
+                //            }
+                //            self.toEditMode = false;
+                //        })
+                //        .catch(err => console.error('Fout: ' + err));;
+
+                //},
+
+                save: function () {
+                    var self = this
+
+                    // opslaan - ajax
+                    var xhr = new XMLHttpRequest()
+                    if (self.isEdit) { xhr.open('PUT', apiURL + "Parkings/" + self.currentParking.id); }
+                    else { xhr.open('POST', apiURL + "Parkings"); }
+                    var uploadjson = JSON.stringify(self.currentParking);
+                    xhr.setRequestHeader("Content-type", "application/json");
+                    xhr.send(uploadjson);
+
+                    // GUI Aanpassen
+                    // nieuwe auteursnaam ophalen
+                    //theAuthor = self.authors.filter(author => (author.Id === self.currentBook.AuthorId))[0];
+                    //Vue.set(self.currentBook, 'AuthorName', theAuthor.Name)
+
+                    if (self.isEdit) {
+                        // boek updaten in lijst
+                        theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
+                        Vue.set(theParking, 'parkingNaam', this.currentParking.parkingNaam);
+                        Vue.set(theParking, 'totaal', this.currentParking.totaal);
+                        theParking.parkingNaam = this.currentParking.parkingNaam;
+                        self.editMode = false;
+                    } else {
+                        // boek toevoegen aan de lijst
+                        self.parkings.push(self.currentParking);
+                    }
+                },
+                Cancel: function () {
+
+
+                    this.editMode = false;
+
+                },
+                deleteParking: function () {
+                    var self = this;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('DELETE', apiURL + "Parkings/" + self.currentParking.id)
+                    xhr.send();
+                    // boek verwijderen uit de lijst
+                    self.parkings.forEach(function (parking, i) {
+                        if (parking.id == self.currentBook.id) {
+                            self.parkings.splice(i, 1);
+                            return;
+                        }
+                    });
+                },
+
+            }
+        });
+    </script>
+}
+

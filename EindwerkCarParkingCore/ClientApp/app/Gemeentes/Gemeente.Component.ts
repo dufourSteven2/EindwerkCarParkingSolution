@@ -10,10 +10,12 @@ import {IGemeente} from "../shared/IGemeente"
     // styleUrls: ["Landen.Component.css"] //styles aangepast naar styleUrls
 })
 
-export class Gemeentes implements OnInit {
+export class Gemeentes implements OnInit
+{
     PageTitle: string = 'Lijst steden';
 
     public gemeentes: IGemeente[] = [];
+
     constructor(private data: DataService) { }
 
     ngOnInit(): void {
@@ -24,5 +26,21 @@ export class Gemeentes implements OnInit {
                 }
             })
     }
+    //_ListFilter: string;
+    //get listFilter(): string {
+    //    return this._ListFilter;
+    //}
+    //set listFilter(value: string) {
+    //    this._ListFilter = value;
+    //    this.filteredGemeentes = this.listFilter ? this.perFormFilter(this.listFilter) : this.parkings;
+    //}
+    //filteredGemeentes: IGemeente[] = this.gemeentes;
+
+    //perFormFilter(filterBy: string): IGemeente[] {
+    //    filterBy = filterBy.toLocaleLowerCase();
+    //    return this.gemeentes.filter((gemeente: IGemeente) =>
+    //        gemeente.Land.toLocaleLowerCase().indexOf(filterBy) !== -1 ;
+
+    //}
 
 }

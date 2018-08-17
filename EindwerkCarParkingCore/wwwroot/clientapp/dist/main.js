@@ -317,7 +317,7 @@ module.exports = "<div>\r\n    <select>\r\n        <option *ngFor=\"let S of Soo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n\r\n<div>\r\n    <Landen></Landen>\r\n    <Gemeentes></Gemeentes>\r\n    <Soorten></Soorten>\r\n</div>\r\n\r\n\r\n<div class=\"col-md-10\" >\r\n<parking-list></parking-list>\r\n</div>"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n\r\n<div>\r\n    <Landen class=\"col-md-2\"></Landen>\r\n    <Gemeentes class=\"col-md-4\"></Gemeentes>\r\n    <Soorten class=\"col-md-6\"></Soorten>\r\n</div>\r\n\r\n\r\n<div class=\"col-md-10\" >\r\n<parking-list></parking-list>\r\n</div>"
 
 /***/ }),
 

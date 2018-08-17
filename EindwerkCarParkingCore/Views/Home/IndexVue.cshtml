@@ -2,6 +2,7 @@
 @using EindwerkCarParkingLib
 @model IEnumerable<Parking>
 
+
 @{
     ViewBag.Title = "Parkings met Vue.Js";
 }
@@ -29,11 +30,33 @@
                 </tr>
                 <tr>
                     <td>Soort:</td>
-                    <td><input v-model="currentParking.soortSoortNaam" class="form-control"></td>
+              
+                    <td>
+                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                            <option v-for="soort in soorts" v-bind:value="soort.id">{{ soort.soortNaam }}</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Land:</td>
+                 
+                    <td>
+                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                            <option v-for="land in landen" v-bind:value="land.id">{{ land.landNaam }}</option>
+                        </select>
+
+                    </td>
                 </tr>
                 <tr>
                     <td>Gemeente:</td>
-                    <td><input v-model="currentParking.gemeenteGemeenteNaam" class="form-control"></td>
+                  
+                    <td>
+                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                            <option v-for="stad in steden" v-bind:value="stad.id">{{ stad.gemeenteNaam }}</option>
+                        </select>
+
+                    </td>
                 </tr>
                 <tr>
                     <td>Straat:</td>
@@ -43,19 +66,16 @@
                     <td>Nr:</td>
                     <td><input v-model="currentParking.locatieNummer" class="form-control"></td>
                 </tr>
-                <tr>
-                    <td>Land:</td>
-                    <td><input v-model="currentParking.landLandNaam" class="form-control"></td>
-                </tr>
+
                 <tr>
                     <td>Totaal:</td>
-                    <td><input v-model="currentParking.totaal" v-on:change="changeParking" class="form-control"></td>
+                    <td><input v-model="currentParking.totaal" class="form-control"></td>
                     @*<td>
-                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
-                            <option v-for="parking in parkings" v-bind:value="parking.id">{{ parking.totaal }}</option>
-                        </select>
-                        <span>Selected: {{ currentParking.id }}</span>
-                    </td>*@
+                <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                    <option v-for="parking in parkings" v-bind:value="parking.id">{{ parking.totaal }}</option>
+                </select>
+                <span>Selected: {{ currentParking.id }}</span>
+            </td>*@
                 </tr>
                 <tr>
                     <td>Bezet:</td>
@@ -76,6 +96,10 @@
                     <td class="soortSoortNaam">{{currentParking.soortSoortNaam}}</td>
                 </tr>
                 <tr>
+                    <td>Land:</td>
+                    <td class="soortSoortNaam">{{currentParking.landLandNaam}}</td>
+                </tr>
+                <tr>
                     <td>Gemeente:</td>
                     <td class="parkingNaam">{{currentParking.gemeenteGemeenteNaam}}</td>
                 </tr>
@@ -87,10 +111,7 @@
                     <td>Nr:</td>
                     <td class="parkingNaam">{{currentParking.locatieNummer}}</td>
                 </tr>
-                <tr>
-                    <td>Land:</td>
-                    <td class="soortSoortNaam">{{currentParking.landLandNaam}}</td>
-                </tr>
+
                 <tr>
                     <td>Totaal:</td>
                     <td class="parkingNaam">{{currentParking.totaal}}</td>
@@ -102,7 +123,7 @@
             </table>
             <button v-on:click="toEditMode(true)" class="btn btn-primary">Edit</button>
             <button v-on:click="toEditMode(false)" class="btn btn-warning">New</button>
-            <button v-on:click="deleteBook()" class="btn btn-danger" data-toggle="confirmation">Delete</button>
+            <button v-on:click="deleteParking()" class="btn btn-danger" data-toggle="confirmation">Delete</button>
         </div>
     </article>
 </article>
@@ -122,18 +143,59 @@
         new Vue({
             el: '#example',
             data: {
-                message: 'Overview',
+                message: 'Hello World!',
                 parkings: null,
+                soorts: null,
+                landen: null,
+                steden : null,
                 currentParking: null,
                 editMode: false,
                 isEdit: false
+               
             },
             created: function () {
                 var self = this;
                 this.fetchParkings();
+                this.fetchSoorten();
+                this.fetchLanden();
+                this.fetchSteden();
 
             },
             methods: {
+
+                fetchLanden: function () {
+                    self = this;
+                    fetch(`${apiURL}landen`)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            self.landen = res;
+
+                        })
+                        .catch(err => console.error("fout" + err));
+                },
+
+                fetchSteden: function () {
+                    self = this;
+                    fetch(`${apiURL}gemeentes`)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            self.steden = res;
+
+                        })
+                        .catch(err => console.error("fout" + err));
+                },
+
+                fetchSoorten: function () {
+                    self = this;
+                    fetch(`${apiURL}soorts`)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            self.soorts = res;
+
+                        })
+                        .catch(err => console.error("fout" + err));
+                },
+
                 fetchParkings: function () {
                     self = this;
                     fetch(`${apiURL}Parkings`)
@@ -168,26 +230,14 @@
                     return 'list-group-item';
 
                 },
-                fetchParkings: function () {
-                    var xhr = new XMLHttpRequest()
-                    var self = this
-                    xhr.open('GET', apiURL + "Parkings")
-                    xhr.onload = function () {
-                        self.parkings = JSON.parse(xhr.responseText)
-                    }
-                    xhr.send()
-                },
-                changeParking: function () {
-                    self = this;
-                },
                 toEditMode: function (isEdit) {
                     self = this;
                     this.editMode = true;
                     this.isEdit = isEdit;
                     if (!isEdit) {
                         self.currentParking = {
-                            Id: 0, ParkingNaam: '', landLandNaam: '', gemeentGemeenteNaam: '', locatieStraat: '',
-                            locatieNummer: 0, soortSoortNaam: '', Totaal: 0, Bezet: 0
+                            Id: 0, parkingNaam: '', soortSoortNaam: '', gemeentGemeenteNaam: '', locatieStraat: '',
+                            locatieNummer: '', landLandNaam: '', totaal: 0, bezet: ''
                         }
                     }
 
@@ -237,32 +287,19 @@
                     if (self.isEdit) { xhr.open('PUT', apiURL + "Parkings/" + self.currentParking.id); }
                     else { xhr.open('POST', apiURL + "Parkings"); }
                     var uploadjson = JSON.stringify(self.currentParking);
-                    xhr.setRequestHeader("Content-type", "application/json"); //"application/json" of "application/x-www-form-urlencoded"
+                    xhr.setRequestHeader("Content-type", "application/json");
                     xhr.send(uploadjson);
 
                     // GUI Aanpassen
                     // nieuwe auteursnaam ophalen
-                    theParking = self.parkings.filter(parking => (parking.Id === self.currentParking.id))[0];
-                    Vue.set(self.currentParking, 'parkingNaam', theParking.parkingNaam);
-                    Vue.set(self.currentParking, 'soortSoortNaam', theParking.soortSoortNaam);
-                    Vue.set(self.currentParking, 'gemeenteGemeenteNaam', theParking.gemeentGemeenteNaam);
-                    Vue.set(self.currentParking, 'LocatieStraat', theParking.locatieStraat);
-                    Vue.set(self.currentParking, 'LocatieNr', theParking.locatieNr);
-                    Vue.set(self.currentParking, 'landLandNaam', theParking.landLandNaam);                    
-                    Vue.set(self.currentParking, 'Totaal', theParking.Totaal);
-                    Vue.set(self.currentParking, 'Bezet', theParking.bezet);
+                    //theAuthor = self.authors.filter(author => (author.Id === self.currentBook.AuthorId))[0];
+                    //Vue.set(self.currentBook, 'AuthorName', theAuthor.Name)
 
                     if (self.isEdit) {
                         // boek updaten in lijst
-                        theParking = self.parkings.filter(parking => (parking.Id === self.currentParking.id))[0];
+                        theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
                         Vue.set(theParking, 'parkingNaam', this.currentParking.parkingNaam);
-                        Vue.set(theParking, 'landLandNaam', theParking.landLandNaam);
-                        Vue.set(theParking, 'soortSoortNaam', theParking.soortSoortNaam);
-                        Vue.set(theParking, 'gemeenteGemeenteNaam', theParking.gemeentGemeenteNaam);
-                        Vue.set(theParking, 'LocatieStraat', theParking.locatieStraat);
-                        Vue.set(theParking, 'LocatieNr', theParking.locatieNr);
-                        Vue.set(theParking, 'Totaal', this.currentParking.Totaal);
-                        Vue.set(theParking, 'Bezet', theParking.bezet);
+                        Vue.set(theParking, 'totaal', this.currentParking.totaal);
                         theParking.parkingNaam = this.currentParking.parkingNaam;
                         self.editMode = false;
                     } else {
