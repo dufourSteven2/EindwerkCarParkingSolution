@@ -283,8 +283,8 @@
         $(function () {
             // JQuery
             //console.log('ready');
-        })
-        var apiURL = '/api/'
+        });
+        var apiURL = '/api/';
         new Vue({
             el: '#example',
             data: {
@@ -350,7 +350,7 @@
                                 parking.isActive = false;
                             });
                             self.parkings = parkings;
-                            self.message = 'Overview'
+                            self.message = 'Overview';
                             if (self.parkings.length > 0) {
                                 self.fetchParkingDetails(self.parkings[0]);
                             }
@@ -363,11 +363,11 @@
                         .then(res => res.json())
                         .then(function (res) {
                             self.currentParking = res;
-                            self.parkings.forEach(function (parking, i) { parking.isActive = false; })
+                            self.parkings.forEach(function (parking, i) { parking.isActive = false; });
                             parking.isActive = true;
 
-                        })
-                    xhr.send()
+                        });
+                    xhr.send();
 
                 },
                 getParkingClass: function (parking) {
@@ -383,7 +383,7 @@
                         self.currentParking = {
                             Id: 0, parkingNaam: '', soortSoortNaam: '', gemeentGemeenteNaam: '', locatieStraat: '',
                             locatieNummer: '', landLandNaam: '', totaal: 0, bezet: ''
-                        }
+                        };
                     }
 
                 },
@@ -425,10 +425,10 @@
                 //},
 
                 save: function () {
-                    var self = this
+                    var self = this;
 
                     // opslaan - ajax
-                    var xhr = new XMLHttpRequest()
+                    var xhr = new XMLHttpRequest();
                     if (self.isEdit) { xhr.open('PUT', apiURL + "Parkings/" + self.currentParking.id); }
                     else { xhr.open('POST', apiURL + "Parkings"); }
                     var uploadjson = JSON.stringify(self.currentParking);
@@ -442,7 +442,7 @@
 
                     if (self.isEdit) {
                         // boek updaten in lijst
-                        theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
+                        theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id)[0]);
                         Vue.set(theParking, 'parkingNaam', this.currentParking.parkingNaam);
                         Vue.set(theParking, 'totaal', this.currentParking.totaal);
                         theParking.parkingNaam = this.currentParking.parkingNaam;
@@ -461,16 +461,16 @@
                 deleteParking: function () {
                     var self = this;
                     var xhr = new XMLHttpRequest();
-                    xhr.open('DELETE', apiURL + "Parkings/" + self.currentParking.id)
+                    xhr.open('DELETE', apiURL + "Parkings/" + self.currentParking.id);
                     xhr.send();
                     // boek verwijderen uit de lijst
                     self.parkings.forEach(function (parking, i) {
-                        if (parking.id == self.currentBook.id) {
+                        if (parking.id === self.currentBook.id) {
                             self.parkings.splice(i, 1);
                             return;
                         }
                     });
-                },
+                }
 
             }
         });
