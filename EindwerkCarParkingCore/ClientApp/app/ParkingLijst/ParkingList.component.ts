@@ -13,7 +13,6 @@ export class ParkingList implements OnInit {
     PageTitle: string = 'Lijst Parkings';
     backGroundColor: string;
     public parkings: IParking[] = [];
-   
 
     ngOnInit(): void {
         this.data.loadParkings()
@@ -26,8 +25,9 @@ export class ParkingList implements OnInit {
             });
     }
    
-
+    filteredParkings: IParking[] = this.parkings;
     _ListFilter : string;
+
     get listFilter(): string
     {
         return this._ListFilter;
@@ -38,7 +38,6 @@ export class ParkingList implements OnInit {
         this.filteredParkings = this.listFilter ? this.perFormFilter(this.listFilter) : this.parkings;
     }
 
-    filteredParkings: IParking[] = this.parkings;
 
     constructor(private data: DataService) { } 
 

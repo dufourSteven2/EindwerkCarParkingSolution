@@ -1,4 +1,5 @@
-﻿using EindwerkCarParkingCore.Models;
+﻿using AutoMapper;
+using EindwerkCarParkingCore.Models;
 using EindwerkCarParkingLib;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -20,9 +21,28 @@ namespace EindwerkCarParkingCore.Data
             _logger = logger;
         }
 
-        public void AddEntity(object model)
+        public void AddParking(ParkingsDetailDTO model)
         {
-            _ctx.Add(model);
+            //Parking parking = Mapper.Map<ParkingsDetailDTO>(Parking);
+            //_ctx.Parkings.Add(parking);
+            //_ctx.SaveChanges();
+
+            //model.Id = parking.Id;
+            
+        }
+
+  
+
+        public void DeleteParking(int id)
+        {
+            var parking = _ctx.Parkings.SingleOrDefault(p => p.Id == id);
+               
+            if (parking == null)
+            {
+                _logger.LogError($"Failed to deteete all parking:");
+            }
+            _ctx.Parkings.Remove(parking);
+           
         }
 
         public IEnumerable<Parking> GetAllParkings()

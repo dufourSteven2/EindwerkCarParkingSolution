@@ -10,7 +10,9 @@
     <None Remove="ClientApp\app\Gemeentes\Gemeente.Component.ts" />
     <None Remove="ClientApp\app\Landen\Landen.Component.ts" />
     <None Remove="ClientApp\app\ParkingLijst\ParkingList.component.ts" />
+    <None Remove="ClientApp\app\Services\GeocodingApiService.ts" />
     <None Remove="ClientApp\app\shared\dataService.ts" />
+    <None Remove="ClientApp\app\shared\googleMap.Component.ts" />
     <None Remove="ClientApp\app\shared\IGemeente.ts" />
     <None Remove="ClientApp\app\shared\ILand.ts" />
     <None Remove="ClientApp\app\shared\IParking.ts" />
@@ -495,7 +497,9 @@
     <TypeScriptCompile Include="ClientApp\app\Gemeentes\Gemeente.Component.ts" />
     <TypeScriptCompile Include="ClientApp\app\Landen\Landen.Component.ts" />
     <TypeScriptCompile Include="ClientApp\app\ParkingLijst\ParkingList.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\Services\GeocodingApiService.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\dataService.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\googleMap.Component.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\IGemeente.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\ILand.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\IParking.ts" />

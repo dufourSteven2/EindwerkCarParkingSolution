@@ -28,6 +28,7 @@
                         <th> Aantal: </th>
                         <th>Vrije plaatsen: </th>
                         <th>Percentage bezet:</th>
+                        <th>Google Map</th>
                        
                     </tr>
                 </thead>
@@ -43,6 +44,12 @@
                         <td ng-model="Totaal">{{p.totaal}}</td>
                         <td>{{ p.totaal - p.bezet }}</td>
                         <td>{{(p.bezet / p.totaal)*100}} %</td>
+                        <td>    
+                            <googleMap [straatNaam] = 'p.locatieStraat'
+                                       [locatienummer] ='p.locatieNummer'
+                                       [gemeente] ="p.gemeenteGemeenteNaam"
+                                       [land] ="p.landLandNaam"></googleMap>
+                        </td>
                         
                     </tr>
                 </tbody>

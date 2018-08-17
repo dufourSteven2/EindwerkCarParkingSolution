@@ -13,9 +13,12 @@ var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var ParkingList_component_1 = require("./ParkingLijst/ParkingList.component");
 var dataService_1 = require("./shared/dataService");
+var googleMap_Component_1 = require("./shared/googleMap.Component");
 var Landen_Component_1 = require("./Landen/Landen.Component");
 var Gemeente_Component_1 = require("./Gemeentes/Gemeente.Component");
 var Soorten_Component_1 = require("./Soorten/Soorten.Component");
+var core_2 = require("@agm/core");
+var GeocodingApiService_1 = require("./Services/GeocodingApiService");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -26,15 +29,20 @@ var AppModule = /** @class */ (function () {
                 ParkingList_component_1.ParkingList,
                 Landen_Component_1.Landen,
                 Gemeente_Component_1.Gemeentes,
-                Soorten_Component_1.Soorten
+                Soorten_Component_1.Soorten,
+                googleMap_Component_1.googleMapComponent,
             ],
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
-                http_1.HttpClientModule /////////////////////:
+                http_1.HttpClientModule,
+                core_2.AgmCoreModule.forRoot({
+                    apiKey: 'AIzaSyCeiTZY7jXETj0MpKuUbKwN_CqeUzv0v-M'
+                }),
             ],
             providers: [
-                dataService_1.DataService
+                dataService_1.DataService,
+                GeocodingApiService_1.GeocodingApiService
             ],
             bootstrap: [app_component_1.AppComponent]
         })
