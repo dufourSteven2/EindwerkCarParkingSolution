@@ -14,7 +14,6 @@ var googleMapComponent = /** @class */ (function () {
     function googleMapComponent() {
         this.lat = 5;
         this.lng = 2;
-        this.adres = this.straatNaam;
         //updateLatLngFromAddress() {
         //    this.geocodingAPIService
         //        .findFromAddress(this.straatNaam, this.locatienummer, this.gemeente, this.land)
@@ -29,6 +28,10 @@ var googleMapComponent = /** @class */ (function () {
         //            }
         //        });
     }
+    googleMapComponent.prototype.ngOnChanges = function () {
+        this.adres = this.straatNaam + " " + this.locatienummer + ","
+            + this.gemeente + "," + this.land;
+    };
     __decorate([
         core_1.Input(),
         __metadata("design:type", String)
