@@ -27,18 +27,18 @@
             <div id="menu" class="collapse navbar-collapse">  @*om menu uit te laten klappen moet men dit in div steken met naam voor data-target*@
                 <ul class="nav navbar-nav" id="menu">
                     <li class="ahrefactionhelper"> <a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="ahrefactionhelper"><a asp-controller="Home" asp-action="Parkings">Parkings</a></li>
                     <li class="ahrefactionhelper"><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li class="ahrefactionhelper"><a asp-controller="Home" asp-action="IndexVue">ViewJS</a></li>
                     <li class="ahrefactionhelper"><a asp-controller="Home" asp-action="AddParking">Voeg parking Toe</a></li>
-                    <li class="ahrefactionhelper"><a asp-controller="Home" asp-action="Parkings">Parkings</a></li>
-                    <li>@Html.ActionLink("View.JS", "IndexVue", "Home", new { area=""}, null)</li>
+                    <li>@Html.ActionLink("View.JS", "IndexVue", "Home", new { area = "" }, null)</li>
 
                     <li class="ahrefactionhelper">
                         @if (User.Identity.IsAuthenticated)
                         {
                             @if (User.IsInRole("Admin"))
                             {
-                                <a  asp-area="" asp-controller="Admin" asp-action="Overzicht">Admin Page</a>
+                                <a asp-area="" asp-controller="Admin" asp-action="Overzicht">Admin Page</a>
                             }
                         }
                     </li>

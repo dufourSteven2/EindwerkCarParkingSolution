@@ -18,19 +18,6 @@ var GeocodingApiService = /** @class */ (function () {
         this.API_KEY = 'AIzaSyCeiTZY7jXETj0MpKuUbKwN_CqeUzv0v';
         this.API_URL = "https://maps.googleapis.com/maps/api/geocode/json?key=" + this.API_KEY + "&address=";
     }
-    GeocodingApiService.prototype.findFromAddress = function (straatNaam, locatienummer, gemeente, land) {
-        var compositeAddress = [straatNaam, locatienummer, gemeente, land];
-        if (straatNaam)
-            compositeAddress.push(straatNaam);
-        if (locatienummer)
-            compositeAddress.push(locatienummer);
-        if (gemeente)
-            compositeAddress.push(gemeente);
-        if (land)
-            compositeAddress.push(land);
-        var url = "" + this.API_URL + compositeAddress.join(',');
-        return this.http.get(url).map(function (response) { return response.json(); });
-    };
     GeocodingApiService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.Http])

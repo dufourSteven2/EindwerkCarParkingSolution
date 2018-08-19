@@ -1,4 +1,4 @@
-﻿import { Component, Input } from '@angular/core';
+﻿import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { GeocodingApiService } from "../Services/GeocodingApiService";
 
 @Component({
@@ -7,9 +7,9 @@ import { GeocodingApiService } from "../Services/GeocodingApiService";
     styleUrls: ['./googleMapComponent.css']
 })
 
-export class googleMapComponent {
-    lat: number = 5 ;
-    lng: number =2;
+export class googleMapComponent implements OnChanges{
+    lat: number;
+    lng: number;
 
    // constructor(private geocodingAPIService: GeocodingApiService) {}
     @Input() straatNaam: string;
@@ -18,9 +18,14 @@ export class googleMapComponent {
     @Input() land: string;
 
    
-    adres: string = this.straatNaam;
+    adres: string;
+
+    ngOnChanges(): void {
+        this.adres = this.straatNaam + " " + this.locatienummer + ","
+        +this.gemeente + "," + this.land;
+    }
  
-    
+  
        
 
    

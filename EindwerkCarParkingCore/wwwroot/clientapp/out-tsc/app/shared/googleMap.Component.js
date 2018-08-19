@@ -12,23 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var googleMapComponent = /** @class */ (function () {
     function googleMapComponent() {
-        this.lat = 5;
-        this.lng = 2;
-        this.adres = this.straatNaam;
-        //updateLatLngFromAddress() {
-        //    this.geocodingAPIService
-        //        .findFromAddress(this.straatNaam, this.locatienummer, this.gemeente, this.land)
-        //        .subscribe(response => {
-        //            if (response.status == 'OK') {
-        //                this.lat = response.results[0].geometry.location.lat;
-        //                this.lng = response.results[0].geometry.location.lng;
-        //            } else if (response.status == 'ZERO_RESULTS') {
-        //                console.log('geocodingAPIService', 'ZERO_RESULTS', response.status);
-        //            } else {
-        //                console.log('geocodingAPIService', 'Other error', response.status);
-        //            }
-        //        });
     }
+    googleMapComponent.prototype.ngOnChanges = function () {
+        this.adres = this.straatNaam + " " + this.locatienummer + ","
+            + this.gemeente + "," + this.land;
+    };
     __decorate([
         core_1.Input(),
         __metadata("design:type", String)
