@@ -278,6 +278,13 @@ var GeocodingApiService = /** @class */ (function () {
         this.API_KEY = 'AIzaSyCeiTZY7jXETj0MpKuUbKwN_CqeUzv0v';
         this.API_URL = "https://maps.googleapis.com/maps/api/geocode/json?key=" + this.API_KEY + "&address=";
     }
+    GeocodingApiService.prototype.findFromAddress = function (adres) {
+        var compositeAddress = [adres];
+        if (adres)
+            compositeAddress.push(adres);
+        var url = "" + this.API_URL + compositeAddress.join(',');
+        return this.http.get(url).map(function (response) { return response.json(); });
+    };
     GeocodingApiService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_angular_http__WEBPACK_IMPORTED_MODULE_1__["Http"]])
@@ -562,7 +569,7 @@ var DataService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<agm-map [latitude]=\"la\r\n<script src=\"../ParkingLijst/Locatie.Component.js\"></script>t\" [longitude]=\"lng\">\r\n    <agm-marker [latitude]=\"lat\" [longitude]=\"lng\"></agm-marker>\r\n</agm-map>-->\r\n<div>{{adres}}</div>"
+module.exports = "<agm-map>\r\n    <agm-marker [latitude]=\"lat\" [longitude]=\"lng\"></agm-marker>\r\n</agm-map>\r\n<!--<div>{{adres}}</div>-->"
 
 /***/ }),
 
@@ -577,6 +584,7 @@ module.exports = "<!--<agm-map [latitude]=\"la\r\n<script src=\"../ParkingLijst/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "googleMapComponent", function() { return googleMapComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _Services_GeocodingApiService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Services/GeocodingApiService */ "./ClientApp/app/Services/GeocodingApiService.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -587,12 +595,32 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var googleMapComponent = /** @class */ (function () {
-    function googleMapComponent() {
+    function googleMapComponent(geocodingAPIService) {
+        this.geocodingAPIService = geocodingAPIService;
     }
     googleMapComponent.prototype.ngOnChanges = function () {
         this.adres = this.straatNaam + " " + this.locatienummer + ","
             + this.gemeente + "," + this.land;
+        this.updateLatLngFromAddress();
+    };
+    googleMapComponent.prototype.updateLatLngFromAddress = function () {
+        var _this = this;
+        this.geocodingAPIService
+            .findFromAddress(this.adres)
+            .subscribe(function (response) {
+            if (response.status == 'OK') {
+                _this.lat = response.results[0].geometry.location.lat;
+                _this.lng = response.results[0].geometry.location.lng;
+            }
+            else if (response.status == 'ZERO_RESULTS') {
+                console.log('geocodingAPIService', 'ZERO_RESULTS', response.status);
+            }
+            else {
+                console.log('geocodingAPIService', 'Other error', response.status);
+            }
+        });
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -615,7 +643,8 @@ var googleMapComponent = /** @class */ (function () {
             selector: 'googleMap',
             template: __webpack_require__(/*! ./googleMap.Component.html */ "./ClientApp/app/shared/googleMap.Component.html"),
             styles: [__webpack_require__(/*! ./googleMapComponent.css */ "./ClientApp/app/shared/googleMapComponent.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [_Services_GeocodingApiService__WEBPACK_IMPORTED_MODULE_1__["GeocodingApiService"]])
     ], googleMapComponent);
     return googleMapComponent;
 }());

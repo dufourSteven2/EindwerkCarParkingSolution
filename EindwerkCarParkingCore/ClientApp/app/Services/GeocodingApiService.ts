@@ -13,17 +13,15 @@ export class GeocodingApiService {
         this.API_URL = `https://maps.googleapis.com/maps/api/geocode/json?key=${this.API_KEY}&address=`;
     }
 
-    //findFromAddress(straatNaam: string, locatienummer: string, gemeente: string, land:string): Observable<any> {
-    //    let compositeAddress = [straatNaam, locatienummer, gemeente, land];
+    findFromAddress(adres: string): Observable<any> {
+        let compositeAddress = [adres];
 
-    //    if (straatNaam) compositeAddress.push(straatNaam);
-    //    if (locatienummer) compositeAddress.push(locatienummer);
-    //    if (gemeente) compositeAddress.push(gemeente);
-    //    if (land) compositeAddress.push(land);
+        if (adres) compositeAddress.push(adres);
+        
 
-    //    let url = `${this.API_URL}${compositeAddress.join(',')}`;
+        let url = `${this.API_URL}${compositeAddress.join(',')}`;
 
-    //    return this.http.get(url).map(response => <any>response.json());
-    //}
+        return this.http.get(url).map(response => <any>response.json());
+    }
 
 }

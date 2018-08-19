@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -18,6 +18,13 @@ var GeocodingApiService = /** @class */ (function () {
         this.API_KEY = 'AIzaSyCeiTZY7jXETj0MpKuUbKwN_CqeUzv0v';
         this.API_URL = "https://maps.googleapis.com/maps/api/geocode/json?key=" + this.API_KEY + "&address=";
     }
+    GeocodingApiService.prototype.findFromAddress = function (adres) {
+        var compositeAddress = [adres];
+        if (adres)
+            compositeAddress.push(adres);
+        var url = "" + this.API_URL + compositeAddress.join(',');
+        return this.http.get(url).map(function (response) { return response.json(); });
+    };
     GeocodingApiService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.Http])
