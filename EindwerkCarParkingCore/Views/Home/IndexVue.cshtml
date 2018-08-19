@@ -69,13 +69,13 @@
 
                 <tr>
                     <td>Totaal:</td>
-                    <td><input v-model="currentParking.totaal" class="form-control"></td>
-                    @*<td>
+                    @*<td><input v-model="currentParking.totaal" class="form-control"></td>*@
+                    <td>
                 <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
                     <option v-for="parking in parkings" v-bind:value="parking.id">{{ parking.totaal }}</option>
                 </select>
-                <span>Selected: {{ currentParking.id }}</span>
-            </td>*@
+                
+            </td>
                 </tr>
                 <tr>
                     <td>Bezet:</td>
@@ -230,83 +230,88 @@
                     return 'list-group-item';
 
                 },
+                changeParking: function () {
+                    self = this;
+                },
                 toEditMode: function (isEdit) {
                     self = this;
                     this.editMode = true;
                     this.isEdit = isEdit;
                     if (!isEdit) {
                         self.currentParking = {
-                            Id: 0, parkingNaam: '', soortSoortNaam: '', gemeentGemeenteNaam: '', locatieStraat: '',
+                            id: 0, parkingNaam: '', soortSoortNaam: '', gemeentGemeenteNaam: '', locatieStraat: '',
                             locatieNummer: '', landLandNaam: '', totaal: 0, bezet: ''
                         }
                     }
 
                 },
-                //save: function () {
-                //    var self = this
-                //    //opslaan-ajax configuratie
-                //    var ajaxHeaders = new Headers();
-                //    ajaxHeaders.append("Content-Type", "application/json");
-                //    var ajaxConfig = {
-                //        method: 'PUT',
-                //        body: JSON.stringify(self.currentParking),
-                //        headers: ajaxHeaders
-                //    }
-                //    // opslaan of edit toevoegen
-                //    if (self.isEdit) {
-                //        var myRequest = new Request(`${apiURL}Parkings/${self.currentParking.id}`, ajaxConfig)
-                //    }
-                //    else {
-                //        ajaxConfig.method = 'POST';
-                //        var myRequest = new Request(`${apiURL}Parkings/`, ajaxConfig)
-                //    }
-                //    fetch(myRequest)
-                //        .then(res => res.json())
-                //        .then(function (res) {
-                //            if (self.isEdit) {
-                //                theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
-                //                theParking.parkingNaam = self.currentParking.parkingNaam;
-                //                theParking.soortSoortNaam = self.currentParking.parkingNaam;
-                //            } else {
-                //                console.log(res);
-                //                self.currentParking.id = res.id;
-                //                self.parkings.push(self.currentParking);
-                //                self.fetchParkingDetails(self.parkings[self.parkings.length - 1]);
-                //            }
-                //            self.toEditMode = false;
-                //        })
-                //        .catch(err => console.error('Fout: ' + err));;
-
-                //},
-
                 save: function () {
                     var self = this
-
-                    // opslaan - ajax
-                    var xhr = new XMLHttpRequest()
-                    if (self.isEdit) { xhr.open('PUT', apiURL + "Parkings/" + self.currentParking.id); }
-                    else { xhr.open('POST', apiURL + "Parkings"); }
-                    var uploadjson = JSON.stringify(self.currentParking);
-                    xhr.setRequestHeader("Content-type", "application/json");
-                    xhr.send(uploadjson);
-
-                    // GUI Aanpassen
-                    // nieuwe auteursnaam ophalen
-                    //theAuthor = self.authors.filter(author => (author.Id === self.currentBook.AuthorId))[0];
-                    //Vue.set(self.currentBook, 'AuthorName', theAuthor.Name)
-
-                    if (self.isEdit) {
-                        // boek updaten in lijst
-                        theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
-                        Vue.set(theParking, 'parkingNaam', this.currentParking.parkingNaam);
-                        Vue.set(theParking, 'totaal', this.currentParking.totaal);
-                        theParking.parkingNaam = this.currentParking.parkingNaam;
-                        self.editMode = false;
-                    } else {
-                        // boek toevoegen aan de lijst
-                        self.parkings.push(self.currentParking);
+                    //opslaan-ajax configuratie
+                    var ajaxHeaders = new Headers();
+                    ajaxHeaders.append("Content-Type", "application/json");
+                    var ajaxConfig = {
+                        method: 'PUT',
+                        body: JSON.stringify(self.currentParking),
+                        headers: ajaxHeaders
                     }
+                    // opslaan of edit toevoegen
+                    if (self.isEdit) {
+                        var myRequest = new Request(`${apiURL}Parkings/${self.currentParking.id}`, ajaxConfig)
+                    }
+                    else {
+                        ajaxConfig.method = 'POST';
+                        var myRequest = new Request(`${apiURL}Parkings/`, ajaxConfig)
+                    }
+                    fetch(myRequest)
+                        .then(res => res.json())
+                        .then(function (res) {
+                            theSoorts = self.soorts.filter(soort => (soort.id === self.currentParking.SoortId))[0];
+                            self.currentParking.soortSoortNaam = theSoort.soortSoortNaam;
+                            if (self.isEdit) {
+                                theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
+                                theParking.parkingNaam = self.currentParking.parkingNaam;
+                                theParking.totaal = self.currentParking.totaal;
+                            } else {
+                                console.log(res);
+                                self.currentParking.id = res.id;
+                                self.parkings.push(self.currentParking);
+                                self.fetchParkingDetails(self.parkings[self.parkings.length - 1]);
+                            }
+                            self.toEditMode = false;
+                        })
+                        .catch(err => console.error('Fout: ' + err));;
+
                 },
+
+                //save: function () {
+                //    var self = this
+
+                //    // opslaan - ajax
+                //    var xhr = new XMLHttpRequest()
+                //    if (self.isEdit) { xhr.open('PUT', apiURL + "Parkings/" + self.currentParking.id); }
+                //    else { xhr.open('POST', apiURL + "Parkings"); }
+                //    var uploadjson = JSON.stringify(self.currentParking);
+                //    xhr.setRequestHeader("Content-type", "application/json");
+                //    xhr.send(uploadjson);
+
+                //    // GUI Aanpassen
+                //    // nieuwe auteursnaam ophalen
+                //    //theAuthor = self.authors.filter(author => (author.Id === self.currentBook.AuthorId))[0];
+                //    //Vue.set(self.currentBook, 'AuthorName', theAuthor.Name)
+
+                //    if (self.isEdit) {
+                //        // boek updaten in lijst
+                //        theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
+                //        Vue.set(theParking, 'parkingNaam', this.currentParking.parkingNaam);
+                //        Vue.set(theParking, 'totaal', this.currentParking.totaal);
+                //        theParking.parkingNaam = this.currentParking.parkingNaam;
+                //        self.editMode = false;
+                //    } else {
+                //        // boek toevoegen aan de lijst
+                //        self.parkings.push(self.currentParking);
+                //    }
+                //},
                 Cancel: function () {
 
 
