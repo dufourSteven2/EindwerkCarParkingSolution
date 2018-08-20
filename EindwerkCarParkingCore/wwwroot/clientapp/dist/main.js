@@ -569,7 +569,7 @@ var DataService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<agm-map>\r\n    <agm-marker [latitude]=\"lat\" [longitude]=\"lng\"></agm-marker>\r\n</agm-map>\r\n<!--<div>{{adres}}</div>-->"
+module.exports = "<!--<div>\r\n  \r\n        <agm-map [latitude]=\"lat\" [longitude]=\"lng\"></agm-map>\r\n \r\n</div>-->\r\n<div>{{adres}}</div>"
 
 /***/ }),
 
@@ -599,6 +599,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var googleMapComponent = /** @class */ (function () {
     function googleMapComponent(geocodingAPIService) {
         this.geocodingAPIService = geocodingAPIService;
+        this.lat = 51.678418;
+        this.lng = 7.809007;
     }
     googleMapComponent.prototype.ngOnChanges = function () {
         this.adres = this.straatNaam + " " + this.locatienummer + ","
