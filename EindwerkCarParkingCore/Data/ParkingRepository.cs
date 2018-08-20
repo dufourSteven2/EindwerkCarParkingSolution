@@ -23,15 +23,16 @@ namespace EindwerkCarParkingCore.Data
 
         public void AddParking(ParkingsDetailDTO model)
         {
-            //Parking parking = Mapper.Map<ParkingsDetailDTO>(Parking);
+            //Parking parking = Mapper.Map<ParkingsDetailDTO>(p);
             //_ctx.Parkings.Add(parking);
             //_ctx.SaveChanges();
 
             //model.Id = parking.Id;
-            
+
         }
 
-  
+
+
 
         public void DeleteParking(int id)
         {

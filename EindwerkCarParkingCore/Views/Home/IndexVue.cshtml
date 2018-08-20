@@ -31,7 +31,7 @@
                 <tr>
                     <td>Soort:</td>
               
-                    <td>
+                    <td>@*<input v-model="currentParking.soortNaam" v-on:change="changeParking" class="form-control">*@
                         <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
                             <option v-for="soort in soorts" v-bind:value="soort.id">{{ soort.soortNaam }}</option>
                         </select>
@@ -41,40 +41,39 @@
                 <tr>
                     <td>Land:</td>
                  
-                    <td>
-                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                    <td>@*<input v-model="currentParking.landNaam" v-on:change="changeParking" class="form-control">*@
+                        @*<select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
                             <option v-for="land in landen" v-bind:value="land.id">{{ land.landNaam }}</option>
-                        </select>
+                        </select>*@
 
                     </td>
                 </tr>
                 <tr>
                     <td>Gemeente:</td>
                   
-                    <td>
-                        <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                    <td>@*<input v-model="currentParking.gemeenteNaam" class="form-control">*@
+                        @*<select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
                             <option v-for="stad in steden" v-bind:value="stad.id">{{ stad.gemeenteNaam }}</option>
-                        </select>
+                        </select>*@
 
                     </td>
                 </tr>
                 <tr>
                     <td>Straat:</td>
-                    <td><input v-model="currentParking.locatieStraat" class="form-control"></td>
+                    @*<td><input v-model="currentParking.locatieStraat" class="form-control"></td>*@
                 </tr>
                 <tr>
                     <td>Nr:</td>
-                    <td><input v-model="currentParking.locatieNummer" class="form-control"></td>
+                    @*<td><input v-model="currentParking.locatieNummer" class="form-control"></td>*@
                 </tr>
 
                 <tr>
                     <td>Totaal:</td>
-                    @*<td><input v-model="currentParking.totaal" class="form-control"></td>*@
-                    <td>
-                <select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
+                    <td><input v-model="currentParking.totaal" class="form-control">
+                    
+                @*<select v-model="currentParking.id" v-on:change="changeParking" class="form-control">
                     <option v-for="parking in parkings" v-bind:value="parking.id">{{ parking.totaal }}</option>
-                </select>
-                
+                </select>*@                
             </td>
                 </tr>
                 <tr>
@@ -138,9 +137,10 @@
         $(function () {
             // JQuery
             //console.log('ready');
+            this.editMode = false;
         })
         var apiURL = '/api/'
-        new Vue({
+        var app = new Vue({
             el: '#example',
             data: {
                 message: 'Hello World!',
@@ -222,8 +222,8 @@
                             parking.isActive = true;
 
                         })
-                    xhr.send()
-
+                    //xhr.send()
+                        .catch(err => console.error('Fout: ' + err));
                 },
                 getParkingClass: function (parking) {
                     if (parking.isActive) return 'list-group-item active';
@@ -240,13 +240,13 @@
                     if (!isEdit) {
                         self.currentParking = {
                             id: 0, parkingNaam: '', soortSoortNaam: '', gemeentGemeenteNaam: '', locatieStraat: '',
-                            locatieNummer: '', landLandNaam: '', totaal: 0, bezet: ''
+                            locatieNummer: '', landLandNaam: '', totaal: 10, bezet: 1
                         }
                     }
 
                 },
-                save: function () {
-                    var self = this
+                save: function () { //hier save verandert naar Post
+                    var self = this;
                     //opslaan-ajax configuratie
                     var ajaxHeaders = new Headers();
                     ajaxHeaders.append("Content-Type", "application/json");
@@ -266,12 +266,18 @@
                     fetch(myRequest)
                         .then(res => res.json())
                         .then(function (res) {
-                            theSoorts = self.soorts.filter(soort => (soort.id === self.currentParking.SoortId))[0];
+                            theSoort = self.soorts.filter(soort => (soort.id === self.currentParking.soort.id))[0];
                             self.currentParking.soortSoortNaam = theSoort.soortSoortNaam;
+                            theLocatie = self.locaties.filter(locatie => (locatie.id === self.currentParking.locatie.id))[0];
+                            self.currentParking.locatieStraat = theLocatie.locatieStraat;
+                            self.currentParking.locatieNummer = theLocatie.locatieNummer;
                             if (self.isEdit) {
                                 theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
                                 theParking.parkingNaam = self.currentParking.parkingNaam;
-                                theParking.totaal = self.currentParking.totaal;
+                                theParking.soortSoortNaam = theSoort.soortSoortNaam;
+                                theParking.locatieStraat = theLocatie.locatieStraat;
+                                theParking.locatieNummer = theLocatie.locatieNummer; 
+
                             } else {
                                 console.log(res);
                                 self.currentParking.id = res.id;
@@ -288,7 +294,7 @@
                 //    var self = this
 
                 //    // opslaan - ajax
-                //    var xhr = new XMLHttpRequest()
+                //    //var xhr = new XMLHttpRequest()
                 //    if (self.isEdit) { xhr.open('PUT', apiURL + "Parkings/" + self.currentParking.id); }
                 //    else { xhr.open('POST', apiURL + "Parkings"); }
                 //    var uploadjson = JSON.stringify(self.currentParking);
@@ -299,12 +305,13 @@
                 //    // nieuwe auteursnaam ophalen
                 //    //theAuthor = self.authors.filter(author => (author.Id === self.currentBook.AuthorId))[0];
                 //    //Vue.set(self.currentBook, 'AuthorName', theAuthor.Name)
-
+                //    theSoort = self.soorts.filter(soort => (soort.id === self.currentParking.soort.id))[0];
+                //    Vue.set(self.currentParking, 'soortNaam', theSoort.soortSoortNaam)
                 //    if (self.isEdit) {
                 //        // boek updaten in lijst
                 //        theParking = self.parkings.filter(parking => (parking.id === self.currentParking.id))[0];
                 //        Vue.set(theParking, 'parkingNaam', this.currentParking.parkingNaam);
-                //        Vue.set(theParking, 'totaal', this.currentParking.totaal);
+                //        Vue.set(theParking, 'soortNaam', this.currentParking.soortSoortNaam);
                 //        theParking.parkingNaam = this.currentParking.parkingNaam;
                 //        self.editMode = false;
                 //    } else {
