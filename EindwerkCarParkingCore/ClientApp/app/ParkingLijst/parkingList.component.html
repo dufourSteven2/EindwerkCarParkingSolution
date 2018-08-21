@@ -19,13 +19,13 @@
                 <thead>
                     <tr>
                         <th>Parkingnaam: </th>
-                        <th> Land: </th>
-                        <th> Gemeente: </th>
+                        <th>Land: </th>
+                        <th>Gemeente: </th>
                         <th>Straat: </th>
                         <th>Nummer: </th>
                         <th>Soort: </th>
                         <th>Bezet: </th>
-                        <th> Aantal: </th>
+                        <th>Aantal: </th>
                         <th>Vrije plaatsen: </th>
                         <th>Percentage bezet:</th>
                         <th>Google Map</th>
@@ -42,15 +42,20 @@
                         <td>{{p.soortSoortNaam}}</td>
                         <td ng-model="bezet">{{p.bezet}}</td>
                         <td ng-model="Totaal">{{p.totaal}}</td>
-                        <td>{{ p.totaal - p.bezet }}</td>
-                        <td>{{(p.bezet / p.totaal)*100}} %</td>
-                        <td>    
-                            <googleMap [straatNaam] = 'p.locatieStraat'
-                                       [locatienummer] ='p.locatieNummer'
-                                       [gemeente] ="p.gemeenteGemeenteNaam"
-                                       [land] ="p.landLandNaam"></googleMap>
+                        <td>80</td><!--{{ p.totaal - p.bezet }}-->
+                        <td> 5 %</td><!--{{(p.bezet / p.totaal)*100}}-->
+                        <td>
+                            <googleMap [straatNaam]="p.locatieStraat"
+                                       [locatienummer]="p.locatieNummer"
+                                       [gemeente]="p.gemeenteGemeenteNaam"
+                                       [land]="p.landLandNaam"></googleMap>
+
+                            <!--<googleMap [straatNaam]={{p.locatieStraat}}
+                                       [locatienummer]={{p.locatieNummer}}
+                                       [gemeente]={{p.gemeenteGemeenteNaam}}
+                                       [land]={{p.landLandNaam}}></googleMap>-->
                         </td>
-                        
+
                     </tr>
                 </tbody>
             </table>

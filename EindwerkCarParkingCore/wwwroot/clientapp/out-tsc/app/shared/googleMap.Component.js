@@ -10,15 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+//import { } from '@types/googlemaps';
 var GeocodingApiService_1 = require("../Services/GeocodingApiService");
 var googleMapComponent = /** @class */ (function () {
     function googleMapComponent(geocodingAPIService) {
         this.geocodingAPIService = geocodingAPIService;
-        this.lat = 51.678418;
-        this.lng = 7.809007;
     }
     googleMapComponent.prototype.ngOnChanges = function () {
-        this.adres = this.straatNaam + " " + this.locatienummer + ","
+        this.adres = this.straatNaam + "," + this.locatienummer + ","
             + this.gemeente + "," + this.land;
         this.updateLatLngFromAddress();
     };

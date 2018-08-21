@@ -3,4 +3,7 @@
         <agm-map [latitude]="lat" [longitude]="lng"></agm-map>
  
 </div>-->
-<div>{{adres}}</div>
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+<!--<div>{{adres}}</div>-->
