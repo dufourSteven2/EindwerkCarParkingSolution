@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Procent_Component_1 = require("./Procent/Procent.Component");
 var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http"); //////////////
@@ -31,6 +32,7 @@ var AppModule = /** @class */ (function () {
                 Gemeente_Component_1.Gemeentes,
                 Soorten_Component_1.Soorten,
                 googleMap_Component_1.googleMapComponent,
+                Procent_Component_1.ProcentComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,

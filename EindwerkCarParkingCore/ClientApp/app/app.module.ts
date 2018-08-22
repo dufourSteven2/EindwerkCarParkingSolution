@@ -1,3 +1,4 @@
+import { ProcentComponent } from './Procent/Procent.Component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http"; //////////////
@@ -19,6 +20,7 @@ import { GeocodingApiService } from './Services/GeocodingApiService';
       Gemeentes,
       Soorten,
       googleMapComponent,
+      ProcentComponent
       
   ],
   imports: [

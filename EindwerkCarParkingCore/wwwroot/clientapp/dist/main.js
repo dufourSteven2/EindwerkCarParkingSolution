@@ -188,6 +188,9 @@ var ParkingList = /** @class */ (function () {
         this.data = data;
         this.PageTitle = 'Lijst Parkings';
         this.parkings = [];
+        // @Input() totaal: number;
+        //@Input() bezet: number;
+        this.procent = 5;
         this.filteredParkings = this.parkings;
     }
     ParkingList.prototype.ngOnInit = function () {
@@ -199,6 +202,7 @@ var ParkingList = /** @class */ (function () {
                 _this.filteredParkings = _this.parkings;
             }
         });
+        //this.procent = (this.bezet / this.totaal) * 100;
     };
     Object.defineProperty(ParkingList.prototype, "listFilter", {
         get: function () {
@@ -243,7 +247,78 @@ var ParkingList = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"parking\">\r\n    <div class=\"parking.header\">\r\n        {{PageTitle}}\r\n    </div>\r\n    <div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-2\">Zoeken: </div>\r\n            <div class=\"col-md-4\">\r\n                <input type=\"text\" [(ngModel)]=\"listFilter\" />\r\n            </div>\r\n        </div>   \r\n        <div class=\"row\">\r\n            <div class=\"col-md-6\">\r\n                <h4>Filterd door: {{listFilter}}</h4>\r\n            </div>\r\n        </div>\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table\" *ngIf='parkings && parkings.length > 0'>\r\n                <thead>\r\n                    <tr>\r\n                        <th>Parkingnaam: </th>\r\n                        <th> Land: </th>\r\n                        <th> Gemeente: </th>\r\n                        <th>Straat: </th>\r\n                        <th>Nummer: </th>\r\n                        <th>Soort: </th>\r\n                        <th>Bezet: </th>\r\n                        <th> Aantal: </th>\r\n                        <th>Vrije plaatsen: </th>\r\n                        <th>Percentage bezet:</th>\r\n                        <th>Google Map</th>\r\n                       \r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr class=\"tableparkinginfo\" *ngFor=\"let p of filteredParkings\">\r\n                        <td>{{p.parkingNaam}} </td>\r\n                        <td>{{p.landLandNaam}}</td>\r\n                        <td>{{p.gemeenteGemeenteNaam}}</td>\r\n                        <td>{{p.locatieStraat}}</td>\r\n                        <td>{{p.locatieNummer}}</td>\r\n                        <td>{{p.soortSoortNaam}}</td>\r\n                        <td ng-model=\"bezet\">{{p.bezet}}</td>\r\n                        <td ng-model=\"Totaal\">{{p.totaal}}</td>\r\n                        <td>{{ p.totaal - p.bezet }}</td>\r\n                        <td>{{(p.bezet / p.totaal)*100}} %</td>\r\n                        <td>    \r\n                            <googleMap [straatNaam] = 'p.locatieStraat'\r\n                                       [locatienummer] ='p.locatieNummer'\r\n                                       [gemeente] =\"p.gemeenteGemeenteNaam\"\r\n                                       [land] =\"p.landLandNaam\"></googleMap>\r\n                        </td>\r\n                        \r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div class=\"parking\">\r\n    <div class=\"parking.header\">\r\n        {{PageTitle}}\r\n    </div>\r\n    <div>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-2\">Zoeken: </div>\r\n            <div class=\"col-md-4\">\r\n                <input type=\"text\" [(ngModel)]=\"listFilter\" />\r\n            </div>\r\n        </div>   \r\n        <div class=\"row\">\r\n            <div class=\"col-md-6\">\r\n                <h4>Filterd door: {{listFilter}}</h4>\r\n            </div>\r\n        </div>\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table\" *ngIf='parkings && parkings.length > 0'>\r\n                <thead>\r\n                    <tr>\r\n                        <th>Parkingnaam: </th>\r\n                        <th> Land: </th>\r\n                        <th> Gemeente: </th>\r\n                        <th>Straat: </th>\r\n                        <th>Nummer: </th>\r\n                        <th>Soort: </th>\r\n                        <th>Bezet: </th>\r\n                        <th> Aantal: </th>\r\n                        <th>Vrije plaatsen: </th>\r\n                        <th>Percentage bezet:</th>\r\n                        <th>Google Map</th>\r\n                       \r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr class=\"tableparkinginfo\" *ngFor=\"let p of filteredParkings\">\r\n                        <td>{{p.parkingNaam}} </td>\r\n                        <td>{{p.landLandNaam}}</td>\r\n                        <td>{{p.gemeenteGemeenteNaam}}</td>\r\n                        <td>{{p.locatieStraat}}</td>\r\n                        <td>{{p.locatieNummer}}</td>\r\n                        <td>{{p.soortSoortNaam}}</td>\r\n                        <td ng-model=\"bezet\">{{p.bezet}}</td>\r\n                        <td ng-model=\"Totaal\">{{p.totaal}}</td>\r\n                        <td>{{ p.totaal - p.bezet }}</td>\r\n                        <td> \r\n                            <Procent [Totaal] =\"p.Totaal\"\r\n                                     [bezet] =\"p.bezet\"></Procent></td>\r\n                        <td>    \r\n                            <googleMap [straatNaam] = 'p.locatieStraat'\r\n                                       [locatienummer] ='p.locatieNummer'\r\n                                       [gemeente] =\"p.gemeenteGemeenteNaam\"\r\n                                       [land] =\"p.landLandNaam\"></googleMap>\r\n                        </td>\r\n                        \r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+
+/***/ }),
+
+/***/ "./ClientApp/app/Procent/Procent.Component.css":
+/*!*****************************************************!*\
+  !*** ./ClientApp/app/Procent/Procent.Component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "body {\r\n}\r\n"
+
+/***/ }),
+
+/***/ "./ClientApp/app/Procent/Procent.Component.html":
+/*!******************************************************!*\
+  !*** ./ClientApp/app/Procent/Procent.Component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h1>{{procent}}</h1>"
+
+/***/ }),
+
+/***/ "./ClientApp/app/Procent/Procent.Component.ts":
+/*!****************************************************!*\
+  !*** ./ClientApp/app/Procent/Procent.Component.ts ***!
+  \****************************************************/
+/*! exports provided: ProcentComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProcentComponent", function() { return ProcentComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ProcentComponent = /** @class */ (function () {
+    function ProcentComponent() {
+    }
+    ProcentComponent.prototype.ngOnChanges = function () {
+        this.procent = this.Totaal;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], ProcentComponent.prototype, "Totaal", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], ProcentComponent.prototype, "bezet", void 0);
+    ProcentComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'Procent',
+            template: __webpack_require__(/*! ./Procent.Component.html */ "./ClientApp/app/Procent/Procent.Component.html"),
+            styles: [__webpack_require__(/*! ./Procent.Component.css */ "./ClientApp/app/Procent/Procent.Component.css")]
+        })
+    ], ProcentComponent);
+    return ProcentComponent;
+}());
+
+
 
 /***/ }),
 
@@ -415,25 +490,27 @@ var AppComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./ClientApp/app/app.component.ts");
-/* harmony import */ var _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ParkingLijst/ParkingList.component */ "./ClientApp/app/ParkingLijst/ParkingList.component.ts");
-/* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shared/dataService */ "./ClientApp/app/shared/dataService.ts");
-/* harmony import */ var _shared_googleMap_Component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/googleMap.Component */ "./ClientApp/app/shared/googleMap.Component.ts");
-/* harmony import */ var _Landen_Landen_Component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Landen/Landen.Component */ "./ClientApp/app/Landen/Landen.Component.ts");
-/* harmony import */ var _Gemeentes_Gemeente_Component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Gemeentes/Gemeente.Component */ "./ClientApp/app/Gemeentes/Gemeente.Component.ts");
-/* harmony import */ var _Soorten_Soorten_Component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Soorten/Soorten.Component */ "./ClientApp/app/Soorten/Soorten.Component.ts");
-/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
-/* harmony import */ var _Services_GeocodingApiService__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Services/GeocodingApiService */ "./ClientApp/app/Services/GeocodingApiService.ts");
+/* harmony import */ var _Procent_Procent_Component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Procent/Procent.Component */ "./ClientApp/app/Procent/Procent.Component.ts");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./ClientApp/app/app.component.ts");
+/* harmony import */ var _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ParkingLijst/ParkingList.component */ "./ClientApp/app/ParkingLijst/ParkingList.component.ts");
+/* harmony import */ var _shared_dataService__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/dataService */ "./ClientApp/app/shared/dataService.ts");
+/* harmony import */ var _shared_googleMap_Component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./shared/googleMap.Component */ "./ClientApp/app/shared/googleMap.Component.ts");
+/* harmony import */ var _Landen_Landen_Component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Landen/Landen.Component */ "./ClientApp/app/Landen/Landen.Component.ts");
+/* harmony import */ var _Gemeentes_Gemeente_Component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Gemeentes/Gemeente.Component */ "./ClientApp/app/Gemeentes/Gemeente.Component.ts");
+/* harmony import */ var _Soorten_Soorten_Component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Soorten/Soorten.Component */ "./ClientApp/app/Soorten/Soorten.Component.ts");
+/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
+/* harmony import */ var _Services_GeocodingApiService__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Services/GeocodingApiService */ "./ClientApp/app/Services/GeocodingApiService.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
  //////////////
@@ -451,28 +528,29 @@ var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-                _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_5__["ParkingList"],
-                _Landen_Landen_Component__WEBPACK_IMPORTED_MODULE_8__["Landen"],
-                _Gemeentes_Gemeente_Component__WEBPACK_IMPORTED_MODULE_9__["Gemeentes"],
-                _Soorten_Soorten_Component__WEBPACK_IMPORTED_MODULE_10__["Soorten"],
-                _shared_googleMap_Component__WEBPACK_IMPORTED_MODULE_7__["googleMapComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
+                _ParkingLijst_ParkingList_component__WEBPACK_IMPORTED_MODULE_6__["ParkingList"],
+                _Landen_Landen_Component__WEBPACK_IMPORTED_MODULE_9__["Landen"],
+                _Gemeentes_Gemeente_Component__WEBPACK_IMPORTED_MODULE_10__["Gemeentes"],
+                _Soorten_Soorten_Component__WEBPACK_IMPORTED_MODULE_11__["Soorten"],
+                _shared_googleMap_Component__WEBPACK_IMPORTED_MODULE_8__["googleMapComponent"],
+                _Procent_Procent_Component__WEBPACK_IMPORTED_MODULE_0__["ProcentComponent"]
             ],
             imports: [
-                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
-                _agm_core__WEBPACK_IMPORTED_MODULE_11__["AgmCoreModule"].forRoot({
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
+                _agm_core__WEBPACK_IMPORTED_MODULE_12__["AgmCoreModule"].forRoot({
                     apiKey: 'AIzaSyCeiTZY7jXETj0MpKuUbKwN_CqeUzv0v-M'
                 }),
             ],
             providers: [
-                _shared_dataService__WEBPACK_IMPORTED_MODULE_6__["DataService"],
-                _Services_GeocodingApiService__WEBPACK_IMPORTED_MODULE_12__["GeocodingApiService"]
+                _shared_dataService__WEBPACK_IMPORTED_MODULE_7__["DataService"],
+                _Services_GeocodingApiService__WEBPACK_IMPORTED_MODULE_13__["GeocodingApiService"]
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -584,7 +662,6 @@ module.exports = "<!--<div>\r\n  \r\n        <agm-map [latitude]=\"lat\" [longit
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "googleMapComponent", function() { return googleMapComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _Services_GeocodingApiService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Services/GeocodingApiService */ "./ClientApp/app/Services/GeocodingApiService.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -595,34 +672,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var googleMapComponent = /** @class */ (function () {
-    function googleMapComponent(geocodingAPIService) {
-        this.geocodingAPIService = geocodingAPIService;
-        this.lat = 51.678418;
-        this.lng = 7.809007;
+    function googleMapComponent() {
     }
     googleMapComponent.prototype.ngOnChanges = function () {
         this.adres = this.straatNaam + " " + this.locatienummer + ","
             + this.gemeente + "," + this.land;
-        this.updateLatLngFromAddress();
-    };
-    googleMapComponent.prototype.updateLatLngFromAddress = function () {
-        var _this = this;
-        this.geocodingAPIService
-            .findFromAddress(this.adres)
-            .subscribe(function (response) {
-            if (response.status == 'OK') {
-                _this.lat = response.results[0].geometry.location.lat;
-                _this.lng = response.results[0].geometry.location.lng;
-            }
-            else if (response.status == 'ZERO_RESULTS') {
-                console.log('geocodingAPIService', 'ZERO_RESULTS', response.status);
-            }
-            else {
-                console.log('geocodingAPIService', 'Other error', response.status);
-            }
-        });
+        //  this.updateLatLngFromAddress();
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -645,8 +701,7 @@ var googleMapComponent = /** @class */ (function () {
             selector: 'googleMap',
             template: __webpack_require__(/*! ./googleMap.Component.html */ "./ClientApp/app/shared/googleMap.Component.html"),
             styles: [__webpack_require__(/*! ./googleMapComponent.css */ "./ClientApp/app/shared/googleMapComponent.css")]
-        }),
-        __metadata("design:paramtypes", [_Services_GeocodingApiService__WEBPACK_IMPORTED_MODULE_1__["GeocodingApiService"]])
+        })
     ], googleMapComponent);
     return googleMapComponent;
 }());
@@ -662,7 +717,7 @@ var googleMapComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\nagm-map {\r\n    height: 150px;\r\n    width: 80px;\r\n}\r\n"
+module.exports = "\r\nagm-map {\r\n    height: 300px;\r\n    width: 80px;\r\n}\r\n"
 
 /***/ }),
 

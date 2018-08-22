@@ -16,6 +16,9 @@ var ParkingList = /** @class */ (function () {
         this.data = data;
         this.PageTitle = 'Lijst Parkings';
         this.parkings = [];
+        // @Input() totaal: number;
+        //@Input() bezet: number;
+        this.procent = 5;
         this.filteredParkings = this.parkings;
     }
     ParkingList.prototype.ngOnInit = function () {
@@ -27,6 +30,7 @@ var ParkingList = /** @class */ (function () {
                 _this.filteredParkings = _this.parkings;
             }
         });
+        //this.procent = (this.bezet / this.totaal) * 100;
     };
     Object.defineProperty(ParkingList.prototype, "listFilter", {
         get: function () {

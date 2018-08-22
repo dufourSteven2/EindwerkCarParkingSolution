@@ -43,7 +43,9 @@
                         <td ng-model="bezet">{{p.bezet}}</td>
                         <td ng-model="Totaal">{{p.totaal}}</td>
                         <td>{{ p.totaal - p.bezet }}</td>
-                        <td>{{(p.bezet / p.totaal)*100}} %</td>
+                        <td> 
+                            <Procent [Totaal] ="p.Totaal"
+                                     [bezet] ="p.bezet"></Procent></td>
                         <td>    
                             <googleMap [straatNaam] = 'p.locatieStraat'
                                        [locatienummer] ='p.locatieNummer'

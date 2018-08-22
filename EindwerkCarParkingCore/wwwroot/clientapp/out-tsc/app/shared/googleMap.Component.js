@@ -10,34 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var GeocodingApiService_1 = require("../Services/GeocodingApiService");
 var googleMapComponent = /** @class */ (function () {
-    function googleMapComponent(geocodingAPIService) {
-        this.geocodingAPIService = geocodingAPIService;
-        this.lat = 51.678418;
-        this.lng = 7.809007;
+    function googleMapComponent() {
     }
     googleMapComponent.prototype.ngOnChanges = function () {
         this.adres = this.straatNaam + " " + this.locatienummer + ","
             + this.gemeente + "," + this.land;
-        this.updateLatLngFromAddress();
-    };
-    googleMapComponent.prototype.updateLatLngFromAddress = function () {
-        var _this = this;
-        this.geocodingAPIService
-            .findFromAddress(this.adres)
-            .subscribe(function (response) {
-            if (response.status == 'OK') {
-                _this.lat = response.results[0].geometry.location.lat;
-                _this.lng = response.results[0].geometry.location.lng;
-            }
-            else if (response.status == 'ZERO_RESULTS') {
-                console.log('geocodingAPIService', 'ZERO_RESULTS', response.status);
-            }
-            else {
-                console.log('geocodingAPIService', 'Other error', response.status);
-            }
-        });
+        //  this.updateLatLngFromAddress();
     };
     __decorate([
         core_1.Input(),
@@ -60,8 +39,7 @@ var googleMapComponent = /** @class */ (function () {
             selector: 'googleMap',
             templateUrl: './googleMap.Component.html',
             styleUrls: ['./googleMapComponent.css']
-        }),
-        __metadata("design:paramtypes", [GeocodingApiService_1.GeocodingApiService])
+        })
     ], googleMapComponent);
     return googleMapComponent;
 }());

@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from "@angular/core";
+﻿import { Component, OnInit, Input } from "@angular/core";
 import { DataService } from "../shared/dataService";
 import { IParking } from "../shared/IParking";
 import { Parking } from "../shared/Parking";
@@ -13,6 +13,9 @@ export class ParkingList implements OnInit {
     PageTitle: string = 'Lijst Parkings';
     backGroundColor: string;
     public parkings: IParking[] = [];
+   // @Input() totaal: number;
+    //@Input() bezet: number;
+    procent: number = 5;
 
     ngOnInit(): void {
         this.data.loadParkings()
@@ -23,6 +26,7 @@ export class ParkingList implements OnInit {
                
                 }
             });
+        //this.procent = (this.bezet / this.totaal) * 100;
     }
    
     filteredParkings: IParking[] = this.parkings;
